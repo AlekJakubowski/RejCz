@@ -1,0 +1,2 @@
+# RejCz
+rejetr czynności przetwarzania
