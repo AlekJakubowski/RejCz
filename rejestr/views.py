@@ -76,8 +76,6 @@ class OkresRetencjiCreateView(generic.CreateView):
 class OkresRetencjiDetailView(generic.DetailView):
     model = models.OkresRetencji
     form_class = forms.OkresRetencjiForm
-    # pk_url_kwarg = "pk"
-    # success_url = reverse_lazy("OkresRetencji_detail")
 
 
 class OkresRetencjiUpdateView(generic.UpdateView):
@@ -114,16 +112,9 @@ class CzynnoscPrzetwarzaniaUpdateView(generic.UpdateView):
     pk_url_kwarg = "pk"
 
 
-# class CzynnoscPrzetwarzaniaCloneView(generic.Clone):
-#     model = models.CzynnoscPrzetwarzania
-#     model.pk = None
-#     form_class = forms.CzynnoscPrzetwarzaniaForm
-#     pk_url_kwarg = "pk"
-
 class CzynnoscPrzetwarzaniaDeleteView(generic.DeleteView):
     model = models.CzynnoscPrzetwarzania
     success_url = reverse_lazy("CzynnoscPrzetwarzania_list")
-
 
 
 class KomorkaListView(generic.ListView):

@@ -9,6 +9,16 @@
     <tr><td>Symbol podatności</td><td>{{ object.pdt_skrot }}</td></tr>
     <tr><td>Opis podatności</td><td>{{ object.pdt_opis }}</td></tr>
     <tr><td>Waga podatności</td><td>{{ object.pdt_waga }}</td></tr>
+    <tr><td>Oddziaływanie</td><td>
+        {% if object.Zagrozenia.all %}
+            {% for zagr in object.Zagrozenia.all %}
+                <p>{{ zagr }}</p>
+            {% endfor %}
+        {% else %}
+            <p>-- BRAK DANYCH --</p> 
+        {% endif%}
+    </td></tr>
+
     <tr><td>Utworzono</td><td>{{ object.created }}</td></tr>
     <tr><td>Ostatnia modyfikacja</td><td>{{ object.last_updated }}</td></tr>
 </table>

@@ -744,7 +744,8 @@ class Ryzyko(models.Model):
     class Meta:
         pass
 
-    #def __str__(self):
+    def __str__(self):
+        pass
     #    return str(f'{self.zao_skrot} - {self.pdt_opis}')
 
     def get_absolute_url(self):

@@ -17,7 +17,7 @@
             <p>-- BRAK DANYCH --</p> 
         {% endif%}
     </td></tr>
-    <tr><td>Zagrożenie</td><td>
+    <tr><td>Zagrożenia</td><td>
         {% if object.Zagrozenia.all %}
             {% for zagr in object.Zagrozenia.all %}
                 <p>{{ zagr }}</p>
@@ -26,7 +26,7 @@
             <p>-- BRAK DANYCH --</p> 
         {% endif%}
     </td></tr>
-    <tr><td>Odpowiedzialny za wprowadzenie</td><td>
+    <tr><td>Odpowiedzialni za wprowadzenie</td><td>
         {% if object.Odpowiedzialni.all %}
             {% for od in object.Odpowiedzialni.all %}
                 <p>{{ od }}</p>

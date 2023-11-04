@@ -8,9 +8,10 @@
       <thead class="table-secondary align-middle">
         <tr>
           <th style="width:5%">Aktywna</th>
-          <th style="width:10%">Skrót</th>
-          <th style="width:50%">Opis podatności</th>
-          <th style="width:10%">Waga podatności</th>
+          <th style="width:5%">Skrót</th>
+          <th style="width:30%">Opis podatności</th>
+          <th style="width:5%">Waga</th>
+          <th style="width:40%">Oddziaływanie</th>
           <th style="width:15%">AKCJA</th>
         </tr>
       </thead>
@@ -37,6 +38,15 @@
             <td>{{ object.pdt_skrot }}</td>
             <td>{{ object.pdt_opis }}</td>
             <td>{{ object.pdt_waga }}</td>
+            <td>
+              {% if object.Zagrozenia.all %}
+                {% for zagr in object.Zagrozenia.all %}
+                    <p>{{ zagr }}</p>
+                {% endfor %}
+              {% else %}
+                <p>-- BRAK DANYCH --</p> 
+              {% endif%}
+              </td>
             <td>
               <div class="btn-group">
                 <a class="btn btn-secondary" href="{{object.get_update_url}}">
