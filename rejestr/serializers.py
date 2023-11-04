@@ -1,17 +1,6 @@
 from rest_framework import serializers
 
 from . import models
-# from rejestr.models.komorka import Komorka
-# from rejestr.models.organizacja import Organizacja
-# from rejestr.models.czynnosc_przetwarzania import CzynnoscPrzetwarzania, STATUS_ZATWIERDZENIA, ZRODLA_DANYCH
-# from rejestr.models.okres_retencji import OkresRetencji
-# from rejestr.models.rejestr import Rejestr
-# from rejestr.models.wysokie_ryzyko import WysokieRyzyko
-# from rejestr.models.przeslanka_legalnosci import PrzeslankaLegalnosci
-# from rejestr.models.kategoria_odbiorcow import KategoriaOdbiorcow
-# from rejestr.models.kategoria_danych import KategoriaDanych
-# from rejestr.models.kategoria_osob import KategoriaOsob
-# from rejestr.models.sposob_przetwarzania import SposobPrzetwarzania
 
 
 class CzynnoscPrzetwarzaniaSerializer(serializers.ModelSerializer):
