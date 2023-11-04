@@ -1,0 +1,25 @@
+
+{% extends "base.html" %}
+{% block content %}
+
+<form method="post">
+  {% csrf_token %}
+  <div class="alert alert-danger" role="alert">
+    <h4 class="alert-heading">Usuwanie przesłanki wysokiego ryzyka !</h4>
+    <p class="fs-4">Czy na pewno usunąć przesłankę wysokiego ryzyka: "{{ object }}"?</p>
+    <hr>
+      <p class="fs-5">Usunięcie zapisu może spowodować utratę spójności danych</p>
+    <hr>
+    <div class="form-group row">
+      <div class="col-3">
+        <input class="btn btn-danger" value="Usuń przesłankę wysokiego ryzyka" type="submit">
+      </div>
+      <div class="col-3">
+        <a class="btn btn-primary" href="{% url 'WysokieRyzyka_list' %}">Anuluj</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+</form>
+{% endblock %}
