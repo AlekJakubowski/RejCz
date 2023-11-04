@@ -1,0 +1,34 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Python: bieżący plik",
+      "type": "python",
+      "request": "launch",
+      "program": "${file}",
+      "console": "integratedTerminal",
+      "justMyCode": true
+    },
+    {
+      "name": "Python: File",
+      "type": "python",
+      "request": "launch",
+      "program": "${file}",
+      "justMyCode": true
+    },
+    {
+      "name": "Django",
+      "type": "python",
+      "request": "launch",
+      "stopOnEntry": false,
+      "program": "${workspaceRoot}/manage.py",
+      "args": ["runserver"]
+      // "debugOptions": [
+      //     "WaitOnAbnormalExit",
+      //     "WaitOnNormalExit",
+      //     "RedirectOutput",
+      //     "DjangoDebugging"
+      // ]
+    }
+  ]
+}

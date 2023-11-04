@@ -1,0 +1,140 @@
+from django.urls import path, include
+from rest_framework import routers
+
+from . import api
+from . import views
+from . import htmx
+
+
+router = routers.DefaultRouter()
+router.register("Organizacja", api.OrganizacjaViewSet)
+router.register("Rejestr", api.RejestrViewSet)
+router.register("Komorka", api.KomorkaViewSet) 
+router.register("Rejestr", api.RejestrViewSet) 
+router.register("OkresRetencji", api.OkresRetencjiViewSet) 
+router.register("SposobPrzetwarzania", api.SposobPrzetwarzaniaViewSet) 
+router.register("KategoriaOsob", api.KategoriaOsobViewSet) 
+router.register("KategoriaOdbiorcow", api.KategoriaOdbiorcowViewSet) 
+router.register("KategoriaDanych", api.KategoriaDanychViewSet) 
+router.register("WysokieRyzyko", api.WysokieRyzykoViewSet) 
+router.register("PrzeslankaLegalnosci", api.PrzeslankaLegalnosciViewSet) 
+router.register("CzynnoscPrzetwarzania", api.CzynnoscPrzetwarzaniaViewSet)
+
+
+
+urlpatterns = (
+    path("api/v1/", include(router.urls)),
+    path("CzynnoscPrzetwarzania/", views.CzynnoscPrzetwarzaniaListView.as_view(), name="CzynnoscPrzetwarzania_list"),
+    path("CzynnoscPrzetwarzania/create/", views.CzynnoscPrzetwarzaniaCreateView.as_view(), name="CzynnoscPrzetwarzania_create"),
+    path("CzynnoscPrzetwarzania/detail/<int:pk>/", views.CzynnoscPrzetwarzaniaDetailView.as_view(), name="CzynnoscPrzetwarzania_detail"),
+    path("CzynnoscPrzetwarzania/update/<int:pk>/", views.CzynnoscPrzetwarzaniaUpdateView.as_view(), name="CzynnoscPrzetwarzania_update"),
+    #path("CzynnoscPrzetwarzania/clone/<int:pk>/", views.CzynnoscPrzetwarzaniaCloneView.as_view(), name="CzynnoscPrzetwarzania_clone"),
+    path("CzynnoscPrzetwarzania/delete/<int:pk>/", views.CzynnoscPrzetwarzaniaDeleteView.as_view(), name="CzynnoscPrzetwarzania_delete"),
+    path("CzynnoscPrzetwarzania/pdfdetail/<int:pk>/", views.CzynnoscPrzetwarzaniaDetailPdfView.as_view(), name="CzynnoscPrzetwarzania_pdfdetail"),
+    
+    path("Rejestr/", views.RejestrListView.as_view(), name="Rejestr_list"),
+    path("Rejestr/create/", views.RejestrCreateView.as_view(), name="Rejestr_create"),
+    path("Rejestr/detail/<int:pk>/", views.RejestrDetailView.as_view(), name="Rejestr_detail"),
+    path("Rejestr/update/<int:pk>/", views.RejestrUpdateView.as_view(), name="Rejestr_update"),
+    path("Rejestr/delete/<int:pk>/", views.RejestrDeleteView.as_view(), name="Rejestr_delete"),
+    
+    path("OkresRetencji/", views.OkresRetencjiListView.as_view(), name="OkresRetencji_list"),
+    path("OkresRetencji/create/", views.OkresRetencjiCreateView.as_view(), name="OkresRetencji_create"),
+    path("OkresRetencji/detail/<int:pk>/", views.OkresRetencjiDetailView.as_view(), name="OkresRetencji_detail"),
+    path("OkresRetencji/update/<int:pk>/", views.OkresRetencjiUpdateView.as_view(), name="OkresRetencji_update"),
+    path("OkresRetencji/delete/<int:pk>/", views.OkresRetencjiDeleteView.as_view(), name="OkresRetencji_delete"),
+    
+    path("Organizacja/", views.OrganizacjaListView.as_view(), name="Organizacja_list"),
+    path("Organizacja/create/", views.OrganizacjaCreateView.as_view(), name="Organizacja_create"),
+    path("Organizacja/detail/<int:pk>/", views.OrganizacjaDetailView.as_view(), name="Organizacja_detail"),
+    path("Organizacja/update/<int:pk>/", views.OrganizacjaUpdateView.as_view(), name="Organizacja_update"),
+    path("Organizacja/delete/<int:pk>/", views.OrganizacjaDeleteView.as_view(), name="Organizacja_delete"),
+    
+    path("Komorka/", views.KomorkaListView.as_view(), name="Komorka_list"),
+    path("Komorka/create/", views.KomorkaCreateView.as_view(), name="Komorka_create"),
+    path("Komorka/detail/<int:pk>/", views.KomorkaDetailView.as_view(), name="Komorka_detail"),
+    path("Komorka/update/<int:pk>/", views.KomorkaUpdateView.as_view(), name="Komorka_update"),
+    path("Komorka/delete/<int:pk>/", views.KomorkaDeleteView.as_view(), name="Komorka_delete"),
+    
+    path("PrzeslankaLegalnosci/", views.PrzeslankaLegalnosciListView.as_view(), name="PrzeslankaLegalnosci_list"),
+    path("PrzeslankaLegalnosci/create/", views.PrzeslankaLegalnosciCreateView.as_view(), name="PrzeslankaLegalnosci_create"),
+    path("PrzeslankaLegalnosci/detail/<int:pk>/", views.PrzeslankaLegalnosciDetailView.as_view(), name="PrzeslankaLegalnosci_detail"),
+    path("PrzeslankaLegalnosci/update/<int:pk>/", views.PrzeslankaLegalnosciUpdateView.as_view(), name="PrzeslankaLegalnosci_update"),
+    path("PrzeslankaLegalnosci/delete/<int:pk>/", views.PrzeslankaLegalnosciDeleteView.as_view(), name="PrzeslankaLegalnosci_delete"),
+
+    path("SposobPrzetwarzania/", views.SposobPrzetwarzaniaListView.as_view(), name="SposobPrzetwarzania_list"),
+    path("SposobPrzetwarzania/create/", views.SposobPrzetwarzaniaCreateView.as_view(), name="SposobPrzetwarzania_create"),
+    path("SposobPrzetwarzania/detail/<int:pk>/", views.SposobPrzetwarzaniaDetailView.as_view(), name="SposobPrzetwarzania_detail"),
+    path("SposobPrzetwarzania/update/<int:pk>/", views.SposobPrzetwarzaniaUpdateView.as_view(), name="SposobPrzetwarzania_update"),
+    path("SposobPrzetwarzania/delete/<int:pk>/", views.SposobPrzetwarzaniaDeleteView.as_view(), name="SposobPrzetwarzania_delete"),
+
+    path("KategoriaOsob/", views.KategoriaOsobListView.as_view(), name="KategoriaOsob_list"),
+    path("KategoriaOsob/create/", views.KategoriaOsobCreateView.as_view(), name="KategoriaOsob_create"),
+    path("KategoriaOsob/detail/<int:pk>/", views.KategoriaOsobDetailView.as_view(), name="KategoriaOsob_detail"),
+    path("KategoriaOsob/update/<int:pk>/", views.KategoriaOsobUpdateView.as_view(), name="KategoriaOsob_update"),
+    path("KategoriaOsob/delete/<int:pk>/", views.KategoriaOsobDeleteView.as_view(), name="KategoriaOsob_delete"),
+
+    path("KategoriaOdbiorcow/", views.KategoriaOdbiorcowListView.as_view(), name="KategoriaOdbiorcow_list"),
+    path("KategoriaOdbiorcow/create/", views.KategoriaOdbiorcowCreateView.as_view(), name="KategoriaOdbiorcow_create"),
+    path("KategoriaOdbiorcow/detail/<int:pk>/", views.KategoriaOdbiorcowDetailView.as_view(), name="KategoriaOdbiorcow_detail"),
+    path("KategoriaOdbiorcow/update/<int:pk>/", views.KategoriaOdbiorcowUpdateView.as_view(), name="KategoriaOdbiorcow_update"),
+    path("KategoriaOdbiorcow/delete/<int:pk>/", views.KategoriaOdbiorcowDeleteView.as_view(), name="KategoriaOdbiorcow_delete"),
+
+    path("KategoriaDanych/", views.KategoriaDanychListView.as_view(), name="KategoriaDanych_list"),
+    path("KategoriaDanych/create/", views.KategoriaDanychCreateView.as_view(), name="KategoriaDanych_create"),
+    path("KategoriaDanych/detail/<int:pk>/", views.KategoriaDanychDetailView.as_view(), name="KategoriaDanych_detail"),
+    path("KategoriaDanych/update/<int:pk>/", views.KategoriaDanychUpdateView.as_view(), name="KategoriaDanych_update"),
+    path("KategoriaDanych/delete/<int:pk>/", views.KategoriaDanychDeleteView.as_view(), name="KategoriaDanych_delete"),
+
+    path("WysokieRyzyko/", views.WysokieRyzykoListView.as_view(), name="WysokieRyzyko_list"),
+    path("WysokieRyzyko/create/", views.WysokieRyzykoCreateView.as_view(), name="WysokieRyzyko_create"),
+    path("WysokieRyzyko/detail/<int:pk>/", views.WysokieRyzykoDetailView.as_view(), name="WysokieRyzyko_detail"),
+    path("WysokieRyzyko/update/<int:pk>/", views.WysokieRyzykoUpdateView.as_view(), name="WysokieRyzyko_update"),
+    path("WysokieRyzyko/delete/<int:pk>/", views.WysokieRyzykoDeleteView.as_view(), name="WysokieRyzyko_delete"),
+
+    path("Zagrozenie/", views.ZagrozenieListView.as_view(), name="Zagrozenie_list"),
+    path("Zagrozenie/create/", views.ZagrozenieCreateView.as_view(), name="Zagrozenie_create"),
+    path("Zagrozenie/detail/<int:pk>/", views.ZagrozenieDetailView.as_view(), name="Zagrozenie_detail"),
+    path("Zagrozenie/update/<int:pk>/", views.ZagrozenieUpdateView.as_view(), name="Zagrozenie_update"),
+    path("Zagrozenie/delete/<int:pk>/", views.ZagrozenieDeleteView.as_view(), name="Zagrozenie_delete"),
+
+    path("Podatnosc/", views.PodatnoscListView.as_view(), name="Podatnosc_list"),
+    path("Podatnosc/create/", views.PodatnoscCreateView.as_view(), name="Podatnosc_create"),
+    path("Podatnosc/detail/<int:pk>/", views.PodatnoscDetailView.as_view(), name="Podatnosc_detail"),
+    path("Podatnosc/update/<int:pk>/", views.PodatnoscUpdateView.as_view(), name="Podatnosc_update"),
+    path("Podatnosc/delete/<int:pk>/", views.PodatnoscDeleteView.as_view(), name="Podatnosc_delete"),
+
+    path("Zabezpieczenie/", views.ZabezpieczenieListView.as_view(), name="Zabezpieczenie_list"),
+    path("Zabezpieczenie/create/", views.ZabezpieczenieCreateView.as_view(), name="Zabezpieczenie_create"),
+    path("Zabezpieczenie/detail/<int:pk>/", views.ZabezpieczenieDetailView.as_view(), name="Zabezpieczenie_detail"),
+    path("Zabezpieczenie/update/<int:pk>/", views.ZabezpieczenieUpdateView.as_view(), name="Zabezpieczenie_update"),
+    path("Zabezpieczenie/delete/<int:pk>/", views.ZabezpieczenieDeleteView.as_view(), name="Zabezpieczenie_delete"),
+    
+    path("GrupaZagrozen/", views.GrupaZagrozenListView.as_view(), name="GrupaZagrozen_list"),
+    path("GrupaZagrozen/create/", views.GrupaZagrozenCreateView.as_view(), name="GrupaZagrozen_create"),
+    path("GrupaZagrozen/detail/<int:pk>/", views.GrupaZagrozenDetailView.as_view(), name="GrupaZagrozen_detail"),
+    path("GrupaZagrozen/update/<int:pk>/", views.GrupaZagrozenUpdateView.as_view(), name="GrupaZagrozen_update"),
+    path("GrupaZagrozen/delete/<int:pk>/", views.GrupaZagrozenDeleteView.as_view(), name="GrupaZagrozen_delete"),
+
+    path("GrupaZabezpieczen/", views.GrupaZabezpieczenListView.as_view(), name="GrupaZabezpieczen_list"),
+    path("GrupaZabezpieczen/create/", views.GrupaZabezpieczenCreateView.as_view(), name="GrupaZabezpieczen_create"),
+    path("GrupaZabezpieczen/detail/<int:pk>/", views.GrupaZabezpieczenDetailView.as_view(), name="GrupaZabezpieczen_detail"),
+    path("GrupaZabezpieczen/update/<int:pk>/", views.GrupaZabezpieczenUpdateView.as_view(), name="GrupaZabezpieczen_update"),
+    path("GrupaZabezpieczen/delete/<int:pk>/", views.GrupaZabezpieczenDeleteView.as_view(), name="GrupaZabezpieczen_delete"),
+
+    path("htmx/Organizacja/", htmx.HTMXOrganizacjaListView.as_view(), name="Organizacja_htmx_list"),
+    path("htmx/Organizacja/create/", htmx.HTMXOrganizacjaCreateView.as_view(), name="Organizacja_htmx_create"),
+    path("htmx/Organizacja/delete/<int:pk>/", htmx.HTMXOrganizacjaDeleteView.as_view(), name="Organizacja_htmx_delete"),
+    
+    path("htmx/CzynnoscPrzetwarzania/", htmx.HTMXCzynnoscPrzetwarzaniaListView.as_view(), name="CzynnoscPrzetwarzania_htmx_list"),
+    path("htmx/CzynnoscPrzetwarzania/create/", htmx.HTMXCzynnoscPrzetwarzaniaCreateView.as_view(), name="CzynnoscPrzetwarzania_htmx_create"),
+    path("htmx/CzynnoscPrzetwarzania/delete/<int:pk>/", htmx.HTMXCzynnoscPrzetwarzaniaDeleteView.as_view(), name="CzynnoscPrzetwarzania_htmx_delete"),
+    
+    path("htmx/Rejestr/", htmx.HTMXRejestrListView.as_view(), name="htmx_list"),
+    path("htmx/Rejestr/create/", htmx.HTMXRejestrCreateView.as_view(), name="htmx_create"),
+    path("htmx/Rejestr/delete/<int:pk>/", htmx.HTMXRejestrDeleteView.as_view(), name="htmx_delete"),
+    
+    path("htmx/Komorka/", htmx.HTMXKomorkaListView.as_view(), name="Komorka_htmx_list"),
+    path("htmx/Komorka/create/", htmx.HTMXKomorkaCreateView.as_view(), name="Komorka_htmx_create"),
+    path("htmx/Komorka/delete/<int:pk>/", htmx.HTMXKomorkaDeleteView.as_view(), name="Komorka_htmx_delete"),
+)

@@ -1,0 +1,23 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Django",
+      "type": "python",
+      "request": "launch",
+      "stopOnEntry": false,
+      "pythonPath": "${workspaceRoot}/.venv/Scripts/python",
+      "program": "${workspaceRoot}/manage.py",
+        "args": [
+            "runserver",
+            "8080"
+        ],
+        "debugOptions": [
+            "WaitOnAbnormalExit",
+            "WaitOnNormalExit",
+            "RedirectOutput",
+            "DjangoDebugging"
+        ]
+    }
+  ]
+}
