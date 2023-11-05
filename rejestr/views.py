@@ -12,7 +12,7 @@ class OrganizacjaListView(generic.ListView):
     form_class = forms.OrganizacjaForm
     # właczenie paginacji tabeli na n=10 wierszy
     #jeśli wiersze są wyższe może być 6 lub mniej
-    paginated_by = 10
+    paginate_by = 10
 
 
 class OrganizacjaCreateView(generic.CreateView):
@@ -24,6 +24,7 @@ class OrganizacjaDetailView(generic.DetailView):
     model = models.Organizacja
     form_class = forms.OrganizacjaForm
     pk_url_kwarg = "pk"
+
 
 class OrganizacjaUpdateView(generic.UpdateView):
     model = models.Organizacja
@@ -42,7 +43,7 @@ class RejestrListView(generic.ListView):
     form_class = forms.RejestrForm
     # właczenie paginacji tabeli na n=10 wierszy
     #jeśli wiersze są wyższe może być 6 lub mniej
-    paginated_by = 10
+    paginate_by = 10
 
 
 class RejestrCreateView(generic.CreateView):
@@ -74,7 +75,7 @@ class OkresRetencjiListView(generic.ListView):
     pk_url_kwarg = "pk"
     # właczenie paginacji tabeli na n=10 wierszy
     #jeśli wiersze są wyższe może być 6 lub mniej
-    paginated_by = 10
+    paginate_by = 10
 
 
 class OkresRetencjiCreateView(generic.CreateView):
@@ -102,7 +103,7 @@ class CzynnoscPrzetwarzaniaListView(generic.ListView):
     form_class = forms.CzynnoscPrzetwarzaniaForm
     # właczenie paginacji tabeli na n=10 wierszy
     #jeśli wiersze są wyższe może być 6 lub mniej
-    paginated_by = 10
+    paginate_by = 10
 
 
 class CzynnoscPrzetwarzaniaCreateView(generic.CreateView):
@@ -134,7 +135,7 @@ class KomorkaListView(generic.ListView):
     form_class = forms.KomorkaForm
     # właczenie paginacji tabeli na n=10 wierszy
     #jeśli wiersze są wyższe może być 6 lub mniej
-    paginated_by = 10
+    paginate_by = 10
 
 
 class KomorkaCreateView(generic.CreateView):
@@ -162,7 +163,7 @@ class PrzeslankaLegalnosciListView(generic.ListView):
     form_class = forms.PrzeslankaLegalnosciForm
     # właczenie paginacji tabeli na n=10 wierszy
     #jeśli wiersze są wyższe może być 6 lub mniej
-    paginated_by = 10
+    paginate_by = 10
 
 
 class PrzeslankaLegalnosciCreateView(generic.CreateView):
@@ -190,7 +191,7 @@ class SposobPrzetwarzaniaListView(generic.ListView):
     form_class = forms.SposobPrzetwarzaniaForm
     # właczenie paginacji tabeli na n=10 wierszy
     #jeśli wiersze są wyższe może być 6 lub mniej
-    paginated_by = 10
+    paginate_by = 10
 
 
 class SposobPrzetwarzaniaCreateView(generic.CreateView):
@@ -213,12 +214,13 @@ class SposobPrzetwarzaniaDeleteView(generic.DeleteView):
     model = models.SposobPrzetwarzania
     success_url = reverse_lazy("SposobPrzetwarzania_list")
 
+
 class KategoriaOsobListView(generic.ListView):
     model = models.KategoriaOsob
     form_class = forms.KategoriaOsobForm
     # właczenie paginacji tabeli na n=10 wierszy
     #jeśli wiersze są wyższe może być 6 lub mniej
-    paginated_by = 10
+    paginate_by = 10
 
 
 class KategoriaOsobCreateView(generic.CreateView):
@@ -244,7 +246,7 @@ class KategoriaDanychListView(generic.ListView):
     form_class = forms.KategoriaDanychForm
     # właczenie paginacji tabeli na n=10 wierszy
     #jeśli wiersze są wyższe może być 6 lub mniej
-    paginated_by = 10
+    paginate_by = 10
 
 
 class KategoriaDanychCreateView(generic.CreateView):
@@ -272,45 +274,53 @@ class KategoriaOdbiorcowListView(generic.ListView):
     form_class = forms.KategoriaOdbiorcowForm
     # właczenie paginacji tabeli na n=10 wierszy
     #jeśli wiersze są wyższe może być 6 lub mniej
-    paginated_by = 10
+    paginate_by = 10
 
 
 class KategoriaOdbiorcowCreateView(generic.CreateView):
     model = models.KategoriaOdbiorcow
     form_class = forms.KategoriaOdbiorcowForm
 
+
 class KategoriaOdbiorcowDetailView(generic.DetailView):
     model = models.KategoriaOdbiorcow
     form_class = forms.KategoriaOdbiorcowForm
+
 
 class KategoriaOdbiorcowUpdateView(generic.UpdateView):
     model = models.KategoriaOdbiorcow
     form_class = forms.KategoriaOdbiorcowForm
     pk_url_kwarg = "pk"
 
+
 class KategoriaOdbiorcowDeleteView(generic.DeleteView):
     model = models.KategoriaOdbiorcow
     success_url = reverse_lazy("KategoriaOdbiorcow_list")
+
 
 class WysokieRyzykoListView(generic.ListView):
     model = models.WysokieRyzyko
     form_class = forms.WysokieRyzykoForm
     # właczenie paginacji tabeli na n=10 wierszy
     #jeśli wiersze są wyższe może być 6 lub mniej
-    paginated_by = 10
+    paginate_by = 10
+
 
 class WysokieRyzykoCreateView(generic.CreateView):
     model = models.WysokieRyzyko
     form_class = forms.WysokieRyzykoForm
 
+
 class WysokieRyzykoDetailView(generic.DetailView):
     model = models.WysokieRyzyko
     form_class = forms.WysokieRyzykoForm
+
 
 class WysokieRyzykoUpdateView(generic.UpdateView):
     model = models.WysokieRyzyko
     form_class = forms.WysokieRyzykoForm
     pk_url_kwarg = "pk"
+
 
 class WysokieRyzykoDeleteView(generic.DeleteView):
     model = models.WysokieRyzyko
@@ -345,12 +355,13 @@ class ZabezpieczenieDeleteView(generic.DeleteView):
     model = models.Zabezpieczenie
     success_url = reverse_lazy("Zabezpieczenie_list")
 
+
 class ZagrozenieListView(generic.ListView):
     model = models.Zagrozenie
     form_class = forms.ZagrozenieForm
     # właczenie paginacji tabeli na n=10 wierszy
     #jeśli wiersze są wyższe może być 6 lub mniej
-    paginated_by = 10
+    paginate_by = 10
 
 
 class ZagrozenieCreateView(generic.CreateView):
@@ -379,7 +390,7 @@ class GrupaZabezpieczenListView(generic.ListView):
     form_class = forms.GrupaZabezpieczenForm
     # właczenie paginacji tabeli na n=10 wierszy
     #jeśli wiersze są wyższe może być 6 lub mniej
-    paginated_by = 10
+    paginate_by = 10
 
 
 class GrupaZabezpieczenCreateView(generic.CreateView):
@@ -408,7 +419,7 @@ class GrupaZagrozenListView(generic.ListView):
     form_class = forms.GrupaZagrozenForm
     # właczenie paginacji tabeli na n=10 wierszy
     #jeśli wiersze są wyższe może być 6 lub mniej
-    paginated_by = 10
+    paginate_by = 10
 
 
 class GrupaZagrozenCreateView(generic.CreateView):
@@ -437,7 +448,7 @@ class PodatnoscListView(generic.ListView):
     form_class = forms.PodatnoscForm
     # właczenie paginacji tabeli na n=10 wierszy
     #jeśli wiersze są wyższe może być 6 lub mniej
-    paginated_by = 10
+    paginate_by = 10
 
 
 class PodatnoscCreateView(generic.CreateView):
