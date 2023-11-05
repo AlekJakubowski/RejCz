@@ -303,7 +303,7 @@ class WysokieRyzykoListView(generic.ListView):
     form_class = forms.WysokieRyzykoForm
     # właczenie paginacji tabeli na n=10 wierszy
     #jeśli wiersze są wyższe może być 6 lub mniej
-    paginate_by = 10
+    paginate_by = 6
 
 
 class WysokieRyzykoCreateView(generic.CreateView):
