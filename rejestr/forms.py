@@ -512,6 +512,7 @@ class ZagrozenieForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(ZagrozenieForm, self).__init__(*args, **kwargs)
 
+
 class ZabezpieczenieForm(forms.ModelForm):
     zab_active = forms.BooleanField(label='Aktywne', required=False, initial=True)
     zab_skrot = forms.CharField(label='Symbol skrótowy', max_length=100, 
@@ -551,12 +552,12 @@ class ZabezpieczenieForm(forms.ModelForm):
     #                                 queryset=models.Zagrozenie.objects.filter(zag_active = True)
     #                                 )
 
-    Zagrozenia = forms.ModelMultipleChoiceField(
-                                label='Oddziaływanie na zagrozenia', 
-                                required=False,
-                                queryset = models.Zagrozenie.objects.filter(zag_active = True),
-                                widget=forms.CheckboxSelectMultiple
-                                )
+    # Zagrozenia = forms.ModelMultipleChoiceField(
+    #                             label='Oddziaływanie na zagrozenia', 
+    #                             required=False,
+    #                             queryset = models.Zagrozenie.objects.filter(zag_active = True),
+    #                             widget=forms.CheckboxSelectMultiple
+    #                             )
 
 
     class Meta:
@@ -567,7 +568,7 @@ class ZabezpieczenieForm(forms.ModelForm):
             "zab_opis",
             "GrupyZabezpieczen",
             "Odpowiedzialni",
-            "Zagrozenia"
+            # "Zagrozenia"
        ]
 
     def __init__(self, *args, **kwargs):

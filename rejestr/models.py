@@ -644,7 +644,7 @@ class Zabezpieczenie(models.Model):
     zab_waga = models.IntegerField(null=True)
     GrupyZabezpieczen = models.ManyToManyField(GrupaZabezpieczen)
     Odpowiedzialni = models.ManyToManyField(Organizacja)
-    Zagrozenia = models.ManyToManyField(Zagrozenie)
+#    Zagrozenia = models.ManyToManyField(Zagrozenie)
     created = models.DateTimeField(auto_now_add=True, editable=False)
     last_updated = models.DateTimeField(auto_now=True, editable=False)
 
@@ -666,6 +666,7 @@ class Zabezpieczenie(models.Model):
 
     def get_htmx_delete_url(self):
         return reverse("Zabezpieczenie_htmx_delete", args=(self.pk,))
+
 
 class Podatnosc(models.Model):
     pdt_active = models.BooleanField(null=True, default=True)

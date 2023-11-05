@@ -10,8 +10,8 @@
           <th style="width:5%">Symbol</th>
           <th style="width:30%">Opis zabezpieczenia</th>
           <th style="width:20%">Grupy zabezpieczeń</th>
-          <th style="width:40%">Zagrożenia</th>
-          <th style="width:2%">AKCJA</th>
+          <th style="width:40%">Odpowiedzialni</th>
+          <th style="width:5%">AKCJA</th>
         </tr>
       </thead>
       <tbody>
@@ -46,14 +46,14 @@
               {% endif%}
             </td>
             <td>
-              {% if object.Zagrozenia.all %}
-              {% for zagr in object.Zagrozenia.all %}
-                  <p>{{ zagr }}</p>
-              {% endfor %}
+              {% if object.Odpowiedzialni.all %}
+                {% for adm in object.Odpowiedzialni.all %}
+                    <p>{{ adm }}</p>
+                {% endfor %}
               {% else %}
                   <p>-- BRAK DANYCH --</p> 
               {% endif%}
-            </td>
+            </td> 
             <td>
               <div class="btn-group">
                 <a class="btn btn-secondary" href="{{object.get_update_url}}">

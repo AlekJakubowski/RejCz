@@ -17,6 +17,7 @@
             <p>-- BRAK DANYCH --</p> 
         {% endif%}
     </td></tr>
+    {% comment %} 
     <tr><td>Zagrożenia</td><td>
         {% if object.Zagrozenia.all %}
             {% for zagr in object.Zagrozenia.all %}
@@ -25,7 +26,8 @@
         {% else %}
             <p>-- BRAK DANYCH --</p> 
         {% endif%}
-    </td></tr>
+    </td></tr> 
+    {% endcomment %}
     <tr><td>Odpowiedzialni za wprowadzenie</td><td>
         {% if object.Odpowiedzialni.all %}
             {% for od in object.Odpowiedzialni.all %}
