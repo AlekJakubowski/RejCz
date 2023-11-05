@@ -1,6 +1,7 @@
 from django.views import generic
 from django.urls import reverse_lazy
 from django_xhtml2pdf.views import PdfMixin
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger 
 
 from . import models
 from . import forms
@@ -9,7 +10,9 @@ from . import forms
 class OrganizacjaListView(generic.ListView):
     model = models.Organizacja
     form_class = forms.OrganizacjaForm
-#    pk_url_kwarg = "pk"
+    # właczenie paginacji tabeli na n=10 wierszy
+    #jeśli wiersze są wyższe może być 6 lub mniej
+    paginated_by = 10
 
 
 class OrganizacjaCreateView(generic.CreateView):
@@ -37,6 +40,9 @@ class OrganizacjaDeleteView(generic.DeleteView):
 class RejestrListView(generic.ListView):
     model = models.Rejestr
     form_class = forms.RejestrForm
+    # właczenie paginacji tabeli na n=10 wierszy
+    #jeśli wiersze są wyższe może być 6 lub mniej
+    paginated_by = 10
 
 
 class RejestrCreateView(generic.CreateView):
@@ -66,6 +72,9 @@ class OkresRetencjiListView(generic.ListView):
     model = models.OkresRetencji
     form_class = forms.OkresRetencjiForm
     pk_url_kwarg = "pk"
+    # właczenie paginacji tabeli na n=10 wierszy
+    #jeśli wiersze są wyższe może być 6 lub mniej
+    paginated_by = 10
 
 
 class OkresRetencjiCreateView(generic.CreateView):
@@ -91,6 +100,9 @@ class OkresRetencjiDeleteView(generic.DeleteView):
 class CzynnoscPrzetwarzaniaListView(generic.ListView):
     model = models.CzynnoscPrzetwarzania
     form_class = forms.CzynnoscPrzetwarzaniaForm
+    # właczenie paginacji tabeli na n=10 wierszy
+    #jeśli wiersze są wyższe może być 6 lub mniej
+    paginated_by = 10
 
 
 class CzynnoscPrzetwarzaniaCreateView(generic.CreateView):
@@ -120,6 +132,9 @@ class CzynnoscPrzetwarzaniaDeleteView(generic.DeleteView):
 class KomorkaListView(generic.ListView):
     model = models.Komorka
     form_class = forms.KomorkaForm
+    # właczenie paginacji tabeli na n=10 wierszy
+    #jeśli wiersze są wyższe może być 6 lub mniej
+    paginated_by = 10
 
 
 class KomorkaCreateView(generic.CreateView):
@@ -145,6 +160,9 @@ class KomorkaDeleteView(generic.DeleteView):
 class PrzeslankaLegalnosciListView(generic.ListView):
     model = models.PrzeslankaLegalnosci
     form_class = forms.PrzeslankaLegalnosciForm
+    # właczenie paginacji tabeli na n=10 wierszy
+    #jeśli wiersze są wyższe może być 6 lub mniej
+    paginated_by = 10
 
 
 class PrzeslankaLegalnosciCreateView(generic.CreateView):
@@ -170,6 +188,9 @@ class PrzeslankaLegalnosciDeleteView(generic.DeleteView):
 class SposobPrzetwarzaniaListView(generic.ListView):
     model = models.SposobPrzetwarzania
     form_class = forms.SposobPrzetwarzaniaForm
+    # właczenie paginacji tabeli na n=10 wierszy
+    #jeśli wiersze są wyższe może być 6 lub mniej
+    paginated_by = 10
 
 
 class SposobPrzetwarzaniaCreateView(generic.CreateView):
@@ -195,6 +216,9 @@ class SposobPrzetwarzaniaDeleteView(generic.DeleteView):
 class KategoriaOsobListView(generic.ListView):
     model = models.KategoriaOsob
     form_class = forms.KategoriaOsobForm
+    # właczenie paginacji tabeli na n=10 wierszy
+    #jeśli wiersze są wyższe może być 6 lub mniej
+    paginated_by = 10
 
 
 class KategoriaOsobCreateView(generic.CreateView):
@@ -214,23 +238,30 @@ class KategoriaOsobDeleteView(generic.DeleteView):
     model = models.KategoriaOsob
     success_url = reverse_lazy("KategoriaOsob_list")
 
+
 class KategoriaDanychListView(generic.ListView):
     model = models.KategoriaDanych
     form_class = forms.KategoriaDanychForm
+    # właczenie paginacji tabeli na n=10 wierszy
+    #jeśli wiersze są wyższe może być 6 lub mniej
+    paginated_by = 10
 
 
 class KategoriaDanychCreateView(generic.CreateView):
     model = models.KategoriaDanych
     form_class = forms.KategoriaDanychForm
 
+
 class KategoriaDanychDetailView(generic.DetailView):
     model = models.KategoriaDanych
     form_class = forms.KategoriaDanychForm
+
 
 class KategoriaDanychUpdateView(generic.UpdateView):
     model = models.KategoriaDanych
     form_class = forms.KategoriaDanychForm
     pk_url_kwarg = "pk"
+
 
 class KategoriaDanychDeleteView(generic.DeleteView):
     model = models.KategoriaDanych
@@ -239,6 +270,9 @@ class KategoriaDanychDeleteView(generic.DeleteView):
 class KategoriaOdbiorcowListView(generic.ListView):
     model = models.KategoriaOdbiorcow
     form_class = forms.KategoriaOdbiorcowForm
+    # właczenie paginacji tabeli na n=10 wierszy
+    #jeśli wiersze są wyższe może być 6 lub mniej
+    paginated_by = 10
 
 
 class KategoriaOdbiorcowCreateView(generic.CreateView):
@@ -261,6 +295,9 @@ class KategoriaOdbiorcowDeleteView(generic.DeleteView):
 class WysokieRyzykoListView(generic.ListView):
     model = models.WysokieRyzyko
     form_class = forms.WysokieRyzykoForm
+    # właczenie paginacji tabeli na n=10 wierszy
+    #jeśli wiersze są wyższe może być 6 lub mniej
+    paginated_by = 10
 
 class WysokieRyzykoCreateView(generic.CreateView):
     model = models.WysokieRyzyko
@@ -279,22 +316,30 @@ class WysokieRyzykoDeleteView(generic.DeleteView):
     model = models.WysokieRyzyko
     success_url = reverse_lazy("WysokieRyzyko_list")
 
+
 class ZabezpieczenieListView(generic.ListView):
     model = models.Zabezpieczenie
     form_class = forms.ZabezpieczenieForm
+    # właczenie paginacji tabeli na n=10 wierszy
+    #jeśli wiersze są wyższe może być 6 lub mniej
+    paginate_by = 6 #paginacja
+    
 
 class ZabezpieczenieCreateView(generic.CreateView):
     model = models.Zabezpieczenie
     form_class = forms.ZabezpieczenieForm
 
+
 class ZabezpieczenieDetailView(generic.DetailView):
     model = models.Zabezpieczenie
     form_class = forms.ZabezpieczenieForm
+
 
 class ZabezpieczenieUpdateView(generic.UpdateView):
     model = models.Zabezpieczenie
     form_class = forms.ZabezpieczenieForm
     pk_url_kwarg = "pk"
+
 
 class ZabezpieczenieDeleteView(generic.DeleteView):
     model = models.Zabezpieczenie
@@ -303,84 +348,113 @@ class ZabezpieczenieDeleteView(generic.DeleteView):
 class ZagrozenieListView(generic.ListView):
     model = models.Zagrozenie
     form_class = forms.ZagrozenieForm
+    # właczenie paginacji tabeli na n=10 wierszy
+    #jeśli wiersze są wyższe może być 6 lub mniej
+    paginated_by = 10
+
 
 class ZagrozenieCreateView(generic.CreateView):
     model = models.Zagrozenie
     form_class = forms.ZagrozenieForm
 
+
 class ZagrozenieDetailView(generic.DetailView):
     model = models.Zagrozenie
     form_class = forms.ZagrozenieForm
+
 
 class ZagrozenieUpdateView(generic.UpdateView):
     model = models.Zagrozenie
     form_class = forms.ZagrozenieForm
     pk_url_kwarg = "pk"
 
+
 class ZagrozenieDeleteView(generic.DeleteView):
     model = models.Zagrozenie
     success_url = reverse_lazy("Zagrozenie_list")
 
 
-
 class GrupaZabezpieczenListView(generic.ListView):
     model = models.GrupaZabezpieczen
     form_class = forms.GrupaZabezpieczenForm
+    # właczenie paginacji tabeli na n=10 wierszy
+    #jeśli wiersze są wyższe może być 6 lub mniej
+    paginated_by = 10
+
 
 class GrupaZabezpieczenCreateView(generic.CreateView):
     model = models.GrupaZabezpieczen
     form_class = forms.GrupaZabezpieczenForm
 
+
 class GrupaZabezpieczenDetailView(generic.DetailView):
     model = models.GrupaZabezpieczen
     form_class = forms.GrupaZabezpieczenForm
+
 
 class GrupaZabezpieczenUpdateView(generic.UpdateView):
     model = models.GrupaZabezpieczen
     form_class = forms.GrupaZabezpieczenForm
     pk_url_kwarg = "pk"
 
+
 class GrupaZabezpieczenDeleteView(generic.DeleteView):
     model = models.GrupaZabezpieczen
     success_url = reverse_lazy("GrupaZabezpieczen_list")
 
+
 class GrupaZagrozenListView(generic.ListView):
     model = models.GrupaZagrozen
     form_class = forms.GrupaZagrozenForm
+    # właczenie paginacji tabeli na n=10 wierszy
+    #jeśli wiersze są wyższe może być 6 lub mniej
+    paginated_by = 10
+
 
 class GrupaZagrozenCreateView(generic.CreateView):
     model = models.GrupaZagrozen
     form_class = forms.GrupaZagrozenForm
 
+
 class GrupaZagrozenDetailView(generic.DetailView):
     model = models.GrupaZagrozen
     form_class = forms.GrupaZagrozenForm
+
 
 class GrupaZagrozenUpdateView(generic.UpdateView):
     model = models.GrupaZagrozen
     form_class = forms.GrupaZagrozenForm
     pk_url_kwarg = "pk"
 
+
 class GrupaZagrozenDeleteView(generic.DeleteView):
     model = models.GrupaZagrozen
     success_url = reverse_lazy("GrupaZagrozen_list")
 
+
 class PodatnoscListView(generic.ListView):
     model = models.Podatnosc
     form_class = forms.PodatnoscForm
+    # właczenie paginacji tabeli na n=10 wierszy
+    #jeśli wiersze są wyższe może być 6 lub mniej
+    paginated_by = 10
+
 
 class PodatnoscCreateView(generic.CreateView):
     model = models.Podatnosc
     form_class = forms.PodatnoscForm
 
+
 class PodatnoscDetailView(generic.DetailView):
     model = models.Podatnosc
     form_class = forms.PodatnoscForm
+
 
 class PodatnoscUpdateView(generic.UpdateView):
     model = models.Podatnosc
     form_class = forms.PodatnoscForm
     pk_url_kwarg = "pk"
+
 
 class PodatnoscDeleteView(generic.DeleteView):
     model = models.Podatnosc
