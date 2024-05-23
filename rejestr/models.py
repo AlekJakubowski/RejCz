@@ -111,7 +111,6 @@ class OkresRetencji(models.Model):
     def get_update_url(self):
         return reverse('OkresRetencji_update', args=(self.pk,))
 
-
 class PrzeslankaLegalnosci(models.Model):
     prl_active = models.BooleanField(null=True, default=True)
     prl_skrot = models.CharField(null=False, max_length=100)
@@ -287,7 +286,6 @@ class Komorka(models.Model):
         through="CzynnosciPrzetwarzania",
         through_fields=( 'czp_komorka', 'czp_czynnoscp')
     )
-
     
     created = models.DateTimeField(auto_now_add=True, editable=False)
     last_updated = models.DateTimeField(auto_now=True, editable=False)
@@ -310,6 +308,33 @@ class Komorka(models.Model):
 
     def get_htmx_delete_url(self):
         return reverse("Komorka_htmx_delete", args=(self.pk,))
+
+
+class OperacjaPrzetwarzania(models.Model):
+    opp_active = models.BooleanField(null=True, default=True)
+    opp_opis = models.CharField(null=False, max_length=100)
+    created = models.DateTimeField(auto_now_add=True, editable=False)
+    last_updated = models.DateTimeField(auto_now=True, editable=False)
+
+    class Meta:
+        pass
+
+    def __str__(self):
+        return f'{self.opp_opis}'
+
+    def get_absolute_url(self):
+        return reverse("OperacjaPrzetwarzania_detail", args=(self.pk,))
+
+    def get_update_url(self):
+        return reverse("OperacjaPrzetwarzania_update", args=(self.pk,))
+
+    @staticmethod
+    def get_htmx_create_url():
+        return reverse("OperacjaPrzetwarzania_htmx_create")
+
+    def get_htmx_delete_url(self):
+        return reverse("OperacjaPrzetwarzania_htmx_delete", args=(self.pk,))
+
 
 class CzynnoscPrzetwarzania(models.Model):
     class StatusZatwierdzenia():
@@ -402,6 +427,14 @@ class CzynnoscPrzetwarzania(models.Model):
         through_fields=("ppl_czynnoscp", "ppl_przeslankap")
         )
 
+    OperacjePrzetwarzania = models.ManyToManyField(
+        OperacjaPrzetwarzania,
+        editable=True,
+        related_name="CzynnoscPrzetwarzania_OperacjePrzetwarzania",
+        through="OperacjePrzetwarzania",
+        through_fields=("opp_czynnoscp", "opp_operacjap")
+        )
+    
     KomorkiRealizujace = models.ManyToManyField(
         Komorka,
         editable=True,
@@ -555,6 +588,17 @@ class PrzeslankiLegalnosci(models.Model):
     ppl_przeslankap = models.ForeignKey(PrzeslankaLegalnosci, 
                                     null=True, 
                                     related_name="ppl_przeslanka_p",
+                                    on_delete=models.CASCADE)
+
+class OperacjePrzetwarzania(models.Model):
+    opp_czynnoscp = models.ForeignKey(CzynnoscPrzetwarzania, 
+                                    null=True, 
+                                    related_name="opp_czynnosc_p",
+                                    on_delete=models.CASCADE)
+    
+    opp_operacjap = models.ForeignKey(OperacjaPrzetwarzania, 
+                                    null=True, 
+                                    related_name="opp_operacjap_p",
                                     on_delete=models.CASCADE)
 
 class GrupaZabezpieczen(models.Model):

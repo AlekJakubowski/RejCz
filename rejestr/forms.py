@@ -297,6 +297,11 @@ class CzynnoscPrzetwarzaniaForm(forms.ModelForm):
                         required=True
                         )
     
+    czn_podstawa_prawna = forms.CharField(label='Podstawa prawna', max_length=200,  
+                        widget=forms.TextInput(attrs={"placeholder": 'Pełna podstawa prawna przetwarzania'}),
+                        required=True
+                        )
+    
     czn_status_zatw = forms.ChoiceField(label='Status', 
                         choices=STATUS_ZATWIERDZENIA,                
                         required=False     
@@ -408,7 +413,27 @@ class CzynnoscPrzetwarzaniaForm(forms.ModelForm):
         super(CzynnoscPrzetwarzaniaForm, self).__init__(*args, **kwargs)
         self.fields["OkresRetencji"].queryset = models.OkresRetencji.objects.filter(okr_active = True)
         self.fields["Rejestr"].queryset = models.Rejestr.objects.filter(rej_active = True)
+      
         
+class OperacjaPrzetwarzaniaForm(forms.ModelForm):
+    opp_active = forms.BooleanField(label='Aktywna', required=False, initial=True)
+    
+    opp_opis = forms.CharField(label='Opis', max_length=100,  
+                        widget=forms.TextInput(attrs={"placeholder": 'Opis operacji'}),
+                        required=True
+                        )
+
+    class Meta:
+        model = models.OperacjaPrzetwarzania
+        fields = [
+            "opp_active",
+            "opp_opis",
+        ]
+        
+    def __init__(self, *args, **kwargs):
+        super(OperacjaPrzetwarzaniaForm, self).__init__(*args, **kwargs)
+
+
 class PrzeslankaLegalnosciForm(forms.ModelForm):
     prl_active = forms.BooleanField(label='Aktywna', required=False, initial=True)
     
@@ -438,6 +463,8 @@ class PrzeslankaLegalnosciForm(forms.ModelForm):
         
     def __init__(self, *args, **kwargs):
         super(PrzeslankaLegalnosciForm, self).__init__(*args, **kwargs)
+
+
 
 class GrupaZagrozenForm(forms.ModelForm):
     gzg_active = forms.BooleanField(label='Aktywna', required=False)
@@ -588,6 +615,7 @@ class PodatnoscForm(forms.ModelForm):
                                 widget=forms.Textarea(attrs={"placeholder": 'Opis'}),
                                 required=False
                                 )
+    
     pdt_waga = forms.IntegerField(label='Waga', 
                                   required=True,
                                 )
@@ -612,20 +640,19 @@ class PodatnoscForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(PodatnoscForm, self).__init__(*args, **kwargs)
 
-
-# class RyzykoForm(forms.ModelForm):
-#     rr_prawdopodobienstwo_bp = forms.IntegerField(label='Prawdopodobieństwo bez podatności',
-#                                 required=True, 
-#                                 )
+class RyzykoForm(forms.ModelForm):
+    rr_prawdopodobienstwo_bp = forms.IntegerField(label='Prawdopodobieństwo bez podatności',
+                                required=True, 
+                                )
      
-#     rr_prawdopodobienstwo = forms.IntegerField(label='Prawdopodobieństwo',
-#                                 required=True, 
-#                                 )
-#     rr_oddzialywanie = forms.IntegerField(label='Oddziaływanie',
-#                                 required=True, 
-#                                 )
+    rr_prawdopodobienstwo = forms.IntegerField(label='Prawdopodobieństwo',
+                                required=True, 
+                                )
+    rr_oddzialywanie = forms.IntegerField(label='Oddziaływanie',
+                                required=True, 
+                                )
      
-#     rr_ryzyko = forms.IntegerField(label='Oddziaływanie',
-#                                 required=True, 
-#                                 )
+    rr_ryzyko = forms.IntegerField(label='Oddziaływanie',
+                                required=True, 
+                                )
          

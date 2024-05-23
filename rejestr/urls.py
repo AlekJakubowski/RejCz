@@ -62,6 +62,12 @@ urlpatterns = (
     path("PrzeslankaLegalnosci/update/<int:pk>/", views.PrzeslankaLegalnosciUpdateView.as_view(), name="PrzeslankaLegalnosci_update"),
     path("PrzeslankaLegalnosci/delete/<int:pk>/", views.PrzeslankaLegalnosciDeleteView.as_view(), name="PrzeslankaLegalnosci_delete"),
 
+    path("OperacjaPrzetwarzania/", views.OperacjaPrzetwarzaniaListView.as_view(), name="OperacjaPrzetwarzania_list"),
+    path("OperacjaPrzetwarzania/create/", views.OperacjaPrzetwarzaniaCreateView.as_view(), name="OperacjaPrzetwarzania_create"),
+    path("OperacjaPrzetwarzania/detail/<int:pk>/", views.OperacjaPrzetwarzaniaDetailView.as_view(), name="OperacjaPrzetwarzania_detail"),
+    path("OperacjaPrzetwarzania/update/<int:pk>/", views.OperacjaPrzetwarzaniaUpdateView.as_view(), name="OperacjaPrzetwarzania_update"),
+    path("OperacjaPrzetwarzania/delete/<int:pk>/", views.OperacjaPrzetwarzaniaDeleteView.as_view(), name="OperacjaPrzetwarzania_delete"),
+
     path("SposobPrzetwarzania/", views.SposobPrzetwarzaniaListView.as_view(), name="SposobPrzetwarzania_list"),
     path("SposobPrzetwarzania/create/", views.SposobPrzetwarzaniaCreateView.as_view(), name="SposobPrzetwarzania_create"),
     path("SposobPrzetwarzania/detail/<int:pk>/", views.SposobPrzetwarzaniaDetailView.as_view(), name="SposobPrzetwarzania_detail"),

@@ -1,4 +1,5 @@
 from django.views import generic
+from django.urls import reverse
 from django.urls import reverse_lazy
 from django_xhtml2pdf.views import PdfMixin
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger 
@@ -158,6 +159,7 @@ class KomorkaDeleteView(generic.DeleteView):
     model = models.Komorka
     success_url = reverse_lazy("rejestr_Komorka_list")
 
+
 class PrzeslankaLegalnosciListView(generic.ListView):
     model = models.PrzeslankaLegalnosci
     form_class = forms.PrzeslankaLegalnosciForm
@@ -185,7 +187,34 @@ class PrzeslankaLegalnosciUpdateView(generic.UpdateView):
 class PrzeslankaLegalnosciDeleteView(generic.DeleteView):
     model = models.PrzeslankaLegalnosci
     success_url = reverse_lazy("PrzeslankaLegalnosci_list")
-    
+
+
+class OperacjaPrzetwarzaniaListView(generic.ListView):
+    model = models.OperacjaPrzetwarzania
+    form_class = forms.OperacjaPrzetwarzaniaForm
+
+
+class OperacjaPrzetwarzaniaCreateView(generic.CreateView):
+    model = models.OperacjaPrzetwarzania
+    form_class = forms.OperacjaPrzetwarzaniaForm
+
+
+class OperacjaPrzetwarzaniaDetailView(generic.DetailView):
+    model = models.OperacjaPrzetwarzania
+    form_class = forms.OperacjaPrzetwarzaniaForm
+
+
+class OperacjaPrzetwarzaniaUpdateView(generic.UpdateView):
+    model = models.OperacjaPrzetwarzania
+    form_class = forms.OperacjaPrzetwarzaniaForm
+    pk_url_kwarg = "pk"
+
+
+class OperacjaPrzetwarzaniaDeleteView(generic.DeleteView):
+    model = models.OperacjaPrzetwarzania
+    success_url = reverse_lazy("OperacjaPrzetwarzania_list")
+
+
 class SposobPrzetwarzaniaListView(generic.ListView):
     model = models.SposobPrzetwarzania
     form_class = forms.SposobPrzetwarzaniaForm
@@ -349,7 +378,11 @@ class ZabezpieczenieUpdateView(generic.UpdateView):
     model = models.Zabezpieczenie
     form_class = forms.ZabezpieczenieForm
     pk_url_kwarg = "pk"
-
+    
+    def get_success_url(self):
+        res = reverse(self.request)
+        page_number = self.request.GET #['page']
+        return f'{reverse(self.request.current_app)}?page={{page_number}}'
 
 class ZabezpieczenieDeleteView(generic.DeleteView):
     model = models.Zabezpieczenie
@@ -470,3 +503,33 @@ class PodatnoscUpdateView(generic.UpdateView):
 class PodatnoscDeleteView(generic.DeleteView):
     model = models.Podatnosc
     success_url = reverse_lazy("Podatnosc_list")
+
+
+class RyzykoListView(generic.ListView):
+    model = models.Ryzyko
+    form_class = forms.RyzykoForm
+    # właczenie paginacji tabeli na n=10 wierszy
+    #jeśli wiersze są wyższe może być 6 lub mniej
+    paginate_by = 10
+
+
+class RyzykoCreateView(generic.CreateView):
+    model = models.Ryzyko
+    form_class = forms.RyzykoForm
+
+
+class RyzykoDetailView(generic.DetailView):
+    model = models.Ryzyko
+    form_class = forms.RyzykoForm
+
+
+class RyzykoUpdateView(generic.UpdateView):
+    model = models.Ryzyko
+    form_class = forms.RyzykoForm
+    pk_url_kwarg = "pk"
+
+
+class RyzykoDeleteView(generic.DeleteView):
+    model = models.Ryzyko
+    success_url = reverse_lazy("Ryzyko_list")
+
