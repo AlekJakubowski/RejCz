@@ -3,25 +3,6 @@ from rest_framework import viewsets, permissions
 from . import serializers
 from . import models
 
-# from rejestr.models.komorka import Komorka
-# from rejestr.models.organizacja import Organizacja
-# from rejestr.models.czynnosc_przetwarzania import CzynnoscPrzetwarzania, STATUS_ZATWIERDZENIA, ZRODLA_DANYCH
-# from rejestr.models.okres_retencji import OkresRetencji
-# from rejestr.models.rejestr import Rejestr
-# from rejestr.models.wysokie_ryzyko import WysokieRyzyko
-# from rejestr.models.przeslanka_legalnosci import PrzeslankaLegalnosci
-# from rejestr.models.kategoria_odbiorcow import KategoriaOdbiorcow
-# from rejestr.models.kategoria_danych import KategoriaDanych
-# from rejestr.models.kategoria_osob import KategoriaOsob
-# from rejestr.models.sposob_przetwarzania import SposobPrzetwarzania
-# from rejestr.models.administratorzy import Administratorzy
-# from rejestr.models.podmioty_przetwarzajace import PodmiotyPrzetwarzajace
-# from rejestr.models.wspoladministrtorzy import Wspoladministratorzy
-# from rejestr.models.czynnosci_przetwarzania import CzynnosciPrzetwarzania
-# from rejestr.models.kategorie_danych import KategorieDanych
-# from rejestr.models.kategorie_osob import KategorieOsob
-# from rejestr.models.kategorie_odbiorcow import KategorieOdbiorcow
-
 class OrganizacjaViewSet(viewsets.ModelViewSet):
     """ViewSet for the Organizacja class"""
 
