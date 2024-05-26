@@ -72,10 +72,10 @@ class PodmiotPrzetwarzajacy(models.Model):
         return str(f'{self.prz_skrot} - {self.prz_nazwa}')
 
     def get_absolute_url(self):
-        return reverse("Podmiot_Przetwarzajacy_detail", args=(self.pk,))
+        return reverse("PodmiotPrzetwarzajacy_detail", args=(self.pk,))
 
     def get_update_url(self):
-        return reverse("Podmiot_Przetwarzajacy_update", args=(self.pk,))
+        return reverse("PodmiotPrzetwarzajacy_update", args=(self.pk,))
 
 
 class Rejestr(models.Model):

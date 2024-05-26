@@ -9,6 +9,7 @@ from . import adminmodels
 admin.site.register(models.CzynnoscPrzetwarzania, adminmodels.CzynnoscPrzetwarzaniaAdmin)
 admin.site.register(models.Rejestr, adminmodels.RejestrAdmin)
 admin.site.register(models.Organizacja, adminmodels.OrganizacjaAdmin)
+admin.site.register(models.PodmiotPrzetwarzajacy, adminmodels.PodmiotPrzetwarzajacyAdmin)
 admin.site.register(models.Komorka, adminmodels.KomorkaAdmin)
 admin.site.register(models.SposobPrzetwarzania, adminmodels.SposobPrzetwarzaniaAdmin)
 admin.site.register(models.PrzeslankaLegalnosci, adminmodels.PrzeslankaLegalnosciAdmin)

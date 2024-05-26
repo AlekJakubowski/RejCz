@@ -64,7 +64,7 @@ class OrganizacjaForm(forms.ModelForm):
         ]
 
 class PodmiotPrzetwarzajacyForm(forms.ModelForm):
-    prz_active = forms.BooleanField(label='Aktywna', required=False, initial=True)
+    prz_active = forms.BooleanField(label='Aktywny', required=False, initial=True)
     
     prz_nazwa = forms.CharField(label='Nazwa podmiotu', max_length=150, min_length=6, 
                                 widget=forms.TextInput(attrs={"placeholder": 'Pełna nazwa podmiotu'}),
@@ -108,7 +108,7 @@ class PodmiotPrzetwarzajacyForm(forms.ModelForm):
                                 )
 
     class Meta:
-        model = models.Organizacja
+        model = models.PodmiotPrzetwarzajacy
         fields = [
             "prz_nazwa",
             "prz_skrot",
@@ -389,7 +389,7 @@ class CzynnoscPrzetwarzaniaForm(forms.ModelForm):
     
     PodmiotyPrzetwarzajace = forms.ModelMultipleChoiceField(
                         required=False,
-                        queryset = models.Organizacja.objects.filter(org_active = True),
+                        queryset = models.PodmiotPrzetwarzajacy.objects.filter(prz_active = True),
                         widget=forms.CheckboxSelectMultiple
                         )
     

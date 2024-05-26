@@ -102,6 +102,38 @@ class OrganizacjaAdmin(admin.ModelAdmin):
         "last_updated",
     ]
 
+class PodmiotPrzetwarzajacyAdmin(admin.ModelAdmin):
+    form_class = adminforms.OrganizacjaAdminForm
+    empty_value_display = "--BRAK DANYCH--"
+    list_display = [
+        "prz_skrot",
+        "prz_nazwa",
+        "prz_active",
+        "prz_adres",
+        "prz_www",
+        "prz_tel",
+        "prz_email",
+        "prz_iod_name",
+        "prz_iod_email",
+        "created",
+        "last_updated",
+    ]
+    readonly_fields = [
+        # "org_iod_name",
+        # "org_nazwa",
+        # "org_adres",
+        # "created",
+        # "org_www",
+        # "org_tel",
+        # "last_updated",
+        # "org_iod_email",
+        # "org_email",
+        # "org_active",
+        # "org_skrot",
+        "created",
+        "last_updated",
+    ]
+
 class KomorkaAdmin(admin.ModelAdmin):
     form_class = adminforms.KomorkaAdminForm
     empty_value_display = "--BRAK DANYCH--"
