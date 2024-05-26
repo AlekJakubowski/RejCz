@@ -63,6 +63,64 @@ class OrganizacjaForm(forms.ModelForm):
             "org_iod_email",
         ]
 
+class PodmiotPrzetwarzajacyForm(forms.ModelForm):
+    prz_active = forms.BooleanField(label='Aktywna', required=False, initial=True)
+    
+    prz_nazwa = forms.CharField(label='Nazwa podmiotu', max_length=150, min_length=6, 
+                                widget=forms.TextInput(attrs={"placeholder": 'Pełna nazwa podmiotu'}),
+                                required=True
+                                )
+
+
+    prz_skrot = forms.CharField(label='Nazwa skrótowa podmiotu', max_length=30, min_length=2, 
+                                widget=forms.TextInput(attrs={"placeholder": 'Literowy skrót podmiotu'}),
+                                required=True
+                                )
+
+    prz_adres = forms.CharField(label='Adres podmiotu', max_length=100, min_length=2, 
+                                widget=forms.TextInput(attrs={"placeholder": 'Pełny adres podmiotu'}),
+                                required=True
+                                )
+    
+    prz_www = forms.CharField(label='Strona www podmiotu', max_length=100, min_length=12, 
+                                widget=forms.TextInput(attrs={"placeholder": 'http:// ... strona www podmiotu'}),
+                                required=False
+                                )
+
+    prz_tel = forms.CharField(label='Telefon kontaktowy podmiotu', max_length=100, min_length=12, 
+                                widget=forms.TextInput(attrs={"placeholder": 'Telefon kontaktowy podmiotu'}),
+                                required=False
+                                )
+
+    prz_email = forms.CharField(label='e-mail podmiotu', max_length=100, min_length=2, 
+                                widget=forms.TextInput(attrs={"placeholder": 'e-mail kontaktowy'}),
+                                required=False
+                                )
+
+    prz_iod_name = forms.CharField(label='Dane IOD podmiotu', max_length=100, min_length=2, 
+                                widget=forms.TextInput(attrs={"placeholder": 'Dane IOD podmiotu'}),
+                                required=False
+                                )
+
+    prz_iod_email = forms.CharField(label='e-mail kontaktowy IOD podmiotu', max_length=50, min_length=2, 
+                                widget=forms.TextInput(attrs={"placeholder": 'e-mail kontaktowy IOD podmiotu'}),
+                                required=False
+                                )
+
+    class Meta:
+        model = models.Organizacja
+        fields = [
+            "prz_nazwa",
+            "prz_skrot",
+            "prz_active",
+            "prz_adres",
+            "prz_www",
+            "prz_tel",
+            "prz_email",
+            "prz_iod_name",
+            "prz_iod_email",
+        ]
+
 class RejestrForm(forms.ModelForm):
     rej_active = forms.BooleanField(label='Aktywny', required=False, initial=True)
     

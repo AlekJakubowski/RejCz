@@ -51,6 +51,33 @@ class Organizacja(models.Model):
     def get_htmx_delete_url(self):
         return reverse("Organizacja_htmx_delete", args=(self.pk,))
 
+class PodmiotPrzetwarzajacy(models.Model):
+    # Fields
+    prz_active = models.BooleanField(default=True)
+    prz_skrot = models.CharField(max_length=30)
+    prz_nazwa = models.CharField(max_length=155)
+    prz_adres = models.CharField(max_length=100)
+    prz_email = models.EmailField(max_length=50)
+    prz_www = models.URLField(max_length=100)
+    prz_tel = models.CharField(max_length=100)
+    prz_iod_name = models.CharField(max_length=100)
+    prz_iod_email = models.EmailField(max_length=50)
+    created = models.DateTimeField(auto_now_add=True, editable=False)
+    last_updated = models.DateTimeField(auto_now=True, editable=False)
+    
+    class Meta:
+        pass
+    
+    def __str__(self):
+        return str(f'{self.prz_skrot} - {self.prz_nazwa}')
+
+    def get_absolute_url(self):
+        return reverse("Podmiot_Przetwarzajacy_detail", args=(self.pk,))
+
+    def get_update_url(self):
+        return reverse("Podmiot_Przetwarzajacy_update", args=(self.pk,))
+
+
 class Rejestr(models.Model):
 
     # Relationships
@@ -82,8 +109,6 @@ class Rejestr(models.Model):
 
     def get_htmx_delete_url(self):
         return reverse("Rejestr_htmx_delete", args=(self.pk,))
-
-
 
 class OkresRetencji(models.Model):
 
@@ -372,9 +397,9 @@ class CzynnoscPrzetwarzania(models.Model):
         )
 
     PodmiotyPrzetwarzajace = models.ManyToManyField(
-        Organizacja,
+        PodmiotPrzetwarzajacy,
         editable=True,
-        related_name="Organizacja_PodmiotyPrzetwarzajace",
+        related_name="PodmiotPrzetw_PodmiotyPrzetwarzajace",
         through="PodmiotyPrzetwarzajace",
         through_fields=("pod_czynnoscp", "pod_organizacja")
         )
@@ -514,14 +539,15 @@ class Wspoladministratorzy(models.Model):
                                     related_name="wad_organizacja_f",                                 
                                     on_delete=models.CASCADE)
 
+
 class PodmiotyPrzetwarzajace(models.Model):
     pod_czynnoscp = models.ForeignKey(CzynnoscPrzetwarzania, 
                                       null=True,
                                       related_name="pod_czynnosc_p",
                                       on_delete=models.CASCADE)
-    pod_organizacja = models.ForeignKey(Organizacja, 
+    pod_organizacja = models.ForeignKey(PodmiotPrzetwarzajacy, 
                                     null=True,
-                                    related_name="pod_organizacja_p",
+                                    related_name="pod_pprzetw_p",
                                     on_delete=models.CASCADE)
 
 class SposobyPrzetwarzania(models.Model):
@@ -689,6 +715,7 @@ class Zabezpieczenie(models.Model):
     GrupyZabezpieczen = models.ManyToManyField(GrupaZabezpieczen)
     Odpowiedzialni = models.ManyToManyField(Organizacja)
 #    Zagrozenia = models.ManyToManyField(Zagrozenie)
+    komorka = models.CharField(null=True, max_length=20)
     created = models.DateTimeField(auto_now_add=True, editable=False)
     last_updated = models.DateTimeField(auto_now=True, editable=False)
 

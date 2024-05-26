@@ -49,6 +49,12 @@ urlpatterns = (
     path("Organizacja/detail/<int:pk>/", views.OrganizacjaDetailView.as_view(), name="Organizacja_detail"),
     path("Organizacja/update/<int:pk>/", views.OrganizacjaUpdateView.as_view(), name="Organizacja_update"),
     path("Organizacja/delete/<int:pk>/", views.OrganizacjaDeleteView.as_view(), name="Organizacja_delete"),
+
+    path("PodmiotPrzetwarzajacy/", views.PodmiotPrzetwarzajacyListView.as_view(), name="PodmiotPrzetwarzajacy_list"),
+    path("PodmiotPrzetwarzajacy/create/", views.PodmiotPrzetwarzajacyCreateView.as_view(), name="PodmiotPrzetwarzajacy_create"),
+    path("PodmiotPrzetwarzajacy/detail/<int:pk>/", views.PodmiotPrzetwarzajacyDetailView.as_view(), name="PodmiotPrzetwarzajacy_detail"),
+    path("PodmiotPrzetwarzajacy/update/<int:pk>/", views.PodmiotPrzetwarzajacyUpdateView.as_view(), name="PodmiotPrzetwarzajacy_update"),
+    path("PodmiotPrzetwarzajacy/delete/<int:pk>/", views.PodmiotPrzetwarzajacyDeleteView.as_view(), name="PodmiotPrzetwarzajacy_delete"),
     
     path("Komorka/", views.KomorkaListView.as_view(), name="Komorka_list"),
     path("Komorka/create/", views.KomorkaCreateView.as_view(), name="Komorka_create"),

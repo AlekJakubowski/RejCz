@@ -38,6 +38,36 @@ class OrganizacjaDeleteView(generic.DeleteView):
     pk_url_kwarg = "pk"
     success_url = reverse_lazy("Organizacja_list")
 
+class PodmiotPrzetwarzajacyListView(generic.ListView):
+    model = models.PodmiotPrzetwarzajacy
+    form_class = forms.PodmiotPrzetwarzajacyForm
+    # właczenie paginacji tabeli na n=10 wierszy
+    #jeśli wiersze są wyższe może być 6 lub mniej
+    paginate_by = 10
+
+
+class PodmiotPrzetwarzajacyCreateView(generic.CreateView):
+    model = models.PodmiotPrzetwarzajacy
+    form_class = forms.PodmiotPrzetwarzajacyForm
+
+
+class PodmiotPrzetwarzajacyDetailView(generic.DetailView):
+    model = models.PodmiotPrzetwarzajacy
+    form_class = forms.PodmiotPrzetwarzajacyForm
+    pk_url_kwarg = "pk"
+
+
+class PodmiotPrzetwarzajacyUpdateView(generic.UpdateView):
+    model = models.PodmiotPrzetwarzajacy
+    form_class = forms.PodmiotPrzetwarzajacyForm
+    pk_url_kwarg = "pk"
+
+
+class PodmiotPrzetwarzajacyDeleteView(generic.DeleteView):
+    model = models.PodmiotPrzetwarzajacy
+    pk_url_kwarg = "pk"
+    success_url = reverse_lazy("PodmiotPrzetwarzajacy_list")
+
 
 class RejestrListView(generic.ListView):
     model = models.Rejestr
