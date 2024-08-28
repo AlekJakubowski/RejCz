@@ -1,11 +1,15 @@
+from django_filters.views import FilterView
+from django.db.models.query import QuerySet
 from django.views import generic
 from django.urls import reverse
 from django.urls import reverse_lazy
 from django_xhtml2pdf.views import PdfMixin
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger 
+from typing import Any
 
 from . import models
 from . import forms
+from . import filters
 
 
 class OrganizacjaListView(generic.ListView):
@@ -131,11 +135,21 @@ class OkresRetencjiDeleteView(generic.DeleteView):
 
 class CzynnoscPrzetwarzaniaListView(generic.ListView):
     model = models.CzynnoscPrzetwarzania
+    queryset = model.objects.all()
     form_class = forms.CzynnoscPrzetwarzaniaForm
+    template_name = 'CzynnoscPrzetwarzaniaListView.html'
+    #context_object_name = 'CzynnoscPrzetwarzania'
     # właczenie paginacji tabeli na n=10 wierszy
     #jeśli wiersze są wyższe może być 6 lub mniej
     paginate_by = 10
-
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # context = {'form' : CzynnoscPrzetwarzaniaFilterForm(), }
+        # context['filter'] = CzynnoscPrzetwarzaniaFilter(self.request.GET, queryset=self.get_queryset())
+        return context
+      
+    
 
 class CzynnoscPrzetwarzaniaCreateView(generic.CreateView):
     model = models.CzynnoscPrzetwarzania
@@ -145,6 +159,7 @@ class CzynnoscPrzetwarzaniaCreateView(generic.CreateView):
 class CzynnoscPrzetwarzaniaDetailView(generic.DetailView):
     model = models.CzynnoscPrzetwarzania
     form_class = forms.CzynnoscPrzetwarzaniaForm
+
 
 class CzynnoscPrzetwarzaniaDetailPdfView(PdfMixin, generic.DetailView):
     model = models.CzynnoscPrzetwarzania
@@ -157,6 +172,60 @@ class CzynnoscPrzetwarzaniaUpdateView(generic.UpdateView):
 
 
 class CzynnoscPrzetwarzaniaDeleteView(generic.DeleteView):
+    model = models.CzynnoscPrzetwarzania
+    success_url = reverse_lazy("CzynnoscPrzetwarzania_list")
+
+class CzynnoscPrzetwarzaniaRODOUpdateView(generic.UpdateView):
+    model = models.CzynnoscPrzetwarzania
+    form_class = forms.CzynnoscPrzetwarzaniaForm
+    pk_url_kwarg = "pk"
+
+    
+class CzynnoscPrzetwarzaniaRODOCreateView(generic.CreateView):
+    model = models.CzynnoscPrzetwarzania
+    form_class = forms.CzynnoscPrzetwarzaniaForm
+
+# class CzynnoscPrzetwarzaniaFilterView(FilterView):
+#     model = models.CzynnoscPrzetwarzania
+#     context_object_name = 'czynnosci'
+#     filter_class = forms.CzynnoscPrzetwarzaniaFilterForm
+
+class CzynnoscPrzetwarzaniaRODOFilterView(FilterView):
+    model = models.CzynnoscPrzetwarzania
+    #context_object_name = 'CzynnoscPrzetwarzania'
+    filterset_class = filters.CzynnoscPrzetwarzaniaFilter
+    #paginate_by = 10
+
+class CzynnoscPrzetwarzaniaRODOListView(generic.ListView):
+    model = models.CzynnoscPrzetwarzania
+    #queryset = model.objects.all()
+    form_class = forms.CzynnoscPrzetwarzaniaForm
+    template_name = 'CzynnoscPrzetwarzaniaListView.html'
+    #context_object_name = 'czynnosci'
+    filterset_class=filters.CzynnoscPrzetwarzaniaFilter
+    # właczenie paginacji tabeli na n=10 wierszy
+    #jeśli wiersze są wyższe może być 6 lub mniej
+    paginate_by = 10
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        cz_filter = filters.CzynnoscPrzetwarzaniaFilter(self.request.GET, queryset=self.queryset.all())
+        context['form'] = forms.CzynnoscPrzetwarzaniaFilterForm()
+        context['filter'] = cz_filter
+        context['object_list'] = cz_filter.qs
+        return context
+    
+    def get_queryset(self):
+        self.queryset = super().get_queryset()
+        self.filterset = filters.CzynnoscPrzetwarzaniaFilter(data=self.request.GET, queryset=self.queryset)
+        return self.filterset.qs
+    
+
+class CzynnoscPrzetwarzaniaRODODetailView(generic.DetailView):
+    model = models.CzynnoscPrzetwarzania
+    form_class = forms.CzynnoscPrzetwarzaniaForm
+    
+class CzynnoscPrzetwarzaniaRODODeleteView(generic.DeleteView):
     model = models.CzynnoscPrzetwarzania
     success_url = reverse_lazy("CzynnoscPrzetwarzania_list")
 
@@ -409,10 +478,10 @@ class ZabezpieczenieUpdateView(generic.UpdateView):
     form_class = forms.ZabezpieczenieForm
     pk_url_kwarg = "pk"
     
-    def get_success_url(self):
-        res = reverse(self.request)
-        page_number = self.request.GET #['page']
-        return f'{reverse(self.request.current_app)}?page={{page_number}}'
+    # def get_success_url(self):
+    #     res = reverse(self.request)
+    #     page_number = self.request.GET #['page']
+    #     return f'{reverse(self.request.current_app)}?page={{page_number}}'
 
 class ZabezpieczenieDeleteView(generic.DeleteView):
     model = models.Zabezpieczenie

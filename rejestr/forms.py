@@ -343,6 +343,11 @@ class WysokieRyzykoForm(forms.ModelForm):
             "wr_opis",
         ]
 
+class CzynnoscPrzetwarzaniaFilterForm(forms.Form):
+    czn_nazwa = forms.CharField(label='Nazwa' )
+    czn_status_zatw = forms.ChoiceField(label='Status', choices=models.STATUS_ZATWIERDZENIA)    
+    czn_active = forms.BooleanField(label='Aktywna')
+    
 class CzynnoscPrzetwarzaniaForm(forms.ModelForm):
     czn_active = forms.BooleanField(label='Aktywna', required=False, initial=True)
     
@@ -360,10 +365,17 @@ class CzynnoscPrzetwarzaniaForm(forms.ModelForm):
                         required=True
                         )
     
+    czn_data_zgloszenia = forms.DateField(label='Data zgloszenia') 
+    
+    czn_data_wyrejestrowania = forms.DateField(label='Data wyrejestrowania')  
+     
+    czn_data_obowazywania_od = forms.DateField(label='Obowiązuje od')  
+    
+    czn_data_obowazywania_do = forms.DateField(label='Obowiązuje do')  
+
     czn_status_zatw = forms.ChoiceField(label='Status', 
                         choices=STATUS_ZATWIERDZENIA,                
-                        required=False     
-                        )
+                        required=False) 
     
     czn_stczn_zrodlo_danych = forms.ChoiceField(label='Źródło danych', 
                         choices=ZRODLA_DANYCH,                
@@ -438,9 +450,9 @@ class CzynnoscPrzetwarzaniaForm(forms.ModelForm):
                         )
     
     
-    def getNextPozRej(self, rejestr_pk):
-        cz = models.CzynnoscPrzetwarzania.objects.filter()
-        pass
+    # def getNextPozRej(self, rejestr_pk):
+    #     cz = models.CzynnoscPrzetwarzania.objects.filter()
+    #     pass
         
     class Meta:
         model = models.CzynnoscPrzetwarzania
@@ -453,6 +465,10 @@ class CzynnoscPrzetwarzaniaForm(forms.ModelForm):
             "czn_przepis_wrazliwe",
             "czn_podstawa_prawna",
             "czn_opis_celu",
+            "czn_data_zgloszenia",
+            "czn_data_wyrejestrowania", 
+            "czn_data_obowazywania_od", 
+            "czn_data_obowazywania_do", 
             "Administratorzy",
             "Wspoladministratorzy",
             "PodmiotyPrzetwarzajace",
@@ -471,7 +487,7 @@ class CzynnoscPrzetwarzaniaForm(forms.ModelForm):
         super(CzynnoscPrzetwarzaniaForm, self).__init__(*args, **kwargs)
         self.fields["OkresRetencji"].queryset = models.OkresRetencji.objects.filter(okr_active = True)
         self.fields["Rejestr"].queryset = models.Rejestr.objects.filter(rej_active = True)
-      
+
         
 class OperacjaPrzetwarzaniaForm(forms.ModelForm):
     opp_active = forms.BooleanField(label='Aktywna', required=False, initial=True)

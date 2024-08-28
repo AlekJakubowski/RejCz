@@ -1,6 +1,15 @@
 {% extends "base.html" %}
+{% load bootstrap %}
 {% block content %}
 <h2>Czynności przetwarzania</h2>
+<hr>
+<h4>Filtrowanie</h4>
+<form action="" method="get">
+  {{form.as_p}}
+  <input type="submit" value="Szukaj" class="btn btn-primary">
+  
+</form>
+<hr>
 <div class="m-2">
   <table class="table table-bordered table-striped text center align-middle">
     <thead class="table-secondary  align-middle">
@@ -37,7 +46,7 @@
             </td>
           {% endif %}
           <td>{{ object.czn_pozycja_rej }}</td>
-          <td>{{ object.czn_status_zatw }}</td>
+          <td>{{ object.get_status_display }}</td>
           <td>{{ object.czn_nazwa }}</td>
           <td>{{ object.czn_zrodlo_danych }}</td>
           <td>{{ object.czn_podstawa_prawna }}</td>

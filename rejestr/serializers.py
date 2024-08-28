@@ -8,7 +8,7 @@ class CzynnoscPrzetwarzaniaSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.CzynnoscPrzetwarzania
         fields = [
-             "czn_active",
+            "czn_active",
             "czn_pozycja_rej",
             "czn_status_zatw",
             "czn_nazwa",
@@ -16,6 +16,10 @@ class CzynnoscPrzetwarzaniaSerializer(serializers.ModelSerializer):
             "czn_przepis_wrazliwe",
             "czn_podstawa_prawna",
             "czn_opis_celu",
+            "czn_data_zgloszenia",
+            "czn_data_wyrejestrowania", 
+            "czn_data_obowazywania_od", 
+            "czn_data_obowazywania_do", 
             "Administratorzy",
             "Wspoladministratorzy",
             "PodmiotyPrzetwarzajace",

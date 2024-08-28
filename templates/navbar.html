@@ -11,9 +11,13 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Home</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/rejestr/CzynnoscPrzetwarzania/">Czynności przetwarzania</a>
+        <li class="nav-item" dropdown>
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Rejestry</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/rejestr/CzynnoscPrzetwarzaniaRODO/">Czynności przetwarzania RODO</a></li>
+          </ul>
         </li>
+        
         {% comment %} <li class="nav-item">
           <a class="nav-link disabled" aria-disabled="true">Disabled</a>
         </li> {% endcomment %}

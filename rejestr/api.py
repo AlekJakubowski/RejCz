@@ -34,6 +34,33 @@ class CzynnoscPrzetwarzaniaViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.CzynnoscPrzetwarzaniaSerializer
     permission_classes = [permissions.IsAuthenticated]
 
+class CzynnoscPrzetwarzaniaRODOViewSet(viewsets.ModelViewSet):
+    """ViewSet for the CzynnoscPrzetwarzaniaRODO class"""
+
+    queryset = models.CzynnoscPrzetwarzania.objects.all()
+    serializer_class = serializers.CzynnoscPrzetwarzaniaSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+class KategoriaPrzetwarzaniaRODOViewSet(viewsets.ModelViewSet):
+    """ViewSet for the CzynnoscPrzetwarzaniaRODO class"""
+
+    queryset = models.CzynnoscPrzetwarzania.objects.filter(Rejestr = 2)
+    serializer_class = serializers.CzynnoscPrzetwarzaniaSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+class CzynnoscPrzetwarzaniaDODOViewSet(viewsets.ModelViewSet):
+    """ViewSet for the CzynnoscPrzetwarzania class"""
+
+    queryset = models.CzynnoscPrzetwarzania.objects.filter(Rejestr = 3)
+    serializer_class = serializers.CzynnoscPrzetwarzaniaSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+class KategoriaPrzetwarzaniaDODOViewSet(viewsets.ModelViewSet):
+    """ViewSet for the CzynnoscPrzetwarzania class"""
+
+    queryset = models.CzynnoscPrzetwarzania.objects.filter(Rejestr = 4)
+    serializer_class = serializers.CzynnoscPrzetwarzaniaSerializer
+    permission_classes = [permissions.IsAuthenticated]
 
 class OkresRetencjiViewSet(viewsets.ModelViewSet):
     """ViewSet for the OkresRetencji class"""
