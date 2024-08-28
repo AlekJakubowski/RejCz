@@ -24,6 +24,12 @@ class OrganizacjaAdminForm(forms.ModelForm):
         model = models.Organizacja
         fields = "__all__"
 
+class PodmiotPrzetwarzajacyAdminForm(forms.ModelForm):
+
+    class Meta:
+        model = models.PodmiotPrzetwarzajacy
+        fields = "__all__"
+
 class KomorkaAdminForm(forms.ModelForm):
 
     class Meta:

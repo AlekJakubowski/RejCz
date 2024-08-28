@@ -13,6 +13,10 @@ class CzynnoscPrzetwarzaniaAdmin(admin.ModelAdmin):
         "czn_przepis_wrazliwe",
         "czn_podstawa_prawna",
         "czn_opis_celu",
+        "czn_data_zgloszenia",
+        "czn_data_wyrejestrowania", 
+        "czn_data_obowazywania_od", 
+        "czn_data_obowazywania_do", 
         # "Administratorzy",
         # "Wspoladministratorzy",
         # "PodmiotyPrzetwarzajace",
@@ -23,18 +27,18 @@ class CzynnoscPrzetwarzaniaAdmin(admin.ModelAdmin):
         # "KategorieOdbiorcow",
         # "WysokieRyzyka",
         # "OkresRetencji",
-       "Rejestr",
-        # "KomorkiRealizujace",
+        #"Rejestr",
+        #"KomorkiRealizujace",
      ]
     readonly_fields = [
-        "czn_active",
-        "czn_pozycja_rej",
-        "czn_status_zatw",
-        "czn_nazwa",
-        "czn_zrodlo_danych",
-        "czn_przepis_wrazliwe",
-        "czn_podstawa_prawna",
-        "czn_opis_celu",
+        # "czn_active",
+        # "czn_pozycja_rej",
+        # "czn_status_zatw",
+        # "czn_nazwa",
+        # "czn_zrodlo_danych",
+        # "czn_przepis_wrazliwe",
+        # "czn_podstawa_prawna",
+        # "czn_opis_celu",
         # "Administratorzy",
         # "Wspoladministratorzy",
         # "PodmiotyPrzetwarzajace",
@@ -60,11 +64,11 @@ class RejestrAdmin(admin.ModelAdmin):
         "Organizacja",
     ]
     readonly_fields = [
-        "rej_active",
-        "rej_nazwa",
-        "rej_opis",
-        "rej_zakres",
-        "Organizacja",
+        # "rej_active",
+        # "rej_nazwa",
+        # "rej_opis",
+        # "rej_zakres",
+        # "Organizacja",
         "created",
         "last_updated",
     ]
@@ -103,7 +107,7 @@ class OrganizacjaAdmin(admin.ModelAdmin):
     ]
 
 class PodmiotPrzetwarzajacyAdmin(admin.ModelAdmin):
-    form_class = adminforms.OrganizacjaAdminForm
+    form_class = adminforms.PodmiotPrzetwarzajacyAdminForm
     empty_value_display = "--BRAK DANYCH--"
     list_display = [
         "prz_skrot",

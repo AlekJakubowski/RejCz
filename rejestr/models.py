@@ -366,7 +366,7 @@ class CzynnoscPrzetwarzania(models.Model):
         ZATWIERDZONA = "ZATWIERDZONA"
         ANULOWANA = "ANULOWANA"
         ODRZUCONA = "ODRZUCONA"
-        OCZEKUJACA = "OCZEKUJACA"
+        OCZEKUJACA = "OCZEKUJĄCA"
 
     # Fields
     czn_active = models.BooleanField(null=True, default=True)
@@ -378,6 +378,11 @@ class CzynnoscPrzetwarzania(models.Model):
     czn_przepis_wrazliwe = models.CharField(max_length=200)
     czn_podstawa_prawna = models.CharField(max_length=300)
     czn_opis_celu = models.CharField(max_length=200)
+    czn_data_zgloszenia = models.DateField(null=True) 
+    czn_data_wyrejestrowania = models.DateField(null=True) 
+    czn_data_obowazywania_od = models.DateField(null=True) 
+    czn_data_obowazywania_do = models.DateField(null=True) 
+    
     Administratorzy = models.ManyToManyField(
         Organizacja,
         editable=True,
@@ -473,19 +478,20 @@ class CzynnoscPrzetwarzania(models.Model):
     created = models.DateTimeField(auto_now_add=True, editable=False)
     last_updated = models.DateTimeField(auto_now=True, editable=False)
     
-    # clone_m2m_fields = [
-    #     "PrzeslankiLegalnosci", 
-    #     "WysokieRyzyka", 
-    #     "KategorieOdbiorcow", 
-    #     "KategorieOsob", 
-    #     "KategorieDanych",
-    #     "PodmiotyPrzetwarzajace", 
-    #     "SposobyPrzetwarzania",
-    #     "Wspoladministratorzy", 
-    #     "Administratorzy",
-    #     ]
-    
+    def get_status_display(self):
+        if(self.czn_status_zatw== 'ZATWIERDZONA'):
+            return "Zatwierdzona"
+        if(self.czn_status_zatw== 'ANULOWANA'):
+            return "Anulowana"
+        if(self.czn_status_zatw== 'OCZEKUJĄCA'):
+            return "Oczekująca"
+        if(self.czn_status_zatw== 'ODRZUCONA'):
+            return "Odrzucona"
+        
+        return "Nieznany status"
+
     class Meta:
+        #abstract = True
         pass
 
     def __str__(self):
@@ -497,8 +503,8 @@ class CzynnoscPrzetwarzania(models.Model):
     def get_update_url(self):
         return reverse("CzynnoscPrzetwarzania_update", args=(self.pk,))
 
-    # def get_clone_url(self):
-    #     return reverse("CzynnoscPrzetwarzania_update", args=(self.pk,))
+    def get_clone_url(self):
+        return reverse("CzynnoscPrzetwarzania_update", args=(self.pk,))
     
     @staticmethod
     def get_htmx_create_url():
@@ -507,6 +513,19 @@ class CzynnoscPrzetwarzania(models.Model):
     def get_htmx_delete_url(self):
         return reverse("CzynnoscPrzetwarzania_htmx_delete", args=(self.pk,))
 
+# class RejestrCzRODO(CzynnoscPrzetwarzania, models.Model):
+
+#     class Meta:
+#         pass
+
+#     def __str__(self):
+#         return f'{self.czn_pozycja_rej} {self.czn_nazwa}'
+
+#     def get_absolute_url(self):
+#         return reverse("RejestrCzRODO_detail", args=(self.pk,))
+
+#     def get_update_url(self):
+#         return reverse("RejestrCzRODO_update", args=(self.pk,))
 
 class CzynnosciPrzetwarzania(models.Model):
     czp_czynnoscp = models.ForeignKey(CzynnoscPrzetwarzania,

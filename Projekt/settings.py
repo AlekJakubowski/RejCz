@@ -39,13 +39,21 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'model_clone',
     'rest_framework',
+    'django_filters',
     'channels',
     'django_htmx',
     'rejestr',
     'django_tables2' ,
     'crispy_forms',
     'crispy_bootstrap5',
+    'bootstrapform',
 ]
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
+}
+
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
