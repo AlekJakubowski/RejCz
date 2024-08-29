@@ -1,3 +1,4 @@
+from django.shortcuts import get_object_or_404, redirect
 from django_filters.views import FilterView
 from django.db.models.query import QuerySet
 from django.views import generic
@@ -229,6 +230,18 @@ class CzynnoscPrzetwarzaniaRODODeleteView(generic.DeleteView):
     model = models.CzynnoscPrzetwarzania
     success_url = reverse_lazy("CzynnoscPrzetwarzania_list")
 
+class CzynnoscPrzetwarzaniaRODOCloneView(generic.View):
+    model = models.CzynnoscPrzetwarzania
+    # success_url = reverse_lazy("CzynnoscPrzetwarzania_list")
+    def post(self, request, pk):
+        # Pobierz obiekt do sklonowania
+        instance = get_object_or_404(models.CzynnoscPrzetwarzania, pk=pk)
+        #instance = models.CzynnoscPrzetwarzania.objects.select_for_update().filter(pk=pk)
+        # Klonowanie obiektu
+        instance.clone()
+    
+        # Przekierowanie z powrotem do listy obiektów lub innej strony
+        return redirect('CzynnoscPrzetwarzania_list')  # 'object_list' powinien być nazwą widoku, na który przekierowujesz
 
 class KomorkaListView(generic.ListView):
     model = models.Komorka

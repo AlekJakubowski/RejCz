@@ -43,7 +43,8 @@ urlpatterns = (
     # path("CzynnoscPrzetwarzaniaDODO/delete/<int:pk>/", views.CzynnoscPrzetwarzaniaDODODeleteView.as_view(), name="CzynnoscPrzetwarzania_delete"),
     # path("CzynnoscPrzetwarzaniaDODO/pdfdetail/<int:pk>/", views.CzynnoscPrzetwarzaniaDODODetailPdfView.as_view(), name="CzynnoscPrzetwarzania_pdfdetail"),
 
-    path("CzynnoscPrzetwarzaniaRODO/", views.CzynnoscPrzetwarzaniaRODOFilterView.as_view(), name="CzynnoscPrzetwarzania_filteredlist"),
+    #path("CzynnoscPrzetwarzaniaRODO/", views.CzynnoscPrzetwarzaniaRODOFilterView.as_view(), name="CzynnoscPrzetwarzania_filteredlist"),
+    path('clone/<int:pk>/', views.CzynnoscPrzetwarzaniaRODOCloneView.as_view(), name='clone'),
     path("CzynnoscPrzetwarzaniaRODO/", views.CzynnoscPrzetwarzaniaRODOListView.as_view(), name="CzynnoscPrzetwarzania_list"),
     path("CzynnoscPrzetwarzaniaRODO/create/", views.CzynnoscPrzetwarzaniaRODOCreateView.as_view(), name="CzynnoscPrzetwarzania_create"),
     path("CzynnoscPrzetwarzaniaRODO/detail/<int:pk>/", views.CzynnoscPrzetwarzaniaRODODetailView.as_view(), name="CzynnoscPrzetwarzania_detail"),

@@ -1,5 +1,8 @@
 from typing import Any
-from django.db import models
+from django.db import models, transaction
+from django.db.models import Max
+from django.core.exceptions import ValidationError
+
 from django.urls import reverse
 from model_clone import CloneMixin
 
@@ -489,6 +492,66 @@ class CzynnoscPrzetwarzania(models.Model):
             return "Odrzucona"
         
         return "Nieznany status"
+    
+    def save(self, *args, **kwargs):
+        if self.pk is None:  # Only calculate numer if the object is new (not yet in the database)
+            # Lock the rows in the database to prevent race conditions
+            with transaction.atomic():
+                # Znajdź maksymalny numer dla danego Rejestru
+                last_rej = CzynnoscPrzetwarzania.objects.select_for_update().filter(Rejestr=self.Rejestr).aggregate(max_numer=Max('czn_pozycja_rej'))
+                last_poz_rej = last_rej['max_numer']
+                if last_poz_rej is None: 
+                    # Jesli max numer dla danego Rejestru jest pusty to będzie pierwszy
+                    self.czn_pozycja_rej = 1
+                else:
+                    # Jesli max numer dla danego Rejestru nie jest pusty to będzie natępny
+                    self.czn_pozycja_rej = last_poz_rej + 1
+        
+        super().save(*args, **kwargs)
+
+    def clone(self):
+        with transaction.atomic():
+            # Pobierz rekord z zadanym pk
+            #src_record = CzynnoscPrzetwarzania.objects.select_for_update().filter(pk=pk)
+            # Znajdź maksymalny numer dla danego Rejestru
+            last_rej = CzynnoscPrzetwarzania.objects.select_for_update().filter(Rejestr=self.Rejestr).aggregate(max_numer=Max('czn_pozycja_rej'))
+            last_poz_rej = last_rej['max_numer']
+            #last_poz_rej = inst.czn_pozycja_rej
+           # last_poz_rej = CzynnoscPrzetwarzania(inst)
+            # Stwórz nowy obiekt z danymi sklonowanymi z bieżącego obiektu
+            new_instance = CzynnoscPrzetwarzania(
+                Rejestr=self.Rejestr,
+                czn_pozycja_rej = last_poz_rej + 1,
+                czn_active = self.czn_active,
+                czn_status_zatw = "OCZEKUJĄCA",
+                czn_nazwa = "_klon_" + self.czn_nazwa,
+                czn_zrodlo_danych = self.czn_zrodlo_danych,
+                czn_przepis_wrazliwe = self.czn_przepis_wrazliwe,
+                czn_podstawa_prawna = self.czn_podstawa_prawna,
+                czn_opis_celu = self.czn_opis_celu,
+                czn_data_zgloszenia = self.czn_data_zgloszenia,
+                czn_data_wyrejestrowania = None,
+                czn_data_obowazywania_od = None,
+                czn_data_obowazywania_do = None,
+                OkresRetencji = self.OkresRetencji,
+                #KomorkiRealizujace = None, #self.KomorkiRealizujace,
+                created = None,
+                last_updated = None,
+            )
+            # new_instance.Administratorzy.set(self.Administratorzy.all())
+            # new_instance.Wspoladministratorzy.set(self.Wspoladministratorzy.all())
+            # new_instance.PodmiotyPrzetwarzajace.set(self.PodmiotyPrzetwarzajace.all())
+            # new_instance.PrzeslankiLegalnosci.set(self.PrzeslankiLegalnosci.all())
+            # new_instance.SposobyPrzetwarzania.set(self.SposobyPrzetwarzania.all())
+            # new_instance.KategorieOsob.set(self.KategorieOsob.all())
+            # new_instance.KategorieDanych.set(self.KategorieDanych.all())
+            # new_instance.KategorieOdbiorcow.set(self.KategorieOdbiorcow.all())
+            # new_instance.WysokieRyzyka.set(self.WysokieRyzyka.all())
+            # Zapisz nowy obiekt do bazy danych
+            new_instance.save()
+            return new_instance
+
+    
 
     class Meta:
         #abstract = True
@@ -504,7 +567,7 @@ class CzynnoscPrzetwarzania(models.Model):
         return reverse("CzynnoscPrzetwarzania_update", args=(self.pk,))
 
     def get_clone_url(self):
-        return reverse("CzynnoscPrzetwarzania_update", args=(self.pk,))
+        return reverse("clone", args=(self.pk,))
     
     @staticmethod
     def get_htmx_create_url():
@@ -547,6 +610,9 @@ class Administratorzy(models.Model):
                                     related_name="adm_organizacja_f",
                                     on_delete=models.CASCADE)
 
+    def clone(self, id_czyn):
+        pass
+    
 class Wspoladministratorzy(models.Model):
     wad_czynnoscp = models.ForeignKey(CzynnoscPrzetwarzania,
                                     null=True,
@@ -557,6 +623,9 @@ class Wspoladministratorzy(models.Model):
                                     null=True,
                                     related_name="wad_organizacja_f",                                 
                                     on_delete=models.CASCADE)
+    
+    def clone(self, id_czyn):
+        pass
 
 
 class PodmiotyPrzetwarzajace(models.Model):
@@ -568,6 +637,10 @@ class PodmiotyPrzetwarzajace(models.Model):
                                     null=True,
                                     related_name="pod_pprzetw_p",
                                     on_delete=models.CASCADE)
+    
+    def clone(self, id_czyn):
+        pass
+
 
 class SposobyPrzetwarzania(models.Model):
     spp_czynnoscp = models.ForeignKey(CzynnoscPrzetwarzania, 
@@ -579,6 +652,9 @@ class SposobyPrzetwarzania(models.Model):
                                     null=True,
                                     related_name="spp_sposob_p",
                                     on_delete=models.CASCADE)
+   
+    def clone(self, id_czyn):
+        pass
 
 class KategorieDanych(models.Model):
     ktd_czynnoscp = models.ForeignKey(CzynnoscPrzetwarzania, 
@@ -590,6 +666,9 @@ class KategorieDanych(models.Model):
                                 null=True,
                                 related_name="ktd_dane_p",
                                 on_delete=models.CASCADE)
+   
+    def clone(self, id_czyn):
+        pass
 
 class KategorieOsob(models.Model):
     kos_czynnoscp = models.ForeignKey(CzynnoscPrzetwarzania, 
@@ -601,6 +680,9 @@ class KategorieOsob(models.Model):
                                     null=True,
                                     related_name="kos_kosoby_p",
                                     on_delete=models.CASCADE)
+   
+    def clone(self, id_czyn):
+        pass
 
 class KategorieOdbiorcow(models.Model):
     kob_czynnoscp = models.ForeignKey(CzynnoscPrzetwarzania, 
@@ -612,6 +694,9 @@ class KategorieOdbiorcow(models.Model):
                                     null=True,
                                     related_name="kob_odbiorcy_p",
                                     on_delete=models.CASCADE)
+   
+    def clone(self, id_czyn):
+        pass
 
 class WysokieRyzyka(models.Model):
     wrr_czynnoscp = models.ForeignKey(CzynnoscPrzetwarzania,
@@ -623,6 +708,9 @@ class WysokieRyzyka(models.Model):
                                     null=True, 
                                     related_name="wrr_wryzyka_p",
                                     on_delete=models.CASCADE)
+   
+    def clone(self, id_czyn):
+        pass
 
 class PrzeslankiLegalnosci(models.Model):
     ppl_czynnoscp = models.ForeignKey(CzynnoscPrzetwarzania, 
@@ -634,6 +722,9 @@ class PrzeslankiLegalnosci(models.Model):
                                     null=True, 
                                     related_name="ppl_przeslanka_p",
                                     on_delete=models.CASCADE)
+   
+    def clone(self, id_czyn):
+        pass
 
 class OperacjePrzetwarzania(models.Model):
     opp_czynnoscp = models.ForeignKey(CzynnoscPrzetwarzania, 
@@ -645,6 +736,9 @@ class OperacjePrzetwarzania(models.Model):
                                     null=True, 
                                     related_name="opp_operacjap_p",
                                     on_delete=models.CASCADE)
+   
+    def clone(self, id_czyn):
+        pass
 
 class GrupaZabezpieczen(models.Model):
     gzb_active = models.BooleanField(default=True)
