@@ -352,7 +352,7 @@ class CzynnoscPrzetwarzaniaForm(forms.ModelForm):
     czn_active = forms.BooleanField(label='Aktywna', required=False, initial=True)
     
     czn_pozycja_rej = forms.IntegerField(label='Numer pozycji rejestru',
-                                         required=True,
+                                         required=False,
                                          )
     
     czn_nazwa = forms.CharField(label='Nazwa czynności', max_length=200,  
