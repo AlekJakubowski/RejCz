@@ -5,81 +5,79 @@
 
 {% block content %}
 
-
-
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{form.errors}}
-    <div class="form-group row">
-        <div class="col col-md-auto">
-            {{ form.czn_active | as_crispy_field }}
+    <div class="container-fluid themed-container bg-body-secondary" > 
+        <div class="form-group row">
+            <div>
+                {{ form.Rejestr | as_crispy_field }}
+            </div>
+        </div>
+        <div class="form-group row">
+            <div>
+                {{ form.czn_nazwa | as_crispy_field }}
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-4">
+                {{ form.czn_active | as_crispy_field }}
+            </div>
+            <div class="col-4">
+                {{ form.czn_pozycja_rej | as_crispy_field }}
+            </div>
+            <div class="col-4">
+                {{ form.czn_status_zatw | as_crispy_field }}
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-6">
+                {{ form.czn_data_zgloszenia | as_crispy_field }}
+            </div>
+            <div class="col-6">
+                {{ form.czn_data_wyrejestrowania | as_crispy_field }}
+            </div>
+        </div>    
+        <div class="form-group row">
+            <div class="col-6">
+                {{ form.czn_data_obowazywania_od | as_crispy_field }}
+            </div>
+            <div class="col-6">
+                {{ form.czn_data_obowazywania_do | as_crispy_field }}
+            </div>
+        </div>    
+    </div>
+    
+    <div class="container-fluid themed-container bg-warning-subtle" >
+        <div class="form-group row">
+            <div>
+                {{ form.czn_podstawa_prawna | as_crispy_field }}
+            </div>
+            <div class="col-4">
+                {{ form.czn_zrodlo_danych | as_crispy_field }}
+            </div>
+        </div>
+        <div class="form-group row">
+            <div>
+                {{ form.PrzeslankiLegalnosci | as_crispy_field }}
+            </div>
+        </div>
+        <div class="form-group row">
+            <div>
+                {{ form.czn_opis_celu | as_crispy_field }}
+            </div>
+        </div>
+        <div class="form-group row">
+            <div>
+                {{ form.czn_przepis_wrazliwe | as_crispy_field }}
+            </div>
+        </div>
+        <div class="form-group row">
+            <div>
+                {{ form.OkresRetencji | as_crispy_field }}
+            </div>
         </div>
     </div>
-    <div class="form-group row">
-        <div>
-            {{ form.Rejestr | as_crispy_field }}
-        </div>
-    </div>
-    <div class="form-group row">
-        <div class="col-4">
-            {{ form.czn_pozycja_rej | as_crispy_field }}
-        </div>
-        <div class="col-4">
-            {{ form.czn_status_zatw | as_crispy_field }}
-        </div>
-        <div class="col-4">
-            {{ form.czn_zrodlo_danych | as_crispy_field }}
-        </div>
-    </div>
-
-    <div class="form-group row">
-        <div class="col-4">
-            {{ form.czn_data_zgloszenia | as_crispy_field }}
-        </div>
-        <div class="col-4">
-            {{ form.czn_data_wyrejestrowania | as_crispy_field }}
-        </div>>
-    </div>
-    <div class="form-group row">
-        <div class="col-4">
-            {{ form.czn_data_obowazywania_od | as_crispy_field }}
-        </div>
-        <div class="col-4">
-            {{ form.czn_data_obowazywania_do | as_crispy_field }}
-        </div>
-    </div>
-
-    <div class="form-group row">
-        <div>
-            {{ form.czn_nazwa | as_crispy_field }}
-        </div>
-    </div>
-    <div class="form-group row">
-        <div>
-            {{ form.czn_podstawa_prawna | as_crispy_field }}
-        </div>
-    </div>
-    <div class="form-group row">
-        <div>
-            {{ form.PrzeslankiLegalnosci | as_crispy_field }}
-        </div>
-    </div>
-    <div class="form-group row">
-        <div>
-            {{ form.czn_opis_celu | as_crispy_field }}
-        </div>
-    </div>
-    <div class="form-group row">
-        <div>
-            {{ form.czn_przepis_wrazliwe | as_crispy_field }}
-        </div>
-    </div>
-    <div class="form-group row">
-        <div>
-            {{ form.OkresRetencji | as_crispy_field }}
-        </div>
-    </div>
-
     <div class="accordion" id="accordionM2M">
         <div class="accordion-item">
           <h2 class="accordion-header">
@@ -211,7 +209,7 @@
         </div>
     </div>
     
-    <div class="form-group row">
+    <div class="form-group row bg-info-subtle">
         <div>
             {{ form.KomorkiRealizujace | as_crispy_field }}
         </div>
