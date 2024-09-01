@@ -180,7 +180,6 @@ class CzynnoscPrzetwarzaniaRODOUpdateView(generic.UpdateView):
     model = models.CzynnoscPrzetwarzania
     form_class = forms.CzynnoscPrzetwarzaniaForm
     pk_url_kwarg = "pk"
-
     
 class CzynnoscPrzetwarzaniaRODOCreateView(generic.CreateView):
     model = models.CzynnoscPrzetwarzania
@@ -220,7 +219,6 @@ class CzynnoscPrzetwarzaniaRODOListView(generic.ListView):
         self.queryset = super().get_queryset()
         self.filterset = filters.CzynnoscPrzetwarzaniaFilter(data=self.request.GET, queryset=self.queryset)
         return self.filterset.qs
-    
 
 class CzynnoscPrzetwarzaniaRODODetailView(generic.DetailView):
     model = models.CzynnoscPrzetwarzania
@@ -232,16 +230,16 @@ class CzynnoscPrzetwarzaniaRODODeleteView(generic.DeleteView):
 
 class CzynnoscPrzetwarzaniaRODOCloneView(generic.View):
     model = models.CzynnoscPrzetwarzania
-    # success_url = reverse_lazy("CzynnoscPrzetwarzania_list")
+
     def post(self, request, pk):
         # Pobierz obiekt do sklonowania
         instance = get_object_or_404(models.CzynnoscPrzetwarzania, pk=pk)
-        #instance = models.CzynnoscPrzetwarzania.objects.select_for_update().filter(pk=pk)
+
         # Klonowanie obiektu
         instance.clone()
     
         # Przekierowanie z powrotem do listy obiektów lub innej strony
-        return redirect('CzynnoscPrzetwarzania_list')  # 'object_list' powinien być nazwą widoku, na który przekierowujesz
+        return redirect('CzynnoscPrzetwarzania_list')  
 
 class KomorkaListView(generic.ListView):
     model = models.Komorka
