@@ -365,16 +365,15 @@ class CzynnoscPrzetwarzaniaForm(forms.ModelForm):
                         required=True
                         )
     
-    czn_data_zgloszenia = forms.DateField(label='Data zgloszenia') 
+    czn_data_zgloszenia = forms.DateField(label='Data zgloszenia', required=False) 
     
-    czn_data_wyrejestrowania = forms.DateField(label='Data wyrejestrowania')  
+    czn_data_wyrejestrowania = forms.DateField(label='Data wyrejestrowania', required=False)  
      
-    czn_data_obowazywania_od = forms.DateField(label='Obowiązuje od')  
+    czn_data_obowazywania_od = forms.DateField(label='Obowiązuje od', required=False)  
     
-    czn_data_obowazywania_do = forms.DateField(label='Obowiązuje do')  
+    czn_data_obowazywania_do = forms.DateField(label='Obowiązuje do', required=False)  
 
-    czn_status_zatw = forms.ChoiceField(label='Status', 
-                        choices=STATUS_ZATWIERDZENIA,                
+    czn_status_zatw = forms.ChoiceField(label='Status', choices=STATUS_ZATWIERDZENIA,                
                         required=False) 
     
     czn_stczn_zrodlo_danych = forms.ChoiceField(label='Źródło danych', 
