@@ -377,7 +377,7 @@ class CzynnoscPrzetwarzania(models.Model):
     czn_zrodlo_danych = models.CharField(max_length=100, null=True, choices=ZRODLA_DANYCH)
     czn_status_zatw = models.CharField(max_length=20, null=True, choices=STATUS_ZATWIERDZENIA)
     Rejestr = models.ForeignKey(Rejestr, null=True, on_delete=models.SET_NULL)
-    czn_pozycja_rej = models.IntegerField(null=False)
+    czn_pozycja_rej = models.IntegerField(null=True)
     czn_przepis_wrazliwe = models.CharField(max_length=200)
     czn_podstawa_prawna = models.CharField(max_length=300)
     czn_opis_celu = models.CharField(max_length=200)
