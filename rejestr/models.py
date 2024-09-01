@@ -535,8 +535,8 @@ class CzynnoscPrzetwarzania(models.Model):
                 created = None,
                 last_updated = None,
             )
-            
-            new_instance.save()
+            #zapis nowej instancji
+            new_instance.save() # sklonowany
             
             Adm_rs = Administratorzy.objects.filter(adm_czynnoscp=self.pk)
             for x in Adm_rs:
@@ -574,7 +574,7 @@ class CzynnoscPrzetwarzania(models.Model):
             for x in WRyz_rs:
                 x.clone(new_instance)
             
-            return new_instance
+        return new_instance
 
     
 
