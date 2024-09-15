@@ -39,10 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'django_filters',
-    'channels',
     'django_htmx',
     'rejestr',
-    'django_tables2' ,
     'crispy_forms',
     'crispy_bootstrap5',
     'bootstrapform',
@@ -67,6 +65,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = "Projekt.urls"
 
+
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
@@ -79,11 +78,12 @@ TEMPLATES = [
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
                 "django.template.context_processors.request",
-                
             ],
         },
     },
 ]
+
+
 
 WSGI_APPLICATION = "Projekt.wsgi.application"
 

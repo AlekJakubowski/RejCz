@@ -71,7 +71,6 @@ class PodmiotPrzetwarzajacyForm(forms.ModelForm):
                                 required=True
                                 )
 
-
     prz_skrot = forms.CharField(label='Nazwa skrótowa podmiotu', max_length=30, min_length=2, 
                                 widget=forms.TextInput(attrs={"placeholder": 'Literowy skrót podmiotu'}),
                                 required=True
@@ -487,7 +486,25 @@ class CzynnoscPrzetwarzaniaForm(forms.ModelForm):
         self.fields["OkresRetencji"].queryset = models.OkresRetencji.objects.filter(okr_active = True)
         self.fields["Rejestr"].queryset = models.Rejestr.objects.filter(rej_active = True)
 
-        
+class CzynnoscPrzetwarzaniaRODOForm(CzynnoscPrzetwarzaniaForm):
+    class Meta:
+        proxy = True
+
+
+class KategoriaCzynnosciPrzetwarzaniaRODOForm(CzynnoscPrzetwarzaniaForm):
+    class Meta:
+        proxy = True
+
+class CzynnoscPrzetwarzaniaDODOForm(CzynnoscPrzetwarzaniaForm):
+    class Meta:
+        proxy = True
+
+
+class KategoriaCzynnosciPrzetwarzaniaDODOForm(CzynnoscPrzetwarzaniaForm):
+    class Meta:
+        proxy = True
+
+ 
 class OperacjaPrzetwarzaniaForm(forms.ModelForm):
     opp_active = forms.BooleanField(label='Aktywna', required=False, initial=True)
     

@@ -28,6 +28,5 @@ urlpatterns = [
     path('rejestr/', include('rejestr.urls')),
     path('htmx/', views.htmx_home, name='htmx'),
     path('admin/', admin.site.urls),
-    path("favicon.ico",RedirectView.as_view(url=staticfiles_storage.url("favicon.ico")),
-    ),
+    path("favicon.ico",RedirectView.as_view(url=staticfiles_storage.url("favicon.ico"))),
 ]

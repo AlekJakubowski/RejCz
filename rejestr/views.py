@@ -134,112 +134,288 @@ class OkresRetencjiDeleteView(generic.DeleteView):
     success_url = reverse_lazy("OkresRetencji_list")
 
 
-class CzynnoscPrzetwarzaniaListView(generic.ListView):
-    model = models.CzynnoscPrzetwarzania
-    queryset = model.objects.all()
-    form_class = forms.CzynnoscPrzetwarzaniaForm
-    template_name = 'CzynnoscPrzetwarzaniaListView.html'
-    #context_object_name = 'CzynnoscPrzetwarzania'
-    # właczenie paginacji tabeli na n=10 wierszy
-    #jeśli wiersze są wyższe może być 6 lub mniej
-    paginate_by = 10
+# class CzynnoscPrzetwarzaniaListView(generic.ListView):
+#     model = models.CzynnoscPrzetwarzania
+#     queryset = model.objects.all()
+#     form_class = forms.CzynnoscPrzetwarzaniaForm
+#     template_name = 'CzynnoscPrzetwarzaniaListView.html'
+#     #context_object_name = 'CzynnoscPrzetwarzania'
+#     # właczenie paginacji tabeli na n=10 wierszy
+#     #jeśli wiersze są wyższe może być 6 lub mniej
+#     paginate_by = 10
     
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        # context = {'form' : CzynnoscPrzetwarzaniaFilterForm(), }
-        # context['filter'] = CzynnoscPrzetwarzaniaFilter(self.request.GET, queryset=self.get_queryset())
-        return context
-      
-    
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         # context = {'form' : CzynnoscPrzetwarzaniaFilterForm(), }
+#         # context['filter'] = CzynnoscPrzetwarzaniaFilter(self.request.GET, queryset=self.get_queryset())
+#         return context
 
-class CzynnoscPrzetwarzaniaCreateView(generic.CreateView):
-    model = models.CzynnoscPrzetwarzania
-    form_class = forms.CzynnoscPrzetwarzaniaForm
+# class CzynnoscPrzetwarzaniaCreateView(generic.CreateView):
+#     model = models.CzynnoscPrzetwarzania
+#     form_class = forms.CzynnoscPrzetwarzaniaForm
 
 
-class CzynnoscPrzetwarzaniaDetailView(generic.DetailView):
-    model = models.CzynnoscPrzetwarzania
-    form_class = forms.CzynnoscPrzetwarzaniaForm
+# class CzynnoscPrzetwarzaniaDetailView(generic.DetailView):
+#     model = models.CzynnoscPrzetwarzania
+#     form_class = forms.CzynnoscPrzetwarzaniaForm
 
 
-class CzynnoscPrzetwarzaniaDetailPdfView(PdfMixin, generic.DetailView):
-    model = models.CzynnoscPrzetwarzania
-    template_name = "rejestr/czynnoscprzetwarzania_detail.html"
+# class CzynnoscPrzetwarzaniaDetailPdfView(PdfMixin, generic.DetailView):
+#     model = models.CzynnoscPrzetwarzania
+#     template_name = "rejestr/czynnoscprzetwarzania_detail.html"
 
-class CzynnoscPrzetwarzaniaUpdateView(generic.UpdateView):
-    model = models.CzynnoscPrzetwarzania
-    form_class = forms.CzynnoscPrzetwarzaniaForm
-    pk_url_kwarg = "pk"
-
-
-class CzynnoscPrzetwarzaniaDeleteView(generic.DeleteView):
-    model = models.CzynnoscPrzetwarzania
-    success_url = reverse_lazy("CzynnoscPrzetwarzania_list")
-
-class CzynnoscPrzetwarzaniaRODOUpdateView(generic.UpdateView):
-    model = models.CzynnoscPrzetwarzania
-    form_class = forms.CzynnoscPrzetwarzaniaForm
-    pk_url_kwarg = "pk"
-    
-class CzynnoscPrzetwarzaniaRODOCreateView(generic.CreateView):
-    model = models.CzynnoscPrzetwarzania
-    form_class = forms.CzynnoscPrzetwarzaniaForm
+# class CzynnoscPrzetwarzaniaUpdateView(generic.UpdateView):
+#     model = models.CzynnoscPrzetwarzania
+#     form_class = forms.CzynnoscPrzetwarzaniaForm
+#     pk_url_kwarg = "pk"
 
 # class CzynnoscPrzetwarzaniaFilterView(FilterView):
 #     model = models.CzynnoscPrzetwarzania
 #     context_object_name = 'czynnosci'
 #     filter_class = forms.CzynnoscPrzetwarzaniaFilterForm
 
-class CzynnoscPrzetwarzaniaRODOFilterView(FilterView):
-    model = models.CzynnoscPrzetwarzania
-    #context_object_name = 'CzynnoscPrzetwarzania'
-    filterset_class = filters.CzynnoscPrzetwarzaniaFilter
+# class CzynnoscPrzetwarzaniaDeleteView(generic.DeleteView):
+#     model = models.CzynnoscPrzetwarzania
+#     success_url = reverse_lazy("CzynnoscPrzetwarzania_list")
+
+class CzynnoscPrzetwarzaniaDODOUpdateView(generic.UpdateView):
+    model = models.CzynnoscPrzetwarzaniaDODO
+    form_class = forms.CzynnoscPrzetwarzaniaDODOForm
+    pk_url_kwarg = "pk"
+    
+class CzynnoscPrzetwarzaniaDODOCreateView(generic.CreateView):
+    model = models.CzynnoscPrzetwarzaniaDODO
+    form_class = forms.CzynnoscPrzetwarzaniaDODOForm
+
+class CzynnoscPrzetwarzaniaDODOFilterView(FilterView):
+    model = models.CzynnoscPrzetwarzaniaDODO
+    #filterset_class = filters.CzynnoscPrzetwarzaniaFilter
     #paginate_by = 10
 
-class CzynnoscPrzetwarzaniaRODOListView(generic.ListView):
-    model = models.CzynnoscPrzetwarzania
-    #queryset = model.objects.all()
+class CzynnoscPrzetwarzaniaDODOListView(generic.ListView):
+    model = models.CzynnoscPrzetwarzaniaDODO
+    queryset = model.objects.filter(Rejestr=3)
     form_class = forms.CzynnoscPrzetwarzaniaForm
-    template_name = 'CzynnoscPrzetwarzaniaListView.html'
+    #template_name = 'templates/czynnoscprzetwarzaniaDODO_list.html'
     #context_object_name = 'czynnosci'
     filterset_class=filters.CzynnoscPrzetwarzaniaFilter
     # właczenie paginacji tabeli na n=10 wierszy
     #jeśli wiersze są wyższe może być 6 lub mniej
-    paginate_by = 10
+    #paginate_by = 10
     
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        cz_filter = filters.CzynnoscPrzetwarzaniaFilter(self.request.GET, queryset=self.queryset.all())
-        context['form'] = forms.CzynnoscPrzetwarzaniaFilterForm()
-        context['filter'] = cz_filter
-        context['object_list'] = cz_filter.qs
-        return context
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     cz_filter = filters.CzynnoscPrzetwarzaniaFilter(self.request.GET, queryset=self.queryset.all())
+    #     context['form'] = forms.CzynnoscPrzetwarzaniaFilterForm()
+    #     context['filter'] = cz_filter
+    #     context['object_list'] = cz_filter.qs
+    #     return context
     
-    def get_queryset(self):
-        self.queryset = super().get_queryset()
-        self.filterset = filters.CzynnoscPrzetwarzaniaFilter(data=self.request.GET, queryset=self.queryset)
-        return self.filterset.qs
+    # def get_queryset(self):
+    #     self.queryset = super().get_queryset()
+    #     self.filterset = filters.CzynnoscPrzetwarzaniaFilter(data=self.request.GET, queryset=self.queryset)
+    #     return self.filterset.qs
 
-class CzynnoscPrzetwarzaniaRODODetailView(generic.DetailView):
-    model = models.CzynnoscPrzetwarzania
-    form_class = forms.CzynnoscPrzetwarzaniaForm
+class CzynnoscPrzetwarzaniaDODODetailView(generic.DetailView):
+    model = models.CzynnoscPrzetwarzaniaDODO
+    form_class = forms.CzynnoscPrzetwarzaniaDODOForm
     
-class CzynnoscPrzetwarzaniaRODODeleteView(generic.DeleteView):
+class CzynnoscPrzetwarzaniaDODODeleteView(generic.DeleteView):
     model = models.CzynnoscPrzetwarzania
     success_url = reverse_lazy("CzynnoscPrzetwarzania_list")
+
+class CzynnoscPrzetwarzaniaDODOCloneView(generic.View):
+    model = models.CzynnoscPrzetwarzaniaDODO
+
+    def post(self, request, pk):
+        # Pobierz obiekt do sklonowania
+        instance = get_object_or_404(models.CzynnoscPrzetwarzaniaDODO, pk=pk)
+
+        # Klonowanie obiektu
+        instance.clone()
+    
+        # Przekierowanie z powrotem do listy obiektów lub innej strony
+        return redirect('CzynnoscPrzetwarzaniaDODO_list')  
+
+class KategoriaCzynnosciPrzetwarzaniaDODOUpdateView(generic.UpdateView):
+    model = models.KategoriaCzynnosciPrzetwarzaniaDODO
+    form_class = forms.KategoriaCzynnosciPrzetwarzaniaDODOForm
+    pk_url_kwarg = "pk"
+    
+class KategoriaCzynnosciPrzetwarzaniaDODOCreateView(generic.CreateView):
+    model = models.KategoriaCzynnosciPrzetwarzaniaDODO
+    form_class = forms.KategoriaCzynnosciPrzetwarzaniaDODOForm
+
+class KategoriaCzynnosciPrzetwarzaniaDODOFilterView(FilterView):
+    model = models.KategoriaCzynnosciPrzetwarzaniaDODO
+    #context_object_name = 'KategoriaCzynnosciPrzetwarzania'
+    #filterset_class = filters.KategoriaCzynnosciPrzetwarzaniaFilter
+    #paginate_by = 10
+
+class KategoriaCzynnosciPrzetwarzaniaDODOListView(generic.ListView):
+    model = models.KategoriaCzynnosciPrzetwarzaniaDODO
+    #queryset = model.objects.filter(Rejestr=4)
+    form_class = forms.KategoriaCzynnosciPrzetwarzaniaDODOForm
+    #template_name = 'templates/czynnoscprzetwarzaniaKatDODO_list.html'
+    #context_object_name = 'czynnosci'
+    #filterset_class=filters.KategoriaCzynnosciPrzetwarzaniaFilter
+    # właczenie paginacji tabeli na n=10 wierszy
+    #jeśli wiersze są wyższe może być 6 lub mniej
+    #paginate_by = 10
+    
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     cz_filter = filters.KategoriaCzynnosciPrzetwarzaniaFilter(self.request.GET, queryset=self.queryset.all())
+    #     context['form'] = forms.KategoriaCzynnosciPrzetwarzaniaFilterForm()
+    #     context['filter'] = cz_filter
+    #     context['object_list'] = cz_filter.qs
+    #     return context
+    
+    # def get_queryset(self):
+    #     self.queryset = super().get_queryset()
+    #     self.filterset = filters.KategoriaCzynnosciPrzetwarzaniaFilter(data=self.request.GET, queryset=self.queryset)
+    #     return self.filterset.qs
+
+class KategoriaCzynnosciPrzetwarzaniaDODODetailView(generic.DetailView):
+    model = models.KategoriaCzynnosciPrzetwarzaniaDODO
+    form_class = forms.KategoriaCzynnosciPrzetwarzaniaDODOForm
+    
+class KategoriaCzynnosciPrzetwarzaniaDODODeleteView(generic.DeleteView):
+    model = models.KategoriaCzynnosciPrzetwarzaniaDODO
+    success_url = reverse_lazy("KategoriaCzynnosciPrzetwarzaniaDODO_list")
+
+class KategoriaCzynnosciPrzetwarzaniaDODOCloneView(generic.View):
+    model = models.KategoriaCzynnosciPrzetwarzaniaDODO
+
+    def post(self, request, pk):
+        # Pobierz obiekt do sklonowania
+        instance = get_object_or_404(models.KategoriaCzynnosciPrzetwarzaniaDODO, pk=pk)
+
+        # Klonowanie obiektu
+        instance.clone()
+    
+        # Przekierowanie z powrotem do listy obiektów lub innej strony
+        return redirect('KategoriaCzynnosciPrzetwarzaniaDODO_list')  
+
+class CzynnoscPrzetwarzaniaRODOUpdateView(generic.UpdateView):
+    model = models.CzynnoscPrzetwarzaniaRODO
+    form_class = forms.CzynnoscPrzetwarzaniaRODOForm
+    pk_url_kwarg = "pk"
+    
+class CzynnoscPrzetwarzaniaRODOCreateView(generic.CreateView):
+    model = models.CzynnoscPrzetwarzaniaRODO
+    form_class = forms.CzynnoscPrzetwarzaniaRODOForm
+
+class CzynnoscPrzetwarzaniaRODOFilterView(FilterView):
+    model = models.CzynnoscPrzetwarzaniaRODO
+    filterset_class = filters.CzynnoscPrzetwarzaniaFilter
+    #paginate_by = 10
+
+class CzynnoscPrzetwarzaniaRODOListView(generic.ListView):
+    #queryset = model.objects.filter(Rejestr=1)
+    model = models.CzynnoscPrzetwarzaniaRODO
+    form_class = forms.CzynnoscPrzetwarzaniaRODOForm
+    #template_name = 'templates/czynnoscprzetwarzania_list.html'
+    #context_object_name = 'czynnosci'
+    #filterset_class=filters.CzynnoscPrzetwarzaniaFilter
+    # właczenie paginacji tabeli na n=10 wierszy
+    #jeśli wiersze są wyższe może być 6 lub mniej
+    #paginate_by = 10
+    
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     cz_filter = filters.CzynnoscPrzetwarzaniaFilter(self.request.GET, queryset=self.queryset.all())
+    #     context['form'] = forms.CzynnoscPrzetwarzaniaFilterForm()
+    #     context['filter'] = cz_filter
+    #     context['object_list'] = cz_filter.qs
+    #     return context
+    
+    # def get_queryset(self):
+    #     self.queryset = super().get_queryset()
+    #     self.filterset = filters.CzynnoscPrzetwarzaniaFilter(data=self.request.GET, queryset=self.queryset)
+    #     return self.filterset.qs
+
+class CzynnoscPrzetwarzaniaRODODetailView(generic.DetailView):
+    model = models.CzynnoscPrzetwarzaniaRODO
+    form_class = forms.CzynnoscPrzetwarzaniaRODOForm
+    
+class CzynnoscPrzetwarzaniaRODODeleteView(generic.DeleteView):
+    model = models.CzynnoscPrzetwarzaniaRODO
+    success_url = reverse_lazy("CzynnoscPrzetwarzaniaRODO_list")
 
 class CzynnoscPrzetwarzaniaRODOCloneView(generic.View):
     model = models.CzynnoscPrzetwarzania
 
     def post(self, request, pk):
         # Pobierz obiekt do sklonowania
-        instance = get_object_or_404(models.CzynnoscPrzetwarzania, pk=pk)
+        instance = get_object_or_404(models.CzynnoscPrzetwarzaniaRODO, pk=pk)
 
         # Klonowanie obiektu
         instance.clone()
     
         # Przekierowanie z powrotem do listy obiektów lub innej strony
-        return redirect('CzynnoscPrzetwarzania_list')  
+        return redirect('CzynnoscPrzetwarzaniaRODO_list')  
+
+class KategoriaCzynnosciPrzetwarzaniaRODOUpdateView(generic.UpdateView):
+    model = models.KategoriaCzynnosciPrzetwarzaniaRODO
+    form_class = forms.KategoriaCzynnosciPrzetwarzaniaRODOForm
+    pk_url_kwarg = "pk"
+    
+class KategoriaCzynnosciPrzetwarzaniaRODOCreateView(generic.CreateView):
+    model = models.KategoriaCzynnosciPrzetwarzaniaRODO
+    form_class = forms.KategoriaCzynnosciPrzetwarzaniaRODOForm
+    #template_name = 'templates/czynnoscprzetwarzaniaRODO_list.html'
+
+class KategoriaCzynnosciPrzetwarzaniaRODOFilterView(FilterView):
+    model = models.CzynnoscPrzetwarzaniaRODO
+    #context_object_name = 'KategoriaCzynnosciPrzetwarzania'
+    #filterset_class = filters.KategoriaCzynnosciPrzetwarzaniaFilter
+    #paginate_by = 10
+
+class KategoriaCzynnosciPrzetwarzaniaRODOListView(generic.ListView):
+    model = models.CzynnoscPrzetwarzaniaRODO
+    form_class = forms.CzynnoscPrzetwarzaniaRODOForm
+    #queryset = model.objects.filter(Rejestr=2)
+    #template_name = 'templates/czynnoscprzetwarzaniaKatRODO_list.html'
+    #context_object_name = 'czynnosci'
+    #filterset_class=filters.CzynnoscPrzetwarzaniaForm
+    # właczenie paginacji tabeli na n=10 wierszy
+    #jeśli wiersze są wyższe może być 6 lub mniej
+    #paginate_by = 10
+    
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     cz_filter = filters.KategoriaCzynnosciPrzetwarzaniaFilter(self.request.GET, queryset=self.queryset.all())
+    #     context['form'] = forms.KategoriaCzynnosciPrzetwarzaniaFilterForm()
+    #     context['filter'] = cz_filter
+    #     context['object_list'] = cz_filter.qs
+    #     return context
+    
+    # def get_queryset(self):
+    #     self.queryset = super().get_queryset()
+    #     self.filterset = filters.KategoriaCzynnosciPrzetwarzaniaFilter(data=self.request.GET, queryset=self.queryset)
+    #     return self.filterset.qs
+
+class KategoriaCzynnosciPrzetwarzaniaRODODetailView(generic.DetailView):
+    model = models.KategoriaCzynnosciPrzetwarzaniaRODO
+    form_class = forms.KategoriaCzynnosciPrzetwarzaniaRODOForm
+    
+class KategoriaCzynnosciPrzetwarzaniaRODODeleteView(generic.DeleteView):
+    model = models.KategoriaCzynnosciPrzetwarzaniaRODO
+    success_url = reverse_lazy("KategoriaCzynnosciPrzetwarzaniaRODO_list")
+
+class KategoriaCzynnosciPrzetwarzaniaRODOCloneView(generic.View):
+    model = models.KategoriaCzynnosciPrzetwarzaniaRODO
+
+    def post(self, request, pk):
+        # Pobierz obiekt do sklonowania
+        instance = get_object_or_404(models.KategoriaCzynnosciPrzetwarzaniaRODO, pk=pk)
+
+        # Klonowanie obiektu
+        instance.clone()
+    
+        # Przekierowanie z powrotem do listy obiektów lub innej strony
+        return redirect('KategoriaCzynnosciPrzetwarzaniaRODO_list')  
 
 class KomorkaListView(generic.ListView):
     model = models.Komorka
@@ -248,11 +424,9 @@ class KomorkaListView(generic.ListView):
     #jeśli wiersze są wyższe może być 6 lub mniej
     paginate_by = 10
 
-
 class KomorkaCreateView(generic.CreateView):
     model = models.Komorka
     form_class = forms.KomorkaForm
-
 
 class KomorkaDetailView(generic.DetailView):
     model = models.Komorka

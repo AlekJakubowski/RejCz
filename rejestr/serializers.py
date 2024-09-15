@@ -41,78 +41,84 @@ class OrganizacjaSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.Organizacja
-        fields = [
-            "org_nazwa",
-            "org_skrot",
-            "org_active",
-            "org_adres",
-            "org_www",
-            "org_tel",
-            "org_email",
-            "org_iod_name",
-            "org_iod_email",
-        ]
+        fields = '__all__' 
+        # fields = [
+        #     "org_nazwa",
+        #     "org_skrot",
+        #     "org_active",
+        #     "org_adres",
+        #     "org_www",
+        #     "org_tel",
+        #     "org_email",
+        #     "org_iod_name",
+        #     "org_iod_email",
+        # ]
 
         
 class RejestrSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.Rejestr
-        fields = [
-            "rej_active",
-            "rej_nazwa",
-            "rej_opis",
-            "rej_zakres",
-            "Organizacja",
-        ]
+        fields = '__all__'
+        # fields = [
+        #     "rej_active",
+        #     "rej_nazwa",
+        #     "rej_opis",
+        #     "rej_zakres",
+        #     "Organizacja",
+        # ]
 
 
 class KomorkaSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.Komorka
-        fields = [
-            "kom_active",
-            "kom_symbol",
-            "kom_nazwa",
-            "kom_adres",
-            "kom_tel",
-            "kom_email",
-            "Organizacja",
-            "CzynnosciRealizowane",
-        ]
+        fields = '__all__'
+        # fields = [
+        #     "kom_active",
+        #     "kom_symbol",
+        #     "kom_nazwa",
+        #     "kom_adres",
+        #     "kom_tel",
+        #     "kom_email",
+        #     "Organizacja",
+        #     "CzynnosciRealizowane",
+        # ]
 
 
 class OkresRetencjiSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = models.OkresRetencji
-        fields = [
-            "okr_active",
-            "okr_nazwa",
-            "okr_opis_okresu",
-            "okr_lat_max",
-        ]
+        fields = '__all__'
+        # fields = [
+        #     "okr_active",
+        #     "okr_nazwa",
+        #     "okr_opis_okresu",
+        #     "okr_lat_max",
+        # ]
 
 class SposobPrzetwarzaniaSerializer(serializers.ModelSerializer):
    
     class Meta:
         model = models.SposobPrzetwarzania
-        fields = [
-            "sp_active",
-            "sp_skrot",
-            "sp_opis",
-        ]
+        fields = '__all__'
+        # fields = [
+        #     "sp_active",
+        #     "sp_skrot",
+        #     "sp_opis",
+        # ]
 
 class KategoriaOsobSerializer(serializers.ModelSerializer):
    
     class Meta:
         model = models.KategoriaOsob
-        fields = [
-            "ko_active",
-            "ko_skrot",
-            "ko_opis",
-        ]
+        fields = '__all__'
+        # fields = [
+        #     "ko_active",
+        #     "ko_skrot",
+        #     "ko_opis",
+        # ]
 
 
 class KategoriaOdbiorcowSerializer(serializers.ModelSerializer):

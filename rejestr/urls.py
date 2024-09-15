@@ -10,7 +10,6 @@ router = routers.DefaultRouter()
 router.register("Organizacja", api.OrganizacjaViewSet)
 router.register("Rejestr", api.RejestrViewSet)
 router.register("Komorka", api.KomorkaViewSet) 
-router.register("Rejestr", api.RejestrViewSet) 
 router.register("OkresRetencji", api.OkresRetencjiViewSet) 
 router.register("SposobPrzetwarzania", api.SposobPrzetwarzaniaViewSet) 
 router.register("KategoriaOsob", api.KategoriaOsobViewSet) 
@@ -18,46 +17,55 @@ router.register("KategoriaOdbiorcow", api.KategoriaOdbiorcowViewSet)
 router.register("KategoriaDanych", api.KategoriaDanychViewSet) 
 router.register("WysokieRyzyko", api.WysokieRyzykoViewSet) 
 router.register("PrzeslankaLegalnosci", api.PrzeslankaLegalnosciViewSet) 
-router.register("CzynnoscPrzetwarzania", api.CzynnoscPrzetwarzaniaViewSet)
-router.register("CzynnoscPrzetwarzaniaRODO", api.CzynnoscPrzetwarzaniaRODOViewSet)
-router.register("KategoriaPrzetwarzaniaRODO", api.KategoriaPrzetwarzaniaRODOViewSet)
-router.register("CzynnoscPrzetwarzaniaDODO", api.CzynnoscPrzetwarzaniaDODOViewSet)
-router.register("KategoriaPrzetwarzaniaDODO", api.KategoriaPrzetwarzaniaDODOViewSet)
-
-
+router.register("CzynnoscPrzetwarzania", api.CzynnoscPrzetwarzaniaViewSet, basename='WszystkieCzynnosciPrzetwarzania')
+router.register("CzynnoscPrzetwarzaniaRODO", api.CzynnoscPrzetwarzaniaRODOViewSet, basename='CzynnosciPrzetwarzaniaRODO')
+router.register("KategoriaCzynnosciPrzetwarzaniaRODO", api.KategoriaCzynnosciPrzetwarzaniaRODOViewSet, basename='KategorieCzynnosciPrzetwarzaniaRODO')
+router.register("CzynnoscPrzetwarzaniaDODO", api.CzynnoscPrzetwarzaniaDODOViewSet, basename='CzynnosciPrzetwarzaniaDODO')
+router.register("KategoriaCzynnosciPrzetwarzaniaDODO", api.KategoriaCzynnosciPrzetwarzaniaDODOViewSet, basename='KategorieCzynnosciPrzetwarzaniaDODO')
 
 urlpatterns = (
-    path("api/v1/", include(router.urls)),
+    #path("api/v1/", include(router.urls)),
     #path("", include(router.urls)),
-    path("CzynnoscPrzetwarzania/", views.CzynnoscPrzetwarzaniaListView.as_view(), name="CzynnoscPrzetwarzania_list"),
-    path("CzynnoscPrzetwarzania/create/", views.CzynnoscPrzetwarzaniaCreateView.as_view(), name="CzynnoscPrzetwarzania_create"),
-    path("CzynnoscPrzetwarzania/detail/<int:pk>/", views.CzynnoscPrzetwarzaniaDetailView.as_view(), name="CzynnoscPrzetwarzania_detail"),
-    path("CzynnoscPrzetwarzania/update/<int:pk>/", views.CzynnoscPrzetwarzaniaUpdateView.as_view(), name="CzynnoscPrzetwarzania_update"),
-    path("CzynnoscPrzetwarzania/delete/<int:pk>/", views.CzynnoscPrzetwarzaniaDeleteView.as_view(), name="CzynnoscPrzetwarzania_delete"),
-    path("CzynnoscPrzetwarzania/pdfdetail/<int:pk>/", views.CzynnoscPrzetwarzaniaDetailPdfView.as_view(), name="CzynnoscPrzetwarzania_pdfdetail"),
+    # path("CzynnoscPrzetwarzania/", views.CzynnoscPrzetwarzaniaListView.as_view(), name="CzynnoscPrzetwarzania_list"),
+    # path("CzynnoscPrzetwarzania/create/", views.CzynnoscPrzetwarzaniaCreateView.as_view(), name="CzynnoscPrzetwarzania_create"),
+    # path("CzynnoscPrzetwarzania/detail/<int:pk>/", views.CzynnoscPrzetwarzaniaDetailView.as_view(), name="CzynnoscPrzetwarzania_detail"),
+    # path("CzynnoscPrzetwarzania/update/<int:pk>/", views.CzynnoscPrzetwarzaniaUpdateView.as_view(), name="CzynnoscPrzetwarzania_update"),
+    # path("CzynnoscPrzetwarzania/delete/<int:pk>/", views.CzynnoscPrzetwarzaniaDeleteView.as_view(), name="CzynnoscPrzetwarzania_delete"),
+    # path("CzynnoscPrzetwarzania/pdfdetail/<int:pk>/", views.CzynnoscPrzetwarzaniaDetailPdfView.as_view(), name="CzynnoscPrzetwarzania_pdfdetail"),
      
-    # path("CzynnoscPrzetwarzaniaDODO/", views.CzynnoscPrzetwarzaniaDODOListView.as_view(), name="CzynnoscPrzetwarzania_list"),
-    # path("CzynnoscPrzetwarzaniaDODO/create/", views.CzynnoscPrzetwarzaniaDODOCreateView.as_view(), name="CzynnoscPrzetwarzania_create"),
-    # path("CzynnoscPrzetwarzaniaDODO/detail/<int:pk>/", views.CzynnoscPrzetwarzaniaDODODetailView.as_view(), name="CzynnoscPrzetwarzania_detail"),
-    # path("CzynnoscPrzetwarzaniaDODO/update/<int:pk>/", views.CzynnoscPrzetwarzaniaDODOUpdateView.as_view(), name="CzynnoscPrzetwarzania_update"),
-    # path("CzynnoscPrzetwarzaniaDODO/delete/<int:pk>/", views.CzynnoscPrzetwarzaniaDODODeleteView.as_view(), name="CzynnoscPrzetwarzania_delete"),
-    # path("CzynnoscPrzetwarzaniaDODO/pdfdetail/<int:pk>/", views.CzynnoscPrzetwarzaniaDODODetailPdfView.as_view(), name="CzynnoscPrzetwarzania_pdfdetail"),
+    path("CzynnoscPrzetwarzaniaDODO/", views.CzynnoscPrzetwarzaniaDODOListView.as_view(), name="CzynnoscPrzetwarzaniaDODO_list"),
+    path("CzynnoscPrzetwarzaniaDODO/create/", views.CzynnoscPrzetwarzaniaDODOCreateView.as_view(), name="CzynnoscPrzetwarzaniaDODO_create"),
+    path("CzynnoscPrzetwarzaniaDODO/detail/<int:pk>/", views.CzynnoscPrzetwarzaniaDODODetailView.as_view(), name="CzynnoscPrzetwarzaniaDODO_detail"),
+    path("CzynnoscPrzetwarzaniaDODO/update/<int:pk>/", views.CzynnoscPrzetwarzaniaDODOUpdateView.as_view(), name="CzynnoscPrzetwarzaniaDODO_update"),
+    path("CzynnoscPrzetwarzaniaDODO/delete/<int:pk>/", views.CzynnoscPrzetwarzaniaDODODeleteView.as_view(), name="CzynnoscPrzetwarzaniaDODO_delete"),
+    #path("CzynnoscPrzetwarzaniaDODO/pdfdetail/<int:pk>/", views.CzynnoscPrzetwarzaniaDODODetailPdfView.as_view(), name="CzynnoscPrzetwarzania_pdfdetail"),
+    path('clone/<int:pk>/', views.CzynnoscPrzetwarzaniaDODOCloneView.as_view(), name='CzynnoscPrzetwarzaniaDODO_clone'),
+    
+    path("KategoriaCzynnosciPrzetwarzaniaDODO/", views.KategoriaCzynnosciPrzetwarzaniaDODOListView.as_view(), name="KategoriaCzynnosciPrzetwarzaniaKatDODO_list"),
+    path("KategoriaCzynnosciPrzetwarzaniaDODO/create/", views.KategoriaCzynnosciPrzetwarzaniaDODOCreateView.as_view(), name="KategoriaCzynnosciPrzetwarzaniaDODO_create"),
+    path("KategoriaCzynnosciPrzetwarzaniaDODO/detail/<int:pk>/", views.KategoriaCzynnosciPrzetwarzaniaDODODetailView.as_view(), name="KategoriaCzynnosciPrzetwarzaniaDODO_detail"),
+    path("KategoriaCzynnosciPrzetwarzaniaDODO/update/<int:pk>/", views.KategoriaCzynnosciPrzetwarzaniaDODOUpdateView.as_view(), name="KategoriaCzynnosciPrzetwarzaniaDODO_update"),
+    path("KategoriaCzynnosciPrzetwarzaniaDODO/delete/<int:pk>/", views.KategoriaCzynnosciPrzetwarzaniaDODODeleteView.as_view(), name="KategoriaCzynnosciPrzetwarzaniaDODO_delete"),
+    #path("KategoriaCzynnosciPrzetwarzaniaDODO/pdfdetail/<int:pk>/", views.KategoriaCzynnosciPrzetwarzaniaDODODetailPdfView.as_view(), name="KategoriaCzynnosciPrzetwarzania_pdfdetail"),
+    path('clone/<int:pk>/', views.KategoriaCzynnosciPrzetwarzaniaDODOCloneView.as_view(), name='KategoriaCzynnosciPrzetwarzania_clone'),
 
     #path("CzynnoscPrzetwarzaniaRODO/", views.CzynnoscPrzetwarzaniaRODOFilterView.as_view(), name="CzynnoscPrzetwarzania_filteredlist"),
-    path('clone/<int:pk>/', views.CzynnoscPrzetwarzaniaRODOCloneView.as_view(), name='CzynnoscPrzetwarzania_clone'),
-    path("CzynnoscPrzetwarzaniaRODO/", views.CzynnoscPrzetwarzaniaRODOListView.as_view(), name="CzynnoscPrzetwarzania_list"),
-    path("CzynnoscPrzetwarzaniaRODO/create/", views.CzynnoscPrzetwarzaniaRODOCreateView.as_view(), name="CzynnoscPrzetwarzania_create"),
-    path("CzynnoscPrzetwarzaniaRODO/detail/<int:pk>/", views.CzynnoscPrzetwarzaniaRODODetailView.as_view(), name="CzynnoscPrzetwarzania_detail"),
-    path("CzynnoscPrzetwarzaniaRODO/update/<int:pk>/", views.CzynnoscPrzetwarzaniaRODOUpdateView.as_view(), name="CzynnoscPrzetwarzania_update"),
-    path("CzynnoscPrzetwarzaniaRODO/delete/<int:pk>/", views.CzynnoscPrzetwarzaniaRODODeleteView.as_view(), name="CzynnoscPrzetwarzania_delete"),
+    path("CzynnoscPrzetwarzaniaRODO/", views.CzynnoscPrzetwarzaniaRODOListView.as_view(), name="CzynnoscPrzetwarzaniaRODO_list"),
+    path("CzynnoscPrzetwarzaniaRODO/create/", views.CzynnoscPrzetwarzaniaRODOCreateView.as_view(), name="CzynnoscPrzetwarzaniaRODO_create"),
+    path("CzynnoscPrzetwarzaniaRODO/detail/<int:pk>/", views.CzynnoscPrzetwarzaniaRODODetailView.as_view(), name="CzynnoscPrzetwarzaniaRODO_detail"),
+    path("CzynnoscPrzetwarzaniaRODO/update/<int:pk>/", views.CzynnoscPrzetwarzaniaRODOUpdateView.as_view(), name="CzynnoscPrzetwarzaniaRODO_update"),
+    path("CzynnoscPrzetwarzaniaRODO/delete/<int:pk>/", views.CzynnoscPrzetwarzaniaRODODeleteView.as_view(), name="CzynnoscPrzetwarzaniaRODO_delete"),
+    path('clone/<int:pk>/', views.CzynnoscPrzetwarzaniaRODOCloneView.as_view(), name='CzynnoscPrzetwarzaniaRODO_clone'),
     #path("CzynnoscPrzetwarzaniaRODO/pdfdetail/<int:pk>/", views.CzynnoscPrzetwarzaniaRODODetailPdfView.as_view(), name="CzynnoscPrzetwarzania_pdfdetail"),
 
-    # path("CzynnoscPrzetwarzaniaDODO/", views.CzynnoscPrzetwarzaniaDODOListView.as_view(), name="CzynnoscPrzetwarzania_list"),
-    # path("CzynnoscPrzetwarzaniaDODO/create/", views.CzynnoscPrzetwarzaniaDODOCreateView.as_view(), name="CzynnoscPrzetwarzania_create"),
-    # path("CzynnoscPrzetwarzaniaDODO/detail/<int:pk>/", views.CzynnoscPrzetwarzaniaDODODetailView.as_view(), name="CzynnoscPrzetwarzania_detail"),
-    # path("CzynnoscPrzetwarzaniaDODO/update/<int:pk>/", views.CzynnoscPrzetwarzaniaDODOUpdateView.as_view(), name="CzynnoscPrzetwarzania_update"),
-    # path("CzynnoscPrzetwarzaniaDODO/delete/<int:pk>/", views.CzynnoscPrzetwarzaniaDODODeleteView.as_view(), name="CzynnoscPrzetwarzania_delete"),
-    # path("CzynnoscPrzetwarzaniaDODO/pdfdetail/<int:pk>/", views.CzynnoscPrzetwarzaniaDODODetailPdfView.as_view(), name="CzynnoscPrzetwarzania_pdfdetail"),
+    #path("KategoriaCzynnosciPrzetwarzaniaRODO/", views.KategoriaCzynnosciPrzetwarzaniaRODOFilterView.as_view(), name="KategoriaCzynnosciPrzetwarzania_filteredlist"),
+    path("KategoriaCzynnosciPrzetwarzaniaRODO/", views.KategoriaCzynnosciPrzetwarzaniaRODOListView.as_view(), name="CzynnoscPrzetwarzaniaKatRODO_list"),
+    path("KategoriaCzynnosciPrzetwarzaniaRODO/create/", views.KategoriaCzynnosciPrzetwarzaniaRODOCreateView.as_view(), name="CzynnoscPrzetwarzaniaRODO_create"),
+    path("KategoriaCzynnosciPrzetwarzaniaRODO/detail/<int:pk>/", views.KategoriaCzynnosciPrzetwarzaniaRODODetailView.as_view(), name="CzynnoscPrzetwarzaniaRODO_detail"),
+    path("KategoriaCzynnosciPrzetwarzaniaRODO/update/<int:pk>/", views.KategoriaCzynnosciPrzetwarzaniaRODOUpdateView.as_view(), name="CzynnoscPrzetwarzaniaRODO_update"),
+    path("KategoriaCzynnosciPrzetwarzaniaRODO/delete/<int:pk>/", views.KategoriaCzynnosciPrzetwarzaniaRODODeleteView.as_view(), name="CzynnoscPrzetwarzaniaRODO_delete"),
+    path('clone/<int:pk>/', views.KategoriaCzynnosciPrzetwarzaniaRODOCloneView.as_view(), name='KategoriaCzynnosciPrzetwarzaniaRODO_clone'),
+    #path("KategoriaCzynnosciPrzetwarzaniaRODO/pdfdetail/<int:pk>/", views.KategoriaCzynnosciPrzetwarzaniaRODODetailPdfView.as_view(), name="KategoriaCzynnosciPrzetwarzania_pdfdetail"),
 
     path("Rejestr/", views.RejestrListView.as_view(), name="Rejestr_list"),
     path("Rejestr/create/", views.RejestrCreateView.as_view(), name="Rejestr_create"),

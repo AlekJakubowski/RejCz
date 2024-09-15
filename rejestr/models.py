@@ -594,12 +594,82 @@ class CzynnoscPrzetwarzania(models.Model):
     def get_clone_url(self):
         return reverse("CzynnoscPrzetwarzania_clone", args=(self.pk,))
     
-    # @staticmethod
-    # def get_htmx_create_url():
-    #     return reverse("CzynnoscPrzetwarzania_htmx_create")
 
-    # def get_htmx_delete_url(self):
-    #     return reverse("CzynnoscPrzetwarzania_htmx_delete", args=(self.pk,))
+class CzynnoscPrzetwarzaniaRODOManager(models.Manager):
+    def get_queryset(self):
+        return super(CzynnoscPrzetwarzaniaRODOManager, self).get_queryset().filter(Rejestr=1)
+
+class CzynnoscPrzetwarzaniaRODO(CzynnoscPrzetwarzania):
+    objects = CzynnoscPrzetwarzaniaRODOManager
+    
+    class Meta:
+        proxy = True
+
+    def get_absolute_url(self):
+        return reverse("CzynnoscPrzetwarzaniaRODO_detail", args=(self.pk,))
+
+    def get_update_url(self):
+        return reverse("CzynnoscPrzetwarzaniaRODO_update", args=(self.pk,))
+
+    def get_clone_url(self):
+        return reverse("CzynnoscPrzetwarzaniaRODO_clone", args=(self.pk,))
+
+class KategoriaCzynnosciPrzetwarzaniaRODOManager(models.Manager):
+    def get_queryset(self):
+        return super(KategoriaCzynnosciPrzetwarzaniaRODOManager, self).get_queryset().filter(Rejestr=2)
+
+class KategoriaCzynnosciPrzetwarzaniaRODO(CzynnoscPrzetwarzania):
+    manager = KategoriaCzynnosciPrzetwarzaniaRODOManager
+    
+    class Meta:
+        proxy = True
+
+    def get_absolute_url(self):
+        return reverse("KategoriaCzynnosciPrzetwarzaniaRODO_detail", args=(self.pk,))
+
+    def get_update_url(self):
+        return reverse("KategoriaCzynnosciPrzetwarzaniaRODO_update", args=(self.pk,))
+
+    def get_clone_url(self):
+        return reverse("KategoriaCzynnosciPrzetwarzaniaRODO_clone", args=(self.pk,))
+
+class CzynnoscPrzetwarzaniaDODOManager(models.Manager):
+    def get_queryset(self):
+        return super(CzynnoscPrzetwarzaniaDODOManager, self).get_queryset().filter(Rejestr=3)
+
+class CzynnoscPrzetwarzaniaDODO(CzynnoscPrzetwarzania):
+    manager = CzynnoscPrzetwarzaniaDODOManager
+
+    class Meta:
+        proxy = True
+
+    def get_absolute_url(self):
+        return reverse("CzynnoscPrzetwarzaniaDODO_detail", args=(self.pk,))
+
+    def get_update_url(self):
+        return reverse("CzynnoscPrzetwarzaniaDODO_update", args=(self.pk,))
+
+    def get_clone_url(self):
+        return reverse("CzynnoscPrzetwarzaniaDODO_clone", args=(self.pk,))
+
+class KategoriaCzynnosciPrzetwarzaniaDODOManager(models.Manager):
+    def get_queryset(self):
+        return super(KategoriaCzynnosciPrzetwarzaniaDODOManager, self).get_queryset().filter(Rejestr=4)
+
+class KategoriaCzynnosciPrzetwarzaniaDODO(CzynnoscPrzetwarzania):
+    manager = KategoriaCzynnosciPrzetwarzaniaDODOManager
+    
+    class Meta:
+        proxy = True
+
+    def get_absolute_url(self):
+        return reverse("KategoriaCzynnosciPrzetwarzaniaDODO_detail", args=(self.pk,))
+
+    def get_update_url(self):
+        return reverse("KategoriaCzynnosciPrzetwarzaniaDODO_update", args=(self.pk,))
+
+    def get_clone_url(self):
+        return reverse("KategoriaCzynnosciPrzetwarzaniaDODO_clone", args=(self.pk,))
 
 
 class CzynnosciPrzetwarzania(models.Model):
@@ -607,6 +677,7 @@ class CzynnosciPrzetwarzania(models.Model):
                                       null=True,
                                       related_name="czp_czynnosc_p",
                                       on_delete=models.CASCADE)
+    
     czp_komorka = models.ForeignKey(Komorka, 
                                     null=True,
                                     related_name="czp_komorka_p",
