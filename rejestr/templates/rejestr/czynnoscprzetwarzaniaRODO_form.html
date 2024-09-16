@@ -1,0 +1,15 @@
+
+{% extends "./czynnoscprzetwarzania_form.html" %}
+
+{% block buttons %}
+    <div class="form-group row">
+        <div class="col-3">
+            <input type="submit" value="Zapisz" class="btn btn-primary">
+        </div>
+        <div class="col-3">
+            <p>
+                <a class="btn btn-light" href="{% url 'CzynnoscPrzetwarzaniaRODO_list' %}">Anuluj</a>
+            </p>
+        </div>
+    </div>
+ {% endblock %}
