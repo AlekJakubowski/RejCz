@@ -24,6 +24,15 @@
     <tr><td><strong>Opis celu przetwarzania</strong></td><td>{{ object.czn_opis_celu }}</td></tr>
     <tr><td><strong>Podstawa prawna dane wrazliwe</strong></td><td>{{ object.czn_przepis_wrazliwe }}</td></tr>
     <tr><td><strong>Okres retencji</strong></td><td>{{ object.OkresRetencji }}</td></tr>
+    <tr><td><strong>Sposoby przetwarzania</strong></td><td>
+      {% if object.SposobyPrzetwarzania.all %}
+        {% for sposob in object.SposobyPrzetwarzania.all %}
+          <p>{{ sposob }}</p> 
+        {% endfor %}
+      {% else %}
+        <p>-- BRAK DANYCH --</p> 
+      {% endif%}
+    </td></tr>
     <tr><td><strong>Administrator</strong></td><td>
       {% if object.Administratorzy.all %}
         {% for administrator in object.Administratorzy.all %}
@@ -78,24 +87,6 @@
         <p>-- BRAK DANYCH --</p> 
       {% endif%}
     </td></tr>
-    <tr><td><strong>Operacje przetwarzania</strong></td><td>
-      {% if object.OperacjePrzetwarzania.all %}
-        {% for operacja in object.OperacjePrzetwarzania.all %}
-          <p>{{ operacja }}</p> 
-        {% endfor %}
-      {% else %}
-        <p>-- BRAK DANYCH --</p> 
-      {% endif%}
-    </td></tr>
-    <tr><td><strong>Sposoby przetwarzania</strong></td><td>
-      {% if object.SposobyPrzetwarzania.all %}
-        {% for sposob in object.SposobyPrzetwarzania.all %}
-          <p>{{ sposob }}</p> 
-        {% endfor %}
-      {% else %}
-        <p>-- BRAK DANYCH --</p> 
-      {% endif%}
-    </td></tr>
     <tr><td><strong>Przesłanki wysokiego ryzyka</strong></td><td>
       {% if object.WysokieRyzyka.all %}
       {% for ws in object.WysokieRyzyka.all %}
@@ -112,7 +103,13 @@
     <tr><td> </td><td> </td></tr>
   </table>
 
-	{% block buttons %}{% endblock %}
+<div class="form-group row">
+  <div class="col-3">
+    <a class="btn btn-primary" href="{{object.get_update_url}}">ZMIEŃ</a>
+  </div>
+  <div class="col-3">
+      <a class="btn btn-primary" href="{% url 'CzynnoscPrzetwarzania_list' %}">Zatwierdź</a>
+  </div>
 </div>
 
 {% endblock %}
