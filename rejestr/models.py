@@ -554,10 +554,14 @@ class CzynnoscPrzetwarzania(models.Model):
             for x in PrzeL_rs:
                 x.clone(new_instance)
 
-            SposP_rs = SposobyPrzetwarzania.objects.filter(spp_czynnoscp=self.pk)
-            for x in SposP_rs:
+            OPerP_rs = SposobyPrzetwarzania.objects.filter(spp_czynnoscp=self.pk)
+            for x in OPerP_rs:
                 x.clone(new_instance)
                 
+            OPerP_rs = OperacjePrzetwarzania.objects.filter(opp_czynnoscp=self.pk)
+            for x in OPerP_rs:
+                x.clone(new_instance)
+               
             KatOs_rs = KategorieOsob.objects.filter(kos_czynnoscp=self.pk)
             for x in KatOs_rs:
                 x.clone(new_instance)
@@ -859,7 +863,7 @@ class OperacjePrzetwarzania(models.Model):
                                     on_delete=models.CASCADE)
    
     def clone(self, new_czynn):
-        oppl = PrzeslankiLegalnosci(
+        oppl = OperacjePrzetwarzania(
             opp_czynnoscp = new_czynn,
             opp_operacjap = self.opp_operacjap 
         )
