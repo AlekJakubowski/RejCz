@@ -3,7 +3,7 @@
   "configurations": [
     {
       "name": "Python: bieżący plik",
-      "type": "python",
+      "type": "debugpy",
       "request": "launch",
       "program": "${file}",
       "console": "integratedTerminal",
@@ -11,14 +11,14 @@
     },
     {
       "name": "Python: File",
-      "type": "python",
+      "type": "debugpy",
       "request": "launch",
       "program": "${file}",
       "justMyCode": true
     },
     {
       "name": "Django",
-      "type": "python",
+      "type": "debugpy",
       "request": "launch",
       "stopOnEntry": false,
       "program": "${workspaceRoot}/manage.py",
