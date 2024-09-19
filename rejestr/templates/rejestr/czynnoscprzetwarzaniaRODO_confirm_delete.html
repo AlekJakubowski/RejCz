@@ -1,0 +1,22 @@
+
+{% extends "base.html" %}
+{% block content %}
+<form method="post">
+  {% csrf_token %}
+  <div class="alert alert-danger" role="alert">
+    <h4 class="alert-heading">Usuwanie czynności przetwarzania RODO!</h4>
+    <p class="fs-4">Czy na pewno usunąć czynność przetwarzania: "{{ object }}"?</p>
+    <hr>
+    <div class="form-group row">
+      <div class="col-3">
+        <input class="btn btn-danger" value="Usuń czynność przetwarzania RODO" type="submit">
+      </div>
+      <div class="col-3">
+        <a class="btn btn-primary" href="{% url 'CzynnoscPrzetwarzaniaRODO_list' %}">Anuluj</a>
+      </div>
+    </div>
+  </div>
+
+
+</form>
+{% endblock %}
