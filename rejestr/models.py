@@ -579,9 +579,7 @@ class CzynnoscPrzetwarzania(models.Model):
                 x.clone(new_instance)
             
         return new_instance
-
-    
-
+ 
     class Meta:
         #abstract = True
         pass
@@ -641,12 +639,7 @@ class CzynnoscPrzetwarzaniaDODO(CzynnoscPrzetwarzania):
     def get_clone_url(self):
         return reverse("CzynnoscPrzetwarzaniaDODO_clone", args=(self.pk,))
 
-# class KategoriaCzynnosciPrzetwarzaniaDODOManager(models.Manager):
-#     def get_queryset(self):
-#         return super(KategoriaCzynnosciPrzetwarzaniaDODOManager, self).get_queryset().filter(Rejestr=4)
-
 class KategoriaCzynnosciPrzetwarzaniaDODO(CzynnoscPrzetwarzania):
-    #manager = KategoriaCzynnosciPrzetwarzaniaDODOManager
     
     class Meta:
         proxy = True
@@ -656,9 +649,6 @@ class KategoriaCzynnosciPrzetwarzaniaDODO(CzynnoscPrzetwarzania):
 
     def get_update_url(self):
         return reverse("KategoriaCzynnosciPrzetwarzaniaDODO_update", args=(self.pk,))
-
-    # def get_clone_url(self):
-    #     return reverse("KategoriaCzynnosciPrzetwarzaniaDODO_clone", args=(self.pk,))
 
 
 class CzynnosciPrzetwarzania(models.Model):
