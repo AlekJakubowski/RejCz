@@ -5,6 +5,7 @@
 
 {% block content %}
 
+{% block caption %}{% endblock %}
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{form.errors}}
