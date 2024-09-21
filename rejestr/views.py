@@ -186,7 +186,7 @@ class CzynnoscPrzetwarzaniaDODOUpdateView(generic.UpdateView):
 class CzynnoscPrzetwarzaniaDODOCreateView(generic.CreateView):
     model = models.CzynnoscPrzetwarzaniaDODO
     form_class = forms.CzynnoscPrzetwarzaniaDODOForm
-
+    
 class CzynnoscPrzetwarzaniaDODOFilterView(FilterView):
     model = models.CzynnoscPrzetwarzaniaDODO
     #filterset_class = filters.CzynnoscPrzetwarzaniaFilter
@@ -194,35 +194,21 @@ class CzynnoscPrzetwarzaniaDODOFilterView(FilterView):
 
 class CzynnoscPrzetwarzaniaDODOListView(generic.ListView):
     model = models.CzynnoscPrzetwarzaniaDODO
-    queryset = model.objects.filter(Rejestr=3)
-    form_class = forms.CzynnoscPrzetwarzaniaForm
-    #template_name = 'templates/czynnoscprzetwarzaniaDODO_list.html'
-    #context_object_name = 'czynnosci'
-    filterset_class=filters.CzynnoscPrzetwarzaniaFilter
+    queryset = model.objects.filter(Rejestr=3).order_by('czn_pozycja_rej')
+    form_class = forms.CzynnoscPrzetwarzaniaDODOForm
+    #filterset_class=filters.CzynnoscPrzetwarzaniaFilter
     # właczenie paginacji tabeli na n=10 wierszy
     #jeśli wiersze są wyższe może być 6 lub mniej
     #paginate_by = 10
-    
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     cz_filter = filters.CzynnoscPrzetwarzaniaFilter(self.request.GET, queryset=self.queryset.all())
-    #     context['form'] = forms.CzynnoscPrzetwarzaniaFilterForm()
-    #     context['filter'] = cz_filter
-    #     context['object_list'] = cz_filter.qs
-    #     return context
-    
-    # def get_queryset(self):
-    #     self.queryset = super().get_queryset()
-    #     self.filterset = filters.CzynnoscPrzetwarzaniaFilter(data=self.request.GET, queryset=self.queryset)
-    #     return self.filterset.qs
+
 
 class CzynnoscPrzetwarzaniaDODODetailView(generic.DetailView):
     model = models.CzynnoscPrzetwarzaniaDODO
     form_class = forms.CzynnoscPrzetwarzaniaDODOForm
     
 class CzynnoscPrzetwarzaniaDODODeleteView(generic.DeleteView):
-    model = models.CzynnoscPrzetwarzania
-    success_url = reverse_lazy("CzynnoscPrzetwarzania_list")
+    model = models.CzynnoscPrzetwarzaniaDODO
+    success_url = reverse_lazy("CzynnoscPrzetwarzaniaDODO_list")
 
 class CzynnoscPrzetwarzaniaDODOCloneView(generic.View):
     model = models.CzynnoscPrzetwarzaniaDODO
@@ -254,27 +240,14 @@ class KategoriaCzynnosciPrzetwarzaniaDODOFilterView(FilterView):
 
 class KategoriaCzynnosciPrzetwarzaniaDODOListView(generic.ListView):
     model = models.KategoriaCzynnosciPrzetwarzaniaDODO
-    #queryset = model.objects.filter(Rejestr=4)
+    queryset = model.objects.filter(Rejestr=4).order_by('czn_pozycja_rej')
     form_class = forms.KategoriaCzynnosciPrzetwarzaniaDODOForm
-    #template_name = 'templates/czynnoscprzetwarzaniaKatDODO_list.html'
     #context_object_name = 'czynnosci'
     #filterset_class=filters.KategoriaCzynnosciPrzetwarzaniaFilter
     # właczenie paginacji tabeli na n=10 wierszy
     #jeśli wiersze są wyższe może być 6 lub mniej
     #paginate_by = 10
-    
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     cz_filter = filters.KategoriaCzynnosciPrzetwarzaniaFilter(self.request.GET, queryset=self.queryset.all())
-    #     context['form'] = forms.KategoriaCzynnosciPrzetwarzaniaFilterForm()
-    #     context['filter'] = cz_filter
-    #     context['object_list'] = cz_filter.qs
-    #     return context
-    
-    # def get_queryset(self):
-    #     self.queryset = super().get_queryset()
-    #     self.filterset = filters.KategoriaCzynnosciPrzetwarzaniaFilter(data=self.request.GET, queryset=self.queryset)
-    #     return self.filterset.qs
+        
 
 class KategoriaCzynnosciPrzetwarzaniaDODODetailView(generic.DetailView):
     model = models.KategoriaCzynnosciPrzetwarzaniaDODO
@@ -305,6 +278,8 @@ class CzynnoscPrzetwarzaniaRODOUpdateView(generic.UpdateView):
 class CzynnoscPrzetwarzaniaRODOCreateView(generic.CreateView):
     model = models.CzynnoscPrzetwarzaniaRODO
     form_class = forms.CzynnoscPrzetwarzaniaRODOForm
+    #form_class.Rejestr.initial = 1
+    #pass
 
 class CzynnoscPrzetwarzaniaRODOFilterView(FilterView):
     model = models.CzynnoscPrzetwarzaniaRODO
@@ -312,10 +287,9 @@ class CzynnoscPrzetwarzaniaRODOFilterView(FilterView):
     #paginate_by = 10
 
 class CzynnoscPrzetwarzaniaRODOListView(generic.ListView):
-    #queryset = model.objects.filter(Rejestr=1)
     model = models.CzynnoscPrzetwarzaniaRODO
+    queryset = model.objects.filter(Rejestr = 1).order_by('czn_pozycja_rej')
     form_class = forms.CzynnoscPrzetwarzaniaRODOForm
-    #template_name = 'templates/czynnoscprzetwarzania_list.html'
     #context_object_name = 'czynnosci'
     #filterset_class=filters.CzynnoscPrzetwarzaniaFilter
     # właczenie paginacji tabeli na n=10 wierszy
@@ -367,15 +341,15 @@ class KategoriaCzynnosciPrzetwarzaniaRODOCreateView(generic.CreateView):
     #template_name = 'templates/czynnoscprzetwarzaniaRODO_list.html'
 
 class KategoriaCzynnosciPrzetwarzaniaRODOFilterView(FilterView):
-    model = models.CzynnoscPrzetwarzaniaRODO
+    model = models.KategoriaCzynnosciPrzetwarzaniaRODO
     #context_object_name = 'KategoriaCzynnosciPrzetwarzania'
     #filterset_class = filters.KategoriaCzynnosciPrzetwarzaniaFilter
     #paginate_by = 10
 
 class KategoriaCzynnosciPrzetwarzaniaRODOListView(generic.ListView):
-    model = models.CzynnoscPrzetwarzaniaRODO
+    model = models.KategoriaCzynnosciPrzetwarzaniaRODO
+    queryset = model.objects.filter(Rejestr=2).order_by('czn_pozycja_rej')
     form_class = forms.CzynnoscPrzetwarzaniaRODOForm
-    #queryset = model.objects.filter(Rejestr=2)
     #template_name = 'templates/czynnoscprzetwarzaniaKatRODO_list.html'
     #context_object_name = 'czynnosci'
     #filterset_class=filters.CzynnoscPrzetwarzaniaForm
@@ -383,19 +357,6 @@ class KategoriaCzynnosciPrzetwarzaniaRODOListView(generic.ListView):
     #jeśli wiersze są wyższe może być 6 lub mniej
     #paginate_by = 10
     
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     cz_filter = filters.KategoriaCzynnosciPrzetwarzaniaFilter(self.request.GET, queryset=self.queryset.all())
-    #     context['form'] = forms.KategoriaCzynnosciPrzetwarzaniaFilterForm()
-    #     context['filter'] = cz_filter
-    #     context['object_list'] = cz_filter.qs
-    #     return context
-    
-    # def get_queryset(self):
-    #     self.queryset = super().get_queryset()
-    #     self.filterset = filters.KategoriaCzynnosciPrzetwarzaniaFilter(data=self.request.GET, queryset=self.queryset)
-    #     return self.filterset.qs
-
 class KategoriaCzynnosciPrzetwarzaniaRODODetailView(generic.DetailView):
     model = models.KategoriaCzynnosciPrzetwarzaniaRODO
     form_class = forms.KategoriaCzynnosciPrzetwarzaniaRODOForm
