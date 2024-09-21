@@ -37,6 +37,7 @@ class CzynnoscPrzetwarzaniaSerializer(serializers.ModelSerializer):
         #     "last_updated",
         # ]
 
+
 class OrganizacjaSerializer(serializers.ModelSerializer):
 
     class Meta:
