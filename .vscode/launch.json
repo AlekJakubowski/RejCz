@@ -22,6 +22,7 @@
       "request": "launch",
       "stopOnEntry": false,
       "program": "${workspaceRoot}/manage.py",
+      "justMyCode": true,
       "args": ["runserver"]
       // "debugOptions": [
       //     "WaitOnAbnormalExit",
@@ -29,6 +30,7 @@
       //     "RedirectOutput",
       //     "DjangoDebugging"
       // ]
+      //"autoReload": {"enable": true  }
     }
   ]
 }

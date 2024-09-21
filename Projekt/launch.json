@@ -6,6 +6,7 @@
       "type": "python",
       "request": "launch",
       "stopOnEntry": false,
+      "$cwd": "${workspaceRoot}/.venv",
       "pythonPath": "${workspaceRoot}/.venv/Scripts/python",
       "program": "${workspaceRoot}/manage.py",
         "args": [
