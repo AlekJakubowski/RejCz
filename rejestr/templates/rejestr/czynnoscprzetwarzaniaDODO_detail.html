@@ -1,0 +1,13 @@
+{% extends "./czynnoscprzetwarzania_detail.html" %}
+
+{% block buttons %}
+<div class="form-group row">
+  <div class="col-3">
+    <a class="btn btn-primary" href="{{object.get_update_url}}">ZMIEŃ</a>
+  </div>
+  <div class="col-3">
+      <a class="btn btn-primary" href="{% url 'CzynnoscPrzetwarzaniaDODO_list' %}">Zatwierdź</a>
+  </div>
+</div>
+
+{% endblock %}
