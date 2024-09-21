@@ -554,8 +554,8 @@ class CzynnoscPrzetwarzania(models.Model):
             for x in PrzeL_rs:
                 x.clone(new_instance)
 
-            OPerP_rs = SposobyPrzetwarzania.objects.filter(spp_czynnoscp=self.pk)
-            for x in OPerP_rs:
+            SposP_rs = SposobyPrzetwarzania.objects.filter(spp_czynnoscp=self.pk)
+            for x in SposP_rs:
                 x.clone(new_instance)
                 
             OPerP_rs = OperacjePrzetwarzania.objects.filter(opp_czynnoscp=self.pk)
@@ -597,14 +597,9 @@ class CzynnoscPrzetwarzania(models.Model):
 
     def get_clone_url(self):
         return reverse("CzynnoscPrzetwarzania_clone", args=(self.pk,))
-    
 
-class CzynnoscPrzetwarzaniaRODOManager(models.Manager):
-    def get_queryset(self):
-        return super(CzynnoscPrzetwarzaniaRODOManager, self).get_queryset().filter(Rejestr=1)
 
 class CzynnoscPrzetwarzaniaRODO(CzynnoscPrzetwarzania):
-    objects = CzynnoscPrzetwarzaniaRODOManager
     
     class Meta:
         proxy = True
@@ -618,12 +613,7 @@ class CzynnoscPrzetwarzaniaRODO(CzynnoscPrzetwarzania):
     def get_clone_url(self):
         return reverse("CzynnoscPrzetwarzaniaRODO_clone", args=(self.pk,))
 
-class KategoriaCzynnosciPrzetwarzaniaRODOManager(models.Manager):
-    def get_queryset(self):
-        return super(KategoriaCzynnosciPrzetwarzaniaRODOManager, self).get_queryset().filter(Rejestr=2)
-
 class KategoriaCzynnosciPrzetwarzaniaRODO(CzynnoscPrzetwarzania):
-    manager = KategoriaCzynnosciPrzetwarzaniaRODOManager
     
     class Meta:
         proxy = True
@@ -637,12 +627,7 @@ class KategoriaCzynnosciPrzetwarzaniaRODO(CzynnoscPrzetwarzania):
     def get_clone_url(self):
         return reverse("KategoriaCzynnosciPrzetwarzaniaRODO_clone", args=(self.pk,))
 
-class CzynnoscPrzetwarzaniaDODOManager(models.Manager):
-    def get_queryset(self):
-        return super(CzynnoscPrzetwarzaniaDODOManager, self).get_queryset().filter(Rejestr=3)
-
 class CzynnoscPrzetwarzaniaDODO(CzynnoscPrzetwarzania):
-    manager = CzynnoscPrzetwarzaniaDODOManager
 
     class Meta:
         proxy = True
@@ -656,12 +641,12 @@ class CzynnoscPrzetwarzaniaDODO(CzynnoscPrzetwarzania):
     def get_clone_url(self):
         return reverse("CzynnoscPrzetwarzaniaDODO_clone", args=(self.pk,))
 
-class KategoriaCzynnosciPrzetwarzaniaDODOManager(models.Manager):
-    def get_queryset(self):
-        return super(KategoriaCzynnosciPrzetwarzaniaDODOManager, self).get_queryset().filter(Rejestr=4)
+# class KategoriaCzynnosciPrzetwarzaniaDODOManager(models.Manager):
+#     def get_queryset(self):
+#         return super(KategoriaCzynnosciPrzetwarzaniaDODOManager, self).get_queryset().filter(Rejestr=4)
 
 class KategoriaCzynnosciPrzetwarzaniaDODO(CzynnoscPrzetwarzania):
-    manager = KategoriaCzynnosciPrzetwarzaniaDODOManager
+    #manager = KategoriaCzynnosciPrzetwarzaniaDODOManager
     
     class Meta:
         proxy = True
@@ -672,8 +657,8 @@ class KategoriaCzynnosciPrzetwarzaniaDODO(CzynnoscPrzetwarzania):
     def get_update_url(self):
         return reverse("KategoriaCzynnosciPrzetwarzaniaDODO_update", args=(self.pk,))
 
-    def get_clone_url(self):
-        return reverse("KategoriaCzynnosciPrzetwarzaniaDODO_clone", args=(self.pk,))
+    # def get_clone_url(self):
+    #     return reverse("KategoriaCzynnosciPrzetwarzaniaDODO_clone", args=(self.pk,))
 
 
 class CzynnosciPrzetwarzania(models.Model):
