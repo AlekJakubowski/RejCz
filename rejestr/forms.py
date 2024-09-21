@@ -385,6 +385,19 @@ class CzynnoscPrzetwarzaniaForm(forms.ModelForm):
                         required=True
                         )
     
+    Rejestr = forms.ModelChoiceField(
+                        required=True,
+                        initial='',
+                        queryset = models.Rejestr.objects.filter(rej_active = True),
+                        widget=forms.Select
+                        )
+
+    OkresRetencji = forms.ModelChoiceField(
+                        required=True,
+                        queryset = models.OkresRetencji.objects.filter(okr_active = True),
+                        widget=forms.Select
+                        )
+ 
     Administratorzy = forms.ModelMultipleChoiceField(
                         required=False,
                         queryset = models.Organizacja.objects.filter(org_active = True),
@@ -453,45 +466,10 @@ class CzynnoscPrzetwarzaniaForm(forms.ModelForm):
                         widget=forms.CheckboxSelectMultiple
                         )
     
-    
-    # def getNextPozRej(self, rejestr_pk):
-    #     cz = models.CzynnoscPrzetwarzania.objects.filter()
-    #     pass
         
     class Meta:
         model = models.CzynnoscPrzetwarzania
         fields = '__all__'
-        # [
-        #     "czn_active",
-        #     "czn_pozycja_rej",
-        #     "czn_status_zatw",
-        #     "czn_nazwa",
-        #     "czn_zrodlo_danych",
-        #     "czn_przepis_wrazliwe",
-        #     "czn_podstawa_prawna",
-        #     "czn_opis_celu",
-        #     "czn_data_zgloszenia",
-        #     "czn_data_wyrejestrowania", 
-        #     "czn_data_obowazywania_od", 
-        #     "czn_data_obowazywania_do", 
-        #     "Administratorzy",
-        #     "Wspoladministratorzy",
-        #     "PodmiotyPrzetwarzajace",
-        #     "PrzeslankiLegalnosci",
-        #     "SposobyPrzetwarzania",
-        #     "KategorieOsob",
-        #     "KategorieDanych",
-        #     "KategorieOdbiorcow",
-        #     "WysokieRyzyka",
-        #     "OkresRetencji",
-        #     "Rejestr",
-        #     "KomorkiRealizujace",
-        # ]
-
-    def __init__(self, *args, **kwargs):
-        super(CzynnoscPrzetwarzaniaForm, self).__init__(*args, **kwargs)
-        self.fields["OkresRetencji"].queryset = models.OkresRetencji.objects.filter(okr_active = True)
-        self.fields["Rejestr"].queryset = models.Rejestr.objects.filter(rej_active = True)
 
 class CzynnoscPrzetwarzaniaRODOForm(CzynnoscPrzetwarzaniaForm):
    
@@ -499,24 +477,29 @@ class CzynnoscPrzetwarzaniaRODOForm(CzynnoscPrzetwarzaniaForm):
         fields = '__all__'
         model = models.CzynnoscPrzetwarzaniaRODO
         proxy = True
-
+    
 
 class KategoriaCzynnosciPrzetwarzaniaRODOForm(CzynnoscPrzetwarzaniaForm):
+    
     class Meta:
         fields = '__all__'
-        proxy = True
-        model = models.CzynnoscPrzetwarzaniaRODO
-        
-class CzynnoscPrzetwarzaniaDODOForm(CzynnoscPrzetwarzaniaForm):
-    class Meta:
+        model = models.KategoriaCzynnosciPrzetwarzaniaRODO
         proxy = True
 
+
+class CzynnoscPrzetwarzaniaDODOForm(CzynnoscPrzetwarzaniaForm):
+    class Meta:
+        fields = '__all__'
+        model = models.CzynnoscPrzetwarzaniaDODO
+        proxy = True
 
 class KategoriaCzynnosciPrzetwarzaniaDODOForm(CzynnoscPrzetwarzaniaForm):
     class Meta:
+        fields = '__all__'
+        model = models.KategoriaCzynnosciPrzetwarzaniaDODO
         proxy = True
 
- 
+
 class OperacjaPrzetwarzaniaForm(forms.ModelForm):
     opp_active = forms.BooleanField(label='Aktywna', required=False, initial=True)
     
@@ -532,9 +515,6 @@ class OperacjaPrzetwarzaniaForm(forms.ModelForm):
             "opp_opis",
         ]
         
-    def __init__(self, *args, **kwargs):
-        super(OperacjaPrzetwarzaniaForm, self).__init__(*args, **kwargs)
-
 
 class PrzeslankaLegalnosciForm(forms.ModelForm):
     prl_active = forms.BooleanField(label='Aktywna', required=False, initial=True)
@@ -563,10 +543,6 @@ class PrzeslankaLegalnosciForm(forms.ModelForm):
             "prl_przepis_rodo",
         ]
         
-    def __init__(self, *args, **kwargs):
-        super(PrzeslankaLegalnosciForm, self).__init__(*args, **kwargs)
-
-
 
 class GrupaZagrozenForm(forms.ModelForm):
     gzg_active = forms.BooleanField(label='Aktywna', required=False)
@@ -582,9 +558,6 @@ class GrupaZagrozenForm(forms.ModelForm):
             "gzg_active",
             "gzg_opis",
         ]
-
-    def __init__(self, *args, **kwargs):
-        super(GrupaZagrozenForm, self).__init__(*args, **kwargs)
 
 class GrupaZabezpieczenForm(forms.ModelForm):
     gzb_active = forms.BooleanField(label='Aktywna', required=False, initial=True)

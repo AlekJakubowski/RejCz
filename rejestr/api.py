@@ -37,28 +37,24 @@ class CzynnoscPrzetwarzaniaViewSet(viewsets.ModelViewSet):
 class CzynnoscPrzetwarzaniaRODOViewSet(viewsets.ModelViewSet):
     """ViewSet for the CzynnoscPrzetwarzaniaRODO class"""
 
-    #queryset = models.CzynnoscPrzetwarzania.objects.filter(Rejestr = 1)
     serializer_class = serializers.CzynnoscPrzetwarzaniaSerializer
     permission_classes = [permissions.IsAuthenticated]
 
 class KategoriaCzynnosciPrzetwarzaniaRODOViewSet(viewsets.ModelViewSet):
     """ViewSet for the KategoriaCzynnosciPrzetwarzaniaRODO class"""
 
-    #queryset = models.CzynnoscPrzetwarzaniaRODO.objects.filter(Rejestr = 2)
     serializer_class = serializers.CzynnoscPrzetwarzaniaSerializer
     permission_classes = [permissions.IsAuthenticated]
 
 class CzynnoscPrzetwarzaniaDODOViewSet(viewsets.ModelViewSet):
     """ViewSet for the CzynnoscPrzetwarzaniaDODO class"""
 
-    #queryset = models.CzynnoscPrzetwarzania.objects.filter(Rejestr = 3)
     serializer_class = serializers.CzynnoscPrzetwarzaniaSerializer
     permission_classes = [permissions.IsAuthenticated]
 
 class KategoriaCzynnosciPrzetwarzaniaDODOViewSet(viewsets.ModelViewSet):
     """ViewSet for the KategoriaCzynnosciPrzetwarzaniaDODO class"""
 
-    #queryset = models.CzynnoscPrzetwarzania.objects.filter(Rejestr = 4)
     serializer_class = serializers.CzynnoscPrzetwarzaniaSerializer
     permission_classes = [permissions.IsAuthenticated]
 
