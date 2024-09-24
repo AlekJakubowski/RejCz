@@ -1,4 +1,6 @@
 from django import forms
+from bootstrap_datepicker_plus.widgets import DatePickerInput
+
 from . import models
 
 from rejestr.models import STATUS_ZATWIERDZENIA, ZRODLA_DANYCH
@@ -364,13 +366,23 @@ class CzynnoscPrzetwarzaniaForm(forms.ModelForm):
                         required=True
                         )
     
-    czn_data_zgloszenia = forms.DateField(label='Data zgloszenia', required=False) 
+    czn_data_zgloszenia = forms.DateField(label='Data zgloszenia',
+                                          widget=DatePickerInput,
+                                          required=False) 
     
-    czn_data_wyrejestrowania = forms.DateField(label='Data wyrejestrowania', required=False)  
+    czn_data_wyrejestrowania = forms.DateField(label='Data wyrejestrowania',
+                                          widget=DatePickerInput,
+                                          required=False) 
      
-    czn_data_obowazywania_od = forms.DateField(label='Obowiązuje od', required=False)  
+    czn_data_obowazywania_od = forms.DateField(label='Obowiązuje od',
+                                          widget=DatePickerInput,
+                                          required=False) 
+
     
-    czn_data_obowazywania_do = forms.DateField(label='Obowiązuje do', required=False)  
+    czn_data_obowazywania_do = forms.DateField(label='Obowiązuje do',
+                                            widget=DatePickerInput,
+                                            required=False) 
+  
 
     czn_status_zatw = forms.ChoiceField(label='Status', choices=STATUS_ZATWIERDZENIA,                
                         required=False) 
