@@ -15,7 +15,6 @@ class OrganizacjaForm(forms.ModelForm):
                                 required=True
                                 )
 
-
     org_skrot = forms.CharField(label='Nazwa skrótowa organizacji', max_length=30, min_length=2, 
                                 widget=forms.TextInput(attrs={"placeholder": 'Literowy skrót organizacji'}),
                                 required=True
