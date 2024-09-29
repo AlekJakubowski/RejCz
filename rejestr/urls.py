@@ -190,4 +190,6 @@ urlpatterns = (
     path("htmx/Komorka/", htmx.HTMXKomorkaListView.as_view(), name="Komorka_htmx_list"),
     path("htmx/Komorka/create/", htmx.HTMXKomorkaCreateView.as_view(), name="Komorka_htmx_create"),
     path("htmx/Komorka/delete/<int:pk>/", htmx.HTMXKomorkaDeleteView.as_view(), name="Komorka_htmx_delete"),
+
 )
+
