@@ -372,11 +372,22 @@ class CzynnoscPrzetwarzania(models.Model):
         OCZEKUJACA = "OCZEKUJĄCA"
 
     # Fields
-    czn_active = models.BooleanField(null=True, default=True)
+    czn_active = models.BooleanField(null=True, 
+                                     default=True
+                                     )
     czn_nazwa = models.CharField(max_length=200)
-    czn_zrodlo_danych = models.CharField(max_length=100, null=True, choices=ZRODLA_DANYCH)
-    czn_status_zatw = models.CharField(max_length=20, null=True, choices=STATUS_ZATWIERDZENIA)
-    Rejestr = models.ForeignKey(Rejestr, null=True, on_delete=models.SET_NULL)
+    czn_zrodlo_danych = models.CharField(max_length=100, 
+                                         null=True, 
+                                         choices=ZRODLA_DANYCH
+                                         )
+    czn_status_zatw = models.CharField(max_length=20, 
+                                       null=True, 
+                                       choices=STATUS_ZATWIERDZENIA
+                                       )
+    Rejestr = models.ForeignKey(Rejestr, 
+                                null=True, 
+                                on_delete=models.SET_NULL
+                                )
     czn_pozycja_rej = models.IntegerField(null=True)
     czn_przepis_wrazliwe = models.CharField(max_length=200)
     czn_podstawa_prawna = models.CharField(max_length=300)
@@ -394,7 +405,9 @@ class CzynnoscPrzetwarzania(models.Model):
         through_fields=("adm_czynnoscp", "adm_organizacja")
         )
     
-    OkresRetencji = models.ForeignKey(OkresRetencji, null=True, on_delete=models.SET_NULL)
+    OkresRetencji = models.ForeignKey(OkresRetencji, 
+                                      null=True, 
+                                      on_delete=models.SET_NULL)
     
     Wspoladministratorzy = models.ManyToManyField(
         Organizacja,
@@ -478,8 +491,10 @@ class CzynnoscPrzetwarzania(models.Model):
 
     #Zabezpieczenie = models.ForeignKey(Zabezpieczenie, on_delete=models.CASCADE)#("content_type", "object_id")
     
-    created = models.DateTimeField(auto_now_add=True, editable=False)
-    last_updated = models.DateTimeField(auto_now=True, editable=False)
+    created = models.DateTimeField(auto_now_add=True, 
+                                   editable=False)
+    last_updated = models.DateTimeField(auto_now=True, 
+                                        editable=False)
     
     def get_status_display(self):
         if(self.czn_status_zatw== 'ZATWIERDZONA'):
