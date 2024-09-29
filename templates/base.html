@@ -19,42 +19,16 @@
     </script>
     <script src="https://unpkg.com/hyperscript.org@0.9.12"></script>
 
-    <style> .btn-group .btn { 
-      height: 40px; /* Dopasuj wysokość */ 
-      line-height: 40px; /* Wyrównaj tekst w pionie */ 
-      display: flex; align-items: center; 
-    } 
-    form { 
-      margin: 0; /* Usuń marginesy */ 
-      padding: 0; /* Usuń paddingi */
-    } 
-    .btn-group { 
-      display: flex; 
-      align-items: center; /* Wyrównaj w pionie */ 
-    } 
+    <style>{% block style %}{% endblock %}</style>
 
-    </style>
-   
     {% block extrahead %}{% endblock %}
   </head>
-  <body >
-
-    {% include "navbar.html" %}
-    
+  <body>
+    {% block navigation_bar %}{% endblock %}
     {% block allcontent %}
-    
         <div id="content" class="container">
-          <!-- <h2>Home: <a href="{% url 'index' %}">rejcz</a></h2> -->
           <p class="card-text">{% block content %}{% endblock %}</p>
-          <!-- <div class="card">
-            <div class="card-body">
-              
-            </div>
-          </div> -->
         </div>
-    
-
-
     {% endblock %}
   </body>
 </html>
