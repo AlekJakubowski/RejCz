@@ -37,6 +37,18 @@ class OrganizacjaUpdateView(generic.UpdateView):
     form_class = forms.OrganizacjaForm
     pk_url_kwarg = "pk"
 
+class OrganizacjaCloneView(generic.View):
+    model = models.Organizacja
+
+    def post(self, request, pk):
+        # Pobierz obiekt do sklonowania
+        instance = get_object_or_404(models.Organizacja, pk=pk)
+
+        # Klonowanie obiektu
+        instance.clone(instance)
+    
+        # Przekierowanie z powrotem do listy obiektów lub innej strony
+        return redirect('Organizacja_list')
 
 class OrganizacjaDeleteView(generic.DeleteView):
     model = models.Organizacja
@@ -132,51 +144,6 @@ class OkresRetencjiUpdateView(generic.UpdateView):
 class OkresRetencjiDeleteView(generic.DeleteView):
     model = models.OkresRetencji
     success_url = reverse_lazy("OkresRetencji_list")
-
-
-# class CzynnoscPrzetwarzaniaListView(generic.ListView):
-#     model = models.CzynnoscPrzetwarzania
-#     queryset = model.objects.all()
-#     form_class = forms.CzynnoscPrzetwarzaniaForm
-#     template_name = 'CzynnoscPrzetwarzaniaListView.html'
-#     #context_object_name = 'CzynnoscPrzetwarzania'
-#     # właczenie paginacji tabeli na n=10 wierszy
-#     #jeśli wiersze są wyższe może być 6 lub mniej
-#     paginate_by = 10
-    
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         # context = {'form' : CzynnoscPrzetwarzaniaFilterForm(), }
-#         # context['filter'] = CzynnoscPrzetwarzaniaFilter(self.request.GET, queryset=self.get_queryset())
-#         return context
-
-# class CzynnoscPrzetwarzaniaCreateView(generic.CreateView):
-#     model = models.CzynnoscPrzetwarzania
-#     form_class = forms.CzynnoscPrzetwarzaniaForm
-
-
-# class CzynnoscPrzetwarzaniaDetailView(generic.DetailView):
-#     model = models.CzynnoscPrzetwarzania
-#     form_class = forms.CzynnoscPrzetwarzaniaForm
-
-
-# class CzynnoscPrzetwarzaniaDetailPdfView(PdfMixin, generic.DetailView):
-#     model = models.CzynnoscPrzetwarzania
-#     template_name = "rejestr/czynnoscprzetwarzania_detail.html"
-
-# class CzynnoscPrzetwarzaniaUpdateView(generic.UpdateView):
-#     model = models.CzynnoscPrzetwarzania
-#     form_class = forms.CzynnoscPrzetwarzaniaForm
-#     pk_url_kwarg = "pk"
-
-# class CzynnoscPrzetwarzaniaFilterView(FilterView):
-#     model = models.CzynnoscPrzetwarzania
-#     context_object_name = 'czynnosci'
-#     filter_class = forms.CzynnoscPrzetwarzaniaFilterForm
-
-# class CzynnoscPrzetwarzaniaDeleteView(generic.DeleteView):
-#     model = models.CzynnoscPrzetwarzania
-#     success_url = reverse_lazy("CzynnoscPrzetwarzania_list")
 
 class CzynnoscPrzetwarzaniaDODOUpdateView(generic.UpdateView):
     model = models.CzynnoscPrzetwarzaniaDODO
@@ -483,11 +450,22 @@ class SposobPrzetwarzaniaUpdateView(generic.UpdateView):
     form_class = forms.SposobPrzetwarzaniaForm
     pk_url_kwarg = "pk"
 
+class SposobPrzetwarzaniaCloneView(generic.View):
+    model = models.SposobPrzetwarzania
+
+    def post(self, request, pk):
+        # Pobierz obiekt do sklonowania
+        instance = get_object_or_404(models.SposobPrzetwarzania, pk=pk)
+
+        # Klonowanie obiektu
+        instance.clone(instance)
+    
+        # Przekierowanie z powrotem do listy obiektów lub innej strony
+        return redirect('SposobPrzetwarzania_list')
 
 class SposobPrzetwarzaniaDeleteView(generic.DeleteView):
     model = models.SposobPrzetwarzania
     success_url = reverse_lazy("SposobPrzetwarzania_list")
-
 
 class KategoriaOsobListView(generic.ListView):
     model = models.KategoriaOsob
@@ -509,7 +487,20 @@ class KategoriaOsobUpdateView(generic.UpdateView):
     model = models.KategoriaOsob
     form_class = forms.KategoriaOsobForm
     pk_url_kwarg = "pk"
+    
+class KategoriaOsobCloneView(generic.View):
+    model = models.KategoriaOsob
 
+    def post(self, request, pk):
+        # Pobierz obiekt do sklonowania
+        instance = get_object_or_404(models.KategoriaOsob, pk=pk)
+
+        # Klonowanie obiektu
+        instance.clone(instance)
+    
+        # Przekierowanie z powrotem do listy obiektów lub innej strony
+        return redirect('KategoriaOsob_list')
+    
 class KategoriaOsobDeleteView(generic.DeleteView):
     model = models.KategoriaOsob
     success_url = reverse_lazy("KategoriaOsob_list")
@@ -538,7 +529,19 @@ class KategoriaDanychUpdateView(generic.UpdateView):
     form_class = forms.KategoriaDanychForm
     pk_url_kwarg = "pk"
 
+class KategoriaDanychCloneView(generic.View):
+    model = models.KategoriaDanych
 
+    def post(self, request, pk):
+        # Pobierz obiekt do sklonowania
+        instance = get_object_or_404(models.KategoriaDanych, pk=pk)
+
+        # Klonowanie obiektu
+        instance.clone(instance)
+    
+        # Przekierowanie z powrotem do listy obiektów lub innej strony
+        return redirect('KategoriaDanych_list')
+    
 class KategoriaDanychDeleteView(generic.DeleteView):
     model = models.KategoriaDanych
     success_url = reverse_lazy("KategoriaDanych_list")

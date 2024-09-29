@@ -86,6 +86,7 @@ urlpatterns = (
     path("Organizacja/detail/<int:pk>/", views.OrganizacjaDetailView.as_view(), name="Organizacja_detail"),
     path("Organizacja/update/<int:pk>/", views.OrganizacjaUpdateView.as_view(), name="Organizacja_update"),
     path("Organizacja/delete/<int:pk>/", views.OrganizacjaDeleteView.as_view(), name="Organizacja_delete"),
+    path("Organizacja/clone/<int:pk>/", views.OrganizacjaCloneView.as_view(), name="Organizacja_clone"),
 
     path("PodmiotPrzetwarzajacy/", views.PodmiotPrzetwarzajacyListView.as_view(), name="PodmiotPrzetwarzajacy_list"),
     path("PodmiotPrzetwarzajacy/create/", views.PodmiotPrzetwarzajacyCreateView.as_view(), name="PodmiotPrzetwarzajacy_create"),
@@ -116,12 +117,14 @@ urlpatterns = (
     path("SposobPrzetwarzania/detail/<int:pk>/", views.SposobPrzetwarzaniaDetailView.as_view(), name="SposobPrzetwarzania_detail"),
     path("SposobPrzetwarzania/update/<int:pk>/", views.SposobPrzetwarzaniaUpdateView.as_view(), name="SposobPrzetwarzania_update"),
     path("SposobPrzetwarzania/delete/<int:pk>/", views.SposobPrzetwarzaniaDeleteView.as_view(), name="SposobPrzetwarzania_delete"),
+    path("SposobPrzetwarzania/clone/<int:pk>/", views.SposobPrzetwarzaniaCloneView.as_view(), name="SposobPrzetwarzania_clone"),
 
     path("KategoriaOsob/", views.KategoriaOsobListView.as_view(), name="KategoriaOsob_list"),
     path("KategoriaOsob/create/", views.KategoriaOsobCreateView.as_view(), name="KategoriaOsob_create"),
     path("KategoriaOsob/detail/<int:pk>/", views.KategoriaOsobDetailView.as_view(), name="KategoriaOsob_detail"),
     path("KategoriaOsob/update/<int:pk>/", views.KategoriaOsobUpdateView.as_view(), name="KategoriaOsob_update"),
     path("KategoriaOsob/delete/<int:pk>/", views.KategoriaOsobDeleteView.as_view(), name="KategoriaOsob_delete"),
+    path('KategoriaOsob/clone/<int:pk>/', views.KategoriaOsobCloneView.as_view(), name='KategoriaOsob_clone'),
 
     path("KategoriaOdbiorcow/", views.KategoriaOdbiorcowListView.as_view(), name="KategoriaOdbiorcow_list"),
     path("KategoriaOdbiorcow/create/", views.KategoriaOdbiorcowCreateView.as_view(), name="KategoriaOdbiorcow_create"),
@@ -134,6 +137,7 @@ urlpatterns = (
     path("KategoriaDanych/detail/<int:pk>/", views.KategoriaDanychDetailView.as_view(), name="KategoriaDanych_detail"),
     path("KategoriaDanych/update/<int:pk>/", views.KategoriaDanychUpdateView.as_view(), name="KategoriaDanych_update"),
     path("KategoriaDanych/delete/<int:pk>/", views.KategoriaDanychDeleteView.as_view(), name="KategoriaDanych_delete"),
+    path('KategoriaDanych/clone/<int:pk>/', views.KategoriaDanychCloneView.as_view(), name='KategoriaDanych_clone'),
 
     path("WysokieRyzyko/", views.WysokieRyzykoListView.as_view(), name="WysokieRyzyko_list"),
     path("WysokieRyzyko/create/", views.WysokieRyzykoCreateView.as_view(), name="WysokieRyzyko_create"),

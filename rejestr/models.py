@@ -34,7 +34,20 @@ class Organizacja(models.Model):
     org_iod_email = models.EmailField(max_length=50)
     created = models.DateTimeField(auto_now_add=True, editable=False)
     last_updated = models.DateTimeField(auto_now=True, editable=False)
-    
+
+    def clone(self, new_Org):
+        org = Organizacja(
+        org_active = new_Org.org_active,
+        org_skrot = "klon_" + new_Org.org_skrot,
+        org_nazwa = new_Org.org_nazwa,
+        org_adres = new_Org.org_adres,
+        org_email = new_Org.org_email,
+        org_tel = new_Org.org_tel,
+        org_iod_name = new_Org.org_iod_name,
+        org_iod_email = new_Org.org_iod_email
+        )
+        org.save()
+
     class Meta:
         pass
     
@@ -167,13 +180,19 @@ class PrzeslankaLegalnosci(models.Model):
         return reverse("PrzeslankaLegalnosci_htmx_delete", args=(self.pk,))
 
 class SposobPrzetwarzania(models.Model):
-
-    # Fields
     sp_active = models.BooleanField(default=True)
     sp_skrot = models.CharField(null=False, max_length=100)
     sp_opis = models.CharField(null=True ,max_length=300)
     created = models.DateTimeField(auto_now_add=True, editable=False)
     last_updated = models.DateTimeField(auto_now=True, editable=False)
+
+    def clone(self, new_SposP):
+        spos = SposobPrzetwarzania(
+            sp_active = new_SposP.sp_active,
+            sp_skrot = "klon_" + new_SposP.sp_skrot,
+            sp_opis = new_SposP.sp_opis
+        )
+        spos.save()
 
     class Meta:
         pass
@@ -192,14 +211,21 @@ class SposobPrzetwarzania(models.Model):
         return reverse('SposobPrzetwarzania_update', args=(self.pk,))
 
 class KategoriaDanych(models.Model):
-
-    # Fields
     kd_active = models.BooleanField(default=True)
     kd_skrot = models.CharField(max_length=100)
     kd_opis = models.TextField(max_length=300)
     kd_dane_szczegolne = models.BooleanField()
     created = models.DateTimeField(auto_now_add=True, editable=False)
     last_updated = models.DateTimeField(auto_now=True, editable=False)
+
+    def clone(self, new_katDanych):
+        kdan = KategoriaDanych(
+            kd_active = new_katDanych.kd_active,
+            kd_skrot = "klon_" + new_katDanych.kd_skrot,
+            kd_dane_szczegolne = new_katDanych.kd_dane_szczegolne,
+            kd_opis = new_katDanych.kd_opis
+        )
+        kdan.save()
 
     class Meta:
         pass
@@ -251,6 +277,13 @@ class KategoriaOsob(models.Model):
     created = models.DateTimeField(auto_now_add=True, editable=False)
     last_updated = models.DateTimeField(auto_now=True, editable=False)
 
+    def clone(self, new_katOs):
+        kosob = KategoriaOsob(
+            ko_active = new_katOs.ko_active,
+            ko_skrot = "klon_" + new_katOs.ko_skrot,
+            ko_opis = new_katOs.ko_opis
+        )
+        kosob.save()
 
     class Meta:
         pass
