@@ -34,7 +34,7 @@ urlpatterns = (
     # path("CzynnoscPrzetwarzania/update/<int:pk>/", views.CzynnoscPrzetwarzaniaUpdateView.as_view(), name="CzynnoscPrzetwarzania_update"),
     # path("CzynnoscPrzetwarzania/delete/<int:pk>/", views.CzynnoscPrzetwarzaniaDeleteView.as_view(), name="CzynnoscPrzetwarzania_delete"),
     # path("CzynnoscPrzetwarzania/pdfdetail/<int:pk>/", views.CzynnoscPrzetwarzaniaDetailPdfView.as_view(), name="CzynnoscPrzetwarzania_pdfdetail"),
-    #path('CzynnoscPrzetwarzania/clone/<int:pk>/', views.CzynnoscPrzetwarzaniaCloneView.as_view(), name='CzynnoscPrzetwarzania_clone'),
+    # path('CzynnoscPrzetwarzania/clone/<int:pk>/', views.CzynnoscPrzetwarzaniaCloneView.as_view(), name='CzynnoscPrzetwarzania_clone'),
     
     path("CzynnoscPrzetwarzaniaDODO/", views.CzynnoscPrzetwarzaniaDODOListView.as_view(), name="CzynnoscPrzetwarzaniaDODO_list"),
     path("CzynnoscPrzetwarzaniaDODO/create/", views.CzynnoscPrzetwarzaniaDODOCreateView.as_view(), name="CzynnoscPrzetwarzaniaDODO_create"),
