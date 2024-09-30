@@ -3,3 +3,4 @@ db.sqbpro
 _init_
 *.pyc
 .venv/
+Projekt/.env
