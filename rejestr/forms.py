@@ -741,4 +741,8 @@ class RyzykoForm(forms.ModelForm):
     rr_ryzyko = forms.IntegerField(label='Oddziaływanie',
                                 required=True, 
                                 )
+    
+    
+
+    
          
