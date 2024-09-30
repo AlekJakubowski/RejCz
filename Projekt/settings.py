@@ -10,7 +10,11 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
+import os
 from pathlib import Path
+import dotenv
+
+dotenv.read_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -70,7 +74,7 @@ ROOT_URLCONF = "Projekt.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        'DIRS': ['templates'],
+        'DIRS': ['templates', os.path.join(BASE_DIR, 'templates')],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -158,3 +162,6 @@ CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
 STATIC_URL = "Projekt/static/"
 STATICFILES_DIRS = [BASE_DIR / "Projekt/static/"]  # new
+
+MAIL = os.getenv('MAIL')
+MAIL_PASS = os.getenv('MAIL_PASS')
