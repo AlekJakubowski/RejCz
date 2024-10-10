@@ -1,0 +1,31 @@
+
+{% extends "../navbar.html" %}
+{% load static %}
+{% block content %}
+<h2>Szczegóły podmiotu przetwarzającego</h2> 
+<table class="table table-striped">
+    <tr><td>Aktywna</td><td>{{ object.prz_active }}</td></tr>
+    <tr><td>Skrót</td><td>{{ object.prz_skrot }}</td></tr>
+    <tr><td>Nazwa</td><td>{{ object.prz_nazwa }}</td></tr>
+    <tr><td>Adres</td><td>{{ object.prz_adres }}</td></tr>
+    <tr><td>www</td><td>{{ object.prz_www }}</td></tr>
+    <tr><td>tel</td><td>{{ object.prz_tel }}</td></tr>
+    <tr><td>e-mail</td><td>{{ object.prz_email }}</td></tr>
+    <tr><td>Dane IOD</td><td>{{ object.prz_iod_name }}</td></tr>
+    <tr><td>email IOD</td><td>{{ object.prz_iod_email }}</td></tr>
+    <tr><td>Utworzono</td><td>{{ object.created }}</td></tr>
+    <tr><td>Ostatnia modyfikacja</td><td>{{ object.last_updated }}</td></tr>
+</table>
+
+<div class="form-group row">
+    <div class="col-3">
+      <a class="btn btn-primary" href="{{object.get_update_url}}">ZMIEŃ</a>
+    </div>
+    <div class="col-3">
+        <p>
+            <a class="btn btn-primary" href="{% url 'PodmiotPrzetwarzajacy_list' %}">Zatwierdź</a>
+        </p>
+    </div>
+</div>
+
+{% endblock %}

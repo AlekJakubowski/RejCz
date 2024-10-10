@@ -1,0 +1,22 @@
+
+{% extends "../navbar.html" %}
+{% block content %}
+<form method="post">
+  {% csrf_token %}
+  <div class="alert alert-danger" role="alert">
+    <h4 class="alert-heading">Usuwanie przesłanki legalności !</h4>
+    <p class="fs-4">Czy na pewno usunąć przesłankę legalności: "{{ object }}"?</p>
+    <hr>
+      <p class="fs-5">Usunięcie zapisu może spowodować utratę spójności danych</p>
+    <hr>
+    <div class="form-group row">
+      <div class="col-3">
+        <input class="btn btn-danger" value="Usuń przesłankę legalności" type="submit">
+      </div>
+      <div class="col-3">
+        <a class="btn btn-primary" href="{% url 'PrzeslankaLegalnosci_list' %}">Anuluj</a>
+      </div>
+    </div>
+  </div>
+</form>
+{% endblock %}

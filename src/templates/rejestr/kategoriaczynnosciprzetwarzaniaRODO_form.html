@@ -1,0 +1,21 @@
+
+{% extends "./czynnoscprzetwarzania_form.html" %}
+
+{% block caption %}
+<h2 align="center">Kategoria czynności przetwarzania RODO</h2>
+<h4>Wybierz właściwy rejestr</h4>
+<hr>
+{% endblock %}
+
+{% block buttons %}
+    <div class="form-group row">
+        <div class="col-3">
+            <input type="submit" value="Zapisz" class="btn btn-primary">
+        </div>
+        <div class="col-3">
+            <p>
+                <a class="btn btn-light" href="{% url 'KategoriaCzynnosciPrzetwarzaniaRODO_list' %}">Anuluj</a>
+            </p>
+        </div>
+    </div>
+ {% endblock %}

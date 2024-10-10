@@ -1,0 +1,22 @@
+{% extends "../navbar.html" %}
+{% load static %}
+{% block content %}
+<h2>Szczeg�ły grupy zagrożeń {{ object.gzg_skrot }}</h2> 
+
+<table class="table table-striped">
+    <tr><td>Aktywna</td><td>{{ object.gzg_active }}</td></tr>
+    <tr><td>Opis zagrożenia</td><td>{{ object.gzg_opis }}</td></tr>
+    <tr><td>Utworzono</td><td>{{ object.created }}</td></tr>
+    <tr><td>Ostatnia modyfikacja</td><td>{{ object.last_updated }}</td></tr>
+</table>
+
+<div class="form-group row">
+    <div class="col-3">
+        <a class="btn btn-primary" href="{{object.get_update_url}}">ZMIEŃ</a>
+    </div>
+    <div class="col-3">
+        <a class="btn btn-primary" href="{% url 'GrupaZagrozen_list' %}">Zatwierdź</a>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "../navbar.html" %}
+{% load static %}
+{% block content %}
+<h2>Szczegóły komórki</h2> 
+  
+<table class="table table-striped">
+    <tr><td>Aktywna</td><td>{{ object.kom_active }}</td></tr>
+    <tr><td>Symbol</td><td>{{ object.kom_symbol }}</td></tr>
+    <tr><td>Nazwa</td><td>{{ object.kom_nazwa }}</td></tr>
+    <tr><td>Adres</td><td>{{ object.kom_adres }}</td></tr>
+    <tr><td>Tel</td><td>{{ object.kom_tel }}</td></tr>
+    <tr><td>e-mail</td><td>{{ object.kom_email }}</td></tr>
+    <tr><td>Organizacja</td><td>{{ object.Organizacja }}</td></tr>
+    <tr><td>Utworzono</td><td>{{ object.created }}</td></tr>
+    <tr><td>Ostatnia modyfikacja</td><td>{{ object.last_updated }}</td></tr>
+</table>
+  
+<div class="form-group row">
+    <div class="col-3">
+        <a class="btn btn-primary" href="{{object.get_update_url}}">ZMIEŃ</a>
+    </div>
+    <div class="col-3">
+        <a class="btn btn-light" href="{% url 'Komorka_list' %}">Zatwierdź</a>
+    </div>
+</div>
+{% endblock %}

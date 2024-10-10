@@ -1,0 +1,23 @@
+{% extends "../navbar.html" %}
+{% load static %}
+{% block content %}
+<h2>Szczegóły podstawy prawnej przetwarzania</h2> 
+
+<table class="table table-striped">
+    <tr><td>Aktywna</td><td>{{ object.ppw_active }}</td></tr>
+    <tr><td>Skrót</td><td>{{ object.ppw_skrot }}</td></tr>
+    <tr><td>Przepis</td><td>{{ object.ppw_opis }}</td></tr>
+    <tr><td>Treść przepisu</td><td>{{ object.ppw_tresc }}</td></tr>
+    <tr><td>Utworzono</td><td>{{ object.created }}</td></tr>
+    <tr><td>Ostatnia modyfikacja</td><td>{{ object.last_updated }}</td></tr>
+</table>
+<div class="form-group row">
+    <div class="col-3">
+        <a class="btn btn-primary" href="{{object.get_update_url}}">ZMIEŃ</a>
+    </div>
+    <div class="col-3">
+        <a class="btn btn-primary" href="{% url 'PodstawaPrawnaPrzetwarzania_list' %}">Zatwierdź</a>
+    </div>
+</div>
+
+{% endblock %}

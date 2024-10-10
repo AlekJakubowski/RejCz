@@ -1,0 +1,21 @@
+{% extends "../navbar.html" %}
+{% block content %}
+<form method="POST">
+  {% csrf_token %}
+  <div class="alert alert-danger" role="alert">
+    <h4 class="alert-heading">Usuwanie kategorii czynności przetwarzania RODO!</h4>
+    <p class="fs-4">Czy na pewno usuń kategorię czynności przetwarzania: "{{ object }}"?</p>
+    <hr>
+      <p class="fs-5">Usunięcie zapisu może spowodować utratę spójności danych</p>
+    <hr>
+    <div class="form-group row">
+      <div class="col-3">
+        <input class="btn btn-danger" value="Usuń kategorię czynności przetwarzania" type="submit">
+      </div>
+      <div class="col-3">
+        <a class="btn btn-primary" href="{% url 'KategoriaCzynnosciPrzetwarzaniaRODO_list' %}">Anuluj</a>
+      </div>
+    </div>
+  </div>
+</form>
+{% endblock %}
