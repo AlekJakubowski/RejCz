@@ -1,0 +1,816 @@
+BEGIN TRANSACTION;
+
+INSERT INTO "rejestr_administratorzy" ("id","adm_czynnoscp_id","adm_organizacja_id") VALUES (1,3,5);
+INSERT INTO "rejestr_administratorzy" ("id","adm_czynnoscp_id","adm_organizacja_id") VALUES (3,4,5);
+INSERT INTO "rejestr_administratorzy" ("id","adm_czynnoscp_id","adm_organizacja_id") VALUES (4,5,5);
+INSERT INTO "rejestr_administratorzy" ("id","adm_czynnoscp_id","adm_organizacja_id") VALUES (6,6,5);
+INSERT INTO "rejestr_administratorzy" ("id","adm_czynnoscp_id","adm_organizacja_id") VALUES (7,2,5);
+INSERT INTO "rejestr_administratorzy" ("id","adm_czynnoscp_id","adm_organizacja_id") VALUES (8,7,3);
+INSERT INTO "rejestr_administratorzy" ("id","adm_czynnoscp_id","adm_organizacja_id") VALUES (11,2,3);
+INSERT INTO "rejestr_administratorzy" ("id","adm_czynnoscp_id","adm_organizacja_id") VALUES (17,15,9);
+INSERT INTO "rejestr_administratorzy" ("id","adm_czynnoscp_id","adm_organizacja_id") VALUES (25,22,9);
+INSERT INTO "rejestr_administratorzy" ("id","adm_czynnoscp_id","adm_organizacja_id") VALUES (26,22,3);
+INSERT INTO "rejestr_administratorzy" ("id","adm_czynnoscp_id","adm_organizacja_id") VALUES (29,25,9);
+INSERT INTO "rejestr_administratorzy" ("id","adm_czynnoscp_id","adm_organizacja_id") VALUES (30,25,3);
+INSERT INTO "rejestr_administratorzy" ("id","adm_czynnoscp_id","adm_organizacja_id") VALUES (32,27,9);
+INSERT INTO "rejestr_administratorzy" ("id","adm_czynnoscp_id","adm_organizacja_id") VALUES (33,27,3);
+INSERT INTO "rejestr_administratorzy" ("id","adm_czynnoscp_id","adm_organizacja_id") VALUES (35,29,9);
+INSERT INTO "rejestr_administratorzy" ("id","adm_czynnoscp_id","adm_organizacja_id") VALUES (36,29,3);
+INSERT INTO "rejestr_administratorzy" ("id","adm_czynnoscp_id","adm_organizacja_id") VALUES (49,42,5);
+INSERT INTO "rejestr_administratorzy" ("id","adm_czynnoscp_id","adm_organizacja_id") VALUES (50,43,5);
+INSERT INTO "rejestr_administratorzy" ("id","adm_czynnoscp_id","adm_organizacja_id") VALUES (53,46,3);
+INSERT INTO "rejestr_administratorzy" ("id","adm_czynnoscp_id","adm_organizacja_id") VALUES (54,47,5);
+INSERT INTO "rejestr_administratorzy" ("id","adm_czynnoscp_id","adm_organizacja_id") VALUES (55,48,3);
+INSERT INTO "rejestr_administratorzy" ("id","adm_czynnoscp_id","adm_organizacja_id") VALUES (56,49,5);
+INSERT INTO "rejestr_administratorzy" ("id","adm_czynnoscp_id","adm_organizacja_id") VALUES (57,49,3);
+INSERT INTO "rejestr_administratorzy" ("id","adm_czynnoscp_id","adm_organizacja_id") VALUES (58,50,9);
+INSERT INTO "rejestr_administratorzy" ("id","adm_czynnoscp_id","adm_organizacja_id") VALUES (59,50,3);
+INSERT INTO "rejestr_czynnosciprzetwarzania" ("id","czp_czynnoscp_id","czp_komorka_id") VALUES (2,4,4);
+INSERT INTO "rejestr_czynnosciprzetwarzania" ("id","czp_czynnoscp_id","czp_komorka_id") VALUES (4,5,3);
+INSERT INTO "rejestr_czynnosciprzetwarzania" ("id","czp_czynnoscp_id","czp_komorka_id") VALUES (5,2,3);
+INSERT INTO "rejestr_czynnosciprzetwarzania" ("id","czp_czynnoscp_id","czp_komorka_id") VALUES (6,4,5);
+INSERT INTO "rejestr_czynnosciprzetwarzania" ("id","czp_czynnoscp_id","czp_komorka_id") VALUES (7,15,3);
+INSERT INTO "rejestr_czynnosciprzetwarzania" ("id","czp_czynnoscp_id","czp_komorka_id") VALUES (8,22,3);
+INSERT INTO "rejestr_czynnoscprzetwarzania" ("id","czn_nazwa","czn_pozycja_rej","last_updated","czn_status_zatw","czn_przepis_wrazliwe","czn_active","created","czn_zrodlo_danych","czn_opis_celu","OkresRetencji_id","Rejestr_id","czn_data_obowazywania_do","czn_data_obowazywania_od","czn_data_wyrejestrowania","czn_data_zgloszenia","czn_podstawa_prawna") VALUES (2,'Rekrutacja na stanowiska w SCS',1,'2024-10-01 19:51:21.495008','OCZEKUJĄCA','art. 23 ustawy o KAS',1,'2023-09-29 07:22:44.040805','Osoba','xxgdfv',4,1,NULL,'2023-07-29',NULL,'2023-07-17',' ?? ');
+INSERT INTO "rejestr_czynnoscprzetwarzania" ("id","czn_nazwa","czn_pozycja_rej","last_updated","czn_status_zatw","czn_przepis_wrazliwe","czn_active","created","czn_zrodlo_danych","czn_opis_celu","OkresRetencji_id","Rejestr_id","czn_data_obowazywania_do","czn_data_obowazywania_od","czn_data_wyrejestrowania","czn_data_zgloszenia","czn_podstawa_prawna") VALUES (3,'Zarządzanie procesem zatrudnienia pracowników cywilnych',2,'2024-05-27 06:59:11.203615','OCZEKUJĄCA','art. 4 ustawy Kodeks Pracy',1,'2023-09-29 13:16:19.163493','Od osoby, której dane dotyczą lub od innych osób','Zarządzanie procesem zatrudnienia pracowników cywilnych',5,1,NULL,NULL,NULL,NULL,' ?? ');
+INSERT INTO "rejestr_czynnoscprzetwarzania" ("id","czn_nazwa","czn_pozycja_rej","last_updated","czn_status_zatw","czn_przepis_wrazliwe","czn_active","created","czn_zrodlo_danych","czn_opis_celu","OkresRetencji_id","Rejestr_id","czn_data_obowazywania_do","czn_data_obowazywania_od","czn_data_wyrejestrowania","czn_data_zgloszenia","czn_podstawa_prawna") VALUES (4,'Reklamowanie od służby wojskowej',3,'2024-08-28 21:24:55.550161','OCZEKUJĄCA','art. 23 ustawy Kodeks Pracy',1,'2023-10-08 09:46:37.495884','Od osoby, której dane dotyczą lub od innych osób','zwolnienie od obowiązkowego uczestnictwa w ćwiczeniach rezerwistów',4,1,'2029-01-01','2024-09-01','2024-01-01','2024-08-01',' ?? ');
+INSERT INTO "rejestr_czynnoscprzetwarzania" ("id","czn_nazwa","czn_pozycja_rej","last_updated","czn_status_zatw","czn_przepis_wrazliwe","czn_active","created","czn_zrodlo_danych","czn_opis_celu","OkresRetencji_id","Rejestr_id","czn_data_obowazywania_do","czn_data_obowazywania_od","czn_data_wyrejestrowania","czn_data_zgloszenia","czn_podstawa_prawna") VALUES (5,'Przetwarzanie danych o ukaraniu',3,'2024-09-21 19:59:20.801818','OCZEKUJĄCA','??',1,'2023-10-19 18:32:05.308158','Bezpośrednio od osoby, której dane dotyczą','Przetwarzanie',4,3,'2029-01-01','2024-01-01','2024-01-01','2024-01-01',' ?? ');
+INSERT INTO "rejestr_czynnoscprzetwarzania" ("id","czn_nazwa","czn_pozycja_rej","last_updated","czn_status_zatw","czn_przepis_wrazliwe","czn_active","created","czn_zrodlo_danych","czn_opis_celu","OkresRetencji_id","Rejestr_id","czn_data_obowazywania_do","czn_data_obowazywania_od","czn_data_wyrejestrowania","czn_data_zgloszenia","czn_podstawa_prawna") VALUES (6,'Przetwarzanie danych zawartych w skargach na działanie organu w I instancji',2,'2024-09-21 19:59:03.677317','OCZEKUJĄCA','KPA',1,'2023-11-05 16:30:20.700623','Bezpośrednio od osoby, której dane dotyczą','Realizacja prawa do skargi na na działanie organu',4,3,NULL,NULL,NULL,NULL,' ?? ');
+INSERT INTO "rejestr_czynnoscprzetwarzania" ("id","czn_nazwa","czn_pozycja_rej","last_updated","czn_status_zatw","czn_przepis_wrazliwe","czn_active","created","czn_zrodlo_danych","czn_opis_celu","OkresRetencji_id","Rejestr_id","czn_data_obowazywania_do","czn_data_obowazywania_od","czn_data_wyrejestrowania","czn_data_zgloszenia","czn_podstawa_prawna") VALUES (7,'Weryfikacja danych w systemie KSI',1,'2024-09-21 15:29:11.282919','OCZEKUJĄCA','Ustawa o udziale Schengen',1,'2024-05-28 20:17:45.924457','Od innej osoby, niż osoba której dane dotyczą','Zwalczanie przestępczosci',4,4,'2029-01-01','2024-01-01','2024-01-01','2024-01-01',' ?? ');
+INSERT INTO "rejestr_czynnoscprzetwarzania" ("id","czn_nazwa","czn_pozycja_rej","last_updated","czn_status_zatw","czn_przepis_wrazliwe","czn_active","created","czn_zrodlo_danych","czn_opis_celu","OkresRetencji_id","Rejestr_id","czn_data_obowazywania_do","czn_data_obowazywania_od","czn_data_wyrejestrowania","czn_data_zgloszenia","czn_podstawa_prawna") VALUES (15,'geoinfo',1,'2024-09-19 19:28:48.082906','OCZEKUJĄCA','art. 23 ustawy o KAS',1,'2024-09-01 16:45:22.207287','Od innej osoby, niż osoba której dane dotyczą','Zwalczanie przestępczości',1,3,NULL,NULL,NULL,'2024-08-01',' ?? ');
+INSERT INTO "rejestr_czynnoscprzetwarzania" ("id","czn_nazwa","czn_pozycja_rej","last_updated","czn_status_zatw","czn_przepis_wrazliwe","czn_active","created","czn_zrodlo_danych","czn_opis_celu","OkresRetencji_id","Rejestr_id","czn_data_obowazywania_do","czn_data_obowazywania_od","czn_data_wyrejestrowania","czn_data_zgloszenia","czn_podstawa_prawna") VALUES (22,'powierzenie danych pracowników MF',1,'2024-09-19 19:40:22.610625','OCZEKUJĄCA','art. 4 ustawy Kodeks Pracy',1,'2024-09-19 19:39:56.665428','Od innej osoby, niż osoba której dane dotyczą','powierzenie przetwarzania',4,2,NULL,NULL,'2024-01-01','2024-01-01',' ?? ');
+INSERT INTO "rejestr_czynnoscprzetwarzania" ("id","czn_nazwa","czn_pozycja_rej","last_updated","czn_status_zatw","czn_przepis_wrazliwe","czn_active","created","czn_zrodlo_danych","czn_opis_celu","OkresRetencji_id","Rejestr_id","czn_data_obowazywania_do","czn_data_obowazywania_od","czn_data_wyrejestrowania","czn_data_zgloszenia","czn_podstawa_prawna") VALUES (25,'_klon_powierzenie danych pracowników MF',2,'2024-09-19 20:10:10.554129','OCZEKUJĄCA','art. 4 ustawy Kodeks Pracy',1,'2024-09-19 20:10:10.554129','Od innej osoby, niż osoba której dane dotyczą','powierzenie przetwarzania',4,2,NULL,NULL,NULL,'2024-01-01',' ?? ');
+INSERT INTO "rejestr_czynnoscprzetwarzania" ("id","czn_nazwa","czn_pozycja_rej","last_updated","czn_status_zatw","czn_przepis_wrazliwe","czn_active","created","czn_zrodlo_danych","czn_opis_celu","OkresRetencji_id","Rejestr_id","czn_data_obowazywania_do","czn_data_obowazywania_od","czn_data_wyrejestrowania","czn_data_zgloszenia","czn_podstawa_prawna") VALUES (27,'_klon__klon_powierzenie danych pracowników MF',3,'2024-09-19 20:30:53.135780','OCZEKUJĄCA','art. 4 ustawy Kodeks Pracy',1,'2024-09-19 20:30:53.135780','Od innej osoby, niż osoba której dane dotyczą','powierzenie przetwarzania',4,2,NULL,NULL,NULL,'2024-01-01',' ?? ');
+INSERT INTO "rejestr_czynnoscprzetwarzania" ("id","czn_nazwa","czn_pozycja_rej","last_updated","czn_status_zatw","czn_przepis_wrazliwe","czn_active","created","czn_zrodlo_danych","czn_opis_celu","OkresRetencji_id","Rejestr_id","czn_data_obowazywania_do","czn_data_obowazywania_od","czn_data_wyrejestrowania","czn_data_zgloszenia","czn_podstawa_prawna") VALUES (29,'_klon__klon__klon_powierzenie danych pracowników MF',4,'2024-09-19 20:31:44.499688','OCZEKUJĄCA','art. 4 ustawy Kodeks Pracy',1,'2024-09-19 20:31:44.499688','Od innej osoby, niż osoba której dane dotyczą','powierzenie przetwarzania',4,2,NULL,NULL,NULL,'2024-01-01',' ?? ');
+INSERT INTO "rejestr_czynnoscprzetwarzania" ("id","czn_nazwa","czn_pozycja_rej","last_updated","czn_status_zatw","czn_przepis_wrazliwe","czn_active","created","czn_zrodlo_danych","czn_opis_celu","OkresRetencji_id","Rejestr_id","czn_data_obowazywania_do","czn_data_obowazywania_od","czn_data_wyrejestrowania","czn_data_zgloszenia","czn_podstawa_prawna") VALUES (42,'_klon_Przetwarzanie danych o ukaraniu',4,'2024-09-21 20:00:17.640699','OCZEKUJĄCA','??',1,'2024-09-21 19:52:14.563572','Bezpośrednio od osoby, której dane dotyczą','Przetwarzanie',4,3,NULL,NULL,NULL,'2024-01-01',' ?? ');
+INSERT INTO "rejestr_czynnoscprzetwarzania" ("id","czn_nazwa","czn_pozycja_rej","last_updated","czn_status_zatw","czn_przepis_wrazliwe","czn_active","created","czn_zrodlo_danych","czn_opis_celu","OkresRetencji_id","Rejestr_id","czn_data_obowazywania_do","czn_data_obowazywania_od","czn_data_wyrejestrowania","czn_data_zgloszenia","czn_podstawa_prawna") VALUES (43,'Postępowanie mandatowe',4,'2024-09-21 19:57:47.753776','-----------','art. 82 utawy kodeks karny skarbowy',1,'2024-09-21 19:57:47.753776','Bezpośrednio od osoby, której dane dotyczą','ukaranie osoby, u której wykryto towary zakazane',4,1,'2029-01-01','2024-09-01','2024-01-01','2024-01-01',' ?? ');
+INSERT INTO "rejestr_czynnoscprzetwarzania" ("id","czn_nazwa","czn_pozycja_rej","last_updated","czn_status_zatw","czn_przepis_wrazliwe","czn_active","created","czn_zrodlo_danych","czn_opis_celu","OkresRetencji_id","Rejestr_id","czn_data_obowazywania_do","czn_data_obowazywania_od","czn_data_wyrejestrowania","czn_data_zgloszenia","czn_podstawa_prawna") VALUES (46,'_klon_Weryfikacja danych w systemie KSI',2,'2024-09-21 20:14:35.305740','OCZEKUJĄCA','Ustawa o udziale Schengen',1,'2024-09-21 20:14:35.305740','Od innej osoby, niż osoba której dane dotyczą','Zwalczanie przestępczosci',4,4,NULL,NULL,NULL,'2024-01-01',' ?? ');
+INSERT INTO "rejestr_czynnoscprzetwarzania" ("id","czn_nazwa","czn_pozycja_rej","last_updated","czn_status_zatw","czn_przepis_wrazliwe","czn_active","created","czn_zrodlo_danych","czn_opis_celu","OkresRetencji_id","Rejestr_id","czn_data_obowazywania_do","czn_data_obowazywania_od","czn_data_wyrejestrowania","czn_data_zgloszenia","czn_podstawa_prawna") VALUES (47,'_klon_Przetwarzanie danych zawartych w skargach na działanie organu w I instancji',5,'2024-09-21 20:14:53.007766','OCZEKUJĄCA','KPA',1,'2024-09-21 20:14:53.007766','Bezpośrednio od osoby, której dane dotyczą','Realizacja prawa do skargi na na działanie organu',4,3,NULL,NULL,NULL,NULL,' ?? ');
+INSERT INTO "rejestr_czynnoscprzetwarzania" ("id","czn_nazwa","czn_pozycja_rej","last_updated","czn_status_zatw","czn_przepis_wrazliwe","czn_active","created","czn_zrodlo_danych","czn_opis_celu","OkresRetencji_id","Rejestr_id","czn_data_obowazywania_do","czn_data_obowazywania_od","czn_data_wyrejestrowania","czn_data_zgloszenia","czn_podstawa_prawna") VALUES (48,'_klon__klon_Weryfikacja danych w systemie KSI',3,'2024-09-21 20:15:10.090565','OCZEKUJĄCA','Ustawa o udziale Schengen',1,'2024-09-21 20:15:10.090565','Od innej osoby, niż osoba której dane dotyczą','Zwalczanie przestępczosci',4,4,NULL,NULL,NULL,'2024-01-01',' ?? ');
+INSERT INTO "rejestr_czynnoscprzetwarzania" ("id","czn_nazwa","czn_pozycja_rej","last_updated","czn_status_zatw","czn_przepis_wrazliwe","czn_active","created","czn_zrodlo_danych","czn_opis_celu","OkresRetencji_id","Rejestr_id","czn_data_obowazywania_do","czn_data_obowazywania_od","czn_data_wyrejestrowania","czn_data_zgloszenia","czn_podstawa_prawna") VALUES (49,'_klon_Rekrutacja na stanowiska w SCS',5,'2024-09-29 10:10:45.327529','OCZEKUJĄCA','art. 23 ustawy o KAS',1,'2024-09-29 10:10:45.327529','Od osoby, której dane dotyczą lub od innych osób','xxgdfv',4,1,NULL,NULL,NULL,'2023-07-17',' ?? ');
+INSERT INTO "rejestr_czynnoscprzetwarzania" ("id","czn_nazwa","czn_pozycja_rej","last_updated","czn_status_zatw","czn_przepis_wrazliwe","czn_active","created","czn_zrodlo_danych","czn_opis_celu","OkresRetencji_id","Rejestr_id","czn_data_obowazywania_do","czn_data_obowazywania_od","czn_data_wyrejestrowania","czn_data_zgloszenia","czn_podstawa_prawna") VALUES (50,'_klon_powierzenie danych pracowników MF',5,'2024-10-01 22:14:47.519776','OCZEKUJĄCA','art. 4 ustawy Kodeks Pracy',1,'2024-10-01 22:14:47.519776','Od innej osoby, niż osoba której dane dotyczą','powierzenie przetwarzania',4,2,NULL,NULL,NULL,'2024-01-01',' ?? ');
+INSERT INTO "rejestr_grupazabezpieczen" ("id","gzb_active","gzb_opis","created","last_updated") VALUES (1,1,'Zabezpieczenia fizyczne','2023-10-21 19:28:24.534970','2023-10-21 19:29:43.402765');
+INSERT INTO "rejestr_grupazabezpieczen" ("id","gzb_active","gzb_opis","created","last_updated") VALUES (2,1,'Zabezpieczenia organizacyjne','2023-10-21 19:29:02.947098','2023-10-21 19:29:02.947098');
+INSERT INTO "rejestr_grupazabezpieczen" ("id","gzb_active","gzb_opis","created","last_updated") VALUES (4,1,'Zabezpieczenia elektroniczne','2023-10-21 19:45:31.962506','2023-10-21 19:45:31.962506');
+INSERT INTO "rejestr_grupazabezpieczen" ("id","gzb_active","gzb_opis","created","last_updated") VALUES (5,1,'Zabezpieczenie techniczne','2023-10-22 12:29:06.870409','2023-10-22 12:29:06.870409');
+INSERT INTO "rejestr_grupazabezpieczen" ("id","gzb_active","gzb_opis","created","last_updated") VALUES (6,1,'Zabezpieczenie logiczne','2023-10-22 12:29:23.902760','2023-10-22 12:29:23.902760');
+INSERT INTO "rejestr_grupazabezpieczen" ("id","gzb_active","gzb_opis","created","last_updated") VALUES (7,1,'Zabezpieczenie budowlane','2023-10-22 12:39:21.297400','2023-10-22 12:39:21.297400');
+INSERT INTO "rejestr_grupazagrozen" ("id","gzg_active","gzg_opis","created","last_updated") VALUES (2,1,'zniszczenia fizyczne','2023-10-22 11:18:10','2023-10-22 11:18:10');
+INSERT INTO "rejestr_grupazagrozen" ("id","gzg_active","gzg_opis","created","last_updated") VALUES (3,1,'zjawiska naturalne','2023-10-22 11:18:10','2023-10-22 11:18:10');
+INSERT INTO "rejestr_grupazagrozen" ("id","gzg_active","gzg_opis","created","last_updated") VALUES (4,1,'utrata podstawowych usług','2023-10-22 11:18:10','2023-10-22 11:18:10');
+INSERT INTO "rejestr_grupazagrozen" ("id","gzg_active","gzg_opis","created","last_updated") VALUES (5,1,'zakłócenia spowodowane promieniowaniem','2023-10-22 11:18:10','2023-10-22 11:18:10');
+INSERT INTO "rejestr_grupazagrozen" ("id","gzg_active","gzg_opis","created","last_updated") VALUES (6,1,'naruszenie bezpieczeństwa informacji','2023-10-22 11:18:10','2023-10-22 11:18:10');
+INSERT INTO "rejestr_grupazagrozen" ("id","gzg_active","gzg_opis","created","last_updated") VALUES (7,1,'awarie techniczne','2023-10-22 11:18:10','2023-10-22 11:18:10');
+INSERT INTO "rejestr_grupazagrozen" ("id","gzg_active","gzg_opis","created","last_updated") VALUES (8,1,'nieautoryzowane działania','2023-10-22 11:18:10','2023-10-22 11:18:10');
+INSERT INTO "rejestr_grupazagrozen" ("id","gzg_active","gzg_opis","created","last_updated") VALUES (9,1,'naruszenie bezpieczeństwa funkcji','2023-10-22 11:18:10','2023-10-22 11:18:10');
+INSERT INTO "rejestr_kategoriadanych" ("id","created","last_updated","kd_dane_szczegolne","kd_active","kd_skrot","kd_opis") VALUES (1,'2023-10-01 07:18:52.139005','2023-10-01 07:18:52.139005',0,1,'PESEL','Unikalny identyfikator osoby, której dane dotyczą');
+INSERT INTO "rejestr_kategoriadanych" ("id","created","last_updated","kd_dane_szczegolne","kd_active","kd_skrot","kd_opis") VALUES (2,'2023-10-01 07:19:51.267150','2023-10-01 07:19:51.267150',0,1,'Numer konta bankowego','Dane dotyczące stanu materialnego osoby, której dane dotyczą');
+INSERT INTO "rejestr_kategoriadanych" ("id","created","last_updated","kd_dane_szczegolne","kd_active","kd_skrot","kd_opis") VALUES (3,'2023-10-01 07:20:21.177070','2024-09-21 21:04:48.824179',0,1,'Płeć','Określenie płci osoby fizycznej');
+INSERT INTO "rejestr_kategoriadanych" ("id","created","last_updated","kd_dane_szczegolne","kd_active","kd_skrot","kd_opis") VALUES (5,'2023-10-01 07:21:00.037793','2023-11-05 16:34:20.831037',1,1,'Dane dotyczące stanu zdrowia','Dane, z których można wywnioskować stan zdrowia osoby, której dane dotyczą lub innych osób, o ile zostały przekazane');
+INSERT INTO "rejestr_kategoriadanych" ("id","created","last_updated","kd_dane_szczegolne","kd_active","kd_skrot","kd_opis") VALUES (6,'2023-11-05 16:31:45.784230','2023-11-05 16:31:45.784230',0,1,'Dane o ukaraniu','Informacje o karach nałożonych przez organy finansowe');
+INSERT INTO "rejestr_kategoriadanych" ("id","created","last_updated","kd_dane_szczegolne","kd_active","kd_skrot","kd_opis") VALUES (7,'2023-11-05 16:35:41.992406','2023-11-05 16:36:02.390014',0,1,'Kwota zaległości wobec organu','Wartość, która jest przedmiotem dochodzenia przez organ finansowy');
+INSERT INTO "rejestr_kategoriadanych" ("id","created","last_updated","kd_dane_szczegolne","kd_active","kd_skrot","kd_opis") VALUES (8,'2023-11-05 16:37:31.963131','2023-11-05 16:37:31.963131',0,1,'Stan majątkowy','Informacje, z których można wywnioskować stan materialny osoby (w tym nieprawdziwy)');
+INSERT INTO "rejestr_kategoriadanych" ("id","created","last_updated","kd_dane_szczegolne","kd_active","kd_skrot","kd_opis") VALUES (9,'2023-11-05 16:37:59.468701','2023-11-05 16:42:58.541635',1,1,'Orientacja seksualna','Informacje, z których można wywnioskować stan orientację seksualną osoby (w tym nieprawdziwą)');
+INSERT INTO "rejestr_kategoriadanych" ("id","created","last_updated","kd_dane_szczegolne","kd_active","kd_skrot","kd_opis") VALUES (10,'2023-11-05 16:39:58.264213','2023-11-05 16:42:49.214529',1,1,'Przynależność do organizacji związkowych','Informacje o przynależności do związków zawodowych');
+INSERT INTO "rejestr_kategoriadanych" ("id","created","last_updated","kd_dane_szczegolne","kd_active","kd_skrot","kd_opis") VALUES (11,'2023-11-05 16:40:47.430037','2023-11-05 16:42:34.198984',1,1,'Poglądy polityczne','Informacje, z których można wywnioskować poglądy polityczne osoby (w tym nieprawdziwy)');
+INSERT INTO "rejestr_kategoriadanych" ("id","created","last_updated","kd_dane_szczegolne","kd_active","kd_skrot","kd_opis") VALUES (12,'2023-11-05 16:42:17.533543','2023-11-05 16:43:31.287376',1,1,'Dane genetyczne','Informacje związane z genetycznymi własnościami osoby');
+INSERT INTO "rejestr_kategoriadanych" ("id","created","last_updated","kd_dane_szczegolne","kd_active","kd_skrot","kd_opis") VALUES (13,'2023-11-05 16:44:52.738875','2023-11-05 16:45:43.400382',1,1,'Tajemnica skarbowa','Informacje objęte tajemnicą skarbową');
+INSERT INTO "rejestr_kategoriadanych" ("id","created","last_updated","kd_dane_szczegolne","kd_active","kd_skrot","kd_opis") VALUES (14,'2023-11-05 16:45:27.897084','2023-11-05 16:45:27.897084',1,1,'Tajemnica celna','Informacje objęte tajemnicą celną');
+INSERT INTO "rejestr_kategoriadanych" ("id","created","last_updated","kd_dane_szczegolne","kd_active","kd_skrot","kd_opis") VALUES (15,'2024-09-19 17:22:41.160939','2024-09-19 17:22:41.169060',0,1,'Lokalizacja towaru','Miejsce odprawy, rozładunku lub przechowywania towaru');
+INSERT INTO "rejestr_kategoriadanych" ("id","created","last_updated","kd_dane_szczegolne","kd_active","kd_skrot","kd_opis") VALUES (16,'2024-09-19 17:23:44.527541','2024-09-21 21:05:29.113040',0,1,'Dane z deklaracji skróconej','informacje opisujące zgłoszenie celne');
+INSERT INTO "rejestr_kategoriadanych" ("id","created","last_updated","kd_dane_szczegolne","kd_active","kd_skrot","kd_opis") VALUES (17,'2024-09-21 21:05:13.299870','2024-09-21 21:05:13.299870',0,1,'Numer konta bankowego','');
+INSERT INTO "rejestr_kategoriadanych" ("id","created","last_updated","kd_dane_szczegolne","kd_active","kd_skrot","kd_opis") VALUES (18,'2024-09-29 11:38:28.745855','2024-09-29 11:41:22.348620',0,1,'Dane z deklaracji podatkowej PIT','informacje opisujące deklarację podatkową PIT');
+INSERT INTO "rejestr_kategoriaodbiorcow" ("id","created","last_updated","kto_active","kto_opis","kto_skrot") VALUES (1,'2023-09-30 22:14:58.492221','2023-09-30 22:23:09.588544',1,'Organy ścigania są uprawnione do przetwarzania danych ortzymywanych w związku z popełnieniem czynu zabronionego na w związku z obowiązkiem prawnym ciążącym na administratorze','Organy ścigania');
+INSERT INTO "rejestr_kategoriaodbiorcow" ("id","created","last_updated","kto_active","kto_opis","kto_skrot") VALUES (2,'2023-10-01 08:04:57.627539','2023-10-01 08:04:57.628051',1,'W ramach posępowań sprawdzających','ABW');
+INSERT INTO "rejestr_kategoriaodbiorcow" ("id","created","last_updated","kto_active","kto_opis","kto_skrot") VALUES (3,'2023-10-01 08:07:13.724252','2023-10-01 08:07:13.724252',1,'w związku z zatrudnieniem','ZUS');
+INSERT INTO "rejestr_kategoriaodbiorcow" ("id","created","last_updated","kto_active","kto_opis","kto_skrot") VALUES (4,'2023-10-08 09:47:58.936395','2023-10-08 09:47:58.936395',1,'Wojskowa komenda uzupełnień (MON)','WKU');
+INSERT INTO "rejestr_kategoriaodbiorcow" ("id","created","last_updated","kto_active","kto_opis","kto_skrot") VALUES (5,'2024-09-21 21:07:22.267881','2024-09-21 21:07:22.267881',1,'','Policja');
+INSERT INTO "rejestr_kategoriaodbiorcow" ("id","created","last_updated","kto_active","kto_opis","kto_skrot") VALUES (6,'2024-09-21 21:07:38.283972','2024-09-21 21:07:38.283972',1,'','Prokuratura');
+INSERT INTO "rejestr_kategoriaodbiorcow" ("id","created","last_updated","kto_active","kto_opis","kto_skrot") VALUES (7,'2024-09-21 21:08:25.712959','2024-09-21 21:08:25.712959',1,'inne Izby Administracji Skarbowej','Inne IAS');
+INSERT INTO "rejestr_kategoriaodbiorcow" ("id","created","last_updated","kto_active","kto_opis","kto_skrot") VALUES (8,'2024-09-21 21:08:49.995927','2024-09-21 21:08:49.996927',1,'','Urzędy Pracy');
+INSERT INTO "rejestr_kategoriaodbiorcow" ("id","created","last_updated","kto_active","kto_opis","kto_skrot") VALUES (9,'2024-09-21 21:09:14.694303','2024-09-21 21:09:14.694303',1,'','Sąd');
+INSERT INTO "rejestr_kategoriaosob" ("id","created","last_updated","ko_opis","ko_skrot","ko_active") VALUES (1,'2023-09-30 21:22:26.328812','2023-11-05 16:22:44.306430','Osoby fizyczne spoza organizacji','Osoby fizyczne poszukujące zatrudnienia',1);
+INSERT INTO "rejestr_kategoriaosob" ("id","created","last_updated","ko_opis","ko_skrot","ko_active") VALUES (4,'2023-10-01 08:08:09.281478','2023-10-01 08:08:09.281478','Pracownicy i funkcjonariusze KAS','Pracownicy',1);
+INSERT INTO "rejestr_kategoriaosob" ("id","created","last_updated","ko_opis","ko_skrot","ko_active") VALUES (5,'2023-11-05 16:21:20.875532','2023-11-05 16:21:20.875532','Klienci urzędu - podatnicy składający deklaracje podatkowe oraz zgłoszenia celne','Podatnicy',1);
+INSERT INTO "rejestr_kategoriaosob" ("id","created","last_updated","ko_opis","ko_skrot","ko_active") VALUES (6,'2023-11-05 16:22:27.402632','2023-11-05 16:22:27.402632','Osoby fizyczne przekraczające granicę państwa w przywozie lub wywozie','Podróżni',1);
+INSERT INTO "rejestr_kategoriaosob" ("id","created","last_updated","ko_opis","ko_skrot","ko_active") VALUES (7,'2023-11-05 17:32:23.251863','2023-11-05 17:32:23.251863','','Rodziny pracowników',1);
+INSERT INTO "rejestr_kategoriaosob" ("id","created","last_updated","ko_opis","ko_skrot","ko_active") VALUES (8,'2024-05-20 20:04:12.252043','2024-05-20 20:04:12.252043','Podmioty prawne dokonujące transakcji finansowych na terenie UE','Operatorzy ekonomiczni',1);
+INSERT INTO "rejestr_kategoriaosob" ("id","created","last_updated","ko_opis","ko_skrot","ko_active") VALUES (9,'2024-05-27 09:40:03.154559','2024-05-27 09:40:03.154559','Osoby, które odbywały staż w komórkach IAS/US','Stażyści (byli)',1);
+INSERT INTO "rejestr_kategoriaosob" ("id","created","last_updated","ko_opis","ko_skrot","ko_active") VALUES (10,'2024-05-27 09:41:05.769914','2024-05-27 09:41:05.769914','Osoby, które odbywały praktykę w IAS/US','Praktykanci',1);
+INSERT INTO "rejestr_kategoriaosob" ("id","created","last_updated","ko_opis","ko_skrot","ko_active") VALUES (11,'2024-09-21 21:00:54.033976','2024-09-21 21:00:54.034599','Osoby fizyczne nie podające danych identyfikacyjnych','Osoby fizyczne anonimowe',1);
+INSERT INTO "rejestr_kategoriaosob" ("id","created","last_updated","ko_opis","ko_skrot","ko_active") VALUES (12,'2024-09-21 21:03:07.568960','2024-09-21 21:03:30.382295','Aktualni lub byli pracownicy dokonujący wewnętrznych zgłoszeń naruszenia prawa','Sygnaliści (wewnętrzni)',1);
+INSERT INTO "rejestr_kategoriaosob" ("id","created","last_updated","ko_opis","ko_skrot","ko_active") VALUES (13,'2024-09-21 21:06:59.520187','2024-09-21 21:06:59.520187','Osoby, które ukarano orzeczeniem DIAS','Osoby ukarane przez IAS',1);
+INSERT INTO "rejestr_kategoriaosob" ("id","created","last_updated","ko_opis","ko_skrot","ko_active") VALUES (14,'2024-09-29 11:25:31.914984','2024-09-29 11:25:31.914984','Osoby fizyczne spoza organizacji','klon_Osoby fizyczne poszukujące zatrudnienia',1);
+INSERT INTO "rejestr_kategoriedanych" ("id","ktd_czynnoscp_id","ktd_dane_id") VALUES (1,3,1);
+INSERT INTO "rejestr_kategoriedanych" ("id","ktd_czynnoscp_id","ktd_dane_id") VALUES (2,3,2);
+INSERT INTO "rejestr_kategoriedanych" ("id","ktd_czynnoscp_id","ktd_dane_id") VALUES (3,3,3);
+INSERT INTO "rejestr_kategoriedanych" ("id","ktd_czynnoscp_id","ktd_dane_id") VALUES (4,3,5);
+INSERT INTO "rejestr_kategoriedanych" ("id","ktd_czynnoscp_id","ktd_dane_id") VALUES (8,4,1);
+INSERT INTO "rejestr_kategoriedanych" ("id","ktd_czynnoscp_id","ktd_dane_id") VALUES (9,5,1);
+INSERT INTO "rejestr_kategoriedanych" ("id","ktd_czynnoscp_id","ktd_dane_id") VALUES (10,5,5);
+INSERT INTO "rejestr_kategoriedanych" ("id","ktd_czynnoscp_id","ktd_dane_id") VALUES (11,6,1);
+INSERT INTO "rejestr_kategoriedanych" ("id","ktd_czynnoscp_id","ktd_dane_id") VALUES (12,6,3);
+INSERT INTO "rejestr_kategoriedanych" ("id","ktd_czynnoscp_id","ktd_dane_id") VALUES (13,6,5);
+INSERT INTO "rejestr_kategoriedanych" ("id","ktd_czynnoscp_id","ktd_dane_id") VALUES (14,7,1);
+INSERT INTO "rejestr_kategoriedanych" ("id","ktd_czynnoscp_id","ktd_dane_id") VALUES (15,7,6);
+INSERT INTO "rejestr_kategoriedanych" ("id","ktd_czynnoscp_id","ktd_dane_id") VALUES (22,15,1);
+INSERT INTO "rejestr_kategoriedanych" ("id","ktd_czynnoscp_id","ktd_dane_id") VALUES (23,15,13);
+INSERT INTO "rejestr_kategoriedanych" ("id","ktd_czynnoscp_id","ktd_dane_id") VALUES (24,15,14);
+INSERT INTO "rejestr_kategoriedanych" ("id","ktd_czynnoscp_id","ktd_dane_id") VALUES (37,22,16);
+INSERT INTO "rejestr_kategoriedanych" ("id","ktd_czynnoscp_id","ktd_dane_id") VALUES (38,22,3);
+INSERT INTO "rejestr_kategoriedanych" ("id","ktd_czynnoscp_id","ktd_dane_id") VALUES (39,22,15);
+INSERT INTO "rejestr_kategoriedanych" ("id","ktd_czynnoscp_id","ktd_dane_id") VALUES (44,25,16);
+INSERT INTO "rejestr_kategoriedanych" ("id","ktd_czynnoscp_id","ktd_dane_id") VALUES (45,25,3);
+INSERT INTO "rejestr_kategoriedanych" ("id","ktd_czynnoscp_id","ktd_dane_id") VALUES (46,25,15);
+INSERT INTO "rejestr_kategoriedanych" ("id","ktd_czynnoscp_id","ktd_dane_id") VALUES (50,27,16);
+INSERT INTO "rejestr_kategoriedanych" ("id","ktd_czynnoscp_id","ktd_dane_id") VALUES (51,27,3);
+INSERT INTO "rejestr_kategoriedanych" ("id","ktd_czynnoscp_id","ktd_dane_id") VALUES (52,27,15);
+INSERT INTO "rejestr_kategoriedanych" ("id","ktd_czynnoscp_id","ktd_dane_id") VALUES (56,29,16);
+INSERT INTO "rejestr_kategoriedanych" ("id","ktd_czynnoscp_id","ktd_dane_id") VALUES (57,29,3);
+INSERT INTO "rejestr_kategoriedanych" ("id","ktd_czynnoscp_id","ktd_dane_id") VALUES (58,29,15);
+INSERT INTO "rejestr_kategoriedanych" ("id","ktd_czynnoscp_id","ktd_dane_id") VALUES (85,42,1);
+INSERT INTO "rejestr_kategoriedanych" ("id","ktd_czynnoscp_id","ktd_dane_id") VALUES (86,42,5);
+INSERT INTO "rejestr_kategoriedanych" ("id","ktd_czynnoscp_id","ktd_dane_id") VALUES (87,43,1);
+INSERT INTO "rejestr_kategoriedanych" ("id","ktd_czynnoscp_id","ktd_dane_id") VALUES (88,43,6);
+INSERT INTO "rejestr_kategoriedanych" ("id","ktd_czynnoscp_id","ktd_dane_id") VALUES (89,43,8);
+INSERT INTO "rejestr_kategoriedanych" ("id","ktd_czynnoscp_id","ktd_dane_id") VALUES (90,43,13);
+INSERT INTO "rejestr_kategoriedanych" ("id","ktd_czynnoscp_id","ktd_dane_id") VALUES (91,43,14);
+INSERT INTO "rejestr_kategoriedanych" ("id","ktd_czynnoscp_id","ktd_dane_id") VALUES (92,43,15);
+INSERT INTO "rejestr_kategoriedanych" ("id","ktd_czynnoscp_id","ktd_dane_id") VALUES (97,46,1);
+INSERT INTO "rejestr_kategoriedanych" ("id","ktd_czynnoscp_id","ktd_dane_id") VALUES (98,46,6);
+INSERT INTO "rejestr_kategoriedanych" ("id","ktd_czynnoscp_id","ktd_dane_id") VALUES (99,47,1);
+INSERT INTO "rejestr_kategoriedanych" ("id","ktd_czynnoscp_id","ktd_dane_id") VALUES (100,47,3);
+INSERT INTO "rejestr_kategoriedanych" ("id","ktd_czynnoscp_id","ktd_dane_id") VALUES (101,47,5);
+INSERT INTO "rejestr_kategoriedanych" ("id","ktd_czynnoscp_id","ktd_dane_id") VALUES (102,48,1);
+INSERT INTO "rejestr_kategoriedanych" ("id","ktd_czynnoscp_id","ktd_dane_id") VALUES (103,48,6);
+INSERT INTO "rejestr_kategoriedanych" ("id","ktd_czynnoscp_id","ktd_dane_id") VALUES (104,50,16);
+INSERT INTO "rejestr_kategoriedanych" ("id","ktd_czynnoscp_id","ktd_dane_id") VALUES (105,50,3);
+INSERT INTO "rejestr_kategoriedanych" ("id","ktd_czynnoscp_id","ktd_dane_id") VALUES (106,50,15);
+INSERT INTO "rejestr_kategorieodbiorcow" ("id","kob_czynnoscp_id","kob_odbiorcy_id") VALUES (1,3,1);
+INSERT INTO "rejestr_kategorieodbiorcow" ("id","kob_czynnoscp_id","kob_odbiorcy_id") VALUES (2,3,2);
+INSERT INTO "rejestr_kategorieodbiorcow" ("id","kob_czynnoscp_id","kob_odbiorcy_id") VALUES (3,3,3);
+INSERT INTO "rejestr_kategorieodbiorcow" ("id","kob_czynnoscp_id","kob_odbiorcy_id") VALUES (6,4,4);
+INSERT INTO "rejestr_kategorieodbiorcow" ("id","kob_czynnoscp_id","kob_odbiorcy_id") VALUES (8,5,1);
+INSERT INTO "rejestr_kategorieodbiorcow" ("id","kob_czynnoscp_id","kob_odbiorcy_id") VALUES (9,7,1);
+INSERT INTO "rejestr_kategorieodbiorcow" ("id","kob_czynnoscp_id","kob_odbiorcy_id") VALUES (14,15,1);
+INSERT INTO "rejestr_kategorieodbiorcow" ("id","kob_czynnoscp_id","kob_odbiorcy_id") VALUES (20,22,1);
+INSERT INTO "rejestr_kategorieodbiorcow" ("id","kob_czynnoscp_id","kob_odbiorcy_id") VALUES (23,25,1);
+INSERT INTO "rejestr_kategorieodbiorcow" ("id","kob_czynnoscp_id","kob_odbiorcy_id") VALUES (25,27,1);
+INSERT INTO "rejestr_kategorieodbiorcow" ("id","kob_czynnoscp_id","kob_odbiorcy_id") VALUES (27,29,1);
+INSERT INTO "rejestr_kategorieodbiorcow" ("id","kob_czynnoscp_id","kob_odbiorcy_id") VALUES (40,42,1);
+INSERT INTO "rejestr_kategorieodbiorcow" ("id","kob_czynnoscp_id","kob_odbiorcy_id") VALUES (41,43,1);
+INSERT INTO "rejestr_kategorieodbiorcow" ("id","kob_czynnoscp_id","kob_odbiorcy_id") VALUES (44,46,1);
+INSERT INTO "rejestr_kategorieodbiorcow" ("id","kob_czynnoscp_id","kob_odbiorcy_id") VALUES (45,48,1);
+INSERT INTO "rejestr_kategorieodbiorcow" ("id","kob_czynnoscp_id","kob_odbiorcy_id") VALUES (46,50,1);
+INSERT INTO "rejestr_kategorieosob" ("id","kos_czynnoscp_id","kos_kosoby_id") VALUES (1,3,4);
+INSERT INTO "rejestr_kategorieosob" ("id","kos_czynnoscp_id","kos_kosoby_id") VALUES (3,4,4);
+INSERT INTO "rejestr_kategorieosob" ("id","kos_czynnoscp_id","kos_kosoby_id") VALUES (4,5,4);
+INSERT INTO "rejestr_kategorieosob" ("id","kos_czynnoscp_id","kos_kosoby_id") VALUES (5,6,5);
+INSERT INTO "rejestr_kategorieosob" ("id","kos_czynnoscp_id","kos_kosoby_id") VALUES (6,2,1);
+INSERT INTO "rejestr_kategorieosob" ("id","kos_czynnoscp_id","kos_kosoby_id") VALUES (7,2,9);
+INSERT INTO "rejestr_kategorieosob" ("id","kos_czynnoscp_id","kos_kosoby_id") VALUES (8,7,5);
+INSERT INTO "rejestr_kategorieosob" ("id","kos_czynnoscp_id","kos_kosoby_id") VALUES (9,7,6);
+INSERT INTO "rejestr_kategorieosob" ("id","kos_czynnoscp_id","kos_kosoby_id") VALUES (16,15,8);
+INSERT INTO "rejestr_kategorieosob" ("id","kos_czynnoscp_id","kos_kosoby_id") VALUES (17,15,5);
+INSERT INTO "rejestr_kategorieosob" ("id","kos_czynnoscp_id","kos_kosoby_id") VALUES (18,15,6);
+INSERT INTO "rejestr_kategorieosob" ("id","kos_czynnoscp_id","kos_kosoby_id") VALUES (32,22,4);
+INSERT INTO "rejestr_kategorieosob" ("id","kos_czynnoscp_id","kos_kosoby_id") VALUES (37,25,4);
+INSERT INTO "rejestr_kategorieosob" ("id","kos_czynnoscp_id","kos_kosoby_id") VALUES (41,27,4);
+INSERT INTO "rejestr_kategorieosob" ("id","kos_czynnoscp_id","kos_kosoby_id") VALUES (45,29,4);
+INSERT INTO "rejestr_kategorieosob" ("id","kos_czynnoscp_id","kos_kosoby_id") VALUES (72,42,4);
+INSERT INTO "rejestr_kategorieosob" ("id","kos_czynnoscp_id","kos_kosoby_id") VALUES (73,43,8);
+INSERT INTO "rejestr_kategorieosob" ("id","kos_czynnoscp_id","kos_kosoby_id") VALUES (78,46,5);
+INSERT INTO "rejestr_kategorieosob" ("id","kos_czynnoscp_id","kos_kosoby_id") VALUES (79,46,6);
+INSERT INTO "rejestr_kategorieosob" ("id","kos_czynnoscp_id","kos_kosoby_id") VALUES (80,47,5);
+INSERT INTO "rejestr_kategorieosob" ("id","kos_czynnoscp_id","kos_kosoby_id") VALUES (81,48,5);
+INSERT INTO "rejestr_kategorieosob" ("id","kos_czynnoscp_id","kos_kosoby_id") VALUES (82,48,6);
+INSERT INTO "rejestr_kategorieosob" ("id","kos_czynnoscp_id","kos_kosoby_id") VALUES (83,49,1);
+INSERT INTO "rejestr_kategorieosob" ("id","kos_czynnoscp_id","kos_kosoby_id") VALUES (84,49,9);
+INSERT INTO "rejestr_kategorieosob" ("id","kos_czynnoscp_id","kos_kosoby_id") VALUES (85,50,4);
+INSERT INTO "rejestr_komorka" ("id","created","kom_adres","kom_active","kom_symbol","kom_tel","kom_nazwa","kom_email","last_updated","Organizacja_id") VALUES (1,'2023-09-26 17:33:24.484204','Wiejska 72',1,'IWD','533144005','Wieloosobowe Stanowisko Ochrony Danych','alek.jakubowski@gmail.com','2023-09-26 17:33:24.484204',5);
+INSERT INTO "rejestr_komorka" ("id","created","kom_adres","kom_active","kom_symbol","kom_tel","kom_nazwa","kom_email","last_updated","Organizacja_id") VALUES (2,'2023-09-26 17:35:00.439801','Białystok, ul. Branickiego 9',1,'IKD','345345345345','Audyt Wewnetrzny','a@gmail.com','2023-09-27 17:19:41.215072',5);
+INSERT INTO "rejestr_komorka" ("id","created","kom_adres","kom_active","kom_symbol","kom_tel","kom_nazwa","kom_email","last_updated","Organizacja_id") VALUES (3,'2023-10-01 12:11:51.899793','',1,'IKA','','Wydział Kadr','','2023-10-01 12:11:51.899793',5);
+INSERT INTO "rejestr_komorka" ("id","created","kom_adres","kom_active","kom_symbol","kom_tel","kom_nazwa","kom_email","last_updated","Organizacja_id") VALUES (4,'2023-10-08 09:39:11.319382','Białystok, Młynowa 21A',1,'IWO','','Referat Bezpieczeństwa i Ochrony Informacji','','2023-10-08 17:33:08.736497',5);
+INSERT INTO "rejestr_komorka" ("id","created","kom_adres","kom_active","kom_symbol","kom_tel","kom_nazwa","kom_email","last_updated","Organizacja_id") VALUES (5,'2024-09-01 22:00:49.235030','',1,'IWZ','','Wydział Zarządzania','','2024-09-01 22:00:49.235030',5);
+INSERT INTO "rejestr_okresretencji" ("id","okr_nazwa","created","last_updated","okr_opis_okresu","okr_active","okr_lat_max") VALUES (1,'bezterminowo','2023-09-28 11:35:30','2023-10-20 20:23:03.500410','do zakończenia realizacji celu przetwarzania',1,NULL);
+INSERT INTO "rejestr_okresretencji" ("id","okr_nazwa","created","last_updated","okr_opis_okresu","okr_active","okr_lat_max") VALUES (2,'B25','2023-09-28 11:36:02','2023-09-28 16:02:44.284925','max 25 lat',1,25);
+INSERT INTO "rejestr_okresretencji" ("id","okr_nazwa","created","last_updated","okr_opis_okresu","okr_active","okr_lat_max") VALUES (4,'B10','2023-09-28 16:12:35.563144','2023-09-29 07:24:24.087454','2 lata w komórce 8 lat w archiwum zakładowym',1,11);
+INSERT INTO "rejestr_okresretencji" ("id","okr_nazwa","created","last_updated","okr_opis_okresu","okr_active","okr_lat_max") VALUES (5,'B50','2023-09-29 13:19:00.361761','2023-09-29 13:19:00.361761','2 lata w komórce 5 lat w archiwum zakładowym reszta w arch. państwowym',1,50);
+INSERT INTO "rejestr_operacjaprzetwarzania" ("id","opp_active","opp_opis","created","last_updated") VALUES (1,1,'ZBIERANIE','2024-01-07 18:36:30.652269','2024-05-27 09:35:14.660492');
+INSERT INTO "rejestr_operacjaprzetwarzania" ("id","opp_active","opp_opis","created","last_updated") VALUES (2,1,'UTRWALANIE','2024-01-07 19:56:10.965336','2024-01-07 19:56:10.965336');
+INSERT INTO "rejestr_operacjaprzetwarzania" ("id","opp_active","opp_opis","created","last_updated") VALUES (3,1,'ORGANIZOWANIE','2024-01-07 19:58:13.085765','2024-01-07 19:58:13.085765');
+INSERT INTO "rejestr_operacjaprzetwarzania" ("id","opp_active","opp_opis","created","last_updated") VALUES (4,1,'PORZĄDKOWANIE','2024-01-07 19:58:25.870274','2024-01-07 19:58:25.870274');
+INSERT INTO "rejestr_operacjaprzetwarzania" ("id","opp_active","opp_opis","created","last_updated") VALUES (5,1,'PRZECHOWYWANIE','2024-01-07 19:58:37.559842','2024-01-07 19:58:37.559842');
+INSERT INTO "rejestr_operacjaprzetwarzania" ("id","opp_active","opp_opis","created","last_updated") VALUES (6,1,'ADAPTOWANIE LUB MODYFIKOWANIE','2024-01-07 19:58:56.509290','2024-01-07 19:58:56.509290');
+INSERT INTO "rejestr_operacjaprzetwarzania" ("id","opp_active","opp_opis","created","last_updated") VALUES (7,1,'POBIERANIE','2024-01-07 19:59:10.152083','2024-01-07 19:59:10.152083');
+INSERT INTO "rejestr_operacjaprzetwarzania" ("id","opp_active","opp_opis","created","last_updated") VALUES (8,1,'PRZEGLĄDANIE','2024-01-07 19:59:26.397127','2024-01-07 19:59:26.397127');
+INSERT INTO "rejestr_operacjaprzetwarzania" ("id","opp_active","opp_opis","created","last_updated") VALUES (9,1,'WYKORZYSTYWANIE','2024-01-07 19:59:48.272704','2024-01-07 19:59:48.272704');
+INSERT INTO "rejestr_operacjaprzetwarzania" ("id","opp_active","opp_opis","created","last_updated") VALUES (10,1,'UJAWNIANIE POPRZEZ PRZESŁANIE','2024-01-07 20:00:03.265141','2024-01-07 20:00:03.265141');
+INSERT INTO "rejestr_operacjaprzetwarzania" ("id","opp_active","opp_opis","created","last_updated") VALUES (11,1,'ROZPOWSZECHNIANIE LUB INNEGO RODZAJU UDOSTĘPNIANIE','2024-01-07 20:00:22.097906','2024-01-07 20:00:22.097906');
+INSERT INTO "rejestr_operacjaprzetwarzania" ("id","opp_active","opp_opis","created","last_updated") VALUES (12,1,'DOPASOWYWANIE LUB ŁĄCZENIE (Data Matching)','2024-01-07 20:00:54.178503','2024-01-07 20:02:31.321619');
+INSERT INTO "rejestr_operacjaprzetwarzania" ("id","opp_active","opp_opis","created","last_updated") VALUES (13,1,'OGRANICZANIE','2024-01-07 20:01:08.265065','2024-01-07 20:01:08.265065');
+INSERT INTO "rejestr_operacjaprzetwarzania" ("id","opp_active","opp_opis","created","last_updated") VALUES (15,1,'USUWANIE LUB NISZCZENIE','2024-01-07 20:01:51.457968','2024-01-07 20:01:51.457968');
+INSERT INTO "rejestr_operacjeprzetwarzania" ("id","opp_czynnoscp_id","opp_operacjap_id") VALUES (1,2,1);
+INSERT INTO "rejestr_operacjeprzetwarzania" ("id","opp_czynnoscp_id","opp_operacjap_id") VALUES (2,2,5);
+INSERT INTO "rejestr_operacjeprzetwarzania" ("id","opp_czynnoscp_id","opp_operacjap_id") VALUES (3,2,6);
+INSERT INTO "rejestr_operacjeprzetwarzania" ("id","opp_czynnoscp_id","opp_operacjap_id") VALUES (4,2,8);
+INSERT INTO "rejestr_operacjeprzetwarzania" ("id","opp_czynnoscp_id","opp_operacjap_id") VALUES (5,2,15);
+INSERT INTO "rejestr_operacjeprzetwarzania" ("id","opp_czynnoscp_id","opp_operacjap_id") VALUES (6,15,3);
+INSERT INTO "rejestr_operacjeprzetwarzania" ("id","opp_czynnoscp_id","opp_operacjap_id") VALUES (7,15,4);
+INSERT INTO "rejestr_operacjeprzetwarzania" ("id","opp_czynnoscp_id","opp_operacjap_id") VALUES (8,15,5);
+INSERT INTO "rejestr_operacjeprzetwarzania" ("id","opp_czynnoscp_id","opp_operacjap_id") VALUES (9,15,6);
+INSERT INTO "rejestr_operacjeprzetwarzania" ("id","opp_czynnoscp_id","opp_operacjap_id") VALUES (10,15,8);
+INSERT INTO "rejestr_operacjeprzetwarzania" ("id","opp_czynnoscp_id","opp_operacjap_id") VALUES (11,15,9);
+INSERT INTO "rejestr_operacjeprzetwarzania" ("id","opp_czynnoscp_id","opp_operacjap_id") VALUES (12,15,12);
+INSERT INTO "rejestr_operacjeprzetwarzania" ("id","opp_czynnoscp_id","opp_operacjap_id") VALUES (13,15,2);
+INSERT INTO "rejestr_operacjeprzetwarzania" ("id","opp_czynnoscp_id","opp_operacjap_id") VALUES (30,22,8);
+INSERT INTO "rejestr_operacjeprzetwarzania" ("id","opp_czynnoscp_id","opp_operacjap_id") VALUES (31,22,1);
+INSERT INTO "rejestr_operacjeprzetwarzania" ("id","opp_czynnoscp_id","opp_operacjap_id") VALUES (32,22,2);
+INSERT INTO "rejestr_operacjeprzetwarzania" ("id","opp_czynnoscp_id","opp_operacjap_id") VALUES (33,22,5);
+INSERT INTO "rejestr_operacjeprzetwarzania" ("id","opp_czynnoscp_id","opp_operacjap_id") VALUES (34,25,8);
+INSERT INTO "rejestr_operacjeprzetwarzania" ("id","opp_czynnoscp_id","opp_operacjap_id") VALUES (35,25,1);
+INSERT INTO "rejestr_operacjeprzetwarzania" ("id","opp_czynnoscp_id","opp_operacjap_id") VALUES (36,25,2);
+INSERT INTO "rejestr_operacjeprzetwarzania" ("id","opp_czynnoscp_id","opp_operacjap_id") VALUES (37,25,5);
+INSERT INTO "rejestr_operacjeprzetwarzania" ("id","opp_czynnoscp_id","opp_operacjap_id") VALUES (46,27,8);
+INSERT INTO "rejestr_operacjeprzetwarzania" ("id","opp_czynnoscp_id","opp_operacjap_id") VALUES (47,27,1);
+INSERT INTO "rejestr_operacjeprzetwarzania" ("id","opp_czynnoscp_id","opp_operacjap_id") VALUES (48,27,2);
+INSERT INTO "rejestr_operacjeprzetwarzania" ("id","opp_czynnoscp_id","opp_operacjap_id") VALUES (49,27,5);
+INSERT INTO "rejestr_operacjeprzetwarzania" ("id","opp_czynnoscp_id","opp_operacjap_id") VALUES (58,29,8);
+INSERT INTO "rejestr_operacjeprzetwarzania" ("id","opp_czynnoscp_id","opp_operacjap_id") VALUES (59,29,1);
+INSERT INTO "rejestr_operacjeprzetwarzania" ("id","opp_czynnoscp_id","opp_operacjap_id") VALUES (60,29,2);
+INSERT INTO "rejestr_operacjeprzetwarzania" ("id","opp_czynnoscp_id","opp_operacjap_id") VALUES (61,29,5);
+INSERT INTO "rejestr_operacjeprzetwarzania" ("id","opp_czynnoscp_id","opp_operacjap_id") VALUES (78,43,1);
+INSERT INTO "rejestr_operacjeprzetwarzania" ("id","opp_czynnoscp_id","opp_operacjap_id") VALUES (79,43,2);
+INSERT INTO "rejestr_operacjeprzetwarzania" ("id","opp_czynnoscp_id","opp_operacjap_id") VALUES (80,43,3);
+INSERT INTO "rejestr_operacjeprzetwarzania" ("id","opp_czynnoscp_id","opp_operacjap_id") VALUES (81,43,4);
+INSERT INTO "rejestr_operacjeprzetwarzania" ("id","opp_czynnoscp_id","opp_operacjap_id") VALUES (82,43,5);
+INSERT INTO "rejestr_operacjeprzetwarzania" ("id","opp_czynnoscp_id","opp_operacjap_id") VALUES (83,43,8);
+INSERT INTO "rejestr_operacjeprzetwarzania" ("id","opp_czynnoscp_id","opp_operacjap_id") VALUES (84,43,9);
+INSERT INTO "rejestr_operacjeprzetwarzania" ("id","opp_czynnoscp_id","opp_operacjap_id") VALUES (85,49,1);
+INSERT INTO "rejestr_operacjeprzetwarzania" ("id","opp_czynnoscp_id","opp_operacjap_id") VALUES (86,49,5);
+INSERT INTO "rejestr_operacjeprzetwarzania" ("id","opp_czynnoscp_id","opp_operacjap_id") VALUES (87,49,6);
+INSERT INTO "rejestr_operacjeprzetwarzania" ("id","opp_czynnoscp_id","opp_operacjap_id") VALUES (88,49,8);
+INSERT INTO "rejestr_operacjeprzetwarzania" ("id","opp_czynnoscp_id","opp_operacjap_id") VALUES (89,49,15);
+INSERT INTO "rejestr_operacjeprzetwarzania" ("id","opp_czynnoscp_id","opp_operacjap_id") VALUES (90,50,8);
+INSERT INTO "rejestr_operacjeprzetwarzania" ("id","opp_czynnoscp_id","opp_operacjap_id") VALUES (91,50,1);
+INSERT INTO "rejestr_operacjeprzetwarzania" ("id","opp_czynnoscp_id","opp_operacjap_id") VALUES (92,50,2);
+INSERT INTO "rejestr_operacjeprzetwarzania" ("id","opp_czynnoscp_id","opp_operacjap_id") VALUES (93,50,5);
+INSERT INTO "rejestr_organizacja" ("id","org_iod_name","org_nazwa","org_adres","created","org_www","last_updated","org_iod_email","org_email","org_active","org_skrot","org_tel") VALUES (3,'Barbara Grala-Dziagacz','Ministerstwo Finansów','Warszawa, ul. Świętokrzyska 12','2023-09-25 14:50:39.820942','http://www.mf.gov.pl','2023-10-21 13:49:41.421172','iod.mf@mf.gov.pl','mf@mf.gov.pl',1,'MF','22 1234455  55675');
+INSERT INTO "rejestr_organizacja" ("id","org_iod_name","org_nazwa","org_adres","created","org_www","last_updated","org_iod_email","org_email","org_active","org_skrot","org_tel") VALUES (4,'','Aplikacje Krytyczne Sp. z o.o.','Warszawa','2023-09-25 17:26:00.117650','http://www.ak.pl','2023-09-25 17:26:00.117650','','',1,'AK','');
+INSERT INTO "rejestr_organizacja" ("id","org_iod_name","org_nazwa","org_adres","created","org_www","last_updated","org_iod_email","org_email","org_active","org_skrot","org_tel") VALUES (5,'Aleksander Jakubowski','Izba Administracji Skarbowej w Białymstoku','Białystok, ul. Jana Klemensa Branickiego 9','2023-09-26 07:32:00.087431','http://podlaskie.kas.gov.pl','2023-09-26 08:47:50.316859','iod.bailystok@mf.gov.pl','ias.bialystok@mf.gov.pl',1,'IASBIA','');
+INSERT INTO "rejestr_organizacja" ("id","org_iod_name","org_nazwa","org_adres","created","org_www","last_updated","org_iod_email","org_email","org_active","org_skrot","org_tel") VALUES (6,'Krzysztof Piórkowski','Centrum Informatyki Resortu Finansów','Radom','2023-09-26 07:33:36.406068','','2023-09-26 10:24:56.357034','','',1,'CIRF','');
+INSERT INTO "rejestr_organizacja" ("id","org_iod_name","org_nazwa","org_adres","created","org_www","last_updated","org_iod_email","org_email","org_active","org_skrot","org_tel") VALUES (7,'Michał Józefiak','Izba Administracji Skarbowej w Krakowie','Kraków','2023-09-26 08:47:34.618849','http://małopolskie.kas.gov.pl','2023-09-29 06:58:41.593084','iod.krakow@mf.gov.pl','',1,'IASKRA','');
+INSERT INTO "rejestr_organizacja" ("id","org_iod_name","org_nazwa","org_adres","created","org_www","last_updated","org_iod_email","org_email","org_active","org_skrot","org_tel") VALUES (9,'Barbara Grala-Dziagacz','Krajowa Administracja Skarbowa','Warszawa, ul. Świętokrzyska 12','2023-09-30 17:31:33.062240','','2023-09-30 17:31:33.062240','','',1,'KAS','');
+INSERT INTO "rejestr_organizacja" ("id","org_iod_name","org_nazwa","org_adres","created","org_www","last_updated","org_iod_email","org_email","org_active","org_skrot","org_tel") VALUES (10,'Tomasz Kocisz','Izba Administracji Skarbowej w Gdańsku','Długa 75/76','2023-10-08 09:34:22.879158','https://www.pomorskie.kas.gov.pl/','2023-11-05 17:46:27.190670','','',1,'IAS GDA','');
+INSERT INTO "rejestr_organizacja" ("id","org_iod_name","org_nazwa","org_adres","created","org_www","last_updated","org_iod_email","org_email","org_active","org_skrot","org_tel") VALUES (11,'Aleksander Jakubowski','Pierwszy Urząd Skarbowy w Białymstoku','Białystok, ul. Świętojańska 1','2023-11-05 17:46:00.385597','','2024-09-29 17:22:41.022193','iod.bialystok@mf.gov.pl','',1,'IUS Białystok','');
+INSERT INTO "rejestr_organizacja" ("id","org_iod_name","org_nazwa","org_adres","created","org_www","last_updated","org_iod_email","org_email","org_active","org_skrot","org_tel") VALUES (14,'','Centrum Informatyzacji Resortu Finansów','Radom','2024-05-26 21:36:00.648745','','2024-05-26 21:36:00.648745','','',1,'CIRF','');
+INSERT INTO "rejestr_organizacja" ("id","org_iod_name","org_nazwa","org_adres","created","org_www","last_updated","org_iod_email","org_email","org_active","org_skrot","org_tel") VALUES (16,'Barbara Grala-Dziagacz','Ministerstwo Finansów Departament Bezpieczeństwa','Warszawa, ul. Świętokrzyska 12','2024-09-29 17:21:15.779502','','2024-09-29 17:22:02.940442','iod.mf@mf.gov.pl','mf@mf.gov.pl',1,'DB MF','22 1234455  55675');
+INSERT INTO "rejestr_podatnosc" ("id","pdt_skrot","pdt_opis","pdt_active","pdt_waga") VALUES (1,'PD-01','niewystarczające utrzymanie / błędna instalacja nośników pamięci',1,1);
+INSERT INTO "rejestr_podatnosc" ("id","pdt_skrot","pdt_opis","pdt_active","pdt_waga") VALUES (2,'PD-02','brak planów okresowej wymiany',1,0);
+INSERT INTO "rejestr_podatnosc" ("id","pdt_skrot","pdt_opis","pdt_active","pdt_waga") VALUES (3,'PD-03','wrażliwość na wilgoć, pył, zanieczyszczenie',1,1);
+INSERT INTO "rejestr_podatnosc_Zagrozenia" ("id","podatnosc_id","zagrozenie_id") VALUES (2,3,11);
+INSERT INTO "rejestr_podatnosc_Zagrozenia" ("id","podatnosc_id","zagrozenie_id") VALUES (3,3,5);
+INSERT INTO "rejestr_podatnosc_Zagrozenia" ("id","podatnosc_id","zagrozenie_id") VALUES (4,3,14);
+INSERT INTO "rejestr_podatnosc_Zagrozenia" ("id","podatnosc_id","zagrozenie_id") VALUES (5,3,9);
+INSERT INTO "rejestr_podmiotprzetwarzajacy" ("id","prz_active","prz_skrot","prz_nazwa","prz_adres","prz_email","prz_www","prz_tel","prz_iod_name","prz_iod_email","created","last_updated") VALUES (1,1,'CIRF','Centrum Informatyzacji Resortu Finansów','RADOM','','','','','','2024-05-26 22:00:54.958825','2024-05-26 22:00:54.958825');
+INSERT INTO "rejestr_podmiotprzetwarzajacy" ("id","prz_active","prz_skrot","prz_nazwa","prz_adres","prz_email","prz_www","prz_tel","prz_iod_name","prz_iod_email","created","last_updated") VALUES (2,1,'RACINO','Racino SP. z o.o.','Gdańsk','','','','','','2024-05-26 22:04:07.686998','2024-05-27 06:56:44.573441');
+INSERT INTO "rejestr_podmiotyprzetwarzajace" ("id","pod_czynnoscp_id","pod_organizacja_id") VALUES (3,2,2);
+INSERT INTO "rejestr_podmiotyprzetwarzajace" ("id","pod_czynnoscp_id","pod_organizacja_id") VALUES (4,2,1);
+INSERT INTO "rejestr_podmiotyprzetwarzajace" ("id","pod_czynnoscp_id","pod_organizacja_id") VALUES (5,3,1);
+INSERT INTO "rejestr_podmiotyprzetwarzajace" ("id","pod_czynnoscp_id","pod_organizacja_id") VALUES (6,3,2);
+INSERT INTO "rejestr_podmiotyprzetwarzajace" ("id","pod_czynnoscp_id","pod_organizacja_id") VALUES (11,15,1);
+INSERT INTO "rejestr_podmiotyprzetwarzajace" ("id","pod_czynnoscp_id","pod_organizacja_id") VALUES (16,22,1);
+INSERT INTO "rejestr_podmiotyprzetwarzajace" ("id","pod_czynnoscp_id","pod_organizacja_id") VALUES (17,7,1);
+INSERT INTO "rejestr_podmiotyprzetwarzajace" ("id","pod_czynnoscp_id","pod_organizacja_id") VALUES (20,25,1);
+INSERT INTO "rejestr_podmiotyprzetwarzajace" ("id","pod_czynnoscp_id","pod_organizacja_id") VALUES (22,27,1);
+INSERT INTO "rejestr_podmiotyprzetwarzajace" ("id","pod_czynnoscp_id","pod_organizacja_id") VALUES (24,29,1);
+INSERT INTO "rejestr_podmiotyprzetwarzajace" ("id","pod_czynnoscp_id","pod_organizacja_id") VALUES (37,43,1);
+INSERT INTO "rejestr_podmiotyprzetwarzajace" ("id","pod_czynnoscp_id","pod_organizacja_id") VALUES (40,46,1);
+INSERT INTO "rejestr_podmiotyprzetwarzajace" ("id","pod_czynnoscp_id","pod_organizacja_id") VALUES (41,48,1);
+INSERT INTO "rejestr_podmiotyprzetwarzajace" ("id","pod_czynnoscp_id","pod_organizacja_id") VALUES (42,49,2);
+INSERT INTO "rejestr_podmiotyprzetwarzajace" ("id","pod_czynnoscp_id","pod_organizacja_id") VALUES (43,49,1);
+INSERT INTO "rejestr_podmiotyprzetwarzajace" ("id","pod_czynnoscp_id","pod_organizacja_id") VALUES (44,50,1);
+INSERT INTO "rejestr_przeslankalegalnosci" ("id","prl_active","prl_skrot","prl_art_rodo","created","last_updated","prl_przepis_rodo") VALUES (1,1,'REALIZACJA PRZEPISU PRAWA','art. 6 ust 1 pkt c','2023-09-29 09:30:53.283578','2023-09-29 09:30:53.283578','Przetwarzanie jest zgodne z prawem gdy przetwarzanie jest niezbędne do wypełnienia obowiązku prawnego ciążącego na administratorze;');
+INSERT INTO "rejestr_przeslankalegalnosci" ("id","prl_active","prl_skrot","prl_art_rodo","created","last_updated","prl_przepis_rodo") VALUES (2,1,'ZGODA NA PRZETWARZANIE','Art. 6 ust 1 pkt a','2023-09-29 09:38:03.403483','2023-09-29 09:38:41.153163','Przetwarzanie jest zgodne z prawem gdy osoba, której dane dotyczą wyraziła zgodę na przetwarzanie swoich danych osobowych w jednym lub większej liczbie określonych celów');
+INSERT INTO "rejestr_przeslankalegalnosci" ("id","prl_active","prl_skrot","prl_art_rodo","created","last_updated","prl_przepis_rodo") VALUES (3,1,'UMOWA NA PRZETWARZANIE','Art. 6 ust 1 pkt b','2023-09-29 09:56:12.816056','2023-09-29 09:56:12.816056','Przetwarzanie jest niezbędne do wykonania umowy, której stroną jest osoba, której dane dotyczą, lub do podjęcia działań na żądanie osoby, której dane dotyczą, przed zawarciem umowy;');
+INSERT INTO "rejestr_przeslankalegalnosci" ("id","prl_active","prl_skrot","prl_art_rodo","created","last_updated","prl_przepis_rodo") VALUES (4,1,'ŻYWOTNY INTERES OSOBY','Art. 6 ust 1 pkt d','2023-09-29 10:23:07.367132','2023-09-29 10:23:07.367132','Przetwarzanie jest zgodne z prawem gdy jest niezbędne do ochrony żywotnych interesów osoby, której dane dotyczą, lub innej osoby fizycznej');
+INSERT INTO "rejestr_przeslankalegalnosci" ("id","prl_active","prl_skrot","prl_art_rodo","created","last_updated","prl_przepis_rodo") VALUES (5,1,'WŁADZA PUBLICZNA LUB INTERES PUBLICZNY','Art. 6 ust 1 pkt e','2023-09-29 10:26:19.190312','2023-09-29 10:26:19.190312','Przetwarzanie jest zgodne z prawem gdy jest niezbędne do wykonania zadania realizowanego w interesie publicznym lub w ramach sprawowania władzy publicznej powierzonej administratorowi');
+INSERT INTO "rejestr_przeslankalegalnosci" ("id","prl_active","prl_skrot","prl_art_rodo","created","last_updated","prl_przepis_rodo") VALUES (6,1,'INTERES WŁASNY','Art. 6 ust 1 pkt f','2023-09-29 12:42:20.241006','2023-11-04 21:39:51.022799','Przetwarzanie jest zgodne z prawem gdy jest niezbędne do celów wynikających z prawnie uzasadnionych interesów realizowanych przez administratora lub przez stronę trzecią, z wyjątkiem sytuacji, w których nadrzędny charakter wobec tych interesów mają interesy lub podstawowe prawa i wolności osoby, której dane dotyczą, wymagające ochrony danych osobowych, w szczególności gdy osoba, której dane dotyczą, jest dzieckiem.');
+INSERT INTO "rejestr_przeslankilegalnosci" ("id","ppl_czynnoscp_id","ppl_przeslankap_id") VALUES (1,3,1);
+INSERT INTO "rejestr_przeslankilegalnosci" ("id","ppl_czynnoscp_id","ppl_przeslankap_id") VALUES (5,4,1);
+INSERT INTO "rejestr_przeslankilegalnosci" ("id","ppl_czynnoscp_id","ppl_przeslankap_id") VALUES (6,5,1);
+INSERT INTO "rejestr_przeslankilegalnosci" ("id","ppl_czynnoscp_id","ppl_przeslankap_id") VALUES (9,6,1);
+INSERT INTO "rejestr_przeslankilegalnosci" ("id","ppl_czynnoscp_id","ppl_przeslankap_id") VALUES (10,2,1);
+INSERT INTO "rejestr_przeslankilegalnosci" ("id","ppl_czynnoscp_id","ppl_przeslankap_id") VALUES (11,7,1);
+INSERT INTO "rejestr_przeslankilegalnosci" ("id","ppl_czynnoscp_id","ppl_przeslankap_id") VALUES (17,15,1);
+INSERT INTO "rejestr_przeslankilegalnosci" ("id","ppl_czynnoscp_id","ppl_przeslankap_id") VALUES (18,15,5);
+INSERT INTO "rejestr_przeslankilegalnosci" ("id","ppl_czynnoscp_id","ppl_przeslankap_id") VALUES (27,22,3);
+INSERT INTO "rejestr_przeslankilegalnosci" ("id","ppl_czynnoscp_id","ppl_przeslankap_id") VALUES (30,25,3);
+INSERT INTO "rejestr_przeslankilegalnosci" ("id","ppl_czynnoscp_id","ppl_przeslankap_id") VALUES (33,27,3);
+INSERT INTO "rejestr_przeslankilegalnosci" ("id","ppl_czynnoscp_id","ppl_przeslankap_id") VALUES (36,29,3);
+INSERT INTO "rejestr_przeslankilegalnosci" ("id","ppl_czynnoscp_id","ppl_przeslankap_id") VALUES (39,7,5);
+INSERT INTO "rejestr_przeslankilegalnosci" ("id","ppl_czynnoscp_id","ppl_przeslankap_id") VALUES (52,42,1);
+INSERT INTO "rejestr_przeslankilegalnosci" ("id","ppl_czynnoscp_id","ppl_przeslankap_id") VALUES (53,43,1);
+INSERT INTO "rejestr_przeslankilegalnosci" ("id","ppl_czynnoscp_id","ppl_przeslankap_id") VALUES (54,43,5);
+INSERT INTO "rejestr_przeslankilegalnosci" ("id","ppl_czynnoscp_id","ppl_przeslankap_id") VALUES (59,46,1);
+INSERT INTO "rejestr_przeslankilegalnosci" ("id","ppl_czynnoscp_id","ppl_przeslankap_id") VALUES (60,46,5);
+INSERT INTO "rejestr_przeslankilegalnosci" ("id","ppl_czynnoscp_id","ppl_przeslankap_id") VALUES (61,47,1);
+INSERT INTO "rejestr_przeslankilegalnosci" ("id","ppl_czynnoscp_id","ppl_przeslankap_id") VALUES (62,48,1);
+INSERT INTO "rejestr_przeslankilegalnosci" ("id","ppl_czynnoscp_id","ppl_przeslankap_id") VALUES (63,48,5);
+INSERT INTO "rejestr_przeslankilegalnosci" ("id","ppl_czynnoscp_id","ppl_przeslankap_id") VALUES (64,49,1);
+INSERT INTO "rejestr_przeslankilegalnosci" ("id","ppl_czynnoscp_id","ppl_przeslankap_id") VALUES (65,50,3);
+INSERT INTO "rejestr_rejestr" ("id","rej_opis","rej_active","last_updated","created","rej_zakres","rej_nazwa","Organizacja_id") VALUES (1,'dane natywnie przetwarzane przez IAS Białystok',1,'2024-05-28 20:30:58.340332','2023-09-26 13:15:35.587605','RODO','Rejestr Czynności Przetwarzania IAS Białystok RODO',5);
+INSERT INTO "rejestr_rejestr" ("id","rej_opis","rej_active","last_updated","created","rej_zakres","rej_nazwa","Organizacja_id") VALUES (2,'dane powierzone IAS Białystok',1,'2024-05-28 20:31:13.791645','2023-09-26 13:21:35.345159','RODO','Rejestr Kategorii Czynności Przetwarzania IAS Białystok RODO',5);
+INSERT INTO "rejestr_rejestr" ("id","rej_opis","rej_active","last_updated","created","rej_zakres","rej_nazwa","Organizacja_id") VALUES (3,'Rejestr Czynności Przetwarzania IAS Białystok',1,'2024-05-28 20:31:25.690539','2023-09-26 13:22:49.282074','DODO - Policyjna','Rejestr Czynności Przetwarzania IAS Białystok DODO',5);
+INSERT INTO "rejestr_rejestr" ("id","rej_opis","rej_active","last_updated","created","rej_zakres","rej_nazwa","Organizacja_id") VALUES (4,'Rejestr Kategorii Czynności Przetwarzania IAS Białystok',1,'2024-05-28 20:31:36.798092','2023-09-26 13:56:04.389071','DODO - Policyjna','Rejestr Kategorii Czynności Przetwarzania IAS Białystok DODO',5);
+INSERT INTO "rejestr_sposobprzetwarzania" ("id","created","last_updated","sp_active","sp_skrot","sp_opis") VALUES (1,'2023-09-30 19:43:55.252828','2023-11-05 17:33:10.533567',1,'Przyjmowanie zgłoszeń przez ePUAP','Przyjmowanie zgłoszeń za pośrednictwem systemu ePUAP');
+INSERT INTO "rejestr_sposobprzetwarzania" ("id","created","last_updated","sp_active","sp_skrot","sp_opis") VALUES (2,'2023-09-30 19:46:29.398377','2023-11-05 17:33:21.007715',1,'Przetwarzanie danych za pomocą e-maila','Przyjmowanie zapytań, danych oraz odpowiadanie na zapytania za pomocą e-mail');
+INSERT INTO "rejestr_sposobprzetwarzania" ("id","created","last_updated","sp_active","sp_skrot","sp_opis") VALUES (4,'2023-10-01 08:33:44.087729','2023-10-01 08:33:44.087729',1,'Korespondencja za pomocą poczty elektronicznej','Odbieranie i wysylanie wiadomości e-mail');
+INSERT INTO "rejestr_sposobprzetwarzania" ("id","created","last_updated","sp_active","sp_skrot","sp_opis") VALUES (5,'2023-10-01 10:22:09.895406','2023-10-01 10:22:09.895406',1,'Ankieta elektroniczna','Ankietowanie za pomocą systemu informatycznego');
+INSERT INTO "rejestr_sposobprzetwarzania" ("id","created","last_updated","sp_active","sp_skrot","sp_opis") VALUES (6,'2023-10-08 09:49:50.881139','2023-10-08 09:49:50.881139',1,'Wyłącznie korespondencja papierowa','Wyłącznie w postaci papierowej drogą pocztową');
+INSERT INTO "rejestr_sposobprzetwarzania" ("id","created","last_updated","sp_active","sp_skrot","sp_opis") VALUES (7,'2023-11-05 17:34:03.835025','2023-11-05 17:34:03.835025',1,'Wysyłanie pism przez ePUAP','');
+INSERT INTO "rejestr_sposobprzetwarzania" ("id","created","last_updated","sp_active","sp_skrot","sp_opis") VALUES (8,'2024-09-01 16:49:17.882386','2024-09-01 16:49:17.882386',1,'Sytem centralny','System informacyjny administrowany centralnie');
+INSERT INTO "rejestr_sposobprzetwarzania" ("id","created","last_updated","sp_active","sp_skrot","sp_opis") VALUES (9,'2024-09-01 16:50:22.391516','2024-09-01 16:50:22.391516',1,'System scentralizowany','System oglnopolski administrowanyprzez wyznaczoną izbę');
+INSERT INTO "rejestr_sposobprzetwarzania" ("id","created","last_updated","sp_active","sp_skrot","sp_opis") VALUES (10,'2024-09-29 12:00:36.355513','2024-09-29 12:02:18.986805',1,'System kancelaryjny centralny','System kancelaryjny, ogólnopolski');
+INSERT INTO "rejestr_sposobyprzetwarzania" ("id","spp_czynnoscp_id","spp_sposobp_id") VALUES (3,3,2);
+INSERT INTO "rejestr_sposobyprzetwarzania" ("id","spp_czynnoscp_id","spp_sposobp_id") VALUES (6,4,6);
+INSERT INTO "rejestr_sposobyprzetwarzania" ("id","spp_czynnoscp_id","spp_sposobp_id") VALUES (7,5,6);
+INSERT INTO "rejestr_sposobyprzetwarzania" ("id","spp_czynnoscp_id","spp_sposobp_id") VALUES (8,6,6);
+INSERT INTO "rejestr_sposobyprzetwarzania" ("id","spp_czynnoscp_id","spp_sposobp_id") VALUES (13,2,1);
+INSERT INTO "rejestr_sposobyprzetwarzania" ("id","spp_czynnoscp_id","spp_sposobp_id") VALUES (14,2,5);
+INSERT INTO "rejestr_sposobyprzetwarzania" ("id","spp_czynnoscp_id","spp_sposobp_id") VALUES (15,2,6);
+INSERT INTO "rejestr_sposobyprzetwarzania" ("id","spp_czynnoscp_id","spp_sposobp_id") VALUES (16,2,7);
+INSERT INTO "rejestr_sposobyprzetwarzania" ("id","spp_czynnoscp_id","spp_sposobp_id") VALUES (17,15,1);
+INSERT INTO "rejestr_sposobyprzetwarzania" ("id","spp_czynnoscp_id","spp_sposobp_id") VALUES (18,15,2);
+INSERT INTO "rejestr_sposobyprzetwarzania" ("id","spp_czynnoscp_id","spp_sposobp_id") VALUES (19,15,7);
+INSERT INTO "rejestr_sposobyprzetwarzania" ("id","spp_czynnoscp_id","spp_sposobp_id") VALUES (27,22,1);
+INSERT INTO "rejestr_sposobyprzetwarzania" ("id","spp_czynnoscp_id","spp_sposobp_id") VALUES (28,22,7);
+INSERT INTO "rejestr_sposobyprzetwarzania" ("id","spp_czynnoscp_id","spp_sposobp_id") VALUES (29,25,1);
+INSERT INTO "rejestr_sposobyprzetwarzania" ("id","spp_czynnoscp_id","spp_sposobp_id") VALUES (30,25,7);
+INSERT INTO "rejestr_sposobyprzetwarzania" ("id","spp_czynnoscp_id","spp_sposobp_id") VALUES (34,27,1);
+INSERT INTO "rejestr_sposobyprzetwarzania" ("id","spp_czynnoscp_id","spp_sposobp_id") VALUES (35,27,7);
+INSERT INTO "rejestr_sposobyprzetwarzania" ("id","spp_czynnoscp_id","spp_sposobp_id") VALUES (39,29,1);
+INSERT INTO "rejestr_sposobyprzetwarzania" ("id","spp_czynnoscp_id","spp_sposobp_id") VALUES (40,29,7);
+INSERT INTO "rejestr_sposobyprzetwarzania" ("id","spp_czynnoscp_id","spp_sposobp_id") VALUES (47,42,6);
+INSERT INTO "rejestr_sposobyprzetwarzania" ("id","spp_czynnoscp_id","spp_sposobp_id") VALUES (48,43,8);
+INSERT INTO "rejestr_sposobyprzetwarzania" ("id","spp_czynnoscp_id","spp_sposobp_id") VALUES (49,43,6);
+INSERT INTO "rejestr_sposobyprzetwarzania" ("id","spp_czynnoscp_id","spp_sposobp_id") VALUES (50,43,7);
+INSERT INTO "rejestr_sposobyprzetwarzania" ("id","spp_czynnoscp_id","spp_sposobp_id") VALUES (51,47,6);
+INSERT INTO "rejestr_sposobyprzetwarzania" ("id","spp_czynnoscp_id","spp_sposobp_id") VALUES (52,49,1);
+INSERT INTO "rejestr_sposobyprzetwarzania" ("id","spp_czynnoscp_id","spp_sposobp_id") VALUES (53,49,5);
+INSERT INTO "rejestr_sposobyprzetwarzania" ("id","spp_czynnoscp_id","spp_sposobp_id") VALUES (54,49,6);
+INSERT INTO "rejestr_sposobyprzetwarzania" ("id","spp_czynnoscp_id","spp_sposobp_id") VALUES (55,49,7);
+INSERT INTO "rejestr_sposobyprzetwarzania" ("id","spp_czynnoscp_id","spp_sposobp_id") VALUES (56,50,1);
+INSERT INTO "rejestr_sposobyprzetwarzania" ("id","spp_czynnoscp_id","spp_sposobp_id") VALUES (57,50,7);
+INSERT INTO "rejestr_wspoladministratorzy" ("id","wad_czynnoscp_id","wad_organizacja_id") VALUES (1,3,3);
+INSERT INTO "rejestr_wspoladministratorzy" ("id","wad_czynnoscp_id","wad_organizacja_id") VALUES (3,3,5);
+INSERT INTO "rejestr_wspoladministratorzy" ("id","wad_czynnoscp_id","wad_organizacja_id") VALUES (4,4,9);
+INSERT INTO "rejestr_wspoladministratorzy" ("id","wad_czynnoscp_id","wad_organizacja_id") VALUES (5,4,3);
+INSERT INTO "rejestr_wspoladministratorzy" ("id","wad_czynnoscp_id","wad_organizacja_id") VALUES (6,5,3);
+INSERT INTO "rejestr_wspoladministratorzy" ("id","wad_czynnoscp_id","wad_organizacja_id") VALUES (10,6,3);
+INSERT INTO "rejestr_wspoladministratorzy" ("id","wad_czynnoscp_id","wad_organizacja_id") VALUES (11,7,6);
+INSERT INTO "rejestr_wspoladministratorzy" ("id","wad_czynnoscp_id","wad_organizacja_id") VALUES (18,15,5);
+INSERT INTO "rejestr_wspoladministratorzy" ("id","wad_czynnoscp_id","wad_organizacja_id") VALUES (24,22,5);
+INSERT INTO "rejestr_wspoladministratorzy" ("id","wad_czynnoscp_id","wad_organizacja_id") VALUES (27,25,5);
+INSERT INTO "rejestr_wspoladministratorzy" ("id","wad_czynnoscp_id","wad_organizacja_id") VALUES (29,27,5);
+INSERT INTO "rejestr_wspoladministratorzy" ("id","wad_czynnoscp_id","wad_organizacja_id") VALUES (31,29,5);
+INSERT INTO "rejestr_wspoladministratorzy" ("id","wad_czynnoscp_id","wad_organizacja_id") VALUES (44,42,3);
+INSERT INTO "rejestr_wspoladministratorzy" ("id","wad_czynnoscp_id","wad_organizacja_id") VALUES (45,43,9);
+INSERT INTO "rejestr_wspoladministratorzy" ("id","wad_czynnoscp_id","wad_organizacja_id") VALUES (48,46,6);
+INSERT INTO "rejestr_wspoladministratorzy" ("id","wad_czynnoscp_id","wad_organizacja_id") VALUES (49,47,3);
+INSERT INTO "rejestr_wspoladministratorzy" ("id","wad_czynnoscp_id","wad_organizacja_id") VALUES (50,48,6);
+INSERT INTO "rejestr_wspoladministratorzy" ("id","wad_czynnoscp_id","wad_organizacja_id") VALUES (51,50,5);
+INSERT INTO "rejestr_wysokieryzyka" ("id","wrr_czynnoscp_id","wrr_wryzyka_id") VALUES (1,3,1);
+INSERT INTO "rejestr_wysokieryzyka" ("id","wrr_czynnoscp_id","wrr_wryzyka_id") VALUES (2,3,2);
+INSERT INTO "rejestr_wysokieryzyka" ("id","wrr_czynnoscp_id","wrr_wryzyka_id") VALUES (3,3,4);
+INSERT INTO "rejestr_wysokieryzyka" ("id","wrr_czynnoscp_id","wrr_wryzyka_id") VALUES (5,4,12);
+INSERT INTO "rejestr_wysokieryzyka" ("id","wrr_czynnoscp_id","wrr_wryzyka_id") VALUES (6,5,4);
+INSERT INTO "rejestr_wysokieryzyka" ("id","wrr_czynnoscp_id","wrr_wryzyka_id") VALUES (7,6,4);
+INSERT INTO "rejestr_wysokieryzyka" ("id","wrr_czynnoscp_id","wrr_wryzyka_id") VALUES (8,7,4);
+INSERT INTO "rejestr_wysokieryzyka" ("id","wrr_czynnoscp_id","wrr_wryzyka_id") VALUES (13,15,1);
+INSERT INTO "rejestr_wysokieryzyka" ("id","wrr_czynnoscp_id","wrr_wryzyka_id") VALUES (14,15,7);
+INSERT INTO "rejestr_wysokieryzyka" ("id","wrr_czynnoscp_id","wrr_wryzyka_id") VALUES (15,15,8);
+INSERT INTO "rejestr_wysokieryzyka" ("id","wrr_czynnoscp_id","wrr_wryzyka_id") VALUES (16,15,10);
+INSERT INTO "rejestr_wysokieryzyka" ("id","wrr_czynnoscp_id","wrr_wryzyka_id") VALUES (17,15,12);
+INSERT INTO "rejestr_wysokieryzyka" ("id","wrr_czynnoscp_id","wrr_wryzyka_id") VALUES (31,22,4);
+INSERT INTO "rejestr_wysokieryzyka" ("id","wrr_czynnoscp_id","wrr_wryzyka_id") VALUES (34,25,4);
+INSERT INTO "rejestr_wysokieryzyka" ("id","wrr_czynnoscp_id","wrr_wryzyka_id") VALUES (40,27,4);
+INSERT INTO "rejestr_wysokieryzyka" ("id","wrr_czynnoscp_id","wrr_wryzyka_id") VALUES (46,29,4);
+INSERT INTO "rejestr_wysokieryzyka" ("id","wrr_czynnoscp_id","wrr_wryzyka_id") VALUES (67,42,4);
+INSERT INTO "rejestr_wysokieryzyka" ("id","wrr_czynnoscp_id","wrr_wryzyka_id") VALUES (70,46,4);
+INSERT INTO "rejestr_wysokieryzyka" ("id","wrr_czynnoscp_id","wrr_wryzyka_id") VALUES (71,47,4);
+INSERT INTO "rejestr_wysokieryzyka" ("id","wrr_czynnoscp_id","wrr_wryzyka_id") VALUES (72,48,4);
+INSERT INTO "rejestr_wysokieryzyka" ("id","wrr_czynnoscp_id","wrr_wryzyka_id") VALUES (73,50,4);
+INSERT INTO "rejestr_wysokieryzyko" ("id","wr_active","wr_skrot","wr_opis","created","last_updated") VALUES (1,1,'Ewaluacja lub ocena, w tym profilowanie i przewidywanie','Ewaluacja lub ocena, w tym profilowanie i przewidywanie (analiza behawioralna) w celach wywołujących negatywne skutki prawne, fizyczne, finansowe lub inne niedogodności dla osób fizycznych','2023-09-30 21:45:30.249730','2023-10-01 07:27:37.056003');
+INSERT INTO "rejestr_wysokieryzyko" ("id","wr_active","wr_skrot","wr_opis","created","last_updated") VALUES (2,1,'Zautomatyzowane podejmowanie decyzji','Zautomatyzowane podejmowanie decyzji wywołujących skutki prawne, finansowe lub podobne istotne skutki','2023-10-01 07:28:36.709245','2023-10-01 07:28:36.709245');
+INSERT INTO "rejestr_wysokieryzyko" ("id","wr_active","wr_skrot","wr_opis","created","last_updated") VALUES (3,1,'Systematyczne monitorowanie na dużą skalę miejsc dostępnych publicznie','Systematyczne monitorowanie na dużą skalę miejsc dostępnych publicznie wykorzystujące elementy rozpoznawania cech lub właściwości obiektów, które znajdą się w monitorowanej przestrzeni. Do tej grupy systemów nie są zaliczane systemy monitoringu wizyjnego, w których obraz jest nagrywany i wykorzystywany tylko w przypadku potrzeby analizy incydentów naruszenia prawa.','2023-10-01 07:34:41.066678','2023-10-01 07:34:41.067261');
+INSERT INTO "rejestr_wysokieryzyko" ("id","wr_active","wr_skrot","wr_opis","created","last_updated") VALUES (4,1,'Przetwarzanie szczególnych kategorii danych osobowych','Przetwarzanie szczególnych kategorii danych osobowych i dotyczących wyroków skazujących i czynów zabronionych (danych wrażliwych wg opinii WP 29)','2023-10-01 07:36:03.952687','2023-10-01 07:36:03.952687');
+INSERT INTO "rejestr_wysokieryzyko" ("id","wr_active","wr_skrot","wr_opis","created","last_updated") VALUES (5,1,'Przetwarzanie danych biometrycznych','Przetwarzanie danych biometrycznych wyłącznie w celu identyfikacji osoby fizycznej bądź w celu kontroli dostępu','2023-10-01 07:38:05.521150','2023-10-01 07:38:05.521150');
+INSERT INTO "rejestr_wysokieryzyko" ("id","wr_active","wr_skrot","wr_opis","created","last_updated") VALUES (6,1,'Przetwarzanie danych genetycznych','Przetwarzanie danych genetycznych','2023-10-01 07:38:39.866266','2023-10-01 07:38:39.866266');
+INSERT INTO "rejestr_wysokieryzyko" ("id","wr_active","wr_skrot","wr_opis","created","last_updated") VALUES (7,1,'Dane przetwarzane na dużą skalę','Dane przetwarzane na dużą skalę, gdzie pojęcie dużej skali dotyczy:
+1) liczby osób, których dane są przetwarzane,
+2) zakresu przetwarzania,
+3) okresu przechowywania danych oraz
+4) geograficznego zakresu przetwarzania','2023-10-01 07:40:04.060517','2023-10-01 07:40:34.221897');
+INSERT INTO "rejestr_wysokieryzyko" ("id","wr_active","wr_skrot","wr_opis","created","last_updated") VALUES (8,1,'Przeprowadzanie porównań, ocena lub wnioskowanie','Przeprowadzanie porównań, ocena lub wnioskowanie na podstawie analizy danych pozyskanych z różnych źródeł','2023-10-01 07:41:53.954731','2023-10-01 07:41:53.955730');
+INSERT INTO "rejestr_wysokieryzyko" ("id","wr_active","wr_skrot","wr_opis","created","last_updated") VALUES (9,1,'Przetwarzanie danych przez podmioty, które dysponują uprawnieniami nadzorczymi i/lub ocennymi','Przetwarzanie danych dotyczących osób, których ocena i świadczone im usługi są uzależnione od podmiotów lub osób, które dysponują uprawnieniami nadzorczymi i/lub ocennymi','2023-10-01 07:44:08.047200','2023-10-01 07:44:08.047200');
+INSERT INTO "rejestr_wysokieryzyko" ("id","wr_active","wr_skrot","wr_opis","created","last_updated") VALUES (10,1,'Innowacyjne wykorzystanie rozwiązań technologicznych lub organizacyjnych','Innowacyjne wykorzystanie lub zastosowanie rozwiązań technologicznych lub organizacyjnych','2023-10-01 07:49:16.247975','2023-10-04 11:07:54.964675');
+INSERT INTO "rejestr_wysokieryzyko" ("id","wr_active","wr_skrot","wr_opis","created","last_updated") VALUES (11,1,'Przetwarzanie uniemożliwia wykonywanie prawa lub korzystanie z usługi lub umowy','Gdy przetwarzanie samo w sobie uniemożliwia osobom, których dane dotyczą, wykonywanie prawa lub korzystanie z usługi lub umowy','2023-10-01 07:51:37.192480','2023-10-01 07:51:44.634344');
+INSERT INTO "rejestr_wysokieryzyko" ("id","wr_active","wr_skrot","wr_opis","created","last_updated") VALUES (12,1,'Przetwarzanie danych lokalizacyjnych','Przetwarzanie wykorzystujące śledzenie lokalizacji osoby fizycznej (wliczając sieci komunikacyjne i usługi komunikacyjne, wskazujące geograficzną pozycję telekomunikacyjnych terminali urządzeń użytkownika publicznie dostępnej usługi telekomunikacyjnej)','2023-10-01 07:52:13.527220','2023-10-01 08:10:28.959717');
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (1,'Z-1','Alarm przeciwpożarowy','2023-10-21 19:54:57.675028','2023-10-24 19:47:55.224171',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (2,'Z-2','Alarm przeciwwłamaniowy','2023-10-21 20:24:03.964152','2023-11-02 18:47:23.565772',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (3,'Z-3','System Monitoringu wizyjnego(CCTV)','2023-10-21 21:40:38.916298','2023-11-02 20:04:27.899363',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (4,'ZT-1','Instalacja oddymiająca','2023-10-22 12:18:20','2023-11-02 20:15:50.198363',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (5,'ZT-2','Regularne przeglądy wymaganego sprzętu ppoż oraz homologacyjne','2023-10-22 12:18:20','2024-05-23 18:37:05.849423',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (6,'ZT-3','System ppoż - czujki dymu w pomieszczeniach biurowych, transmisja sygnału z systemu ppoż  do PSP','2023-10-22 12:18:20','2023-10-22 12:40:39.686750',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (7,'ZT-4','System monitoringu temperatury.','2023-10-22 12:18:20','2024-05-23 15:23:53.485044',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (8,'ZT-5','Nośniki danych przechowywane w bezpiecznych szafach/sejfach ognioodpornych','2023-10-22 12:18:20','2024-05-23 15:24:19.241699',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (9,'ZT-6','Systemy automatycznego gaszenia serwerowni gazem technicznym','2023-10-22 12:18:20','2023-10-22 12:41:57.451735',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (10,'ZT-7','Szkolenia wstępne i okresowe z zasad ochrony pożarowej','2023-10-22 12:18:20','2023-10-22 12:42:32.959681',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (11,'ZT-8','Powołana osoba odpowiedzialna za ochronę ppoż','2023-10-22 12:18:20','2023-10-22 12:42:49.808935',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (12,'ZT-9','Amortyzatory przeciwwstrząsowe','2023-10-22 12:18:20','2023-10-22 12:43:28.241481',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (13,'ZT-10','Awaryjne odpompowanie wody','2023-10-22 12:18:20','2023-11-05 09:37:06.240265',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (14,'ZT-11','Bieżące naprawy awarii w lokalizacji (Wydział Logistyki)','2023-10-22 12:18:20','2023-10-22 12:45:08.012965',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (15,'ZT-12','Czujniki zalania','2023-10-22 12:18:20','2023-10-22 12:46:03.687605',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (16,'ZT-13','Instalacja odgromowa budynku','2023-10-22 12:18:20','2023-11-05 20:22:38.032434',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (17,'ZT-14','Instalacja odprowadzenia wody deszczowej','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (18,'ZT-15','Nadzór kierowników komórek, osób funkcyjnych oraz pracowników nad powierzonymi pomieszczeniami','2023-10-22 12:18:20','2023-10-22 12:46:46.287227',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (19,'ZT-16','Nadzór Naczelnika Urzędu nad powierzonym budynkiem','2023-10-22 12:18:20','2023-10-22 12:58:55.221094',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (20,'ZT-17','Nadzór Wydziału Logistyki nad stanem technicznym nieruchomości','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (21,'ZT-18','Nadzór Wydziału Logistyki nad odśnieżaniem dachów','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (22,'ZT-19','Przeglądy okresowe budynków','2023-10-22 12:18:20','2023-10-22 12:30:24.893478',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (23,'ZT-20','Rozsyłanie alertów służb kryzysowych / pogodowych (np.: RCB)','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (24,'ZT-21','Ubezpieczenie nieruchomości','2023-10-22 12:18:20','2023-10-22 12:30:03.034373',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (25,'ZT-22','Awaryjne zasilanie budynku - agregator prądotwórczy','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (26,'ZT-23','Dostawy wody przeznaczonej do picia','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (27,'ZT-24','System zasilania gwarantowanego / automatycznego przełączania zasilania.','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (28,'ZT-25','Uprawnienia pracowników do 1kV','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (29,'ZT-26','Uziemienie / zerowanie','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (30,'ZT-27','Ochrona fizyczna stanowiska pracy przez pracowników','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (31,'ZT-28','Elektroniczna kontrola dostępu do pomieszczeń biurowych','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (32,'ZT-29','Elektroniczna kontrola dostępu fizycznego do serwerowni','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (33,'ZT-30','Plombowanie pomieszczeń','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (34,'ZT-31','Monitoring wizyjny','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (35,'ZT-32','Kraty w oknach','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (36,'ZT-33','Strefy dostępu fizycznego','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (37,'ZT-34','Plan(y) ochrony fizycznej - polityka kontroli dostępu','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (38,'ZT-35','Plan(y) ochrony fizycznej - polityka przechowywania kluczy','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (39,'ZT-36','Ochrona fizyczna w poszczególnych nieruchomościach przez wyspecjalizowaną służbę','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (40,'ZT-37','ściany i stropy w pomieszczeniach, zapewniają właściwą odporność mechaniczną','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (41,'ZT-38','drzwi i/lub okna zapewniają właściwą odporność przeciwpożarową i przeciwwłamaniową','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (42,'ZT-39','System Sygnalizacji Włamania i Napadu','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (43,'ZT-40','Audyt nadanych uprawnień przez AZU nie rzadziej niż co 6 m-cy','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (44,'ZT-41','Centralny Service Desk','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (45,'ZT-42','Dokumentacja systemów jest częścią zamówienia (w tym publicznego)','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (46,'ZT-43','Domyślna blokada portów USB','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (47,'ZT-44','HelpDesk przez CSD','2023-10-22 12:18:20','2023-10-22 20:07:51.522401',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (48,'ZT-45','Indywidualne przypisanie odpowiedzialności za przydzielony sprzęt, nośniki i dokumenty','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (49,'ZT-46','Klauzule w umowach gwarantujące, że w przypadku awarii i zabrania sprzętu do serwisu poza strefę przetwarzania dyski i inne nośniki pozostają w strefie przetwarzania','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (50,'ZT-47','Konfiguracja oprogramowania przez CIRF centralnie na poziomie ustawień domenowych','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (51,'ZT-48','Nadzór CIRF nad Infrastrukturą informatyczną RF/IAS','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (52,'ZT-49','Położenie krytycznych systemów na warstwie centralnej (CIRF)','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (53,'ZT-50','Zarządzanie sprzętem informatycznym (Inwentaryzacja sprzętu, licencji i zainstalowanego oprogramowania) CIRF','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (54,'ZT-51','Obowiązek zgłaszania incydentów przez wszystkich pracowników','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (55,'ZT-52','Polityki oraz procedury: SZBI (PBI, PODO, PCD)','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (56,'ZT-53','Nadzór służbowy przełożonych nad zakresem uprawnień pracowników','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (57,'ZT-54','Porozumienia o współpracy z różnymi służbami (w tym: Straż Pożarna, Policja, Straż Graniczna, Wojewoda)','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (58,'ZT-55','Poświadczenie bezpieczeństwa osobowe na poziomie co najmniej POUFNE','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (59,'ZT-56','Powołana Służba BHP, Szkolenia BHP, Społeczny inspektor pracy, badania okresowe','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (60,'ZT-57','Powołane ZRIB IAS + ZRIB MF','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (61,'ZT-58','Powołany Zespół Zarządzania Kryzysowego (w przypadku zagrożenia zdrowia i życia)','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (62,'ZT-59','Procedura rozpoczęcia zawieszenia i zakończenia pracy','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (63,'ZT-60','Procedury awaryjne','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (64,'ZT-61','Projektowanie oprogramowania oraz innego wsparcia czynności przetwarzania zgodnie z zasadą Privacy by Design','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (65,'ZT-62','Przyrzeczenia dot. tajemnicy skarbowej i celnej','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (66,'ZT-63','Realizacja wniosków osób fizycznych o dostęp do danych','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (67,'ZT-64','Regularne ćwiczenia ewakuacji budynku','2023-10-22 12:18:20','2023-10-22 12:58:09.430951',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (68,'ZT-65','System Zarzadzania Ciągłością Działania','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (69,'ZT-66','Obsługa wniosków o realizację praw i wolności','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (70,'ZT-67','Szkolenia z bezpieczeństwa informacji (Szkolenia z ochrony danych osobowych, Szkolenia z tajemnicy skarbowej i celnej,','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (71,'ZT-68','Testy penetracyjne systemów teleinformatycznych','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (72,'ZT-69','Polityka pracy zdalnej','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (73,'ZT-70','Umowy gwarancyjne i pogwarancyjne (sprzętu i oprogramowania)','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (74,'ZT-71','Zapewnienie stanu osobowego (np.: GRK/GRO)','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (75,'ZT-72','Blokada nieznanych urządzeń sieciowych na podstawie adresu MAC','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (76,'ZT-73','Dzienniki zdarzeń systemowych (dzienniki systemowe)','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (77,'ZT-74','Filtr antyspamowy w poczcie elektronicznej','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (78,'ZT-75','Filtr antywirusowy w poczcie elektronicznej','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (79,'ZT-76','Funkcjonalności aplikacji oparte o klasy uprawnień do danych','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (80,'ZT-77','Funkcjonalność uwierzytelnienia w aplikacji biznesowej','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (81,'ZT-78','Gromadzenie logów systemowych (rozliczalność)','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (82,'ZT-79','Minimalizacja uprawnień w systemach (w tym do instalowania oprogramowania)','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (83,'ZT-80','Monitorowanie konfiguracji i stanu stacji roboczych - OCS Inventory','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (84,'ZT-81','Opracowywanie oprogramowania na danych testowych / fikcyjnych','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (85,'ZT-82','Praca w trybie użytkownika nieuprzywilejowanego','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (86,'ZT-83','Rozdzielenie środowiska produkcyjnego od deweloperskiego i testowego','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (87,'ZT-84','System zarządzania kodem źródłowym z ograniczeniami dostępu','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (88,'ZT-85','Zakaz instalacji oprogramowania przez użytkowników na stacjach roboczych','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (89,'ZT-86','Zakaz używania oprogramowania typu PORTABLE','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (90,'ZT-87','Zarządzanie aktualizacjami systemu operacyjnego (CIRF)','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (91,'ZT-88','Anonimizacja dokumentów - zarządzenie MF ws. anonimizacji','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (92,'ZT-89','Centralnie zarządzany System Antywirusowy','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (93,'ZT-90','Dostęp zdalny przez VPN, szyfrowanie komunikacji','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (94,'ZT-91','Ekrany komputerów ustawione w taki sposób, aby przy wejściu do pomieszczenia nie było widać wyświetlanej treści','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (95,'ZT-92','Interaktywny system kwalifikowania informacji','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (96,'ZT-93','UPS zarządzany centralnie przez MF','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (97,'ZT-94','Klauzule informacyjne dla klientów urzędu','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (98,'ZT-95','Klauzule poufności','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (99,'ZT-96','Klimatyzacja indywidualnych pomieszczeń biurowych, w tym wentylatory przenośne','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (100,'ZT-97','Klimatyzacja serwerowni, budynków lub indywidualnych pomieszczeń, w tym wentylatory przenośne','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (101,'ZT-98','Konserwacja sprzętu komputerowego','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (102,'ZT-99','Kopia zapasowa lokalna','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (103,'ZT-100','Kopia zapasowa na warstwie centralnej','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (104,'ZT-101','Monitorowanie centralne styku z siecią publiczną przez MF - IPS','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (105,'ZT-102','Monitorowanie pojemności dyskowej','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (106,'ZT-103','Monitorowanie ruchu w sieci wewnętrznej MF - IPS','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (107,'ZT-104','Monitorowanie uprawnień administracyjnych','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (108,'ZT-105','Nadzór administratora danych nad służbowym wykorzystaniem systemu','2023-10-22 12:18:20','2024-05-23 18:32:23.923951',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (109,'ZT-106','Nadzór przełożonych nad integralnością danych','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (110,'ZT-107','Obowiązek niszczenia wydruków, których nie włączono do akt sprawy','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (111,'ZT-108','Prowadzenie rejestru użytkowników (w tym w postaci elektronicznej)','2023-10-22 12:18:20','2023-10-22 12:18:20',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (112,'ZT-109','Sprzęt z certyfikatem CE','2023-10-22 12:18:21','2023-10-22 12:18:21',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (113,'ZT-110','prowadzony jest dziennik administratora / operatora','2023-10-22 12:18:21','2024-05-27 09:31:02.815151',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (114,'ZT-111','ustawienia czasu w oparciu o Active Directory','2023-10-22 12:18:21','2024-05-27 09:29:24.833959',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (115,'ZT-112','Szyfrowanie komunikacji (w tym: SSL)','2023-10-22 12:18:21','2024-05-27 09:29:04.436293',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (116,'ZT-113','Szyfrowanie nośników (laptopy, pendrive)','2023-10-22 12:18:21','2024-05-27 09:28:20.963406',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (117,'ZT-114','Umowy SLA','2023-10-22 12:18:21','2024-05-27 09:27:50.545901',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (118,'ZT-115','Upoważnienia do przetwarzania danych osobowych','2023-10-22 12:18:21','2024-05-23 16:35:53.030358',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (119,'ZT-116','Uwierzytelnienie domenowe (centralne) - wymuszenie zmiany hasła','2023-10-22 12:18:21','2024-05-23 15:37:19.033508',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie" ("id","zab_skrot","zab_opis","created","last_updated","zab_waga","zab_active","komorka") VALUES (120,'ZT-117','Uwierzytelnienie domenowe (centralne) - zapewnienie złożoności haseł','2023-10-22 12:18:21','2024-05-23 15:26:19.007014',NULL,1,NULL);
+INSERT INTO "rejestr_zabezpieczenie_GrupyZabezpieczen" ("id","zabezpieczenie_id","grupazabezpieczen_id") VALUES (1,2,1);
+INSERT INTO "rejestr_zabezpieczenie_GrupyZabezpieczen" ("id","zabezpieczenie_id","grupazabezpieczen_id") VALUES (2,2,4);
+INSERT INTO "rejestr_zabezpieczenie_GrupyZabezpieczen" ("id","zabezpieczenie_id","grupazabezpieczen_id") VALUES (3,1,4);
+INSERT INTO "rejestr_zabezpieczenie_GrupyZabezpieczen" ("id","zabezpieczenie_id","grupazabezpieczen_id") VALUES (4,3,1);
+INSERT INTO "rejestr_zabezpieczenie_GrupyZabezpieczen" ("id","zabezpieczenie_id","grupazabezpieczen_id") VALUES (5,3,4);
+INSERT INTO "rejestr_zabezpieczenie_GrupyZabezpieczen" ("id","zabezpieczenie_id","grupazabezpieczen_id") VALUES (6,1,1);
+INSERT INTO "rejestr_zabezpieczenie_GrupyZabezpieczen" ("id","zabezpieczenie_id","grupazabezpieczen_id") VALUES (7,24,2);
+INSERT INTO "rejestr_zabezpieczenie_GrupyZabezpieczen" ("id","zabezpieczenie_id","grupazabezpieczen_id") VALUES (8,22,2);
+INSERT INTO "rejestr_zabezpieczenie_GrupyZabezpieczen" ("id","zabezpieczenie_id","grupazabezpieczen_id") VALUES (9,4,5);
+INSERT INTO "rejestr_zabezpieczenie_GrupyZabezpieczen" ("id","zabezpieczenie_id","grupazabezpieczen_id") VALUES (10,6,4);
+INSERT INTO "rejestr_zabezpieczenie_GrupyZabezpieczen" ("id","zabezpieczenie_id","grupazabezpieczen_id") VALUES (11,8,1);
+INSERT INTO "rejestr_zabezpieczenie_GrupyZabezpieczen" ("id","zabezpieczenie_id","grupazabezpieczen_id") VALUES (12,8,5);
+INSERT INTO "rejestr_zabezpieczenie_GrupyZabezpieczen" ("id","zabezpieczenie_id","grupazabezpieczen_id") VALUES (13,7,1);
+INSERT INTO "rejestr_zabezpieczenie_GrupyZabezpieczen" ("id","zabezpieczenie_id","grupazabezpieczen_id") VALUES (14,7,4);
+INSERT INTO "rejestr_zabezpieczenie_GrupyZabezpieczen" ("id","zabezpieczenie_id","grupazabezpieczen_id") VALUES (15,9,1);
+INSERT INTO "rejestr_zabezpieczenie_GrupyZabezpieczen" ("id","zabezpieczenie_id","grupazabezpieczen_id") VALUES (16,9,5);
+INSERT INTO "rejestr_zabezpieczenie_GrupyZabezpieczen" ("id","zabezpieczenie_id","grupazabezpieczen_id") VALUES (17,5,1);
+INSERT INTO "rejestr_zabezpieczenie_GrupyZabezpieczen" ("id","zabezpieczenie_id","grupazabezpieczen_id") VALUES (18,5,2);
+INSERT INTO "rejestr_zabezpieczenie_GrupyZabezpieczen" ("id","zabezpieczenie_id","grupazabezpieczen_id") VALUES (19,10,1);
+INSERT INTO "rejestr_zabezpieczenie_GrupyZabezpieczen" ("id","zabezpieczenie_id","grupazabezpieczen_id") VALUES (20,10,2);
+INSERT INTO "rejestr_zabezpieczenie_GrupyZabezpieczen" ("id","zabezpieczenie_id","grupazabezpieczen_id") VALUES (21,11,1);
+INSERT INTO "rejestr_zabezpieczenie_GrupyZabezpieczen" ("id","zabezpieczenie_id","grupazabezpieczen_id") VALUES (22,11,2);
+INSERT INTO "rejestr_zabezpieczenie_GrupyZabezpieczen" ("id","zabezpieczenie_id","grupazabezpieczen_id") VALUES (23,12,1);
+INSERT INTO "rejestr_zabezpieczenie_GrupyZabezpieczen" ("id","zabezpieczenie_id","grupazabezpieczen_id") VALUES (24,12,5);
+INSERT INTO "rejestr_zabezpieczenie_GrupyZabezpieczen" ("id","zabezpieczenie_id","grupazabezpieczen_id") VALUES (25,13,1);
+INSERT INTO "rejestr_zabezpieczenie_GrupyZabezpieczen" ("id","zabezpieczenie_id","grupazabezpieczen_id") VALUES (26,13,5);
+INSERT INTO "rejestr_zabezpieczenie_GrupyZabezpieczen" ("id","zabezpieczenie_id","grupazabezpieczen_id") VALUES (27,14,5);
+INSERT INTO "rejestr_zabezpieczenie_GrupyZabezpieczen" ("id","zabezpieczenie_id","grupazabezpieczen_id") VALUES (28,14,7);
+INSERT INTO "rejestr_zabezpieczenie_GrupyZabezpieczen" ("id","zabezpieczenie_id","grupazabezpieczen_id") VALUES (29,15,1);
+INSERT INTO "rejestr_zabezpieczenie_GrupyZabezpieczen" ("id","zabezpieczenie_id","grupazabezpieczen_id") VALUES (30,15,4);
+INSERT INTO "rejestr_zabezpieczenie_GrupyZabezpieczen" ("id","zabezpieczenie_id","grupazabezpieczen_id") VALUES (31,18,1);
+INSERT INTO "rejestr_zabezpieczenie_GrupyZabezpieczen" ("id","zabezpieczenie_id","grupazabezpieczen_id") VALUES (32,18,2);
+INSERT INTO "rejestr_zabezpieczenie_GrupyZabezpieczen" ("id","zabezpieczenie_id","grupazabezpieczen_id") VALUES (33,67,1);
+INSERT INTO "rejestr_zabezpieczenie_GrupyZabezpieczen" ("id","zabezpieczenie_id","grupazabezpieczen_id") VALUES (34,67,2);
+INSERT INTO "rejestr_zabezpieczenie_GrupyZabezpieczen" ("id","zabezpieczenie_id","grupazabezpieczen_id") VALUES (35,19,1);
+INSERT INTO "rejestr_zabezpieczenie_GrupyZabezpieczen" ("id","zabezpieczenie_id","grupazabezpieczen_id") VALUES (36,19,2);
+INSERT INTO "rejestr_zabezpieczenie_GrupyZabezpieczen" ("id","zabezpieczenie_id","grupazabezpieczen_id") VALUES (37,47,2);
+INSERT INTO "rejestr_zabezpieczenie_GrupyZabezpieczen" ("id","zabezpieczenie_id","grupazabezpieczen_id") VALUES (38,47,5);
+INSERT INTO "rejestr_zabezpieczenie_GrupyZabezpieczen" ("id","zabezpieczenie_id","grupazabezpieczen_id") VALUES (39,4,1);
+INSERT INTO "rejestr_zabezpieczenie_GrupyZabezpieczen" ("id","zabezpieczenie_id","grupazabezpieczen_id") VALUES (40,16,5);
+INSERT INTO "rejestr_zabezpieczenie_GrupyZabezpieczen" ("id","zabezpieczenie_id","grupazabezpieczen_id") VALUES (41,16,7);
+INSERT INTO "rejestr_zabezpieczenie_GrupyZabezpieczen" ("id","zabezpieczenie_id","grupazabezpieczen_id") VALUES (42,7,5);
+INSERT INTO "rejestr_zabezpieczenie_GrupyZabezpieczen" ("id","zabezpieczenie_id","grupazabezpieczen_id") VALUES (43,120,4);
+INSERT INTO "rejestr_zabezpieczenie_GrupyZabezpieczen" ("id","zabezpieczenie_id","grupazabezpieczen_id") VALUES (44,120,5);
+INSERT INTO "rejestr_zabezpieczenie_GrupyZabezpieczen" ("id","zabezpieczenie_id","grupazabezpieczen_id") VALUES (45,119,4);
+INSERT INTO "rejestr_zabezpieczenie_GrupyZabezpieczen" ("id","zabezpieczenie_id","grupazabezpieczen_id") VALUES (46,119,5);
+INSERT INTO "rejestr_zabezpieczenie_GrupyZabezpieczen" ("id","zabezpieczenie_id","grupazabezpieczen_id") VALUES (47,118,2);
+INSERT INTO "rejestr_zabezpieczenie_GrupyZabezpieczen" ("id","zabezpieczenie_id","grupazabezpieczen_id") VALUES (48,114,4);
+INSERT INTO "rejestr_zabezpieczenie_GrupyZabezpieczen" ("id","zabezpieczenie_id","grupazabezpieczen_id") VALUES (49,114,5);
+INSERT INTO "rejestr_zabezpieczenie_GrupyZabezpieczen" ("id","zabezpieczenie_id","grupazabezpieczen_id") VALUES (50,117,2);
+INSERT INTO "rejestr_zabezpieczenie_GrupyZabezpieczen" ("id","zabezpieczenie_id","grupazabezpieczen_id") VALUES (51,116,4);
+INSERT INTO "rejestr_zabezpieczenie_GrupyZabezpieczen" ("id","zabezpieczenie_id","grupazabezpieczen_id") VALUES (52,116,5);
+INSERT INTO "rejestr_zabezpieczenie_GrupyZabezpieczen" ("id","zabezpieczenie_id","grupazabezpieczen_id") VALUES (53,115,4);
+INSERT INTO "rejestr_zabezpieczenie_GrupyZabezpieczen" ("id","zabezpieczenie_id","grupazabezpieczen_id") VALUES (54,115,5);
+INSERT INTO "rejestr_zabezpieczenie_GrupyZabezpieczen" ("id","zabezpieczenie_id","grupazabezpieczen_id") VALUES (55,113,2);
+INSERT INTO "rejestr_zabezpieczenie_Odpowiedzialni" ("id","zabezpieczenie_id","organizacja_id") VALUES (1,1,5);
+INSERT INTO "rejestr_zabezpieczenie_Odpowiedzialni" ("id","zabezpieczenie_id","organizacja_id") VALUES (2,1,3);
+INSERT INTO "rejestr_zabezpieczenie_Odpowiedzialni" ("id","zabezpieczenie_id","organizacja_id") VALUES (3,47,9);
+INSERT INTO "rejestr_zabezpieczenie_Odpowiedzialni" ("id","zabezpieczenie_id","organizacja_id") VALUES (4,47,3);
+INSERT INTO "rejestr_zabezpieczenie_Odpowiedzialni" ("id","zabezpieczenie_id","organizacja_id") VALUES (5,47,5);
+INSERT INTO "rejestr_zabezpieczenie_Odpowiedzialni" ("id","zabezpieczenie_id","organizacja_id") VALUES (6,1,9);
+INSERT INTO "rejestr_zabezpieczenie_Odpowiedzialni" ("id","zabezpieczenie_id","organizacja_id") VALUES (7,2,5);
+INSERT INTO "rejestr_zabezpieczenie_Odpowiedzialni" ("id","zabezpieczenie_id","organizacja_id") VALUES (8,3,5);
+INSERT INTO "rejestr_zabezpieczenie_Odpowiedzialni" ("id","zabezpieczenie_id","organizacja_id") VALUES (9,4,5);
+INSERT INTO "rejestr_zabezpieczenie_Odpowiedzialni" ("id","zabezpieczenie_id","organizacja_id") VALUES (10,13,5);
+INSERT INTO "rejestr_zabezpieczenie_Odpowiedzialni" ("id","zabezpieczenie_id","organizacja_id") VALUES (11,16,5);
+INSERT INTO "rejestr_zabezpieczenie_Odpowiedzialni" ("id","zabezpieczenie_id","organizacja_id") VALUES (12,7,6);
+INSERT INTO "rejestr_zabezpieczenie_Odpowiedzialni" ("id","zabezpieczenie_id","organizacja_id") VALUES (13,8,6);
+INSERT INTO "rejestr_zabezpieczenie_Odpowiedzialni" ("id","zabezpieczenie_id","organizacja_id") VALUES (14,120,6);
+INSERT INTO "rejestr_zabezpieczenie_Odpowiedzialni" ("id","zabezpieczenie_id","organizacja_id") VALUES (15,119,6);
+INSERT INTO "rejestr_zabezpieczenie_Odpowiedzialni" ("id","zabezpieczenie_id","organizacja_id") VALUES (16,118,3);
+INSERT INTO "rejestr_zabezpieczenie_Odpowiedzialni" ("id","zabezpieczenie_id","organizacja_id") VALUES (17,118,5);
+INSERT INTO "rejestr_zabezpieczenie_Odpowiedzialni" ("id","zabezpieczenie_id","organizacja_id") VALUES (18,117,3);
+INSERT INTO "rejestr_zabezpieczenie_Odpowiedzialni" ("id","zabezpieczenie_id","organizacja_id") VALUES (19,117,6);
+INSERT INTO "rejestr_zabezpieczenie_Odpowiedzialni" ("id","zabezpieczenie_id","organizacja_id") VALUES (20,116,6);
+INSERT INTO "rejestr_zabezpieczenie_Odpowiedzialni" ("id","zabezpieczenie_id","organizacja_id") VALUES (21,115,6);
+INSERT INTO "rejestr_zabezpieczenie_Odpowiedzialni" ("id","zabezpieczenie_id","organizacja_id") VALUES (22,114,6);
+INSERT INTO "rejestr_zabezpieczenie_Odpowiedzialni" ("id","zabezpieczenie_id","organizacja_id") VALUES (23,113,3);
+INSERT INTO "rejestr_zabezpieczenie_Odpowiedzialni" ("id","zabezpieczenie_id","organizacja_id") VALUES (24,113,6);
+INSERT INTO "rejestr_zagrozenie" ("id","zag_active","zag_skrot","zag_opis","created","last_updated","GrupaZagrozen_id") VALUES (3,1,'ZG-1','pożar','2023-10-22 12:13:07','2023-10-22 12:13:07',2);
+INSERT INTO "rejestr_zagrozenie" ("id","zag_active","zag_skrot","zag_opis","created","last_updated","GrupaZagrozen_id") VALUES (4,1,'ZG-2','zalanie','2023-10-22 12:13:07','2023-10-22 12:13:07',2);
+INSERT INTO "rejestr_zagrozenie" ("id","zag_active","zag_skrot","zag_opis","created","last_updated","GrupaZagrozen_id") VALUES (5,1,'ZG-3','zanieczyszczenie','2023-10-22 12:13:07','2023-10-22 12:13:07',2);
+INSERT INTO "rejestr_zagrozenie" ("id","zag_active","zag_skrot","zag_opis","created","last_updated","GrupaZagrozen_id") VALUES (6,1,'ZG-4','poważny wypadek','2023-10-22 12:13:07','2023-10-22 12:13:07',2);
+INSERT INTO "rejestr_zagrozenie" ("id","zag_active","zag_skrot","zag_opis","created","last_updated","GrupaZagrozen_id") VALUES (7,1,'ZG-5','zniszczenie urządzeń, nośników lub dokumentów','2023-10-22 12:13:07','2023-10-22 12:13:07',2);
+INSERT INTO "rejestr_zagrozenie" ("id","zag_active","zag_skrot","zag_opis","created","last_updated","GrupaZagrozen_id") VALUES (8,1,'ZG-6','pył, korozja, wychłodzenie','2023-10-22 12:13:07','2023-10-22 12:13:07',2);
+INSERT INTO "rejestr_zagrozenie" ("id","zag_active","zag_skrot","zag_opis","created","last_updated","GrupaZagrozen_id") VALUES (9,1,'ZG-7','zjawiska klimatyczne','2023-10-22 12:13:07','2023-11-02 18:09:35.982429',3);
+INSERT INTO "rejestr_zagrozenie" ("id","zag_active","zag_skrot","zag_opis","created","last_updated","GrupaZagrozen_id") VALUES (10,1,'ZG-8','zjawiska sejsmiczne','2023-10-22 12:13:07','2023-11-02 18:09:47.875417',3);
+INSERT INTO "rejestr_zagrozenie" ("id","zag_active","zag_skrot","zag_opis","created","last_updated","GrupaZagrozen_id") VALUES (11,1,'ZG-9','zjawiska wulkaniczne','2023-10-22 12:13:07','2023-11-02 18:10:03.411933',3);
+INSERT INTO "rejestr_zagrozenie" ("id","zag_active","zag_skrot","zag_opis","created","last_updated","GrupaZagrozen_id") VALUES (12,1,'ZG-10','zjawiska pogodowe','2023-10-22 12:13:07','2023-11-02 18:10:17.281088',3);
+INSERT INTO "rejestr_zagrozenie" ("id","zag_active","zag_skrot","zag_opis","created","last_updated","GrupaZagrozen_id") VALUES (13,1,'ZG-11','powódź','2023-10-22 12:13:07','2023-11-02 18:10:28.525474',3);
+INSERT INTO "rejestr_zagrozenie" ("id","zag_active","zag_skrot","zag_opis","created","last_updated","GrupaZagrozen_id") VALUES (14,1,'ZG-12','awaria systemu klimatyzacji','2023-10-22 12:13:07','2023-11-02 18:50:58.419621',4);
+INSERT INTO "rejestr_zagrozenie" ("id","zag_active","zag_skrot","zag_opis","created","last_updated","GrupaZagrozen_id") VALUES (15,1,'ZG-13','awaria systemu dostawy wody','2023-10-22 12:13:07','2023-11-02 18:50:42.919428',4);
+INSERT INTO "rejestr_zagrozenie" ("id","zag_active","zag_skrot","zag_opis","created","last_updated","GrupaZagrozen_id") VALUES (16,1,'ZG-14','awaria systemu ogrzewania','2023-10-22 12:13:07','2023-11-02 18:50:31.359573',4);
+INSERT INTO "rejestr_zagrozenie" ("id","zag_active","zag_skrot","zag_opis","created","last_updated","GrupaZagrozen_id") VALUES (17,1,'ZG-15','utrata dostaw prądu','2023-10-22 12:13:07','2023-11-02 18:50:19.284487',4);
+INSERT INTO "rejestr_zagrozenie" ("id","zag_active","zag_skrot","zag_opis","created","last_updated","GrupaZagrozen_id") VALUES (18,1,'ZG-16','awaria urządzenia telekomunikacyjnego','2023-10-22 12:13:07','2023-11-02 18:50:05.447027',4);
+INSERT INTO "rejestr_zagrozenie" ("id","zag_active","zag_skrot","zag_opis","created","last_updated","GrupaZagrozen_id") VALUES (19,1,'ZG-17','utrata dostępu do Internetu','2023-10-22 12:13:07','2023-11-02 18:49:53.133797',4);
+INSERT INTO "rejestr_zagrozenie" ("id","zag_active","zag_skrot","zag_opis","created","last_updated","GrupaZagrozen_id") VALUES (20,1,'ZG-18','promieniowanie elektromagnetyczne','2023-10-22 12:13:07','2023-11-02 18:52:07.048901',5);
+INSERT INTO "rejestr_zagrozenie" ("id","zag_active","zag_skrot","zag_opis","created","last_updated","GrupaZagrozen_id") VALUES (21,1,'ZG-19','promieniowanie cieplne','2023-10-22 12:13:07','2023-11-02 18:51:55.536385',5);
+INSERT INTO "rejestr_zagrozenie" ("id","zag_active","zag_skrot","zag_opis","created","last_updated","GrupaZagrozen_id") VALUES (22,1,'ZG-20','impuls elektromagnetyczny','2023-10-22 12:13:07','2023-11-02 18:51:43.277390',5);
+INSERT INTO "rejestr_zagrozenie" ("id","zag_active","zag_skrot","zag_opis","created","last_updated","GrupaZagrozen_id") VALUES (23,1,'ZG-21','przechwycenie sygnałów na skutek zjawiska interferencji','2023-10-22 12:13:07','2023-11-02 18:56:50.483642',6);
+INSERT INTO "rejestr_zagrozenie" ("id","zag_active","zag_skrot","zag_opis","created","last_updated","GrupaZagrozen_id") VALUES (24,1,'ZG-22','szpiegostwo zdalne (robaki, konie trojańskie)','2023-10-22 12:13:07','2023-11-02 18:57:11.106662',6);
+INSERT INTO "rejestr_zagrozenie" ("id","zag_active","zag_skrot","zag_opis","created","last_updated","GrupaZagrozen_id") VALUES (25,1,'ZG-23','podsłuch','2023-10-22 12:13:07','2023-11-02 18:57:00.834350',6);
+INSERT INTO "rejestr_zagrozenie" ("id","zag_active","zag_skrot","zag_opis","created","last_updated","GrupaZagrozen_id") VALUES (26,1,'ZG-24','kradzież nośników lub dokumentów','2023-10-22 12:13:07','2023-11-02 18:57:23.140510',6);
+INSERT INTO "rejestr_zagrozenie" ("id","zag_active","zag_skrot","zag_opis","created","last_updated","GrupaZagrozen_id") VALUES (27,1,'ZG-25','kradzież urządzenia','2023-10-22 12:13:07','2023-11-02 18:57:53.343948',6);
+INSERT INTO "rejestr_zagrozenie" ("id","zag_active","zag_skrot","zag_opis","created","last_updated","GrupaZagrozen_id") VALUES (28,1,'ZG-26','odtworzenie z powtórnie wykorzystanych lub wyrzuconych nośników','2023-10-22 12:13:07','2023-11-02 18:57:43.152492',6);
+INSERT INTO "rejestr_zagrozenie" ("id","zag_active","zag_skrot","zag_opis","created","last_updated","GrupaZagrozen_id") VALUES (29,1,'ZG-27','ujawnienie','2023-10-22 12:13:07','2023-11-02 18:56:39.132522',6);
+INSERT INTO "rejestr_zagrozenie" ("id","zag_active","zag_skrot","zag_opis","created","last_updated","GrupaZagrozen_id") VALUES (30,1,'ZG-28','dane z niewiarygodnych źródeł','2023-10-22 12:13:07','2023-11-02 18:56:09.766792',6);
+INSERT INTO "rejestr_zagrozenie" ("id","zag_active","zag_skrot","zag_opis","created","last_updated","GrupaZagrozen_id") VALUES (31,1,'ZG-29','manipulowanie urządzeniem','2023-10-22 12:13:07','2023-11-02 18:55:55.379396',6);
+INSERT INTO "rejestr_zagrozenie" ("id","zag_active","zag_skrot","zag_opis","created","last_updated","GrupaZagrozen_id") VALUES (32,1,'ZG-30','sfałszowanie oprogramowania','2023-10-22 12:13:07','2023-11-02 18:55:13.686654',6);
+INSERT INTO "rejestr_zagrozenie" ("id","zag_active","zag_skrot","zag_opis","created","last_updated","GrupaZagrozen_id") VALUES (33,1,'ZG-31','detekcja umiejscowienia','2023-10-22 12:13:07','2023-11-02 18:54:42.910609',6);
+INSERT INTO "rejestr_zagrozenie" ("id","zag_active","zag_skrot","zag_opis","created","last_updated","GrupaZagrozen_id") VALUES (34,1,'ZG-32','niezamykanie pomieszczeń','2023-10-22 12:13:07','2023-11-02 18:54:29.386457',6);
+INSERT INTO "rejestr_zagrozenie" ("id","zag_active","zag_skrot","zag_opis","created","last_updated","GrupaZagrozen_id") VALUES (35,1,'ZG-33','podgląd edytowanych tekstów na ekranie monitora','2023-10-22 12:13:07','2023-11-02 18:54:13.172403',6);
+INSERT INTO "rejestr_zagrozenie" ("id","zag_active","zag_skrot","zag_opis","created","last_updated","GrupaZagrozen_id") VALUES (36,1,'ZG-34','brak ochrony fizycznej stanowisk dostępowych','2023-10-22 12:13:07','2023-11-02 18:53:55.864107',6);
+INSERT INTO "rejestr_zagrozenie" ("id","zag_active","zag_skrot","zag_opis","created","last_updated","GrupaZagrozen_id") VALUES (37,1,'ZG-35','braki w dokumentacji eksploatacyjnej systemów','2023-10-22 12:13:07','2023-11-02 18:53:43.879161',6);
+INSERT INTO "rejestr_zagrozenie" ("id","zag_active","zag_skrot","zag_opis","created","last_updated","GrupaZagrozen_id") VALUES (38,1,'ZG-36','awaria urządzenia','2023-10-22 12:13:07','2023-11-02 19:02:35.234339',7);
+INSERT INTO "rejestr_zagrozenie" ("id","zag_active","zag_skrot","zag_opis","created","last_updated","GrupaZagrozen_id") VALUES (39,1,'ZG-37','niewłaściwe funkcjonowanie urządzeń','2023-10-22 12:13:07','2023-11-02 19:02:45.334936',7);
+INSERT INTO "rejestr_zagrozenie" ("id","zag_active","zag_skrot","zag_opis","created","last_updated","GrupaZagrozen_id") VALUES (40,1,'ZG-38','przeciążenie systemu informatycznego','2023-10-22 12:13:07','2023-11-02 19:02:58.961218',7);
+INSERT INTO "rejestr_zagrozenie" ("id","zag_active","zag_skrot","zag_opis","created","last_updated","GrupaZagrozen_id") VALUES (41,1,'ZG-39','niewłaściwe funkcjonowanie oprogramowania','2023-10-22 12:13:07','2023-11-02 19:21:18.463793',7);
+INSERT INTO "rejestr_zagrozenie" ("id","zag_active","zag_skrot","zag_opis","created","last_updated","GrupaZagrozen_id") VALUES (42,1,'ZG-40','naruszenie zdolności utrzymania systemu informatycznego','2023-10-22 12:13:07','2023-11-02 18:58:36.520129',7);
+INSERT INTO "rejestr_zagrozenie" ("id","zag_active","zag_skrot","zag_opis","created","last_updated","GrupaZagrozen_id") VALUES (43,1,'ZG-41','nieautoryzowane użycie urządzeń','2023-10-22 12:13:07','2023-11-02 19:22:05.417938',8);
+INSERT INTO "rejestr_zagrozenie" ("id","zag_active","zag_skrot","zag_opis","created","last_updated","GrupaZagrozen_id") VALUES (44,1,'ZG-42','nieuprawnione kopiowanie oprogramowania','2023-10-22 12:13:07','2023-11-02 19:22:20.069704',8);
+INSERT INTO "rejestr_zagrozenie" ("id","zag_active","zag_skrot","zag_opis","created","last_updated","GrupaZagrozen_id") VALUES (45,1,'ZG-43','użycie fałszywego lub skopiowanego oprogramowania','2023-10-22 12:13:07','2023-11-02 19:22:32.071811',8);
+INSERT INTO "rejestr_zagrozenie" ("id","zag_active","zag_skrot","zag_opis","created","last_updated","GrupaZagrozen_id") VALUES (46,1,'ZG-44','zniekształcenie danych','2023-10-22 12:13:07','2023-11-02 19:02:20.320553',8);
+INSERT INTO "rejestr_zagrozenie" ("id","zag_active","zag_skrot","zag_opis","created","last_updated","GrupaZagrozen_id") VALUES (47,1,'ZG-45','nielegalne przetwarzanie danych','2023-10-22 12:13:07','2023-11-02 19:01:46.582466',8);
+INSERT INTO "rejestr_zagrozenie" ("id","zag_active","zag_skrot","zag_opis","created","last_updated","GrupaZagrozen_id") VALUES (48,1,'ZG-46','pozostawienie niezabezpieczonych, otwartych aplikacji','2023-10-22 12:13:07','2023-11-02 19:01:27.799109',8);
+INSERT INTO "rejestr_zagrozenie" ("id","zag_active","zag_skrot","zag_opis","created","last_updated","GrupaZagrozen_id") VALUES (49,1,'ZG-47','przełamanie haseł dostępu','2023-10-22 12:13:07','2023-11-02 19:01:19.437386',8);
+INSERT INTO "rejestr_zagrozenie" ("id","zag_active","zag_skrot","zag_opis","created","last_updated","GrupaZagrozen_id") VALUES (50,1,'ZG-48','usunięcie części danych','2023-10-22 12:13:07','2023-11-02 19:01:09.234491',8);
+INSERT INTO "rejestr_zagrozenie" ("id","zag_active","zag_skrot","zag_opis","created","last_updated","GrupaZagrozen_id") VALUES (51,1,'ZG-49','fałszowanie danych źródłowych (celowe lub nieświadome na skutej nieczytelnych lub błędnych dokumentów źródłowych)','2023-10-22 12:13:07','2023-11-02 19:00:59.952662',8);
+INSERT INTO "rejestr_zagrozenie" ("id","zag_active","zag_skrot","zag_opis","created","last_updated","GrupaZagrozen_id") VALUES (52,1,'ZG-50','nieuprawniony dostęp do danych','2023-10-22 12:13:07','2023-11-02 18:59:19.203264',8);
+INSERT INTO "rejestr_zagrozenie" ("id","zag_active","zag_skrot","zag_opis","created","last_updated","GrupaZagrozen_id") VALUES (53,1,'ZG-51','błąd użytkownika','2023-10-22 12:13:07','2023-11-02 19:00:44.167989',9);
+INSERT INTO "rejestr_zagrozenie" ("id","zag_active","zag_skrot","zag_opis","created","last_updated","GrupaZagrozen_id") VALUES (54,1,'ZG-52','naruszenie praw','2023-10-22 12:13:07','2023-11-02 19:00:34.948425',9);
+INSERT INTO "rejestr_zagrozenie" ("id","zag_active","zag_skrot","zag_opis","created","last_updated","GrupaZagrozen_id") VALUES (55,1,'ZG-53','fałszowanie praw','2023-10-22 12:13:07','2023-11-02 19:00:24.802312',9);
+INSERT INTO "rejestr_zagrozenie" ("id","zag_active","zag_skrot","zag_opis","created","last_updated","GrupaZagrozen_id") VALUES (56,1,'ZG-54','odmowa działania','2023-10-22 12:13:07','2023-11-02 19:00:12.803380',9);
+INSERT INTO "rejestr_zagrozenie" ("id","zag_active","zag_skrot","zag_opis","created","last_updated","GrupaZagrozen_id") VALUES (57,1,'ZG-55','naruszenie dostępności personelu','2023-10-22 12:13:07','2023-11-02 19:00:02.766185',9);
+INSERT INTO "rejestr_zagrozenie" ("id","zag_active","zag_skrot","zag_opis","created","last_updated","GrupaZagrozen_id") VALUES (58,1,'ZG-56','nieaktualne listy użytkowników systemu','2023-10-22 12:13:07','2023-11-02 18:59:47.341977',9);
+INSERT INTO "rejestr_zagrozenie" ("id","zag_active","zag_skrot","zag_opis","created","last_updated","GrupaZagrozen_id") VALUES (59,1,'ZG-57','podszycie się pod osbę posiadającą uprawnienia użytkownika systemu','2023-10-22 12:13:07','2023-11-02 18:10:57.825967',9);
+CREATE INDEX IF NOT EXISTS "rejestr_administratorzy_adm_czynnoscp_id_df157f8d" ON "rejestr_administratorzy" (
+	"adm_czynnoscp_id"
+);
+CREATE INDEX IF NOT EXISTS "rejestr_administratorzy_adm_organizacja_id_0e367a99" ON "rejestr_administratorzy" (
+	"adm_organizacja_id"
+);
+CREATE INDEX IF NOT EXISTS "rejestr_czynnosciprzetwarzania_czp_czynnoscp_id_9e8f065e" ON "rejestr_czynnosciprzetwarzania" (
+	"czp_czynnoscp_id"
+);
+CREATE INDEX IF NOT EXISTS "rejestr_czynnosciprzetwarzania_czp_komorka_id_021d21f1" ON "rejestr_czynnosciprzetwarzania" (
+	"czp_komorka_id"
+);
+CREATE INDEX IF NOT EXISTS "rejestr_czynnoscprzetwarzania_OkresRetencji_id_13dfaa79" ON "rejestr_czynnoscprzetwarzania" (
+	"OkresRetencji_id"
+);
+CREATE INDEX IF NOT EXISTS "rejestr_czynnoscprzetwarzania_Rejestr_id_d0895dfd" ON "rejestr_czynnoscprzetwarzania" (
+	"Rejestr_id"
+);
+CREATE INDEX IF NOT EXISTS "rejestr_kategoriedanych_ktd_czynnoscp_id_ca2ff0a9" ON "rejestr_kategoriedanych" (
+	"ktd_czynnoscp_id"
+);
+CREATE INDEX IF NOT EXISTS "rejestr_kategoriedanych_ktd_dane_id_4a6e6db4" ON "rejestr_kategoriedanych" (
+	"ktd_dane_id"
+);
+CREATE INDEX IF NOT EXISTS "rejestr_kategorieodbiorcow_kob_czynnoscp_id_129ee838" ON "rejestr_kategorieodbiorcow" (
+	"kob_czynnoscp_id"
+);
+CREATE INDEX IF NOT EXISTS "rejestr_kategorieodbiorcow_kob_odbiorcy_id_396bbf32" ON "rejestr_kategorieodbiorcow" (
+	"kob_odbiorcy_id"
+);
+CREATE INDEX IF NOT EXISTS "rejestr_kategorieosob_kos_czynnoscp_id_f0504f5d" ON "rejestr_kategorieosob" (
+	"kos_czynnoscp_id"
+);
+CREATE INDEX IF NOT EXISTS "rejestr_kategorieosob_kos_kosoby_id_8b1f4e6a" ON "rejestr_kategorieosob" (
+	"kos_kosoby_id"
+);
+CREATE INDEX IF NOT EXISTS "rejestr_komorka_Organizacja_id_593c0e24" ON "rejestr_komorka" (
+	"Organizacja_id"
+);
+CREATE INDEX IF NOT EXISTS "rejestr_operacjeprzetwarzania_opp_czynnoscp_id_96f52655" ON "rejestr_operacjeprzetwarzania" (
+	"opp_czynnoscp_id"
+);
+CREATE INDEX IF NOT EXISTS "rejestr_operacjeprzetwarzania_opp_operacjap_id_8f7791f4" ON "rejestr_operacjeprzetwarzania" (
+	"opp_operacjap_id"
+);
+CREATE INDEX IF NOT EXISTS "rejestr_podatnosc_Zagrozenia_podatnosc_id_b1ed8912" ON "rejestr_podatnosc_Zagrozenia" (
+	"podatnosc_id"
+);
+CREATE UNIQUE INDEX IF NOT EXISTS "rejestr_podatnosc_Zagrozenia_podatnosc_id_zagrozenie_id_5f7426ef_uniq" ON "rejestr_podatnosc_Zagrozenia" (
+	"podatnosc_id",
+	"zagrozenie_id"
+);
+CREATE INDEX IF NOT EXISTS "rejestr_podatnosc_Zagrozenia_zagrozenie_id_bf9ee045" ON "rejestr_podatnosc_Zagrozenia" (
+	"zagrozenie_id"
+);
+CREATE INDEX IF NOT EXISTS "rejestr_podmiotyprzetwarzajace_pod_czynnoscp_id_b0d78101" ON "rejestr_podmiotyprzetwarzajace" (
+	"pod_czynnoscp_id"
+);
+CREATE INDEX IF NOT EXISTS "rejestr_podmiotyprzetwarzajace_pod_organizacja_id_6bbf6580" ON "rejestr_podmiotyprzetwarzajace" (
+	"pod_organizacja_id"
+);
+CREATE INDEX IF NOT EXISTS "rejestr_podstawyprawneprzetwarzania_ppy_czynnosc_id_d4786455" ON "rejestr_podstawyprawneprzetwarzania" (
+	"ppy_czynnosc_id"
+);
+CREATE INDEX IF NOT EXISTS "rejestr_podstawyprawneprzetwarzania_ppy_podst_id_9b56f683" ON "rejestr_podstawyprawneprzetwarzania" (
+	"ppy_podst_id"
+);
+CREATE INDEX IF NOT EXISTS "rejestr_przeslankilegalnosci_ppl_czynnoscp_id_153043f0" ON "rejestr_przeslankilegalnosci" (
+	"ppl_czynnoscp_id"
+);
+CREATE INDEX IF NOT EXISTS "rejestr_przeslankilegalnosci_ppl_przeslankap_id_c85b5836" ON "rejestr_przeslankilegalnosci" (
+	"ppl_przeslankap_id"
+);
+CREATE INDEX IF NOT EXISTS "rejestr_rejestr_Organizacja_id_fc776403" ON "rejestr_rejestr" (
+	"Organizacja_id"
+);
+CREATE INDEX IF NOT EXISTS "rejestr_ryzyko_Zabezpieczenia_ryzyko_id_dd454967" ON "rejestr_ryzyko_Zabezpieczenia" (
+	"ryzyko_id"
+);
+CREATE UNIQUE INDEX IF NOT EXISTS "rejestr_ryzyko_Zabezpieczenia_ryzyko_id_zabezpieczenie_id_707b410c_uniq" ON "rejestr_ryzyko_Zabezpieczenia" (
+	"ryzyko_id",
+	"zabezpieczenie_id"
+);
+CREATE INDEX IF NOT EXISTS "rejestr_ryzyko_Zabezpieczenia_zabezpieczenie_id_b990a709" ON "rejestr_ryzyko_Zabezpieczenia" (
+	"zabezpieczenie_id"
+);
+CREATE INDEX IF NOT EXISTS "rejestr_ryzyko_Zagrozenie_id_22fb98c9" ON "rejestr_ryzyko" (
+	"Zagrozenie_id"
+);
+CREATE INDEX IF NOT EXISTS "rejestr_ryzyko_ZakresOddzialywania_ryzyko_id_4bdca080" ON "rejestr_ryzyko_ZakresOddzialywania" (
+	"ryzyko_id"
+);
+CREATE UNIQUE INDEX IF NOT EXISTS "rejestr_ryzyko_ZakresOddzialywania_ryzyko_id_zakresoddzialywania_id_bb55b7c1_uniq" ON "rejestr_ryzyko_ZakresOddzialywania" (
+	"ryzyko_id",
+	"zakresoddzialywania_id"
+);
+CREATE INDEX IF NOT EXISTS "rejestr_ryzyko_ZakresOddzialywania_zakresoddzialywania_id_9c7cab0f" ON "rejestr_ryzyko_ZakresOddzialywania" (
+	"zakresoddzialywania_id"
+);
+CREATE INDEX IF NOT EXISTS "rejestr_sposobyprzetwarzania_spp_czynnoscp_id_6c899e1b" ON "rejestr_sposobyprzetwarzania" (
+	"spp_czynnoscp_id"
+);
+CREATE INDEX IF NOT EXISTS "rejestr_sposobyprzetwarzania_spp_sposobp_id_692795bc" ON "rejestr_sposobyprzetwarzania" (
+	"spp_sposobp_id"
+);
+CREATE INDEX IF NOT EXISTS "rejestr_wspoladministratorzy_wad_czynnoscp_id_a1e97ec2" ON "rejestr_wspoladministratorzy" (
+	"wad_czynnoscp_id"
+);
+CREATE INDEX IF NOT EXISTS "rejestr_wspoladministratorzy_wad_organizacja_id_8c5af8e5" ON "rejestr_wspoladministratorzy" (
+	"wad_organizacja_id"
+);
+CREATE INDEX IF NOT EXISTS "rejestr_wysokieryzyka_wrr_czynnoscp_id_7774fe5a" ON "rejestr_wysokieryzyka" (
+	"wrr_czynnoscp_id"
+);
+CREATE INDEX IF NOT EXISTS "rejestr_wysokieryzyka_wrr_wryzyka_id_e048947a" ON "rejestr_wysokieryzyka" (
+	"wrr_wryzyka_id"
+);
+CREATE INDEX IF NOT EXISTS "rejestr_zabezpieczenie_GrupyZabezpieczen_grupazabezpieczen_id_bff4fa8b" ON "rejestr_zabezpieczenie_GrupyZabezpieczen" (
+	"grupazabezpieczen_id"
+);
+CREATE INDEX IF NOT EXISTS "rejestr_zabezpieczenie_GrupyZabezpieczen_zabezpieczenie_id_ee9b8acc" ON "rejestr_zabezpieczenie_GrupyZabezpieczen" (
+	"zabezpieczenie_id"
+);
+CREATE UNIQUE INDEX IF NOT EXISTS "rejestr_zabezpieczenie_GrupyZabezpieczen_zabezpieczenie_id_grupazabezpieczen_id_f61a7364_uniq" ON "rejestr_zabezpieczenie_GrupyZabezpieczen" (
+	"zabezpieczenie_id",
+	"grupazabezpieczen_id"
+);
+CREATE INDEX IF NOT EXISTS "rejestr_zabezpieczenie_Odpowiedzialni_organizacja_id_0a9e5a55" ON "rejestr_zabezpieczenie_Odpowiedzialni" (
+	"organizacja_id"
+);
+CREATE INDEX IF NOT EXISTS "rejestr_zabezpieczenie_Odpowiedzialni_zabezpieczenie_id_c3e86d55" ON "rejestr_zabezpieczenie_Odpowiedzialni" (
+	"zabezpieczenie_id"
+);
+CREATE UNIQUE INDEX IF NOT EXISTS "rejestr_zabezpieczenie_Odpowiedzialni_zabezpieczenie_id_organizacja_id_58cf9c05_uniq" ON "rejestr_zabezpieczenie_Odpowiedzialni" (
+	"zabezpieczenie_id",
+	"organizacja_id"
+);
+CREATE INDEX IF NOT EXISTS "rejestr_zagrozenie_GrupaZagrozen_id_461846a3" ON "rejestr_zagrozenie" (
+	"GrupaZagrozen_id"
+);
+COMMIT;
