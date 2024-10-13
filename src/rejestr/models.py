@@ -6,33 +6,19 @@ from django.core.exceptions import ValidationError
 from django.shortcuts import get_object_or_404
 from django.urls import reverse
 
-STATUS_ZATWIERDZENIA = (
-    ("-----------", "-----------"),
-    ("OCZEKUJĄCA", "Oczekuje na zatwierdzenie"),
-    ("ZATWIERDZONA", "Zatwierdzona i obowiązująca"),
-    ("ODRZUCONA", "Odrzucona po rozpatrzeniu"),
-    ("ANULOWANA", "Anulowana i nieobowiązująca"),
-)
-
-# ZRODLA_DANYCH = (
-# #    ("-----------", "-----------"),
-#     ("Bezpośrednio od osoby, której dane dotyczą", "Bezpośrednio od osoby, której dane dotyczą"),
-#     ("Od innej osoby, niż osoba której dane dotyczą", "Od innej osoby, niż osoba której dane dotyczą"),
-#     ("Od osoby, której dane dotyczą lub od innych osób", "Od osoby, której dane dotyczą lub od innych osób"),
-# )
-ZRODLA_DANYCH = (
-#    ("-----------", "-----------"),
-    ("Osoba", "Bezpośrednio od osoby, której dane dotyczą"),
-    ("Inni", "Od innej osoby, niż osoba której dane dotyczą"),
-    ("Różne", "Od osoby, której dane dotyczą lub od innych osób"),
-)
-# ZRODLA_DANYCH = (
-# #    ("-----------", "-----------"),
-#     ("Bezpośrednio od osoby, której dane dotyczą", "Od osoby"),
-#     ("Od innej osoby, niż osoba której dane dotyczą", "Od innej osoby"),
-#     ("Od osoby, której dane dotyczą lub od innych osób", "Od różnych osób"),
-# )
-
+class ZRODLA_DANYCH(models.TextChoices):
+    OSOBA = "OSOBA", "Bezpośrednio od osoby, której dane dotyczą"
+    INNI = "INNI", "Od innej osoby, niż osoba której dane dotyczą"
+    ROZNE = "RÓŻNE", "Od osoby, której dane dotyczą lub od innych osób"
+    
+class STATUS_ZATWIERDZENIA(models.TextChoices):
+    OCZEKUJĄCA = "OCZEKUJĄCA", "Oczekuje na zatwierdzenie"
+    ZATWIERDZONA = "ZATWIERDZONA", "Zatwierdzona i obowiązująca"
+    ODRZUCONA = "ODRZUCONA", "Odrzucona po rozpatrzeniu"
+    ANULOWANA = "ANULOWANA", "Anulowana i nieobowiązująca"
+    
+    __empty__ = "-----------"
+    
 class Organizacja(models.Model):
     # Fields
     org_active = models.BooleanField(default=True)
@@ -446,11 +432,6 @@ class OperacjaPrzetwarzania(models.Model):
 
 
 class CzynnoscPrzetwarzania(models.Model):
-    class StatusZatwierdzenia():
-        ZATWIERDZONA = "ZATWIERDZONA"
-        ANULOWANA = "ANULOWANA"
-        ODRZUCONA = "ODRZUCONA"
-        OCZEKUJACA = "OCZEKUJĄCA"
 
     # Fields
     czn_active = models.BooleanField(null=True, 
@@ -469,6 +450,7 @@ class CzynnoscPrzetwarzania(models.Model):
                                 null=True, 
                                 on_delete=models.SET_NULL
                                 )
+    
     czn_pozycja_rej = models.IntegerField(null=True)
     czn_przepis_wrazliwe = models.CharField(max_length=200)
     czn_podstawa_prawna = models.CharField(max_length=300)
@@ -584,7 +566,11 @@ class CzynnoscPrzetwarzania(models.Model):
                                    editable=False)
     last_updated = models.DateTimeField(auto_now=True, 
                                         editable=False)
-    
+    def save(self, *args, **kwargs):  
+        if self._state.adding:
+            self.czn_status_zatw = STATUS_ZATWIERDZENIA.OCZEKUJĄCA
+        super.save(args, **kwargs)
+
     def get_status_display(self):
         if(self.czn_status_zatw== 'ZATWIERDZONA'):
             return "Zatwierdzona"
@@ -705,6 +691,11 @@ class CzynnoscPrzetwarzaniaRODO(CzynnoscPrzetwarzania):
     
     class Meta:
         proxy = True
+
+    # def save(self, *args, **kwargs):  
+    #     if self._state.adding:
+    #         self.Rejestr = Rejestr.
+    #     super.save(args, **kwargs)
 
     def get_absolute_url(self):
         return reverse("CzynnoscPrzetwarzaniaRODO_detail", args=(self.pk,))
