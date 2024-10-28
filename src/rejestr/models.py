@@ -1,8 +1,9 @@
+from datetime import datetime
 from typing import Any
 from django.db import models, transaction
 from django.db.models import Max
 from django.core.exceptions import ValidationError
-
+from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404
 from django.urls import reverse
 
@@ -10,15 +11,27 @@ class ZRODLA_DANYCH(models.TextChoices):
     OSOBA = "OSOBA", "Bezpośrednio od osoby, której dane dotyczą"
     INNI = "INNI", "Od innej osoby, niż osoba której dane dotyczą"
     ROZNE = "RÓŻNE", "Od osoby, której dane dotyczą lub od innych osób"
-    
+ 
 class STATUS_ZATWIERDZENIA(models.TextChoices):
     OCZEKUJĄCA = "OCZEKUJĄCA", "Oczekuje na zatwierdzenie"
     ZATWIERDZONA = "ZATWIERDZONA", "Zatwierdzona i obowiązująca"
     ODRZUCONA = "ODRZUCONA", "Odrzucona po rozpatrzeniu"
     ANULOWANA = "ANULOWANA", "Anulowana i nieobowiązująca"
+
+    __empty__ = "-----------"
+   
+class ROLA_PRACOWNIKA(models.TextChoices):
+    KIERA = "KIERA", "Kierujacy komórką"
+    NUS = "NUS", "Naczelnik Urzędu"
+    DIAS = "DIAS", "Dyrektor IAS"
+    IODIAS = "IOD IAS", "IOD Izby"
+    IODUS = "IOD US", "IOD Urzędu Skarbowego"
+    IODUCS = "IOD UCS", "IOD Urzędu Celno Skarbowego"
+    AUDIAS = "AUD IAS", "Audytor IAS"
     
     __empty__ = "-----------"
     
+
 class Organizacja(models.Model):
     # Fields
     org_active = models.BooleanField(default=True)
@@ -47,7 +60,7 @@ class Organizacja(models.Model):
         org.save()
 
     class Meta:
-        pass
+        abstract = False
     
     def __str__(self):
         return str(f'{self.org_skrot} - {self.org_nazwa}')
@@ -367,7 +380,7 @@ class Komorka(models.Model):
 
     # Fields
     kom_active = models.BooleanField(default=True)
-    kom_symbol = models.CharField(max_length=10)
+    kom_symbol = models.CharField(max_length=20) # 2001-IWD
     kom_nazwa = models.CharField(max_length=255)
     Organizacja = models.ForeignKey(Organizacja, null=True, on_delete=models.SET_NULL)
     kom_adres = models.CharField(max_length=255)
@@ -403,6 +416,60 @@ class Komorka(models.Model):
 
     def get_htmx_delete_url(self):
         return reverse("Komorka_htmx_delete", args=(self.pk,))
+
+
+class ProfilUzytkownika(models.Model):
+    pro_active = models.BooleanField(null=True, default=True)
+    pro_user = models.OneToOneField(User, on_delete=models.CASCADE)
+    pro_nazwa = models.CharField(null=False, max_length=225)
+    pro_opis = models.CharField(null=False, max_length=225)
+    pro_rodo = models.BooleanField(null=True, default=True)
+    pro_policyjna = models.BooleanField(null=True, default=True)
+    pro_avatar = models.ImageField(default='default.jpg', upload_to='profile_images')
+
+    pro_rola = models.CharField(max_length=50, 
+                                null=True, 
+                                choices=ROLA_PRACOWNIKA
+                                )
+    
+    pro_komorki = models.ManyToManyField(
+        Komorka,
+        editable=True,
+        related_name="ProfilUzytkownika_Komorki",
+        through="KomorkiProfilu",
+        through_fields=('kpu_profil_u', 'kpu_komorka')
+        )
+    
+    created = models.DateTimeField(auto_now_add=True, editable=False)
+    last_updated = models.DateTimeField(auto_now=True, editable=False)
+
+    def __str__(self):
+        return self.pro_nazwa
+
+    def get_absolute_url(self):
+        return reverse("Profil_detail", args=(self.pk,))
+
+    def get_update_url(self):
+        return reverse("Profil_update", args=(self.pk,))
+
+    @staticmethod
+    def get_htmx_create_url():
+        return reverse("Profil_htmx_create")
+
+    def get_htmx_delete_url(self):
+        return reverse("Profil_htmx_delete", args=(self.pk,))
+
+class KomorkiProfilu(models.Model):
+    kpu_profil_u = models.ForeignKey(ProfilUzytkownika,
+                                      null=True,
+                                      related_name="kpu_profil_u",
+                                      on_delete=models.CASCADE)
+    
+    kpu_komorka = models.ForeignKey(Komorka, 
+                                    null=True,
+                                    related_name="kpu_komorka",
+                                    on_delete=models.CASCADE)
+
 
 
 class OperacjaPrzetwarzania(models.Model):
@@ -562,10 +629,9 @@ class CzynnoscPrzetwarzania(models.Model):
 
     #Zabezpieczenie = models.ForeignKey(Zabezpieczenie, on_delete=models.CASCADE)#("content_type", "object_id")
     
-    created = models.DateTimeField(auto_now_add=True, 
-                                   editable=False)
-    last_updated = models.DateTimeField(auto_now=True, 
-                                        editable=False)
+    created = models.DateTimeField(auto_now_add=True, editable=False)
+    last_updated = models.DateTimeField(auto_now=True, editable=False)
+
     def save(self, *args, **kwargs):  
         if self._state.adding:
             self.czn_status_zatw = STATUS_ZATWIERDZENIA.OCZEKUJĄCA

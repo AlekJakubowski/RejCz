@@ -10,6 +10,12 @@ class OrganizacjaViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.OrganizacjaSerializer
     permission_classes = [permissions.IsAuthenticated]
 
+class ProfilUzytkownikaViewSet(viewsets.ModelViewSet):
+    """ViewSet for the ProfilUzytkownika class"""
+
+    queryset = models.ProfilUzytkownika.objects.all()
+    serializer_class = serializers.ProfilUzytkownikaSerializer
+    permission_classes = [permissions.IsAuthenticated]
 
 class KomorkaViewSet(viewsets.ModelViewSet):
     """ViewSet for the Komorka class"""
