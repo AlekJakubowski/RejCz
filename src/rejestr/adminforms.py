@@ -36,6 +36,11 @@ class KomorkaAdminForm(forms.ModelForm):
         model = models.Komorka
         fields = "__all__"
 
+class ProfilUzytkownikaAdminForm(forms.ModelForm):
+
+    class Meta:
+        model = models.ProfilUzytkownika
+        fields = "__all__"
 
 class OkresRetencjiAdminForm(forms.ModelForm):
     class Meta:

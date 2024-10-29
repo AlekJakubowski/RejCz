@@ -1,6 +1,8 @@
 from django.contrib import admin
 from . import adminforms
 
+
+
 class CzynnoscPrzetwarzaniaAdmin(admin.ModelAdmin):
     form_class = adminforms.CzynnoscPrzetwarzaniaAdminForm
     empty_value_display = "--BRAK DANYCH--"
@@ -148,6 +150,27 @@ class KomorkaAdmin(admin.ModelAdmin):
         "kom_adres",
         "kom_tel",
         "kom_email",
+    ]
+    readonly_fields = [
+        "created",
+        "last_updated",
+  ]
+
+
+class ProfilUzytkownika(admin.ModelAdmin):
+    form_class = adminforms.ProfilUzytkownikaAdminForm
+    empty_value_display = "--BRAK DANYCH--"
+    list_display = [
+        "pro_active",
+        "pro_user",
+        "pro_nazwa",
+        "pro_opis",
+        "pro_rodo",
+        "pro_policyjna",
+        "pro_avatar",
+        "pro_rola",
+        "pro_komorki",
+      
     ]
     readonly_fields = [
         "created",
