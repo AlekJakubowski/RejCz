@@ -61,6 +61,8 @@ class Organizacja(models.Model):
 
     class Meta:
         abstract = False
+        verbose_name = "Organizacja"           # Nazwa w liczbie pojedynczej
+        verbose_name_plural = "Organizacje"    # Nazwa w liczbie mnogiej
     
     def __str__(self):
         return str(f'{self.org_skrot} - {self.org_nazwa}')
@@ -93,7 +95,8 @@ class PodmiotPrzetwarzajacy(models.Model):
     last_updated = models.DateTimeField(auto_now=True, editable=False)
     
     class Meta:
-        pass
+        verbose_name = "Podmiot przetwarzający"           # Nazwa w liczbie pojedynczej
+        verbose_name_plural = "Podmioty przetwarzające"    # Nazwa w liczbie mnogiej
     
     def __str__(self):
         return str(f'{self.prz_skrot} - {self.prz_nazwa}')
@@ -119,7 +122,8 @@ class Rejestr(models.Model):
     last_updated = models.DateTimeField(auto_now=True, editable=False)
 
     class Meta:
-        pass
+        verbose_name = "Rejestr"           # Nazwa w liczbie pojedynczej
+        verbose_name_plural = "Rejestry"    # Nazwa w liczbie mnogiej
 
     def __str__(self):
         return f'{self.rej_nazwa} ({self.rej_zakres}) --> ({self.Organizacja})'
@@ -148,7 +152,8 @@ class OkresRetencji(models.Model):
     last_updated = models.DateTimeField(auto_now=True, editable=False)
 
     class Meta:
-        pass
+        verbose_name = "Okres retencji"           # Nazwa w liczbie pojedynczej
+        verbose_name_plural = "Okresy retencji"    # Nazwa w liczbie mnogiej
 
     def __str__(self) -> str:
         return f'{self.okr_nazwa} --> ({self.okr_opis_okresu}()'
@@ -172,7 +177,8 @@ class PrzeslankaLegalnosci(models.Model):
     last_updated = models.DateTimeField(auto_now=True, editable=False)
      
     class Meta:
-        pass
+        verbose_name = "Przesłanka legalności"           # Nazwa w liczbie pojedynczej
+        verbose_name_plural = "Przesłanki legalności"    # Nazwa w liczbie mnogiej
 
     def __str__(self):
         return f'{self.prl_skrot}'
@@ -206,7 +212,8 @@ class SposobPrzetwarzania(models.Model):
         spos.save()
 
     class Meta:
-        pass
+        verbose_name = "Sposób przetwarzania"           # Nazwa w liczbie pojedynczej
+        verbose_name_plural = "Sposoby przetwarzania"    # Nazwa w liczbie mnogiej
 
     def __str__(self) -> str:
         return f'{self.sp_skrot}'
@@ -241,7 +248,8 @@ class PodstawaPrawnaPrzetwarzania(models.Model):
         podst.save()
 
     class Meta:
-        pass
+        verbose_name = "Podstawa prawna przetwarzania"           # Nazwa w liczbie pojedynczej
+        verbose_name_plural = "Podstawy prawna przetwarzania"    # Nazwa w liczbie mnogiej
 
     def __str__(self) -> str:
         return f'{self.ppw_skrot}'
@@ -275,7 +283,8 @@ class KategoriaDanych(models.Model):
         kdan.save()
 
     class Meta:
-        pass
+        verbose_name = "Kategoria danych"           # Nazwa w liczbie pojedynczej
+        verbose_name_plural = "Kategorie danych"    # Nazwa w liczbie mnogiej
 
     def __str__(self) -> str:
         return f'{self.kd_skrot}'
@@ -300,7 +309,8 @@ class KategoriaOdbiorcow(models.Model):
     last_updated = models.DateTimeField(auto_now=True, editable=False)
 
     class Meta:
-        pass
+        verbose_name = "Kategoria odbiorców"           # Nazwa w liczbie pojedynczej
+        verbose_name_plural = "Kategorie odbiorców"    # Nazwa w liczbie mnogiej
     
     def __str__(self) -> str:
         return f'{self.kto_skrot}'
@@ -333,7 +343,8 @@ class KategoriaOsob(models.Model):
         kosob.save()
 
     class Meta:
-        pass
+        verbose_name = "Kategoria osób"           # Nazwa w liczbie pojedynczej
+        verbose_name_plural = "Kategorie osób"    # Nazwa w liczbie mnogiej
 
     def __str__(self) -> str:
         return f'{self.ko_skrot}'
@@ -359,7 +370,8 @@ class WysokieRyzyko(models.Model):
 
 
     class Meta:
-        pass
+        verbose_name = "Wysokie ryzyko"           # Nazwa w liczbie pojedynczej
+        verbose_name_plural = "Wysokie ryzyka"    # Nazwa w liczbie mnogiej
     
     def __str__(self) -> str:
         return f'{self.wr_skrot}'
@@ -399,7 +411,8 @@ class Komorka(models.Model):
     last_updated = models.DateTimeField(auto_now=True, editable=False)
 
     class Meta:
-        pass
+        verbose_name = "Komórka"           # Nazwa w liczbie pojedynczej
+        verbose_name_plural = "Komórki"    # Nazwa w liczbie mnogiej
 
     def __str__(self):
         return str(f'{self.kom_symbol} - {self.kom_nazwa}')
@@ -442,6 +455,10 @@ class ProfilUzytkownika(models.Model):
     
     created = models.DateTimeField(auto_now_add=True, editable=False)
     last_updated = models.DateTimeField(auto_now=True, editable=False)
+    
+    class Meta:
+        verbose_name = "Profil użytkownika"           # Nazwa w liczbie pojedynczej
+        verbose_name_plural = "Profile uzytkowników"    # Nazwa w liczbie mnogiej
 
     def __str__(self):
         return self.pro_nazwa
@@ -470,6 +487,9 @@ class KomorkiProfilu(models.Model):
                                     related_name="kpu_komorka",
                                     on_delete=models.CASCADE)
 
+    class Meta:
+        verbose_name = "Komorka profilu"           # Nazwa w liczbie pojedynczej
+        verbose_name_plural = "Komorkia profili"    # Nazwa w liczbie mnogiej
 
 
 class OperacjaPrzetwarzania(models.Model):
@@ -479,7 +499,8 @@ class OperacjaPrzetwarzania(models.Model):
     last_updated = models.DateTimeField(auto_now=True, editable=False)
 
     class Meta:
-        pass
+        verbose_name = "Operacja przetwarzania"           # Nazwa w liczbie pojedynczej
+        verbose_name_plural = "Operacje przetwarzania"    # Nazwa w liczbie mnogiej
 
     def __str__(self):
         return f'{self.opp_opis}'
@@ -738,7 +759,8 @@ class CzynnoscPrzetwarzania(models.Model):
  
     class Meta:
         #abstract = True
-        pass
+        verbose_name = "Czynność przetwarzania"           # Nazwa w liczbie pojedynczej
+        verbose_name_plural = "Czynności przetwarzania"    # Nazwa w liczbie mnogiej
 
     def __str__(self):
         return f'{self.czn_pozycja_rej} {self.czn_nazwa}'
@@ -757,12 +779,9 @@ class CzynnoscPrzetwarzaniaRODO(CzynnoscPrzetwarzania):
     
     class Meta:
         proxy = True
-
-    # def save(self, *args, **kwargs):  
-    #     if self._state.adding:
-    #         self.Rejestr = Rejestr.
-    #     super.save(args, **kwargs)
-
+        verbose_name = "Czynność przetwarzania RODO"           # Nazwa w liczbie pojedynczej
+        verbose_name_plural = "Czynności przetwarzania RODO"    # Nazwa w liczbie mnogiej
+    
     def get_absolute_url(self):
         return reverse("CzynnoscPrzetwarzaniaRODO_detail", args=(self.pk,))
 
@@ -776,6 +795,8 @@ class KategoriaCzynnosciPrzetwarzaniaRODO(CzynnoscPrzetwarzania):
     
     class Meta:
         proxy = True
+        verbose_name = "Kategorie Czynności przetwarzania RODO"           # Nazwa w liczbie pojedynczej
+        verbose_name_plural = "Czynności przetwarzania RODO"    # Nazwa w liczbie mnogiej
 
     def get_absolute_url(self):
         return reverse("KategoriaCzynnosciPrzetwarzaniaRODO_detail", args=(self.pk,))
@@ -790,6 +811,8 @@ class CzynnoscPrzetwarzaniaDODO(CzynnoscPrzetwarzania):
 
     class Meta:
         proxy = True
+        verbose_name = "Czynność przetwarzania DODO"           # Nazwa w liczbie pojedynczej
+        verbose_name_plural = "Czynności przetwarzania DODO"    # Nazwa w liczbie mnogiej
 
     def get_absolute_url(self):
         return reverse("CzynnoscPrzetwarzaniaDODO_detail", args=(self.pk,))
@@ -804,6 +827,8 @@ class KategoriaCzynnosciPrzetwarzaniaDODO(CzynnoscPrzetwarzania):
     
     class Meta:
         proxy = True
+        verbose_name = "Kategorie czynności przetwarzania DODO"           # Nazwa w liczbie pojedynczej
+        verbose_name_plural = "Kategorie czynności przetwarzania DODO"    # Nazwa w liczbie mnogiej
 
     def get_absolute_url(self):
         return reverse("KategoriaCzynnosciPrzetwarzaniaDODO_detail", args=(self.pk,))
@@ -822,6 +847,9 @@ class CzynnosciPrzetwarzania(models.Model):
                                     null=True,
                                     related_name="czp_komorka_p",
                                     on_delete=models.CASCADE)
+    class Meta:
+        verbose_name = "M2M Czynności przetwarzania DODO"           # Nazwa w liczbie pojedynczej
+        verbose_name_plural = "M2M Czynności przetwarzania DODO"    # Nazwa w liczbie mnogiej
 
 class Administratorzy(models.Model):
     adm_czynnoscp = models.ForeignKey(CzynnoscPrzetwarzania, 
@@ -832,6 +860,9 @@ class Administratorzy(models.Model):
                                     null=True,
                                     related_name="adm_organizacja_f",
                                     on_delete=models.CASCADE)
+    class Meta:
+        verbose_name = "M2M Administratorzy"           # Nazwa w liczbie pojedynczej
+        verbose_name_plural = "M2M Administratorzy"    # Nazwa w liczbie mnogiej
 
     def clone(self, new_czynn):
         new_adm = Administratorzy(
@@ -852,6 +883,10 @@ class Wspoladministratorzy(models.Model):
                                     related_name="wad_organizacja_f",                                 
                                     on_delete=models.CASCADE)
     
+    class Meta:
+        verbose_name = "M2M Współadministratorzy"           # Nazwa w liczbie pojedynczej
+        verbose_name_plural = "M2M Współadministratorzy"    # Nazwa w liczbie mnogiej
+
     def clone(self, new_czynn):
         wadm = Wspoladministratorzy(
             wad_czynnoscp = new_czynn,
@@ -870,6 +905,10 @@ class PodmiotyPrzetwarzajace(models.Model):
                                     related_name="pod_pprzetw_p",
                                     on_delete=models.CASCADE)
     
+    class Meta:
+        verbose_name = "M2M Podmioty Przetwarzające"           # Nazwa w liczbie pojedynczej
+        verbose_name_plural = "M2M Podmioty Przetwarzające"    # Nazwa w liczbie mnogiej
+
     def clone(self, new_czynn):
         podp = PodmiotyPrzetwarzajace(
             pod_czynnoscp = new_czynn,
@@ -889,6 +928,10 @@ class SposobyPrzetwarzania(models.Model):
                                     related_name="spp_sposob_p",
                                     on_delete=models.CASCADE)
    
+    class Meta:
+        verbose_name = "M2M Sposoby Przetwarzania"           # Nazwa w liczbie pojedynczej
+        verbose_name_plural = "M2M Sposoby Przetwarzania"    # Nazwa w liczbie mnogiej
+
     def clone(self, new_czynn):
         pop = SposobyPrzetwarzania(
             spp_czynnoscp = new_czynn,
@@ -907,6 +950,9 @@ class KategorieDanych(models.Model):
                                 null=True,
                                 related_name="ktd_dane_p",
                                 on_delete=models.CASCADE)
+    class Meta:
+        verbose_name = "M2M Kategorie Danych"           # Nazwa w liczbie pojedynczej
+        verbose_name_plural = "M2M Kategorie Danych"    # Nazwa w liczbie mnogiej
    
     def clone(self, new_czynn):
         ktda = KategorieDanych(
@@ -926,6 +972,9 @@ class KategorieDanych(models.Model):
 #                                     null=True,
 #                                     related_name="ppy_podst_p",
 #                                     on_delete=models.CASCADE)
+# class Meta:
+#     verbose_name = "M2M PodstawyPrawnePrzetwarzania"           # Nazwa w liczbie pojedynczej
+#     verbose_name_plural = "M2M PodstawyPrawnePrzetwarzania"    # Nazwa w liczbie mnogiej
 
 #     def clone(self, new_pod):
 #         pppy = PodstawyPrawnePrzetwarzania(
@@ -945,6 +994,9 @@ class KategorieOsob(models.Model):
                                     null=True,
                                     related_name="kos_kosoby_p",
                                     on_delete=models.CASCADE)
+    class Meta:
+        verbose_name = "M2M Kategorie osób"           # Nazwa w liczbie pojedynczej
+        verbose_name_plural = "M2M Kategorie osób"    # Nazwa w liczbie mnogiej
    
     def clone(self, new_czynn):
         kos = KategorieOsob(
@@ -963,7 +1015,11 @@ class KategorieOdbiorcow(models.Model):
                                     null=True,
                                     related_name="kob_odbiorcy_p",
                                     on_delete=models.CASCADE)
-   
+    
+    class Meta:
+        verbose_name = "M2M Kategorie odbiorców"           # Nazwa w liczbie pojedynczej
+        verbose_name_plural = "M2M Kategorie odbiorców"    # Nazwa w liczbie mnogiej
+
     def clone(self, new_czynn):
         ktda = KategorieOdbiorcow(
             kob_czynnoscp = new_czynn,
@@ -981,7 +1037,10 @@ class WysokieRyzyka(models.Model):
                                     null=True, 
                                     related_name="wrr_wryzyka_p",
                                     on_delete=models.CASCADE)
-   
+    class Meta:
+        verbose_name = "M2M Wysokie ryzyka"           # Nazwa w liczbie pojedynczej
+        verbose_name_plural = "M2M Wysokie ryzyka"    # Nazwa w liczbie mnogiej
+
     def clone(self, new_czynn):
         ktda = WysokieRyzyka(
             wrr_czynnoscp = new_czynn,
@@ -999,7 +1058,11 @@ class PrzeslankiLegalnosci(models.Model):
                                     null=True, 
                                     related_name="ppl_przeslanka_p",
                                     on_delete=models.CASCADE)
-   
+    
+    class Meta:
+        verbose_name = "Przesłanki legalności"           # Nazwa w liczbie pojedynczej
+        verbose_name_plural = "Przesłanki legalności"    # Nazwa w liczbie mnogiej
+
     def clone(self, new_czynn):
         ppla = PrzeslankiLegalnosci(
             ppl_czynnoscp = new_czynn,
@@ -1032,7 +1095,8 @@ class GrupaZabezpieczen(models.Model):
     last_updated = models.DateTimeField(auto_now=True, editable=False)
 
     class Meta:
-        pass
+        verbose_name = "Grupa zabezpieczeń"           # Nazwa w liczbie pojedynczej
+        verbose_name_plural = "Grupy zabezpieczeń"    # Nazwa w liczbie mnogiej
 
     def __str__(self):
         return str(f'{self.gzb_opis}')
@@ -1058,7 +1122,8 @@ class GrupaZagrozen(models.Model):
     last_updated = models.DateTimeField(auto_now=True, editable=False)
 
     class Meta:
-        pass
+        verbose_name = "Grupa zagrożeń"           # Nazwa w liczbie pojedynczej
+        verbose_name_plural = "Grupy zagrożeń"    # Nazwa w liczbie mnogiej
 
     def __str__(self):
         return str(f'{self.gzg_opis}')
@@ -1086,7 +1151,8 @@ class Zagrozenie(models.Model):
     last_updated = models.DateTimeField(auto_now=True, editable=False)
 
     class Meta:
-        pass
+        verbose_name = "Zagrożenie"           # Nazwa w liczbie pojedynczej
+        verbose_name_plural = "Zagrożenia"    # Nazwa w liczbie mnogiej
 
     def __str__(self):
         return str(f'{self.zag_skrot} - {self.zag_opis} : ({self.GrupaZagrozen})')
@@ -1118,7 +1184,8 @@ class Zabezpieczenie(models.Model):
     last_updated = models.DateTimeField(auto_now=True, editable=False)
 
     class Meta:
-        pass
+        verbose_name = "Zabezpieczenie"           # Nazwa w liczbie pojedynczej
+        verbose_name_plural = "Zabezpieczenia"    # Nazwa w liczbie mnogiej
 
     def __str__(self):
         return str(f'{self.zab_skrot} - {self.zab_opis}')
@@ -1145,7 +1212,8 @@ class Podatnosc(models.Model):
     Zagrozenia = models.ManyToManyField(Zagrozenie)
     
     class Meta:
-        pass
+        verbose_name = "Podatność"           # Nazwa w liczbie pojedynczej
+        verbose_name_plural = "Podatności"    # Nazwa w liczbie mnogiej
 
     def __str__(self):
         return str(f'{self.pdt_skrot} - {self.pdt_opis}')
@@ -1173,8 +1241,11 @@ class ZakresOddzialywania(models.Model):
     zao_StratyWizerunkowe = models.BooleanField(default=True)
     zao_NaruszeniePrIW = models.BooleanField(default=True)
     #Ryzyko = models.ForeignKey(Ryzyko, null=True, on_delete=models.SET_NULL)
+
     class Meta:
-        pass
+        verbose_name = "Zakres Oddziaływania"           # Nazwa w liczbie pojedynczej
+        verbose_name_plural = "Zakresy Oddziaływania"    # Nazwa w liczbie mnogiej
+
 
     #def __str__(self):
     #    return str(f'{self.zao_skrot} - {self.pdt_opis}')
@@ -1212,7 +1283,8 @@ class Ryzyko(models.Model):
     ZakresOddzialywania = models.ManyToManyField(ZakresOddzialywania)
 
     class Meta:
-        pass
+        verbose_name = "Ryzyko"           # Nazwa w liczbie pojedynczej
+        verbose_name_plural = "Ryzyka"    # Nazwa w liczbie mnogiej
 
     def __str__(self):
         pass
