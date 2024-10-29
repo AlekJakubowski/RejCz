@@ -19,10 +19,10 @@
     <script src="https://unpkg.com/hyperscript.org@0.9.12"></script>
 
     <style>{% block style %} block styl {% endblock %}</style>
-    {% block extrahead %} block extrahead {% endblock %}
+    {% block extrahead %} {% endblock %}
   </head>
   <body>
-    {% block navigation_bar %} navigation_bar {% endblock %}
+    {% block navigation_bar %} {% endblock %}
     {% block allcontent %}
         <div id="content" class="container-fluid">
           <div class="container-lg" >
