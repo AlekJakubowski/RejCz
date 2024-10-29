@@ -8,6 +8,7 @@ from . import htmx
 
 router = routers.DefaultRouter()
 router.register("Organizacja", api.OrganizacjaViewSet)
+router.register("ProfilUzytkownika", api.ProfilUzytkownikaViewSet)
 router.register("Rejestr", api.RejestrViewSet)
 router.register("Komorka", api.KomorkaViewSet) 
 router.register("OkresRetencji", api.OkresRetencjiViewSet) 
