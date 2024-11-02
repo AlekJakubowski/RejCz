@@ -9,10 +9,11 @@
         <tr>
           <th style="width:5%">Aktywna</th>
           <th style="width:15%">Skrót</th>
+          <th style="width:15%">Kod</th>
           <th style="width:40%">Nazwa</th>
           <th style="width:20%">Adres</th>
           <th style="width:30%">IOD</th>
-          <th style="width:40%">AKCJA</th>
+          <th style="width:30%">AKCJA</th>
         </tr>
       </thead>
       <tbody>
@@ -36,6 +37,7 @@
             </td>
             {% endif %}
             <td>{{ object.org_skrot }}</td>
+            <td>{{ object.org_kod }}</td>
             <td>{{ object.org_nazwa }}</td>
             <td>{{ object.org_adres }}</td>
             <td>{{ object.org_iod_name }}</td>

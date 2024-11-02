@@ -12,8 +12,11 @@
   {{form.errors}}
   <!-- {% crispy form %} -->
     <div class="form-group row">
-        <div class="col col-md-auto">
+        <div class="col-6">
             {{ form.org_active | as_crispy_field }}
+        </div>
+        <div class="col-6">
+            {{ form.org_kod | as_crispy_field }}
         </div>
     </div>
     <div class="form-group row">
