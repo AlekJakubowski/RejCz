@@ -1,0 +1,18 @@
+{% extends "../base.html" %}
+{% load static %}
+{% block title %}Logout{% endblock %}
+{% block links %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}" >
+{% endblock %}
+{% block content %}
+    {% comment %} <form method="post" action="{% url "login" %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Zaloguj</button>
+        <a href="{% url 'password_reset' %}">Zapomniałem hasła</a>
+    </form> 
+    <button type="submit">Zaloguj</button>
+    {% endcomment %}
+        <a href="{% url 'login/' %}">Zaloguj się</a>
+{% endblock %}
+
