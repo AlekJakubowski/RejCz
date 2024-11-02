@@ -1,9 +1,12 @@
 from django import forms
 from bootstrap_datepicker_plus.widgets import DatePickerInput
+from django.contrib.auth import get_user_model
+from django.contrib.auth import user_logged_in
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from . import models
 
-from rejestr.models import STATUS_ZATWIERDZENIA, ZRODLA_DANYCH
+from rejestr.models import ROLA_PRACOWNIKA, STATUS_ZATWIERDZENIA, ZRODLA_DANYCH, ZAKRES_REJESTRACJI
 
 from . import models
 
@@ -55,6 +58,7 @@ class OrganizacjaForm(forms.ModelForm):
         fields = [
             "org_nazwa",
             "org_skrot",
+            "org_kod",
             "org_active",
             "org_adres",
             "org_www",
@@ -133,16 +137,16 @@ class RejestrForm(forms.ModelForm):
                                 required=True
                                 )
     
-    rej_zakres = forms.CharField(label='Zakres rejestru', max_length=30, 
-                            widget=forms.TextInput(attrs={"placeholder": 'Zakres rejestru'}),
-                            required=True
-                            )
+    rej_zakres = forms.ChoiceField(label='Zakres rejestru', 
+                                choices=ZAKRES_REJESTRACJI,
+                                required=True
+                                )
 
     Organizacja = forms.ModelChoiceField(
-                                    label="Organizacja", 
-                                    widget=forms.Select,   
-                                    queryset=models.Organizacja.objects.filter(org_active = True)
-                                    )
+                                label="Organizacja", 
+                                widget=forms.Select,   
+                                queryset=models.Organizacja.objects.filter(org_active = True)
+                                )
     
     class Meta:
         model = models.Rejestr
@@ -159,6 +163,40 @@ class RejestrForm(forms.ModelForm):
         #self.fields["Organizacja"].queryset = models.Organizacja.objects.filter(org_active = True)
 
 
+class ProfilUzytkownikaForm(LoginRequiredMixin, forms.ModelForm):
+    
+    #user= get_user_model().objects.all ().filter(username=username)
+    pro_active = forms.BooleanField(label='Aktywny', 
+                        required=False, initial=True, disabled=True)
+    
+    pro_nazwa = forms.CharField(label='Nazwa użytkownika', max_length=255,  
+                        widget=forms.TextInput(attrs={"placeholder": 'Pełna nazwa użytkownika'}),
+                        required=True
+                        )
+    
+    pro_opis = forms.CharField(label='Opis profilu użytkownika', max_length=200, 
+                        widget=forms.TextInput(attrs={"placeholder": 'Opis profilu użytkownika'}),
+                        required=False
+                        )
+
+    # pro_user = forms.ModelChoiceField(
+    #                     label="User", 
+    #                     widget=forms.Select,   
+    #                     queryset=models.User.objects.filter(org_active = True)
+    #                     )
+    
+    pro_rola = forms.ChoiceField(label='Status', choices=ROLA_PRACOWNIKA,                
+                        required=False) 
+
+    
+    def __init__(self, *args, **kwargs):
+        super(ProfilUzytkownikaForm, self).__init__(*args, **kwargs)
+        #self.fields["CzynnoscPrzetwarzania"].queryset = CzynnoscPrzetwarzania.objects.all()
+        #self.fields["Organizacja"].queryset = models.Organizacja.objects.filter(org_active = True)
+        #self.fields["CzynnosciRealizowane"].queryset = models.CzynnoscPrzetwarzania.objects.filter(czn_active = True)
+
+    pass
+    
 class KomorkaForm(forms.ModelForm):
     kom_active = forms.BooleanField(label='Aktywna', required=False, initial=True)
     

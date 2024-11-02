@@ -7,6 +7,11 @@ from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404
 from django.urls import reverse
 
+class ZAKRES_REJESTRACJI(models.TextChoices):
+    RODO = "RODO", "Rozporządzenie 679/2016, przetwarzanie ogólne"
+    DODO = "DODO", "Dyrektywa 680/2016, przetwarzanie policyjne"
+    #inne - jak zmienią się przepisy
+    
 class ZRODLA_DANYCH(models.TextChoices):
     OSOBA = "OSOBA", "Bezpośrednio od osoby, której dane dotyczą"
     INNI = "INNI", "Od innej osoby, niż osoba której dane dotyczą"
@@ -36,6 +41,7 @@ class Organizacja(models.Model):
     # Fields
     org_active = models.BooleanField(default=True)
     org_skrot = models.CharField(max_length=30)
+    org_kod = models.CharField(max_length=30, default='2001-IWD')
     org_nazwa = models.CharField(max_length=155)
     org_adres = models.CharField(max_length=100)
     org_email = models.EmailField(max_length=50)
@@ -50,6 +56,7 @@ class Organizacja(models.Model):
         org = Organizacja(
         org_active = new_Org.org_active,
         org_skrot = "klon_" + new_Org.org_skrot,
+        org_kod = new_Org.org_kod,
         org_nazwa = new_Org.org_nazwa,
         org_adres = new_Org.org_adres,
         org_email = new_Org.org_email,
@@ -109,15 +116,17 @@ class PodmiotPrzetwarzajacy(models.Model):
 
 
 class Rejestr(models.Model):
-
-    # Relationships
-    Organizacja = models.ForeignKey(Organizacja, null=True, on_delete=models.SET_NULL)
-
     # Fields
     rej_active = models.BooleanField(default=True)
     rej_nazwa = models.CharField(max_length=200)
     rej_opis = models.TextField(max_length=200)
-    rej_zakres = models.CharField(max_length=30)
+    rej_zakres = models.CharField(max_length=50, 
+                                null=True, 
+                                choices=ZAKRES_REJESTRACJI,
+                                default=ZAKRES_REJESTRACJI.RODO
+                                )
+    #własciciel rejestru
+    Organizacja = models.ForeignKey(Organizacja, null=True, on_delete=models.SET_NULL)
     created = models.DateTimeField(auto_now_add=True, editable=False)
     last_updated = models.DateTimeField(auto_now=True, editable=False)
 
@@ -407,6 +416,16 @@ class Komorka(models.Model):
         through_fields=( 'czp_komorka', 'czp_czynnoscp')
     )
     
+    
+    
+    RejestryKomorki = models.ManyToManyField( 
+        'rejestr.Rejestr',
+        editable=True,
+        related_name="Komorki_Rejestry",
+        through="RejestryKomorki",
+        through_fields=( 'rko_komorka', 'rko_rejestr')
+    )
+
     created = models.DateTimeField(auto_now_add=True, editable=False)
     last_updated = models.DateTimeField(auto_now=True, editable=False)
 
@@ -431,9 +450,19 @@ class Komorka(models.Model):
         return reverse("Komorka_htmx_delete", args=(self.pk,))
 
 
+class RejestryKomorki(models.Model):
+    rko_komorka = models.ForeignKey(Komorka, null=True, on_delete=models.CASCADE)
+    
+    rko_rejestr = models.ForeignKey(Rejestr, null=True, on_delete=models.CASCADE)
+    
+    class Meta:
+        verbose_name = "Rejestr komórki"           # Nazwa w liczbie pojedynczej
+        verbose_name_plural = "Rejestry komórek"    # Nazwa w liczbie mnogiej
+
+
 class ProfilUzytkownika(models.Model):
-    pro_active = models.BooleanField(null=True, default=True)
     pro_user = models.OneToOneField(User, on_delete=models.CASCADE)
+    pro_active = models.BooleanField(null=True, default=True)
     pro_nazwa = models.CharField(null=False, max_length=225)
     pro_opis = models.CharField(null=False, max_length=225)
     pro_rodo = models.BooleanField(null=True, default=True)
@@ -442,7 +471,7 @@ class ProfilUzytkownika(models.Model):
 
     pro_rola = models.CharField(max_length=50, 
                                 null=True, 
-                                choices=ROLA_PRACOWNIKA
+                                choices=ROLA_PRACOWNIKA,
                                 )
     
     pro_komorki = models.ManyToManyField(
@@ -450,7 +479,7 @@ class ProfilUzytkownika(models.Model):
         editable=True,
         related_name="ProfilUzytkownika_Komorki",
         through="KomorkiProfilu",
-        through_fields=('kpu_profil_u', 'kpu_komorka')
+        through_fields=('kpu_profil', 'kpu_komorka')
         )
     
     created = models.DateTimeField(auto_now_add=True, editable=False)
@@ -464,10 +493,11 @@ class ProfilUzytkownika(models.Model):
         return self.pro_nazwa
 
     def get_absolute_url(self):
-        return reverse("Profil_detail", args=(self.pk,))
+        return reverse("ProfilUzytkownika_detail")
+
 
     def get_update_url(self):
-        return reverse("Profil_update", args=(self.pk,))
+        return reverse("ProfilUzytkownika_update", args=(self.pk,))
 
     @staticmethod
     def get_htmx_create_url():
@@ -477,15 +507,9 @@ class ProfilUzytkownika(models.Model):
         return reverse("Profil_htmx_delete", args=(self.pk,))
 
 class KomorkiProfilu(models.Model):
-    kpu_profil_u = models.ForeignKey(ProfilUzytkownika,
-                                      null=True,
-                                      related_name="kpu_profil_u",
-                                      on_delete=models.CASCADE)
+    kpu_profil = models.ForeignKey(ProfilUzytkownika, null=True, on_delete=models.CASCADE)
     
-    kpu_komorka = models.ForeignKey(Komorka, 
-                                    null=True,
-                                    related_name="kpu_komorka",
-                                    on_delete=models.CASCADE)
+    kpu_komorka = models.ForeignKey(Komorka, null=True, on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = "Komorka profilu"           # Nazwa w liczbie pojedynczej
