@@ -176,21 +176,23 @@ urlpatterns = (
     path("GrupaZabezpieczen/update/<int:pk>/", views.GrupaZabezpieczenUpdateView.as_view(), name="GrupaZabezpieczen_update"),
     path("GrupaZabezpieczen/delete/<int:pk>/", views.GrupaZabezpieczenDeleteView.as_view(), name="GrupaZabezpieczen_delete"),
 
-    path("htmx/Organizacja/", htmx.HTMXOrganizacjaListView.as_view(), name="Organizacja_htmx_list"),
-    path("htmx/Organizacja/create/", htmx.HTMXOrganizacjaCreateView.as_view(), name="Organizacja_htmx_create"),
-    path("htmx/Organizacja/delete/<int:pk>/", htmx.HTMXOrganizacjaDeleteView.as_view(), name="Organizacja_htmx_delete"),
+    path("Profil/<username>", views.ProfilUzytkownikaDetailView.as_view(), name="Profile_detail"),
+
+    # path("htmx/Organizacja/", htmx.HTMXOrganizacjaListView.as_view(), name="Organizacja_htmx_list"),
+    # path("htmx/Organizacja/create/", htmx.HTMXOrganizacjaCreateView.as_view(), name="Organizacja_htmx_create"),
+    # path("htmx/Organizacja/delete/<int:pk>/", htmx.HTMXOrganizacjaDeleteView.as_view(), name="Organizacja_htmx_delete"),
     
-    path("htmx/CzynnoscPrzetwarzania/", htmx.HTMXCzynnoscPrzetwarzaniaListView.as_view(), name="CzynnoscPrzetwarzania_htmx_list"),
-    path("htmx/CzynnoscPrzetwarzania/create/", htmx.HTMXCzynnoscPrzetwarzaniaCreateView.as_view(), name="CzynnoscPrzetwarzania_htmx_create"),
-    path("htmx/CzynnoscPrzetwarzania/delete/<int:pk>/", htmx.HTMXCzynnoscPrzetwarzaniaDeleteView.as_view(), name="CzynnoscPrzetwarzania_htmx_delete"),
+    # path("htmx/CzynnoscPrzetwarzania/", htmx.HTMXCzynnoscPrzetwarzaniaListView.as_view(), name="CzynnoscPrzetwarzania_htmx_list"),
+    # path("htmx/CzynnoscPrzetwarzania/create/", htmx.HTMXCzynnoscPrzetwarzaniaCreateView.as_view(), name="CzynnoscPrzetwarzania_htmx_create"),
+    # path("htmx/CzynnoscPrzetwarzania/delete/<int:pk>/", htmx.HTMXCzynnoscPrzetwarzaniaDeleteView.as_view(), name="CzynnoscPrzetwarzania_htmx_delete"),
     
-    path("htmx/Rejestr/", htmx.HTMXRejestrListView.as_view(), name="htmx_list"),
-    path("htmx/Rejestr/create/", htmx.HTMXRejestrCreateView.as_view(), name="htmx_create"),
-    path("htmx/Rejestr/delete/<int:pk>/", htmx.HTMXRejestrDeleteView.as_view(), name="htmx_delete"),
+    # path("htmx/Rejestr/", htmx.HTMXRejestrListView.as_view(), name="htmx_list"),
+    # path("htmx/Rejestr/create/", htmx.HTMXRejestrCreateView.as_view(), name="htmx_create"),
+    # path("htmx/Rejestr/delete/<int:pk>/", htmx.HTMXRejestrDeleteView.as_view(), name="htmx_delete"),
     
-    path("htmx/Komorka/", htmx.HTMXKomorkaListView.as_view(), name="Komorka_htmx_list"),
-    path("htmx/Komorka/create/", htmx.HTMXKomorkaCreateView.as_view(), name="Komorka_htmx_create"),
-    path("htmx/Komorka/delete/<int:pk>/", htmx.HTMXKomorkaDeleteView.as_view(), name="Komorka_htmx_delete"),
+    # path("htmx/Komorka/", htmx.HTMXKomorkaListView.as_view(), name="Komorka_htmx_list"),
+    # path("htmx/Komorka/create/", htmx.HTMXKomorkaCreateView.as_view(), name="Komorka_htmx_create"),
+    # path("htmx/Komorka/delete/<int:pk>/", htmx.HTMXKomorkaDeleteView.as_view(), name="Komorka_htmx_delete"),
 
 )
 
