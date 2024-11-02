@@ -6,8 +6,11 @@ from django.urls import reverse
 from django.urls import reverse_lazy
 from django_xhtml2pdf.views import PdfMixin
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger 
-from django.contrib.auth.decorators import login_required
-from django.utils.decorators import method_decorator
+#from django.contrib.auth.decorators import login_required, method_decorator
+from django.contrib.auth  import  authenticate, login,  logout
+from django.contrib.auth.models  import  User
+from django.contrib import auth
+
 from django.db.models.query import QuerySet
 
 from . import models
@@ -87,7 +90,23 @@ class PodmiotPrzetwarzajacyDeleteView(generic.DeleteView):
     pk_url_kwarg = "pk"
     success_url = reverse_lazy("PodmiotPrzetwarzajacy_list")
 
+class ProfilUzytkownikaDeleteView(generic.DeleteView):
+    model = models.ProfilUzytkownika
+    pk_url_kwarg = "pk"
+    success_url = reverse_lazy("ProfilUzytkownika_list")
 
+class ProfilUzytkownikaCreateView(generic.CreateView):
+    
+    model = models.ProfilUzytkownika
+    form_class = forms.ProfilUzytkownikaForm
+
+
+class ProfilUzytkownikaDetailView(generic.DetailView):
+    model = models.ProfilUzytkownika
+    form_class = forms.ProfilUzytkownikaForm
+    #pk_url_kwarg = "username"
+     
+    
 class RejestrListView(generic.ListView):
     model = models.Rejestr
     form_class = forms.RejestrForm
