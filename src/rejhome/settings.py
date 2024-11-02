@@ -70,8 +70,8 @@ TEMPLATES = [
 WSGI_APPLICATION = 'rejhome.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/5.1/ref/settings/#databases
+#Database
+#https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 # DATABASES = {
 #     'default': {
@@ -86,7 +86,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': "rej",
         'USER': "dba",
-        'PASSWORD': "pimpek",
+        'PASSWORD': "*****",
         'HOST': "127.0.0.1",
         'PORT': '5432',
     }
