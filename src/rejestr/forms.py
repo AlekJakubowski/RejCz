@@ -223,27 +223,25 @@ class KomorkaForm(forms.ModelForm):
                                 widget=forms.TextInput(attrs={"placeholder": 'e-mail kontaktowy'}),
                                 required=False
                                 )
-    CzynnosciRealizowane = forms.SelectMultiple( )
-
+    
+    RejestryKomorki = forms.ModelMultipleChoiceField(
+                        required=False,
+                        queryset = models.Rejestr.objects.all(),
+                        widget=forms.CheckboxSelectMultiple
+                        )
     class Meta:
         model = models.Komorka
-        fields = [
-            "kom_active",
-            "kom_symbol",
-            "kom_nazwa",
-            "kom_adres",
-            "kom_tel",
-            "kom_email",
-            "Organizacja",
-            "CzynnosciRealizowane",
-        ]
+        fields = '__all__'
+
 
     def __init__(self, *args, **kwargs):
         super(KomorkaForm, self).__init__(*args, **kwargs)
         #self.fields["CzynnoscPrzetwarzania"].queryset = CzynnoscPrzetwarzania.objects.all()
         self.fields["Organizacja"].queryset = models.Organizacja.objects.filter(org_active = True)
-        self.fields["CzynnosciRealizowane"].queryset = models.CzynnoscPrzetwarzania.objects.filter(czn_active = True)
-
+        #self.fields["CzynnosciRealizowane"].queryset = models.CzynnoscPrzetwarzania.objects.filter(czn_active = True)
+        #self.fields["RejestryKomorki"].queryset = models.RejestryKomorki.objects().all()
+        
+        
 class OkresRetencjiForm(forms.ModelForm):
     okr_active = forms.BooleanField(label='Aktywna', required=False, initial=True)
     
