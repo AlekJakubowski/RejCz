@@ -7,7 +7,7 @@ from django.urls import reverse_lazy
 from django_xhtml2pdf.views import PdfMixin
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger 
 #from django.contrib.auth.decorators import login_required, method_decorator
-from django.contrib.auth  import  authenticate, login,  logout
+from django.contrib.auth  import  authenticate, login
 from django.contrib.auth.models  import  User
 from django.contrib import auth
 
@@ -137,6 +137,18 @@ class RejestrDeleteView(generic.DeleteView):
     pk_url_kwarg = "pk"
     success_url = reverse_lazy("Rejestr_list")
 
+class RejestrCloneView(generic.View):
+    model = models.Rejestr
+
+    def post(self, request, pk):
+        # Pobierz obiekt do sklonowania
+        instance = get_object_or_404(models.Rejestr, pk=pk)
+
+        # Klonowanie obiektu
+        instance.clone(instance)
+    
+        # Przekierowanie z powrotem do listy obiektów lub innej strony
+        return redirect('Organizacja_list')
 
 class OkresRetencjiListView(generic.ListView):
     model = models.OkresRetencji
@@ -401,6 +413,19 @@ class KomorkaUpdateView(generic.UpdateView):
 class KomorkaDeleteView(generic.DeleteView):
     model = models.Komorka
     success_url = reverse_lazy("rejestr_Komorka_list")
+
+class KomorkaCloneView(generic.View):
+    model = models.Rejestr
+
+    def post(self, request, pk):
+        # Pobierz obiekt do sklonowania
+        instance = get_object_or_404(models.Komorka, pk=pk)
+
+        # Klonowanie obiektu
+        instance.clone(instance)
+    
+        # Przekierowanie z powrotem do listy obiektów lub innej strony
+        return redirect('Komorka_list')
 
 
 class PrzeslankaLegalnosciListView(generic.ListView):

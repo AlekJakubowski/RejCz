@@ -75,6 +75,7 @@ urlpatterns = (
     path("Rejestr/detail/<int:pk>/", views.RejestrDetailView.as_view(), name="Rejestr_detail"),
     path("Rejestr/update/<int:pk>/", views.RejestrUpdateView.as_view(), name="Rejestr_update"),
     path("Rejestr/delete/<int:pk>/", views.RejestrDeleteView.as_view(), name="Rejestr_delete"),
+    path("Rejestr/clone/<int:pk>/", views.RejestrCloneView.as_view(), name="Rejestr_clone"),
     
     path("OkresRetencji/", views.OkresRetencjiListView.as_view(), name="OkresRetencji_list"),
     path("OkresRetencji/create/", views.OkresRetencjiCreateView.as_view(), name="OkresRetencji_create"),
@@ -100,6 +101,7 @@ urlpatterns = (
     path("Komorka/detail/<int:pk>/", views.KomorkaDetailView.as_view(), name="Komorka_detail"),
     path("Komorka/update/<int:pk>/", views.KomorkaUpdateView.as_view(), name="Komorka_update"),
     path("Komorka/delete/<int:pk>/", views.KomorkaDeleteView.as_view(), name="Komorka_delete"),
+    path("Komorka/clone/<int:pk>/", views.KomorkaCloneView.as_view(), name="Komorka_clone"),
     
     path("PrzeslankaLegalnosci/", views.PrzeslankaLegalnosciListView.as_view(), name="PrzeslankaLegalnosci_list"),
     path("PrzeslankaLegalnosci/create/", views.PrzeslankaLegalnosciCreateView.as_view(), name="PrzeslankaLegalnosci_create"),

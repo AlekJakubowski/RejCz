@@ -134,6 +134,16 @@ class Rejestr(models.Model):
         verbose_name = "Rejestr"           # Nazwa w liczbie pojedynczej
         verbose_name_plural = "Rejestry"    # Nazwa w liczbie mnogiej
 
+    def clone(self, new_RejP):
+        RejP = Rejestr(
+            rej_active = new_RejP.rej_active,
+            rej_nazwa = "klon_" + new_RejP.rej_nazwa,
+            rej_opis = new_RejP.rej_opis,
+            rej_zakres = new_RejP.rej_zakres,
+            Organizacja = new_RejP.Organizacja
+        )
+        RejP.save()
+
     def __str__(self):
         return f'{self.rej_nazwa} ({self.rej_zakres}) --> ({self.Organizacja})'
 
@@ -408,16 +418,6 @@ class Komorka(models.Model):
     kom_tel = models.CharField(max_length=100)
     kom_email = models.EmailField()
     
-    CzynnosciRealizowane = models.ManyToManyField(
-        'rejestr.CzynnoscPrzetwarzania',
-        editable=True,
-        related_name="Komorki_CzynnosciPrzetwarzania",
-        through="CzynnosciPrzetwarzania",
-        through_fields=( 'czp_komorka', 'czp_czynnoscp')
-    )
-    
-    
-    
     RejestryKomorki = models.ManyToManyField( 
         'rejestr.Rejestr',
         editable=True,
@@ -432,6 +432,18 @@ class Komorka(models.Model):
     class Meta:
         verbose_name = "Komórka"           # Nazwa w liczbie pojedynczej
         verbose_name_plural = "Komórki"    # Nazwa w liczbie mnogiej
+
+    def clone(self, new_Kom):
+        kom = Komorka(
+        kom_active = new_Kom.kom_active,
+        kom_nazwa = "klon_" + new_Kom.kom_nazwa,
+		Organizacja = new_Kom.Organizacja,
+        kom_symbol = new_Kom.kom_symbol,
+        kom_adres = new_Kom.kom_adres,
+        kom_email = new_Kom.kom_email
+		#RejestryKomorki nie są klonowane
+        )
+        kom.save()
 
     def __str__(self):
         return str(f'{self.kom_symbol} - {self.kom_nazwa}')
@@ -458,6 +470,7 @@ class RejestryKomorki(models.Model):
     class Meta:
         verbose_name = "Rejestr komórki"           # Nazwa w liczbie pojedynczej
         verbose_name_plural = "Rejestry komórek"    # Nazwa w liczbie mnogiej
+
 
 
 class ProfilUzytkownika(models.Model):
