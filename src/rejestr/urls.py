@@ -1,5 +1,9 @@
 from django.urls import path, include
 from rest_framework import routers
+from django.conf import global_settings
+from django.conf import settings
+from django.views.generic import TemplateView
+from django.conf.urls.static import static
 
 from . import api
 from . import views
@@ -8,7 +12,7 @@ from . import htmx
 
 router = routers.DefaultRouter()
 router.register("Organizacja", api.OrganizacjaViewSet)
-router.register("ProfilUzytkownika", api.ProfilUzytkownikaViewSet)
+router.register("Profile", api.ProfileViewSet)
 router.register("Rejestr", api.RejestrViewSet)
 router.register("Komorka", api.KomorkaViewSet) 
 router.register("OkresRetencji", api.OkresRetencjiViewSet) 
@@ -28,6 +32,7 @@ urlpatterns = (
     #path("api/v1/", include(router.urls)),
     #path("", include(router.urls)),
     
+    #path('media/profile_images/', (r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),),
     # Czynność przetwarzania nie jest samodzielnną klasą, ponieważ cztery rejestry z niej dziedziczą
     # path("CzynnoscPrzetwarzania/", views.CzynnoscPrzetwarzaniaListView.as_view(), name="CzynnoscPrzetwarzania_list"),
     # path("CzynnoscPrzetwarzania/create/", views.CzynnoscPrzetwarzaniaCreateView.as_view(), name="CzynnoscPrzetwarzania_create"),
@@ -178,7 +183,7 @@ urlpatterns = (
     path("GrupaZabezpieczen/update/<int:pk>/", views.GrupaZabezpieczenUpdateView.as_view(), name="GrupaZabezpieczen_update"),
     path("GrupaZabezpieczen/delete/<int:pk>/", views.GrupaZabezpieczenDeleteView.as_view(), name="GrupaZabezpieczen_delete"),
 
-    path("Profil/<username>", views.ProfilUzytkownikaDetailView.as_view(), name="Profile_detail"),
+    path("Profil/<username>", views.ProfileDetailView.as_view(), name="Profile_detail"),
 
     # path("htmx/Organizacja/", htmx.HTMXOrganizacjaListView.as_view(), name="Organizacja_htmx_list"),
     # path("htmx/Organizacja/create/", htmx.HTMXOrganizacjaCreateView.as_view(), name="Organizacja_htmx_create"),
@@ -195,6 +200,8 @@ urlpatterns = (
     # path("htmx/Komorka/", htmx.HTMXKomorkaListView.as_view(), name="Komorka_htmx_list"),
     # path("htmx/Komorka/create/", htmx.HTMXKomorkaCreateView.as_view(), name="Komorka_htmx_create"),
     # path("htmx/Komorka/delete/<int:pk>/", htmx.HTMXKomorkaDeleteView.as_view(), name="Komorka_htmx_delete"),
-
+    #static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT),
 )
 
+# if settings.DEBUG: 
+#     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

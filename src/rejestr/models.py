@@ -473,9 +473,9 @@ class RejestryKomorki(models.Model):
 
 
 
-class ProfilUzytkownika(models.Model):
+class Profile(models.Model):
     pro_user = models.OneToOneField(User, on_delete=models.CASCADE)
-    pro_active = models.BooleanField(null=True, default=True)
+    #pro_active = models.BooleanField(null=True, default=True)
     pro_nazwa = models.CharField(null=False, max_length=225)
     pro_opis = models.CharField(null=False, max_length=225)
     pro_rodo = models.BooleanField(null=True, default=True)
@@ -486,6 +486,9 @@ class ProfilUzytkownika(models.Model):
                                 null=True, 
                                 choices=ROLA_PRACOWNIKA,
                                 )
+    pro_organizacja = models.ForeignKey(Organizacja, null=True, on_delete=models.CASCADE)
+    
+    pro_komorka = models.ForeignKey(Komorka, null=True, on_delete=models.CASCADE)
     
     pro_komorki = models.ManyToManyField(
         Komorka,
@@ -503,7 +506,7 @@ class ProfilUzytkownika(models.Model):
         verbose_name_plural = "Profile uzytkowników"    # Nazwa w liczbie mnogiej
 
     def __str__(self):
-        return self.pro_nazwa
+        return f'{self.pro_user.username} Profile'
 
     def get_absolute_url(self):
         return reverse("ProfilUzytkownika_detail")
@@ -520,13 +523,13 @@ class ProfilUzytkownika(models.Model):
         return reverse("Profil_htmx_delete", args=(self.pk,))
 
 class KomorkiProfilu(models.Model):
-    kpu_profil = models.ForeignKey(ProfilUzytkownika, null=True, on_delete=models.CASCADE)
+    kpu_profil = models.ForeignKey(Profile, null=True, on_delete=models.CASCADE)
     
     kpu_komorka = models.ForeignKey(Komorka, null=True, on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = "Komorka profilu"           # Nazwa w liczbie pojedynczej
-        verbose_name_plural = "Komorkia profili"    # Nazwa w liczbie mnogiej
+        verbose_name_plural = "Komorki profili"    # Nazwa w liczbie mnogiej
 
 
 class OperacjaPrzetwarzania(models.Model):

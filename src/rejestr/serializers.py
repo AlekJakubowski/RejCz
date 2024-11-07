@@ -27,10 +27,10 @@ class KomorkaSerializer(serializers.ModelSerializer):
         model = models.Komorka
         fields = '__all__'
 
-class ProfilUzytkownikaSerializer(serializers.ModelSerializer):
+class ProfileSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = models.ProfilUzytkownika
+        model = models.Profile
         fields = '__all__'
 
 class OkresRetencjiSerializer(serializers.ModelSerializer):
