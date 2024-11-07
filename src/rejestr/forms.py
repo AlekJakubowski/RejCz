@@ -6,7 +6,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 from . import models
 
-from rejestr.models import ROLA_PRACOWNIKA, STATUS_ZATWIERDZENIA, ZRODLA_DANYCH, ZAKRES_REJESTRACJI
+from rejestr.models import ROLA_PRACOWNIKA, STATUS_ZATWIERDZENIA, ZRODLA_DANYCH, ZAKRES_REJESTRACJI, Organizacja
 
 from . import models
 
@@ -163,11 +163,13 @@ class RejestrForm(forms.ModelForm):
         #self.fields["Organizacja"].queryset = models.Organizacja.objects.filter(org_active = True)
 
 
-class ProfilUzytkownikaForm(LoginRequiredMixin, forms.ModelForm):
+class ProfileForm(LoginRequiredMixin, forms.ModelForm):
     
-    #user= get_user_model().objects.all ().filter(username=username)
-    pro_active = forms.BooleanField(label='Aktywny', 
-                        required=False, initial=True, disabled=True)
+    pro_user = forms.CharField(label='login', max_length=255,  
+                        widget=forms.TextInput(attrs={"placeholder": 'Nazwa użytkownika'}),
+                        disabled=True,
+                        required=True
+                        )
     
     pro_nazwa = forms.CharField(label='Nazwa użytkownika', max_length=255,  
                         widget=forms.TextInput(attrs={"placeholder": 'Pełna nazwa użytkownika'}),
@@ -178,25 +180,28 @@ class ProfilUzytkownikaForm(LoginRequiredMixin, forms.ModelForm):
                         widget=forms.TextInput(attrs={"placeholder": 'Opis profilu użytkownika'}),
                         required=False
                         )
-
-    # pro_user = forms.ModelChoiceField(
-    #                     label="User", 
-    #                     widget=forms.Select,   
-    #                     queryset=models.User.objects.filter(org_active = True)
-    #                     )
-    
+       
     pro_rola = forms.ChoiceField(label='Status', choices=ROLA_PRACOWNIKA,                
                         required=False) 
 
-    
-    def __init__(self, *args, **kwargs):
-        super(ProfilUzytkownikaForm, self).__init__(*args, **kwargs)
-        #self.fields["CzynnoscPrzetwarzania"].queryset = CzynnoscPrzetwarzania.objects.all()
-        #self.fields["Organizacja"].queryset = models.Organizacja.objects.filter(org_active = True)
-        #self.fields["CzynnosciRealizowane"].queryset = models.CzynnoscPrzetwarzania.objects.filter(czn_active = True)
+    pro_organizacja = forms.ModelChoiceField(
+                        required=True,
+                        initial='',
+                        queryset = models.Organizacja.objects.filter(org_active = True),
+                        widget=forms.Select
+                        )
 
-    pass
+    pro_komorka = forms.ModelChoiceField(
+                        required=True,
+                        initial='',
+                        queryset = models.Komorka.objects.filter(kom_active = True),
+                        widget=forms.Select
+                        )
     
+    # pro_avatar = forms.FilePathField(
+    #                         widget = forms.FileInput,
+    #                     )
+       
 class KomorkaForm(forms.ModelForm):
     kom_active = forms.BooleanField(label='Aktywna', required=False, initial=True)
     
@@ -226,7 +231,7 @@ class KomorkaForm(forms.ModelForm):
     
     RejestryKomorki = forms.ModelMultipleChoiceField(
                         required=False,
-                        queryset = models.Rejestr.objects.all(),
+                        queryset = models.Rejestr.objects.filter(rej_active = True),
                         widget=forms.CheckboxSelectMultiple
                         )
     class Meta:

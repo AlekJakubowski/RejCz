@@ -1,0 +1,15 @@
+{% extends "../../navbar.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    {% comment %} <h1> {{ user.username }} </h1> {% endcomment %}
+    <div class="content-section">
+        <div class="media">
+            <img class="rouded-circle account-img" src="{{ user.profile.image.url }}">
+            <div class="media-body">
+                <h2 class="account-heading">{{ user.username }}</h2>
+                <p clas="text-econdary">{{ user.email }}</p>
+            </div>
+        </div>
+        {% comment %} FORM HERE {% endcomment %}
+    </div>
+{% endblock %}
