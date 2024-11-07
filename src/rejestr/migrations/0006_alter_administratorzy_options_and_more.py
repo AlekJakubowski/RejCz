@@ -77,7 +77,7 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterModelOptions(
             name='komorkiprofilu',
-            options={'verbose_name': 'Komorka profilu', 'verbose_name_plural': 'Komorkia profili'},
+            options={'verbose_name': 'Komorka profilu', 'verbose_name_plural': 'Komorki profili'},
         ),
         migrations.AlterModelOptions(
             name='okresretencji',

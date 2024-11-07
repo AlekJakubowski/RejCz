@@ -2,19 +2,19 @@ import os
 from pathlib import Path
 import dotenv
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
-PROJECT_PATH = Path(__file__).resolve().parent
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = True
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-)7=%go$v+y!jphk)ox477v=((bsry&w^5+_*2)1drh2@dr8@ce'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+BASE_DIR = Path(__file__).resolve().parent.parent
+PROJECT_PATH = Path(__file__).resolve().parent
+
+# Quick-start development settings - unsuitable for production
+# See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
+
 
 ALLOWED_HOSTS = ['192.168.179.129', '192.168.179.128', '127.0.0.1', 'localhost']
 
@@ -164,20 +164,33 @@ USE_I18N = True
 USE_TZ = True
 
 
+STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+    },
+}
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = '/static/'
-
-STATIC_ROOT=BASE_DIR / 'rejestr/static/'
-
-STATICFILES_DIRS = [
-    BASE_DIR / "static/",
+STATICFILES_FINDERS = [
+    "django.contrib.staticfiles.finders.FileSystemFinder",
+    "django.contrib.staticfiles.finders.AppDirectoriesFinder",
 ]
 
-MEDIA_URL='/media/'
+STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-MEDIA_ROOT=BASE_DIR / 'rejestr/media/'
+MEDIA_URL = 'media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'rejestr/static'),
+    os.path.join(BASE_DIR, 'rejestr/media'),
+]
 
 
 # Default primary key field type

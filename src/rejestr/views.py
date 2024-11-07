@@ -90,22 +90,24 @@ class PodmiotPrzetwarzajacyDeleteView(generic.DeleteView):
     pk_url_kwarg = "pk"
     success_url = reverse_lazy("PodmiotPrzetwarzajacy_list")
 
-class ProfilUzytkownikaDeleteView(generic.DeleteView):
-    model = models.ProfilUzytkownika
+class ProfileDeleteView(generic.DeleteView):
+    model = models.Profile
     pk_url_kwarg = "pk"
-    success_url = reverse_lazy("ProfilUzytkownika_list")
+    success_url = reverse_lazy("Profile_list")
 
-class ProfilUzytkownikaCreateView(generic.CreateView):
-    
-    model = models.ProfilUzytkownika
-    form_class = forms.ProfilUzytkownikaForm
+class ProfileCreateView(generic.CreateView):
+    model = models.Profile
+    form_class = forms.ProfileForm
 
 
-class ProfilUzytkownikaDetailView(generic.DetailView):
-    model = models.ProfilUzytkownika
-    form_class = forms.ProfilUzytkownikaForm
+class ProfileDetailView(generic.DetailView):
+    model = models.Profile
+    form_class = forms.ProfileForm
     #pk_url_kwarg = "username"
      
+class ProfileImageView(generic.ListView):
+    model = models.Profile
+    form_class = forms.ProfileForm
     
 class RejestrListView(generic.ListView):
     model = models.Rejestr
