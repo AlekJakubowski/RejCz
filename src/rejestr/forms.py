@@ -1,4 +1,5 @@
 from django import forms
+from django.contrib.auth.models import User
 from bootstrap_datepicker_plus.widgets import DatePickerInput
 from django.contrib.auth import get_user_model
 from django.contrib.auth import user_logged_in
@@ -150,22 +151,41 @@ class RejestrForm(forms.ModelForm):
     
     class Meta:
         model = models.Rejestr
-        fields = [
-            "rej_active",
-            "rej_nazwa",
-            "rej_opis",
-            "rej_zakres",
-            "Organizacja",
-        ]
+        fields = [ "rej_active", "rej_nazwa", "rej_opis", "rej_zakres", "Organizacja", ]
 
     def __init__(self, *args, **kwargs):
         super(RejestrForm, self).__init__(*args, **kwargs)
         #self.fields["Organizacja"].queryset = models.Organizacja.objects.filter(org_active = True)
 
+class UserRegisterForm():
+    username = forms.CharField(label='Nazwa użytkownika', disabled=True)
+    email = forms.EmailField()
+    class Meta:
+        model = User
+        fields = ['username', 'email', 'password1', 'password2']
+        #fields = '__all__'
+
+class UserUpdateForm(forms.ModelForm):
+    username = forms.CharField(label='Nazwa użytkownika', disabled=True)
+    email = forms.EmailField()
+    class Meta:
+        model = User
+        fields = ['username', 'email']
+
+class ProfileUpdateForm(LoginRequiredMixin, forms.ModelForm):
+    class Meta:
+        model = models.Profile
+        fields = ['pro_user', 'pro_nazwa', 'pro_opis', 'pro_rola','pro_organizacja', 'pro_komorka', ]
 
 class ProfileForm(LoginRequiredMixin, forms.ModelForm):
+    pro_user =  forms.ModelChoiceField(                        
+                        widget=forms.Select,
+                        queryset = User.objects.all(),
+                        required=True,
+                        disabled=True,
+                        )
     
-    pro_user = forms.CharField(label='login', max_length=255,  
+    pro_login = forms.CharField(label='Login użytkownika', max_length=255,  
                         widget=forms.TextInput(attrs={"placeholder": 'Nazwa użytkownika'}),
                         disabled=True,
                         required=True
@@ -198,9 +218,26 @@ class ProfileForm(LoginRequiredMixin, forms.ModelForm):
                         widget=forms.Select
                         )
     
-    # pro_avatar = forms.FilePathField(
-    #                         widget = forms.FileInput,
-    #                     )
+    pro_komorki = forms.ModelMultipleChoiceField(
+                        required=False,
+                        initial='',
+                        queryset = models.Komorka.objects.filter(kom_active = True),
+                        widget=forms.CheckboxSelectMultiple
+                        )
+
+    
+    def __init__(self, *args, **kwargs):
+        # Wywołanie standardowej inicjalizacji formularza
+        super().__init__(*args, **kwargs)
+
+        # Ustawienie domyślnej wartości pola `pro_login` na `username` powiązanego użytkownika
+        if self.instance and self.instance.pro_user:
+            self.fields['pro_login'].initial = self.instance.pro_user.username
+               
+    class Meta:
+        model = models.Profile
+        fields = ['pro_user', 'pro_nazwa', 'pro_opis', 
+                  'pro_rola','pro_organizacja', 'pro_komorka', 'pro_komorki']
        
 class KomorkaForm(forms.ModelForm):
     kom_active = forms.BooleanField(label='Aktywna', required=False, initial=True)
@@ -459,7 +496,7 @@ class CzynnoscPrzetwarzaniaForm(forms.ModelForm):
     Wspoladministratorzy = forms.ModelMultipleChoiceField(
                         required=False,
                         queryset = models.Organizacja.objects.filter(org_active = True),
-                        widget=forms.CheckboxSelectMultiple
+                        
                         )
     
     PodmiotyPrzetwarzajace = forms.ModelMultipleChoiceField(

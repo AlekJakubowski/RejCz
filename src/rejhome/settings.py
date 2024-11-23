@@ -23,6 +23,7 @@ ALLOWED_HOSTS = ['192.168.179.129', '192.168.179.128', '127.0.0.1', 'localhost']
 
 INSTALLED_APPS = [
     'rejestr',
+    'users',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -54,7 +55,11 @@ ROOT_URLCONF = 'rejhome.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates/'),],
+        'DIRS': [
+                    os.path.join(BASE_DIR, 'templates/'), 
+                    # os.path.join(BASE_DIR, 'rejestr' 'templates/'), 
+                    # os.path.join(BASE_DIR, 'users' 'templates/')
+            ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -181,11 +186,12 @@ STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
 ]
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-MEDIA_URL = 'media/'
+MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'rejestr/static'),

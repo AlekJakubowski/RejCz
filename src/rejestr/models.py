@@ -41,7 +41,7 @@ class Organizacja(models.Model):
     # Fields
     org_active = models.BooleanField(default=True)
     org_skrot = models.CharField(max_length=30)
-    org_kod = models.CharField(max_length=30, default='2001-IWD')
+    org_kod = models.CharField(max_length=30, default='2001-')
     org_nazwa = models.CharField(max_length=155)
     org_adres = models.CharField(max_length=100)
     org_email = models.EmailField(max_length=50)
@@ -472,10 +472,8 @@ class RejestryKomorki(models.Model):
         verbose_name_plural = "Rejestry komórek"    # Nazwa w liczbie mnogiej
 
 
-
 class Profile(models.Model):
     pro_user = models.OneToOneField(User, on_delete=models.CASCADE)
-    #pro_active = models.BooleanField(null=True, default=True)
     pro_nazwa = models.CharField(null=False, max_length=225)
     pro_opis = models.CharField(null=False, max_length=225)
     pro_rodo = models.BooleanField(null=True, default=True)
@@ -504,16 +502,17 @@ class Profile(models.Model):
     class Meta:
         verbose_name = "Profil użytkownika"           # Nazwa w liczbie pojedynczej
         verbose_name_plural = "Profile uzytkowników"    # Nazwa w liczbie mnogiej
-
+        
+        
     def __str__(self):
         return f'{self.pro_user.username} Profile'
 
     def get_absolute_url(self):
-        return reverse("ProfilUzytkownika_detail")
+        return reverse("Profile_detail", args=(self.pro_user.username,))
 
 
     def get_update_url(self):
-        return reverse("ProfilUzytkownika_update", args=(self.pk,))
+        return reverse("Profile_update", args=(self.pro_user.username,))
 
     @staticmethod
     def get_htmx_create_url():

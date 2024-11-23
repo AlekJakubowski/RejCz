@@ -42,6 +42,10 @@ urlpatterns = (
     # path("CzynnoscPrzetwarzania/pdfdetail/<int:pk>/", views.CzynnoscPrzetwarzaniaDetailPdfView.as_view(), name="CzynnoscPrzetwarzania_pdfdetail"),
     # path('CzynnoscPrzetwarzania/clone/<int:pk>/', views.CzynnoscPrzetwarzaniaCloneView.as_view(), name='CzynnoscPrzetwarzania_clone'),
     
+    path("Profile/create/", views.ProfileCreateView.as_view(), name="ProfileView_create"),
+    path("Profile/detail/<str:user>/", views.ProfileDetailView.as_view(), name="ProfileView_detail"),
+    path("Profile/update/<str:user>/", views.ProfileUpdateView.as_view(), name="ProfileView_update"),
+
     path("CzynnoscPrzetwarzaniaDODO/", views.CzynnoscPrzetwarzaniaDODOListView.as_view(), name="CzynnoscPrzetwarzaniaDODO_list"),
     path("CzynnoscPrzetwarzaniaDODO/create/", views.CzynnoscPrzetwarzaniaDODOCreateView.as_view(), name="CzynnoscPrzetwarzaniaDODO_create"),
     path("CzynnoscPrzetwarzaniaDODO/detail/<int:pk>/", views.CzynnoscPrzetwarzaniaDODODetailView.as_view(), name="CzynnoscPrzetwarzaniaDODO_detail"),
@@ -182,8 +186,6 @@ urlpatterns = (
     path("GrupaZabezpieczen/detail/<int:pk>/", views.GrupaZabezpieczenDetailView.as_view(), name="GrupaZabezpieczen_detail"),
     path("GrupaZabezpieczen/update/<int:pk>/", views.GrupaZabezpieczenUpdateView.as_view(), name="GrupaZabezpieczen_update"),
     path("GrupaZabezpieczen/delete/<int:pk>/", views.GrupaZabezpieczenDeleteView.as_view(), name="GrupaZabezpieczen_delete"),
-
-    path("Profil/<username>", views.ProfileDetailView.as_view(), name="Profile_detail"),
 
     # path("htmx/Organizacja/", htmx.HTMXOrganizacjaListView.as_view(), name="Organizacja_htmx_list"),
     # path("htmx/Organizacja/create/", htmx.HTMXOrganizacjaCreateView.as_view(), name="Organizacja_htmx_create"),

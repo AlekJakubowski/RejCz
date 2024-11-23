@@ -1,0 +1,84 @@
+html{
+    height: 100%;
+    font-family: sans-serif;
+}
+
+body {
+    background: linear-gradient(to bottom, transparent, rgb(187, 222, 193));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+form{
+    border-radius: 5%;
+    background-color: rgb(228, 236, 199);
+    padding: 2rem;
+    font-weight: 900;
+    box-shadow: 0 0 10px rgb(0, 0, 0, 0.3);
+    margin: 0 auto;
+    width: 450px;
+}
+
+form input{
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    font-weight: 700;
+    box-sizing: border-box;
+    box-shadow: 0 0 10px rgb(0,0,0,0);
+    border: none;
+    padding: 1em;
+}
+
+form select{
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    font-weight: 700;
+    box-sizing: border-box;
+    box-shadow: 0 0 10px rgb(0,0,0,0);
+    border: none;
+    padding: 1em;
+}
+
+form textarea{
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    font-weight: 700;
+    font-size: 12px;
+    box-sizing: border-box;
+    box-shadow: 0 0 10px rgb(0,0,0,0);
+    border: none;
+    padding: 1em;
+}
+
+form button{
+    display: block;
+    width: 100%;
+    padding: 15px;
+    font-size: 16px;
+    background-color: rgb(62, 62, 205);
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in ;
+}
+
+form button:hover{
+    background-color: rgb(140, 140, 187);
+}
+
+form .errorlist li{
+    list-style: none;
+    color: rgb(239, 20, 64);
+}
+/* phone float width */
+/* @media screen {
+    form {
+        width: 90%;
+    }
+    
+} */

@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.ico' %}" >
+    
     {% block links %}{% endblock %}
     <title>{%block title%}{%endblock%} </title>
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
@@ -18,11 +19,19 @@
     <script> htmx.config.useTemplateFragments = true; </script>
     <script src="https://unpkg.com/hyperscript.org@0.9.12"></script>
 
+    
     <style>{% block style %} block styl {% endblock %}</style>
     {% block extrahead %} {% endblock %}
   </head>
   <body>
     {% block navigation_bar %} {% endblock %}
+    {% if messages %}
+      {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+          {{ message }}
+        </div>
+      {% endfor %}
+    {% endif %}
     {% block allcontent %}
         <div id="content" class="container-fluid">
           <div class="container-lg" >

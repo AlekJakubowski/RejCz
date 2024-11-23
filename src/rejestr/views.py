@@ -1,18 +1,19 @@
-from typing import Any
-from django.shortcuts import get_object_or_404, redirect
-from django_filters.views import FilterView
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger 
+#from django.contrib.auth.decorators import login_required, method_decorator
+from django.contrib import messages
+from django.contrib.auth import  authenticate, login
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.models import  User
+from django.contrib import auth
 from django.views import generic
 from django.urls import reverse
 from django.urls import reverse_lazy
+#from django.forms import form
+from django.shortcuts import get_object_or_404, redirect
+from django_filters.views import FilterView
 from django_xhtml2pdf.views import PdfMixin
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger 
-#from django.contrib.auth.decorators import login_required, method_decorator
-from django.contrib.auth  import  authenticate, login
-from django.contrib.auth.models  import  User
-from django.contrib import auth
-
 from django.db.models.query import QuerySet
-
+from django.shortcuts import redirect, render
 from . import models
 from . import forms
 from . import filters
@@ -39,7 +40,6 @@ class OrganizacjaUpdateView(generic.UpdateView):
     form_class = forms.OrganizacjaForm
     pk_url_kwarg = "pk"
     
-
 class OrganizacjaCloneView(generic.View):
     model = models.Organizacja
 
@@ -84,7 +84,6 @@ class PodmiotPrzetwarzajacyUpdateView(generic.UpdateView):
     form_class = forms.PodmiotPrzetwarzajacyForm
     pk_url_kwarg = "pk"
 
-
 class PodmiotPrzetwarzajacyDeleteView(generic.DeleteView):
     model = models.PodmiotPrzetwarzajacy
     pk_url_kwarg = "pk"
@@ -92,19 +91,76 @@ class PodmiotPrzetwarzajacyDeleteView(generic.DeleteView):
 
 class ProfileDeleteView(generic.DeleteView):
     model = models.Profile
+    success_url = reverse_lazy("login")
     pk_url_kwarg = "pk"
-    success_url = reverse_lazy("Profile_list")
 
-class ProfileCreateView(generic.CreateView):
-    model = models.Profile
+class ProfileCreateView(LoginRequiredMixin, generic.CreateView):
+    #model = models.Profile
     form_class = forms.ProfileForm
+    template_name = "rejestr/profile_form.html"
+    success_url = reverse_lazy('index')  # lub inna strona po zakończeniu tworzenia profilu
+
+    def get_initial(self):
+        initial = super().get_initial()
+        initial['pro_user'] = self.request.user.id  # Przekazanie nazwy użytkownika jako wartość początkową
+        initial['pro_login'] = self.request.user.username  # Przekazanie nazwy użytkownika jako wartość początkową
+        return initial
+
+    def form_valid(self, form):
+        # Zapisz profil i przypisz go do aktualnie zalogowanego użytkownika
+        profile = form.save(commit=False)
+        profile.pro_user = self.request.user
+        profile.save()
+        return super().form_valid(form)
+    
+    def get_success_url(self):
+        # Przekierowanie na widok szczegółów z użyciem pk nowo utworzonego profilu
+        return reverse('ProfileView_detail', kwargs={'pk': self.object.pk})
+
+    class meta:
+        model = models.Profile
+        fields = ['pro_user', 'pro_nazwa', 'pro_opis', 
+                  'pro_rola','pro_organizacja', 'pro_komorka', 'pro_komorki']
+
+# class ProfileUpdateView(generic.UpdateView):
+#     model = models.Profile
+#     form_class = forms.ProfileUpdateForm
+#     pk_url_kwarg = "pk"
 
 
-class ProfileDetailView(generic.DetailView):
+class ProfileUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = models.Profile
+    #template_name = 'profile_update.html'  # Define your template path
+   
+    fields = ['pro_user', 'pro_nazwa', 'pro_opis', 
+            'pro_rola','pro_organizacja', 'pro_komorka', 'pro_komorki']
+
+    def get_object(self, queryset=None):
+        # Fetch the user by username
+        username = self.kwargs.get('user')
+        user = get_object_or_404(User, username=username)
+        # Then, retrieve or create their profile
+        profile, created = models.Profile.objects.get_or_create(pro_user=user)
+        profile.pro_user = user
+        
+        return profile
+
+
+class ProfileDetailView(LoginRequiredMixin, generic.DetailView):
+    model = models.Profile
+    fields = "__all__"
     form_class = forms.ProfileForm
-    #pk_url_kwarg = "username"
-     
+    
+    def get_object(self, queryset=None):
+        # Fetch the user by username
+        username = self.kwargs.get('user')
+        user = get_object_or_404(User, username=username)
+        # Then, retrieve or create their profile
+        profile, created = models.Profile.objects.get_or_create(pro_user=user)
+        profile.pro_user = user
+        
+        return profile
+
 class ProfileImageView(generic.ListView):
     model = models.Profile
     form_class = forms.ProfileForm

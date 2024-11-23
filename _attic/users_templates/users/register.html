@@ -1,0 +1,27 @@
+{% extends "../templates/base.html" %}
+{% load static %}
+{% block title %}Login{% endblock %}
+{% block links %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}" >
+{% endblock %}
+{% block content %}
+    <div class="content-section">
+        <form method="post" action="{% url "login" %}?next={% url 'index' %}">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Zarejestruj się teraz</legend>
+                {{ form }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-online-info"> type="submit">Zarejestruj się</button>
+            </div>
+        </form>
+    </div>
+    <div class="border-top pt-3">
+        <small class="text-muted">
+            Masz już konto? <a class="ml-2" href="#"> Zaloguj się</a>
+        </small>
+    </div>
+    
+ {% endblock %}
+

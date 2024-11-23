@@ -7,18 +7,21 @@ from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import TemplateView
 from django.contrib.auth import views as auth_views
-#from . import views
+from users import views as users_views
+
 
 urlpatterns = [
     path('', TemplateView.as_view(template_name='index.html'), name='index'),
-    # path('htmx/', views.htmx_home, name='htmx'),
-    #static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT),
     path('admin/', admin.site.urls),
     path("favicon.ico", RedirectView.as_view(url=staticfiles_storage.url("favicon.ico"))),
-    path("accounts/", include('django.contrib.auth.urls')),
-    path("login/", auth_views.LoginView.as_view(), name='login'),
-    path("logout/", auth_views.LogoutView.as_view(), name='logout'),
-    path("logoutpage/", TemplateView.as_view(template_name='registration/logout.html'), name='logoutpage'),
+    path('register/', users_views.RegisterView.as_view(), name="register"),
+    path("login/", users_views.LoginView.as_view(), name='login'),
+    path("logout/", users_views.LogoutView.as_view(template_name='users/logout.html'), name='logout'),
+    
     path('rejestr/', include('rejestr.urls')),
-]
+] 
+
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
 
