@@ -17,17 +17,19 @@
         {{form.errors}}
         {# Renders form fields using django-bootstrapX #}
         <div class="container-fluid themed-container bg-body-secondary" > 
+            {% comment %} 
             <div class="form-group row">
                 <div>
                     {{ form.Rejestr | as_crispy_field }}
                 </div>
-            </div>
+            </div> 
+            {% endcomment %}
             <div class="form-group row">
                 <div>
                     {{ form.czn_nazwa | as_crispy_field }}
                 </div>
             </div>
-            <div class="form-group row">
+            {% comment %} <div class="form-group row">
                 <div class="col-4">
                     {{ form.czn_active | as_crispy_field }}
                 </div>
@@ -37,7 +39,7 @@
                 <div class="col-4">
                     {{ form.czn_status_zatw | as_crispy_field }}
                 </div>
-            </div>
+            </div> 
             <div class="form-group row">
                 <div class="col-6">
                     {{ form.czn_data_zgloszenia | as_crispy_field }}
@@ -53,14 +55,11 @@
                 <div class="col-6">
                     {{ form.czn_data_obowazywania_do | as_crispy_field }}
                 </div>
-            </div>    
+            </div>     {% endcomment %}
         </div>
         
         <div class="container-fluid themed-container bg-warning-subtle" >
             <div class="form-group row">
-                <div>
-                    {{ form.czn_podstawa_prawna | as_crispy_field }}
-                </div>
                 <div class="col-4">
                     {{ form.czn_zrodlo_danych | as_crispy_field }}
                 </div>
@@ -72,12 +71,21 @@
             </div>
             <div class="form-group row">
                 <div>
+                    {{ form.czn_podstawa_prawna | as_crispy_field }}
+                </div>
+                <div>
                     {{ form.czn_opis_celu | as_crispy_field }}
                 </div>
             </div>
             <div class="form-group row">
                 <div>
+                    {{ form.czn_dane_wrazliwe | as_crispy_field }}
+                </div>
+                <div>
                     {{ form.czn_przepis_wrazliwe | as_crispy_field }}
+                </div>
+                <div>
+                    {{ form.czn_rodzaje_wrazliwe | as_crispy_field }}
                 </div>
             </div>
             <div class="form-group row">
@@ -233,11 +241,11 @@
             </div>
         </div>
         
-        <div class="form-group row bg-info-subtle">
+        {% comment %} <div class="form-group row bg-info-subtle">
             <div>
                 {{ form.KomorkiRealizujace | as_crispy_field }}
             </div>
-        </div>
+        </div> {% endcomment %}
         {% block buttons %}{% endblock %}
         {% comment %} <div class="form-group row">
             <div class="col-3">
