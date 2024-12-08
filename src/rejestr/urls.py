@@ -151,6 +151,13 @@ urlpatterns = (
     path("KategoriaDanych/delete/<int:pk>/", views.KategoriaDanychDeleteView.as_view(), name="KategoriaDanych_delete"),
     path('KategoriaDanych/clone/<int:pk>/', views.KategoriaDanychCloneView.as_view(), name='KategoriaDanych_clone'),
 
+    path("DanaWrazliwa/", views.DanaWrazliwaListView.as_view(), name="DanaWrazliwa_list"),
+    path("DanaWrazliwa/create/", views.DanaWrazliwaCreateView.as_view(), name="DanaWrazliwa_create"),
+    path("DanaWrazliwa/detail/<int:pk>/", views.DanaWrazliwaDetailView.as_view(), name="DanaWrazliwa_detail"),
+    path("DanaWrazliwa/update/<int:pk>/", views.DanaWrazliwaUpdateView.as_view(), name="DanaWrazliwa_update"),
+    path("DanaWrazliwa/delete/<int:pk>/", views.DanaWrazliwaDeleteView.as_view(), name="DanaWrazliwa_delete"),
+    path('DanaWrazliwa/clone/<int:pk>/', views.DanaWrazliwaCloneView.as_view(), name='DanaWrazliwa_clone'),
+
     path("WysokieRyzyko/", views.WysokieRyzykoListView.as_view(), name="WysokieRyzyko_list"),
     path("WysokieRyzyko/create/", views.WysokieRyzykoCreateView.as_view(), name="WysokieRyzyko_create"),
     path("WysokieRyzyko/detail/<int:pk>/", views.WysokieRyzykoDetailView.as_view(), name="WysokieRyzyko_detail"),

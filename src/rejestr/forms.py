@@ -376,6 +376,19 @@ class KategoriaOdbiorcowForm(forms.ModelForm):
             "kto_opis",
         ]
 
+
+class DanaWrazliwaForm(forms.ModelForm):
+    rdw_opis = forms.CharField(label='Opis rodzaju danych wrażliwych', 
+                            max_length=300, 
+                            widget=forms.Textarea(attrs={"placeholder": 'Opis rodzaju danych wrażliwych'}),
+                                required=False
+                                )
+    
+
+    class Meta:
+        model = models.DanaWrazliwa
+        fields = '__all__'
+
 class KategoriaDanychForm(forms.ModelForm):
     kd_active = forms.BooleanField(label='Aktywny', required=False, initial=True)
     kd_dane_szczegolne = forms.BooleanField(label='Dane szczególne', required=False, initial=False)
@@ -429,52 +442,88 @@ class CzynnoscPrzetwarzaniaFilterForm(forms.Form):
 class CzynnoscPrzetwarzaniaForm(forms.ModelForm):
     czn_active = forms.BooleanField(label='Aktywna', required=False, initial=True)
     
-    czn_pozycja_rej = forms.IntegerField(label='Numer pozycji rejestru',
-                                         required=False,
-                                         )
+    # czn_pozycja_rej = forms.IntegerField(
+    #                     label='Numer pozycji rejestru',
+    #                     required=False,
+    #                     )
     
-    czn_nazwa = forms.CharField(label='Nazwa czynności', max_length=200,  
+    czn_nazwa = forms.CharField(
+                        label='Nazwa czynności', 
+                        max_length=200,  
                         widget=forms.TextInput(attrs={"placeholder": 'Pełna nazwa czynności przetwarzania'}),
+                        required=True,
+                        )
+    
+    czn_podstawa_prawna = forms.CharField(
+                        label='Podstawa prawna', 
+                        max_length=200,  
+                        widget=forms.TextInput(attrs={"placeholder": 'Pełna podstawa prawna przetwarzania'}),
                         required=True
                         )
     
-    # czn_podstawa_prawna = forms.CharField(label='Podstawa prawna', max_length=200,  
-    #                     widget=forms.TextInput(attrs={"placeholder": 'Pełna podstawa prawna przetwarzania'}),
-    #                     required=True
-    #                     )
+    # czn_data_zgloszenia = forms.DateField(
+    #                     label='Data zgloszenia',
+    #                     widget=DatePickerInput,
+    #                     required=False) 
     
-    czn_data_zgloszenia = forms.DateField(label='Data zgloszenia',
-                                          widget=DatePickerInput,
-                                          required=False) 
-    
-    czn_data_wyrejestrowania = forms.DateField(label='Data wyrejestrowania',
-                                          widget=DatePickerInput,
-                                          required=False) 
+    # czn_data_wyrejestrowania = forms.DateField(
+    #                     label='Data wyrejestrowania',
+    #                     widget=DatePickerInput,
+    #                     required=False) 
      
-    czn_data_obowazywania_od = forms.DateField(label='Obowiązuje od',
-                                          widget=DatePickerInput,
-                                          required=False) 
+    # czn_data_obowazywania_od = forms.DateField(
+    #                     label='Obowiązuje od',
+    #                     widget=DatePickerInput,
+    #                     required=False) 
 
     
-    czn_data_obowazywania_do = forms.DateField(label='Obowiązuje do',
-                                            widget=DatePickerInput,
-                                            required=False) 
+    # czn_data_obowazywania_do = forms.DateField(
+    #                     label='Obowiązuje do',
+    #                     widget=DatePickerInput,
+    #                     required=False) 
   
 
-    czn_status_zatw = forms.ChoiceField(label='Status', choices=STATUS_ZATWIERDZENIA,                
-                        required=False) 
+    # czn_status_zatw = forms.ChoiceField(
+    #                     label='Status', 
+    #                     choices=STATUS_ZATWIERDZENIA,                
+    #                     required=False) 
     
-    czn_stczn_zrodlo_danych = forms.ChoiceField(label='Źródło danych', 
+    czn_opis_celu = forms.CharField(
+                        label='Opis celu', 
+                        max_length=200,  
+                        widget=forms.TextInput(attrs={"placeholder": 'Opis celu przetwarzania'}),
+                        required=True
+                        )
+    
+
+    czn_stczn_zrodlo_danych = forms.ChoiceField(
+                        label='Źródło danych', 
                         choices=ZRODLA_DANYCH,                
+                        required=False,
+                        )
+    
+    czn_dane_wrazliwe = forms.BooleanField(
+                        label='Dane wrażliwe',
+                        widget=forms.CheckboxInput,
+                        required=False,
+                        )
+    
+    czn_rodzaje_wrazliwe = forms.ModelMultipleChoiceField(
+                        label='Rodzaje danych wrażliwych',
+                        required=False,
+                        queryset = models.DanaWrazliwa.objects.all(),
+                        widget=forms.CheckboxSelectMultiple
+                        )
+    
+    czn_przepis_wrazliwe = forms.CharField(
+                        label='Podstawa prawna przetwarzania danych wrażliwych', 
+                        max_length=200,  
+                        widget=forms.TextInput(attrs={"placeholder": 'Podstawa przetwarzania danych wrażliwych'}),
                         required=False
                         )
     
-    czn_przepis_wrazliwe = forms.CharField(label='Podstawa prawna przetwarzania danych wrażliwych', max_length=200,  
-                        widget=forms.TextInput(attrs={"placeholder": 'Podstawa przetwarzania danych wrażliwych'}),
-                        required=True
-                        )
-    
     Rejestr = forms.ModelChoiceField(
+                        label='Rejestr',
                         required=True,
                         initial='',
                         queryset = models.Rejestr.objects.filter(rej_active = True),
@@ -482,24 +531,28 @@ class CzynnoscPrzetwarzaniaForm(forms.ModelForm):
                         )
 
     OkresRetencji = forms.ModelChoiceField(
+                        label='Okres retencji',
                         required=True,
                         queryset = models.OkresRetencji.objects.filter(okr_active = True),
                         widget=forms.Select
                         )
- 
+    
     Administratorzy = forms.ModelMultipleChoiceField(
+                        label='Administratorzy',
                         required=False,
                         queryset = models.Organizacja.objects.filter(org_active = True),
                         widget=forms.CheckboxSelectMultiple
                         )
     
     Wspoladministratorzy = forms.ModelMultipleChoiceField(
+                        label='Współadministratorzy',
                         required=False,
                         queryset = models.Organizacja.objects.filter(org_active = True),
-                        
+                        widget=forms.CheckboxSelectMultiple
                         )
     
     PodmiotyPrzetwarzajace = forms.ModelMultipleChoiceField(
+                        label='Podmioty przetwarzające',
                         required=False,
                         queryset = models.PodmiotPrzetwarzajacy.objects.filter(prz_active = True),
                         widget=forms.CheckboxSelectMultiple
@@ -507,7 +560,7 @@ class CzynnoscPrzetwarzaniaForm(forms.ModelForm):
     
 
     PrzeslankiLegalnosci = forms.ModelMultipleChoiceField(
-                        label='Przełanki legalnosci', 
+                        label='Przesłanki legalnosci', 
                         required=False,
                         queryset = models.PrzeslankaLegalnosci.objects.filter(prl_active = True),
                         widget=forms.CheckboxSelectMultiple
@@ -522,46 +575,52 @@ class CzynnoscPrzetwarzaniaForm(forms.ModelForm):
  
     
     SposobyPrzetwarzania = forms.ModelMultipleChoiceField(
+                        label='Sposoby przetwarzania', 
                         required=False,
                         queryset = models.SposobPrzetwarzania.objects.filter(sp_active = True),
                         widget=forms.CheckboxSelectMultiple
                         )
 
     OperacjePrzetwarzania = forms.ModelMultipleChoiceField(
+                        label='Operacje przetwarzania',
                         required=False,
                         queryset = models.OperacjaPrzetwarzania.objects.filter(opp_active = True),
                         widget=forms.CheckboxSelectMultiple
                         )
  
     KategorieOsob = forms.ModelMultipleChoiceField(
+                        label='Kategorie osób',
                         required=False,
                         queryset = models.KategoriaOsob.objects.filter(ko_active = True),
                         widget=forms.CheckboxSelectMultiple
                         )
     
     KategorieOdbiorcow = forms.ModelMultipleChoiceField(
+                        label='Kategorie odbiorców',
                         required=False,
                         queryset = models.KategoriaOdbiorcow.objects.filter(kto_active = True),
                         widget=forms.CheckboxSelectMultiple
                         )
     
     KategorieDanych = forms.ModelMultipleChoiceField(
+                        label='Kategorie danych',
                         required=False,
                         queryset = models.KategoriaDanych.objects.filter(kd_active = True),
                         widget=forms.CheckboxSelectMultiple
                         )
     
     WysokieRyzyka = forms.ModelMultipleChoiceField(
+                        label='Wysokie ryzyka',
                         required=False,
                         queryset = models.WysokieRyzyko.objects.filter(wr_active = True),
                         widget=forms.CheckboxSelectMultiple
                         )
     
-    KomorkiRealizujace = forms.ModelMultipleChoiceField(
-                        required=False,
-                        queryset = models.Komorka.objects.filter(kom_active = True),
-                        widget=forms.CheckboxSelectMultiple
-                        )
+    # KomorkiRealizujace = forms.ModelMultipleChoiceField(
+    #                     required=False,
+    #                     queryset = models.Komorka.objects.filter(kom_active = True),
+    #                     widget=forms.CheckboxSelectMultiple
+    #                     )
     
         
     class Meta:

@@ -38,6 +38,7 @@ class ROLA_PRACOWNIKA(models.TextChoices):
     
 
 class Organizacja(models.Model):
+    
     # Fields
     org_active = models.BooleanField(default=True)
     org_skrot = models.CharField(max_length=30)
@@ -135,6 +136,11 @@ class Rejestr(models.Model):
         verbose_name_plural = "Rejestry"    # Nazwa w liczbie mnogiej
 
     def clone(self, new_RejP):
+        """Funkca klonuje rekord modelu
+
+        Args:
+            new_RejP (Rejestr): Zmienna modelu Rejestr
+        """
         RejP = Rejestr(
             rej_active = new_RejP.rej_active,
             rej_nazwa = "klon_" + new_RejP.rej_nazwa,
@@ -161,7 +167,14 @@ class Rejestr(models.Model):
         return reverse("Rejestr_htmx_delete", args=(self.pk,))
 
 class OkresRetencji(models.Model):
+    """Model OkresRetencji - opisuje maksymalny orkes przechowywania danych
 
+    Args:
+        models (models.Model): OkresRetencji
+
+    Returns:
+        OkresRetencji: _opis_
+    """
     # Fields
     okr_active = models.BooleanField(null=False, default=True)
     okr_nazwa = models.CharField(max_length=255)
@@ -247,7 +260,6 @@ class SposobPrzetwarzania(models.Model):
     def get_update_url(self):
         return reverse('SposobPrzetwarzania_update', args=(self.pk,))
 
-
 class PodstawaPrawnaPrzetwarzania(models.Model):
     # Fields
     ppw_active = models.BooleanField(default=True)
@@ -258,6 +270,14 @@ class PodstawaPrawnaPrzetwarzania(models.Model):
     last_updated = models.DateTimeField(auto_now=True, editable=False)
 
     def clone(self, new_PodstP):
+        """
+        Tworzy sklonowany rekord modelu PodstawaPrawnaPrzetwarzania \
+        zawierający w polu ppw_skrot prefix \'klon\'
+
+        Args:
+            new_PodstP (PodstawaPrawnaPrzetwarzania): 
+
+        """
         podst = PodstawaPrawnaPrzetwarzania(
             ppw_active = new_PodstP.ppw_active,
             ppw_skrot = "klon_" + new_PodstP.ppw_skrot,
@@ -268,7 +288,7 @@ class PodstawaPrawnaPrzetwarzania(models.Model):
 
     class Meta:
         verbose_name = "Podstawa prawna przetwarzania"           # Nazwa w liczbie pojedynczej
-        verbose_name_plural = "Podstawy prawna przetwarzania"    # Nazwa w liczbie mnogiej
+        verbose_name_plural = "Podstawy prawne przetwarzania"    # Nazwa w liczbie mnogiej
 
     def __str__(self) -> str:
         return f'{self.ppw_skrot}'
@@ -279,10 +299,8 @@ class PodstawaPrawnaPrzetwarzania(models.Model):
     def get_absolute_url(self):
         return reverse('PodstawaPrawnaPrzetwarzania_detail', args=(self.pk,))
 
-
     def get_update_url(self):
         return reverse('PodstawaPrawnaPrzetwarzania_update', args=(self.pk,))
-
 
 class KategoriaDanych(models.Model):
     kd_active = models.BooleanField(default=True)
@@ -461,7 +479,6 @@ class Komorka(models.Model):
     def get_htmx_delete_url(self):
         return reverse("Komorka_htmx_delete", args=(self.pk,))
 
-
 class RejestryKomorki(models.Model):
     rko_komorka = models.ForeignKey(Komorka, null=True, on_delete=models.CASCADE)
     
@@ -470,7 +487,6 @@ class RejestryKomorki(models.Model):
     class Meta:
         verbose_name = "Rejestr komórki"           # Nazwa w liczbie pojedynczej
         verbose_name_plural = "Rejestry komórek"    # Nazwa w liczbie mnogiej
-
 
 class Profile(models.Model):
     pro_user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -530,7 +546,6 @@ class KomorkiProfilu(models.Model):
         verbose_name = "Komorka profilu"           # Nazwa w liczbie pojedynczej
         verbose_name_plural = "Komorki profili"    # Nazwa w liczbie mnogiej
 
-
 class OperacjaPrzetwarzania(models.Model):
     opp_active = models.BooleanField(null=True, default=True)
     opp_opis = models.CharField(null=False, max_length=100)
@@ -556,37 +571,62 @@ class OperacjaPrzetwarzania(models.Model):
 
     def get_htmx_delete_url(self):
         return reverse("OperacjaPrzetwarzania_htmx_delete", args=(self.pk,))
+   
+class DanaWrazliwa(models.Model):
+    # Fields
+    rdw_opis = models.CharField(max_length=255)
+    created = models.DateTimeField(auto_now_add=True, editable=False)
+    last_updated = models.DateTimeField(auto_now=True, editable=False)
 
+    class Meta:
+        verbose_name = "Dana wrażliwa"          # Nazwa w liczbie pojedynczej
+        verbose_name_plural = "Dane wrażliwe"   # Nazwa w liczbie mnogiej
+
+    def __str__(self) -> str:
+        return f'{self.rdw_opis}'    
+
+    def get_absolute_url(self):
+        return reverse('DanaWrazliwa_detail', args=(self.pk,))
+
+    def get_update_url(self):
+        return reverse('DanaWrazliwa_update', args=(self.pk,))
 
 class CzynnoscPrzetwarzania(models.Model):
-
     # Fields
     czn_active = models.BooleanField(null=True, 
                                      default=True
                                      )
-    czn_nazwa = models.CharField(max_length=200)
-    czn_zrodlo_danych = models.CharField(max_length=100, 
-                                         null=True, 
-                                         choices=ZRODLA_DANYCH
-                                         )
-    czn_status_zatw = models.CharField(max_length=20, 
-                                       null=True, 
-                                       choices=STATUS_ZATWIERDZENIA
-                                       )
-    Rejestr = models.ForeignKey(Rejestr, 
-                                null=True, 
-                                on_delete=models.SET_NULL
-                                )
     
-    czn_pozycja_rej = models.IntegerField(null=True)
+    czn_nazwa = models.CharField(max_length=200)
+    
+    czn_zrodlo_danych = models.CharField(max_length=100, 
+                                    null=True, 
+                                    choices=ZRODLA_DANYCH
+                                    )
+    
+    czn_dane_wrazliwe = models.BooleanField(default=False)
+    
+    czn_rodzaje_wrazliwe = models.ManyToManyField(DanaWrazliwa,
+                                    editable=True,
+                                    related_name="DaneaWrazliwa",
+                                    through="DaneWrazliwe",
+                                    through_fields=("rdw_czynnoscp", "rdw_dane_w")
+                                    )
+
     czn_przepis_wrazliwe = models.CharField(max_length=200)
     czn_podstawa_prawna = models.CharField(max_length=300)
     czn_opis_celu = models.CharField(max_length=200)
-    czn_data_zgloszenia = models.DateField(null=True) 
-    czn_data_wyrejestrowania = models.DateField(null=True) 
-    czn_data_obowazywania_od = models.DateField(null=True) 
-    czn_data_obowazywania_do = models.DateField(null=True) 
     
+    #czn_pozycja_rej = models.IntegerField(null=True)
+    #czn_data_zgloszenia = models.DateField(null=True) 
+    #czn_data_wyrejestrowania = models.DateField(null=True) 
+    #czn_data_obowazywania_od = models.DateField(null=True) 
+    #czn_data_obowazywania_do = models.DateField(null=True) 
+    #Rejestr = models.ForeignKey(Rejestr, 
+    #                             null=True, 
+    #                             on_delete=models.SET_NULL
+    #                             )
+
     Administratorzy = models.ManyToManyField(
         Organizacja,
         editable=True,
@@ -679,23 +719,23 @@ class CzynnoscPrzetwarzania(models.Model):
         through_fields=("opp_czynnoscp", "opp_operacjap")
         )
     
-    KomorkiRealizujace = models.ManyToManyField(
-        Komorka,
-        editable=True,
-        related_name="CzynnoscPrzetwarzania_Komorki",
-        through="CzynnosciPrzetwarzania",
-        through_fields=('czp_czynnoscp', 'czp_komorka')
-        )
+    # KomorkiRealizujace = models.ManyToManyField(
+    #     Komorka,
+    #     editable=True,
+    #     related_name="CzynnoscPrzetwarzania_Komorki",
+    #     through="CzynnosciPrzetwarzania",
+    #     through_fields=('czp_czynnoscp', 'czp_komorka')
+    #     )
 
     #Zabezpieczenie = models.ForeignKey(Zabezpieczenie, on_delete=models.CASCADE)#("content_type", "object_id")
     
     created = models.DateTimeField(auto_now_add=True, editable=False)
     last_updated = models.DateTimeField(auto_now=True, editable=False)
 
-    def save(self, *args, **kwargs):  
-        if self._state.adding:
-            self.czn_status_zatw = STATUS_ZATWIERDZENIA.OCZEKUJĄCA
-        super.save(args, **kwargs)
+    # def save(self, *args, **kwargs):  
+    #     if self._state.adding:
+    #         self.czn_status_zatw = STATUS_ZATWIERDZENIA.OCZEKUJĄCA
+    #     super.save(args, **kwargs)
 
     def get_status_display(self):
         if(self.czn_status_zatw== 'ZATWIERDZONA'):
@@ -709,21 +749,21 @@ class CzynnoscPrzetwarzania(models.Model):
         
         return "Nieznany status"
     
-    def save(self, *args, **kwargs):
-        if self.pk is None:  # Only calculate numer if the object is new (not yet in the database)
-            # Lock the rows in the database to prevent race conditions
-            with transaction.atomic():
-                # Znajdź maksymalny numer dla danego Rejestru
-                rs_max = CzynnoscPrzetwarzania.objects.select_for_update().filter(Rejestr=self.Rejestr).aggregate(max_numer=Max('czn_pozycja_rej'))
-                last_poz_rej = rs_max['max_numer']
-                if last_poz_rej is None: 
-                    # Jesli max numer dla danego Rejestru jest pusty to będzie pierwszy
-                    self.czn_pozycja_rej = 1
-                else:
-                    # Jesli max numer dla danego Rejestru nie jest pusty to będzie natępny
-                    self.czn_pozycja_rej = last_poz_rej + 1
+    # def save(self, *args, **kwargs):
+    #     if self.pk is None:  # Only calculate numer if the object is new (not yet in the database)
+    #         # Lock the rows in the database to prevent race conditions
+    #         with transaction.atomic():
+    #             # Znajdź maksymalny numer dla danego Rejestru
+    #             rs_max = CzynnoscPrzetwarzania.objects.select_for_update().filter(Rejestr=self.Rejestr).aggregate(max_numer=Max('czn_pozycja_rej'))
+    #             last_poz_rej = rs_max['max_numer']
+    #             if last_poz_rej is None: 
+    #                 # Jesli max numer dla danego Rejestru jest pusty to będzie pierwszy
+    #                 self.czn_pozycja_rej = 1
+    #             else:
+    #                 # Jesli max numer dla danego Rejestru nie jest pusty to będzie natępny
+    #                 self.czn_pozycja_rej = last_poz_rej + 1
         
-        super().save(*args, **kwargs)
+    #     super().save(*args, **kwargs)
 
     def clone(self):
         with transaction.atomic():
@@ -802,7 +842,7 @@ class CzynnoscPrzetwarzania(models.Model):
         verbose_name_plural = "Czynności przetwarzania"    # Nazwa w liczbie mnogiej
 
     def __str__(self):
-        return f'{self.czn_pozycja_rej} {self.czn_nazwa}'
+        return f'{self.czn_nazwa}'
 
     def get_absolute_url(self):
         return reverse("CzynnoscPrzetwarzania_detail", args=(self.pk,))
@@ -813,6 +853,48 @@ class CzynnoscPrzetwarzania(models.Model):
     def get_clone_url(self):
         return reverse("CzynnoscPrzetwarzania_clone", args=(self.pk,))
 
+class PozycjaRejestru(models.Model):
+    # Fields
+    pre_active = models.BooleanField(null=True, 
+                                     default=True
+                                     )
+    
+    pre_czynnoscp = models.ForeignKey(CzynnoscPrzetwarzania,
+                                      null=True,
+                                      related_name="pre_czynnosc_p",
+                                      on_delete=models.CASCADE)
+    
+    pre_pozycja_rej = models.IntegerField(null=True)
+    
+    pre_status_zatw = models.CharField(max_length=20, 
+                                       null=True, 
+                                       choices=STATUS_ZATWIERDZENIA
+                                       )
+    
+    pre_data_zgloszenia = models.DateField(null=True) 
+    pre_data_wyrejestrowania = models.DateField(null=True) 
+
+class DaneWrazliwe(models.Model):
+    rdw_czynnoscp = models.ForeignKey(CzynnoscPrzetwarzania, 
+                            null=True,
+                            related_name="rdw_czynnosc_p",
+                            on_delete=models.CASCADE)
+    
+    rdw_dane_w = models.ForeignKey(DanaWrazliwa, 
+                            null=True,
+                            related_name="rdw_danew_p",
+                            on_delete=models.CASCADE)
+    
+    class Meta:
+        verbose_name = "M2M Dane wrażliwe"           # Nazwa w liczbie pojedynczej
+        verbose_name_plural = "M2M Dane wrażliwe"    # Nazwa w liczbie mnogiej
+
+    # def clone(self, new_Rdw):
+    #     rdw = DaneWrazliwe(
+    #         rdw_czynnoscp = new_Rdw,
+    #         rdw_danew = self.rdw_dane_w
+    #     )
+    #     rdw.save()
 
 class CzynnoscPrzetwarzaniaRODO(CzynnoscPrzetwarzania):
     
@@ -989,6 +1071,7 @@ class KategorieDanych(models.Model):
                                 null=True,
                                 related_name="ktd_dane_p",
                                 on_delete=models.CASCADE)
+    
     class Meta:
         verbose_name = "M2M Kategorie Danych"           # Nazwa w liczbie pojedynczej
         verbose_name_plural = "M2M Kategorie Danych"    # Nazwa w liczbie mnogiej
@@ -999,6 +1082,7 @@ class KategorieDanych(models.Model):
             ktd_dane = self.ktd_dane 
         )
         ktda.save()
+
 
 
 # class PodstawyPrawnePrzetwarzania(models.Model):

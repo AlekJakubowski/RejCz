@@ -257,7 +257,7 @@ class CzynnoscPrzetwarzaniaDODOFilterView(FilterView):
 
 class CzynnoscPrzetwarzaniaDODOListView(generic.ListView):
     model = models.CzynnoscPrzetwarzaniaDODO
-    queryset = model.objects.filter(Rejestr=3).order_by('czn_pozycja_rej')
+    #queryset = model.objects.filter(Rejestr=3).order_by('czn_pozycja_rej')
     form_class = forms.CzynnoscPrzetwarzaniaDODOForm
     #filterset_class=filters.CzynnoscPrzetwarzaniaFilter
     # właczenie paginacji tabeli na n=10 wierszy
@@ -308,7 +308,7 @@ class KategoriaCzynnosciPrzetwarzaniaDODOFilterView(FilterView):
 
 class KategoriaCzynnosciPrzetwarzaniaDODOListView(generic.ListView):
     model = models.KategoriaCzynnosciPrzetwarzaniaDODO
-    queryset = model.objects.filter(Rejestr=4).order_by('czn_pozycja_rej')
+    #queryset = model.objects.filter(Rejestr=4).order_by('czn_pozycja_rej')
     form_class = forms.KategoriaCzynnosciPrzetwarzaniaDODOForm
     #context_object_name = 'czynnosci'
     #filterset_class=filters.KategoriaCzynnosciPrzetwarzaniaFilter
@@ -356,7 +356,7 @@ class CzynnoscPrzetwarzaniaRODOFilterView(FilterView):
 
 class CzynnoscPrzetwarzaniaRODOListView(generic.ListView):
     model = models.CzynnoscPrzetwarzaniaRODO
-    queryset = model.objects.filter(Rejestr = 1).order_by('czn_pozycja_rej')
+    #queryset = model.objects.filter(Rejestr = 1).order_by('czn_pozycja_rej')
     form_class = forms.CzynnoscPrzetwarzaniaRODOForm
     #context_object_name = 'czynnosci'
     #filterset_class=filters.CzynnoscPrzetwarzaniaFilter
@@ -416,7 +416,7 @@ class KategoriaCzynnosciPrzetwarzaniaRODOFilterView(FilterView):
 
 class KategoriaCzynnosciPrzetwarzaniaRODOListView(generic.ListView):
     model = models.KategoriaCzynnosciPrzetwarzaniaRODO
-    queryset = model.objects.filter(Rejestr=2).order_by('czn_pozycja_rej')
+    #queryset = model.objects.filter(Rejestr=2).order_by('czn_pozycja_rej')
     form_class = forms.CzynnoscPrzetwarzaniaRODOForm
     #template_name = 'templates/czynnoscprzetwarzaniaKatRODO_list.html'
     #context_object_name = 'czynnosci'
@@ -619,6 +619,45 @@ class KategoriaOsobDeleteView(generic.DeleteView):
     model = models.KategoriaOsob
     success_url = reverse_lazy("KategoriaOsob_list")
 
+class DanaWrazliwaListView(generic.ListView):
+    model = models.DanaWrazliwa
+    form_class = forms.DanaWrazliwaForm
+    # właczenie paginacji tabeli na n=10 wierszy
+    #jeśli wiersze są wyższe może być 6 lub mniej
+    paginate_by = 10
+
+
+class DanaWrazliwaCreateView(generic.CreateView):
+    model = models.DanaWrazliwa
+    form_class = forms.DanaWrazliwaForm
+
+
+class DanaWrazliwaDetailView(generic.DetailView):
+    model = models.DanaWrazliwa
+    form_class = forms.DanaWrazliwaForm
+
+
+class DanaWrazliwaUpdateView(generic.UpdateView):
+    model = models.DanaWrazliwa
+    form_class = forms.DanaWrazliwaForm
+    pk_url_kwarg = "pk"
+
+class DanaWrazliwaCloneView(generic.View):
+    model = models.DanaWrazliwa
+
+    def post(self, request, pk):
+        # Pobierz obiekt do sklonowania
+        instance = get_object_or_404(models.DanaWrazliwa, pk=pk)
+
+        # Klonowanie obiektu
+        instance.clone(instance)
+    
+        # Przekierowanie z powrotem do listy obiektów lub innej strony
+        return redirect('DanaWrazliwa_list')
+    
+class DanaWrazliwaDeleteView(generic.DeleteView):
+    model = models.DanaWrazliwa
+    success_url = reverse_lazy("DanaWrazliwa_list")
 
 class KategoriaDanychListView(generic.ListView):
     model = models.KategoriaDanych
