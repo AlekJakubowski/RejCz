@@ -18,3 +18,4 @@ pypdf>=4.3.1
 setuptools>=74.1.2
 plain.tailwind>=0.2.0 
 psycopg[binary]
+reportlab>=4.2.5
