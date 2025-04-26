@@ -7,7 +7,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 from . import models
 
-from rejestr.models import ROLA_PRACOWNIKA, STATUS_ZATWIERDZENIA, ZRODLA_DANYCH, ZAKRES_REJESTRACJI, Organizacja
+from rejestr.models import RODZAJ_CZYNNOSCI, ROLA_PRACOWNIKA, STATUS_ZATWIERDZENIA, ZRODLA_DANYCH, ZAKRES_REJESTRACJI, Organizacja
 
 from . import models
 
@@ -143,15 +143,15 @@ class RejestrForm(forms.ModelForm):
                                 required=True
                                 )
 
-    Organizacja = forms.ModelChoiceField(
-                                label="Organizacja", 
-                                widget=forms.Select,   
-                                queryset=models.Organizacja.objects.filter(org_active = True)
-                                )
+    # Komorka = forms.ModelChoiceField(
+    #                             label="Komorka", 
+    #                             widget=forms.Select,   
+    #                             queryset=models.Komorka.objects.filter(kom_active = True)
+    #                             )
     
     class Meta:
         model = models.Rejestr
-        fields = [ "rej_active", "rej_nazwa", "rej_opis", "rej_zakres", "Organizacja", ]
+        fields = [ "rej_active", "rej_nazwa", "rej_opis", "rej_zakres", ]
 
     def __init__(self, *args, **kwargs):
         super(RejestrForm, self).__init__(*args, **kwargs)
@@ -483,10 +483,11 @@ class CzynnoscPrzetwarzaniaForm(forms.ModelForm):
     #                     required=False) 
   
 
-    # czn_status_zatw = forms.ChoiceField(
-    #                     label='Status', 
-    #                     choices=STATUS_ZATWIERDZENIA,                
-    #                     required=False) 
+    czn_rodzaj_czynn = forms.ChoiceField(
+                        label='Rodzaj czynności', 
+                        choices=RODZAJ_CZYNNOSCI,                
+                        required=True) 
+
     
     czn_opis_celu = forms.CharField(
                         label='Opis celu', 
@@ -522,13 +523,13 @@ class CzynnoscPrzetwarzaniaForm(forms.ModelForm):
                         required=False
                         )
     
-    Rejestr = forms.ModelChoiceField(
-                        label='Rejestr',
-                        required=True,
-                        initial='',
-                        queryset = models.Rejestr.objects.filter(rej_active = True),
-                        widget=forms.Select
-                        )
+    # Rejestr = forms.ModelChoiceField(
+    #                     label='Rejestr',
+    #                     required=True,
+    #                     initial='',
+    #                     queryset = models.Rejestr.objects.filter(rej_active = True),
+    #                     widget=forms.Select
+    #                     )
 
     OkresRetencji = forms.ModelChoiceField(
                         label='Okres retencji',
@@ -888,6 +889,53 @@ class RyzykoForm(forms.ModelForm):
                                 )
     
     
+class PozycjaRejestruForm(forms.ModelForm):
+    pzr_pozycja_rej = forms.IntegerField(
+                        label='Numer pozycji rejestru',
+                        required=False,
+                        )
+    pzr_prefix_komorki = ""
+    
+    pzr_data_zgloszenia = forms.DateField(
+                        label='Data zgloszenia',
+                        widget=DatePickerInput,
+                        required=False) 
+    
+    pzr_data_wyrejestrowania = forms.DateField(
+                        label='Data wyrejestrowania',
+                        widget=DatePickerInput,
+                        required=False) 
+     
+    pzr_data_obowazywania_od = forms.DateField(
+                        label='Obowiązuje od',
+                        widget=DatePickerInput,
+                        required=False) 
 
     
-         
+    pzr_data_obowazywania_do = forms.DateField(
+                        label='Obowiązuje do',
+                        widget=DatePickerInput,
+                        required=False) 
+  
+
+    pzr_status_zatw = forms.ChoiceField(
+                        label='Status', 
+                        choices=STATUS_ZATWIERDZENIA,                
+                        required=False) 
+    
+    pzr_czynnoscp = forms.ModelChoiceField(
+                        label='Czynność przetwarzania',
+                        required=True,
+                        initial='',
+                        queryset = models.CzynnoscPrzetwarzania.objects.all(),
+                        widget=forms.Select
+                        ) 
+    
+    Rejestr = forms.ModelChoiceField(
+                        label='Rejestr',
+                        required=True,
+                        initial='',
+                        queryset = models.Rejestr.objects.filter(rej_active = True),
+                        widget=forms.Select
+                        ) 
+    

@@ -4,17 +4,17 @@
 <form method="post">
   {% csrf_token %}
   <div class="alert alert-danger" role="alert">
-    <h4 class="alert-heading">Usuwanie rejestru !</h4>
-    <p class="fs-4">Czy na pewno usunąć rejestr: "{{ object }}"?</p>
+    <h4 class="alert-heading">Usuwanie pozycji rejestru !</h4>
+    <p class="fs-4">Czy na pewno usunąć pozycję rejestru: "{{ object }}"?</p>
     <hr>
       <p class="fs-5">Usunięcie zapisu może spowodować utratę spójności danych</p>
     <hr>
     <div class="form-group row">
       <div class="col-3">
-        <input class="btn btn-danger" value="Usuń rejestr" type="submit">
+        <input class="btn btn-danger" value="Usuń pozycję rejestru" type="submit">
       </div>
       <div class="col-3">
-        <a class="btn btn-primary" href="{% url 'Rejestr_list' %}">Anuluj</a>
+        <a class="btn btn-primary" href="{% url 'PozycjaRejestru_list' komorka=request.user.profile.pro_komorka %}">Anuluj</a>
       </div>
     </div>
   </div>

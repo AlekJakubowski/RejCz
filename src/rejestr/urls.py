@@ -46,6 +46,8 @@ urlpatterns = (
     path("Profile/detail/<str:user>/", views.ProfileDetailView.as_view(), name="ProfileView_detail"),
     path("Profile/update/<str:user>/", views.ProfileUpdateView.as_view(), name="ProfileView_update"),
 
+
+
     path("CzynnoscPrzetwarzaniaDODO/", views.CzynnoscPrzetwarzaniaDODOListView.as_view(), name="CzynnoscPrzetwarzaniaDODO_list"),
     path("CzynnoscPrzetwarzaniaDODO/create/", views.CzynnoscPrzetwarzaniaDODOCreateView.as_view(), name="CzynnoscPrzetwarzaniaDODO_create"),
     path("CzynnoscPrzetwarzaniaDODO/detail/<int:pk>/", views.CzynnoscPrzetwarzaniaDODODetailView.as_view(), name="CzynnoscPrzetwarzaniaDODO_detail"),
@@ -193,6 +195,13 @@ urlpatterns = (
     path("GrupaZabezpieczen/detail/<int:pk>/", views.GrupaZabezpieczenDetailView.as_view(), name="GrupaZabezpieczen_detail"),
     path("GrupaZabezpieczen/update/<int:pk>/", views.GrupaZabezpieczenUpdateView.as_view(), name="GrupaZabezpieczen_update"),
     path("GrupaZabezpieczen/delete/<int:pk>/", views.GrupaZabezpieczenDeleteView.as_view(), name="GrupaZabezpieczen_delete"),
+
+    path('<str:komorka>/list/', views.PozycjaRejestruListView.as_view(), name='PozycjaRejestru_list'),
+    path('<str:komorka>/create/', views.PozycjaRejestruCreateView.as_view(), name='PozycjaRejestru_create'),
+    path('<str:komorka>/detail/<int:pk>/', views.PozycjaRejestruDetailView.as_view(), name='PozycjaRejestru_detail'),
+    path('<str:komorka>/update/<int:pk>/', views.PozycjaRejestruUpdateView.as_view(), name='PozycjaRejestru_update'),
+    path('<str:komorka>/delete/<int:pk>/', views.PozycjaRejestruDeleteView.as_view(), name='PozycjaRejestru_delete'),
+    path('<str:komorka>/clone/<int:pk>/', views.PozycjaRejestruCloneView.as_view(), name='PozycjaRejestru_clone'),
 
     # path("htmx/Organizacja/", htmx.HTMXOrganizacjaListView.as_view(), name="Organizacja_htmx_list"),
     # path("htmx/Organizacja/create/", htmx.HTMXOrganizacjaCreateView.as_view(), name="Organizacja_htmx_create"),

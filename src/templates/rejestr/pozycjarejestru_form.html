@@ -1,0 +1,82 @@
+{% extends "../navbar.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block extrahead %}
+    {% load bootstrap %}
+    {% comment %} {% bootstrap_css %} {% endcomment %}
+    {% comment %} {% bootstrap_javascript jquery='full' %} {% endcomment %}
+{% endblock %}
+
+{% comment %} {{ form.media }} {% endcomment %}
+{% block content %}
+
+    {% block caption %}{% endblock %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.media }}  {# Adds widget's JS/CSS files from CDN #}
+        {{form.errors}}
+        {# Renders form fields using django-bootstrapX #}
+        <div class="container-fluid themed-container bg-body-secondary" > 
+            {% comment %} 
+            <div class="form-group row">
+                <div>
+                    {{ form.Rejestr | as_crispy_field }}
+                </div>
+            </div>  
+            <div class="form-group row">
+                <div>
+                    {{ form.pzr_nazwa | as_crispy_field }}
+                </div>
+            </div>
+            {% endcomment %}
+            <div class="form-group row">
+                {% comment %} 
+                <div class="col-4">
+                    {{ form.pzr_active | as_crispy_field }}
+                </div> 
+                {% endcomment %}
+                <div class="col-4">
+                    {{ form.pzr_pozycja_rej | as_crispy_field }}
+                </div>
+                <div class="col-4">
+                    {{ form.pzr_status_zatw | as_crispy_field }}
+                </div>
+            </div> 
+            <div class="form-group row">
+                <div class="col-6">
+                    {{ form.pzr_data_zgloszenia | as_crispy_field }}
+                </div>
+                {% comment %} <div class="col-6">
+                    {{ form.pzr_data_wyrejestrowania | as_crispy_field }}
+                </div> {% endcomment %}
+            </div>    
+            <div class="form-group row">
+                <div class="col-6">
+                    {{ form.pzr_data_obowiazywania_od | as_crispy_field }}
+                </div>
+                <div class="col-6">
+                    {{ form.pzr_data_obowiazywania_do | as_crispy_field }}
+                </div>
+            </div> 
+            <div class="form-group row">
+                <div>
+                    {{ form.pzr_czynnoscp | as_crispy_field }}
+                </div>
+            </div>  
+
+        </div>
+        
+        {% block buttons %}{% endblock %}
+        <div class="form-group row">
+            <div class="col-3">
+                <input type="submit" value="Zapisz" class="btn btn-primary">
+            </div>
+            <div class="col-3">
+                <p>
+                    <a class="btn btn-light" href="{% url 'PozycjaRejestru_list' komorka=request.user.profile.pro_komorka %}">Anuluj</a>
+                </p>
+            </div>
+        </div>
+    </form>
+
+{% endblock %}

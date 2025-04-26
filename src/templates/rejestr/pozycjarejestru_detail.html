@@ -1,0 +1,160 @@
+
+{% extends "../navbar.html" %}
+{% load static %}
+{% block content %}
+<h2>Szczegóły pozycji Rejestru czynności przetwarzania</h2>
+<table class="table table-striped">
+    <tr><td><strong>Id</strong></td><td>{{ object.pk }}</td></tr>
+    <tr><td><strong>Rejestr</strong></td><td>{{ object.Rejestr }}</td></tr>
+    <tr><td><strong>Pozycja rejestru</strong></td><td>{{ object.pzr_pozycja_rej }}</td></tr>
+    <tr><td><strong>Status zatwierdzenia</strong></td><td>{{ object.pzr_status_zatw }}</td></tr>
+    <tr><td><strong>Data zgłoszenia</strong></td><td>
+      {% if object.pzr_data_zgloszenia %}
+        {{ object.pzr_data_zgloszenia }}
+      {% else %}
+        <p>-- BRAK DANYCH --</p> 
+      {% endif%}
+      </td>
+    </tr>
+    <tr><td><strong>Data rozpoczęcia obowiązywania</strong></td><td>
+      {% if object.pzr_data_obowazywania_od %}
+        {{ object.pzr_data_obowazywania_od }}
+      {% else %}
+        <p>-- BRAK DANYCH --</p> 
+      {% endif%}
+    </td></tr>
+    <tr><td><strong>Data zakończenia obowiązywania</strong></td><td>
+      {% if object.pzr_data_obowazywania_do %}
+        {{ object.pzr_data_obowazywania_do }}
+      {% else %}
+        <p>-- BRAK DANYCH --</p> 
+      {% endif%}
+    </td></tr>
+    <tr><td><strong>Data wyrejestrowania</strong></td><td>
+      {% if object.pzr_data_wyrejestrowania %}
+        {{ object.pzr_data_wyrejestrowania }}
+      {% else %}
+        <p>-- BRAK DANYCH --</p> 
+      {% endif%}
+    </td></tr>
+    <tr><td><strong>Nazwa czynności przetwarzania</strong></td><td>{{ object.czn_nazwa }}</td></tr>
+    <tr><td><strong>Przesłanki legalności</strong></td><td>
+      {% if object.PrzeslankiLegalnosci.all %}
+        {% for Przeslanka in object.PrzeslankiLegalnosci.all %}
+          <p>{{ Przeslanka }}</p> 
+        {% endfor %}
+      {% else %}
+        <p>-- BRAK DANYCH --</p> 
+      {% endif%}
+    </td></tr>
+    <tr><td><strong>Podstawa prawna przetwarzania</strong></td><td>
+      {% if object.PodstawyPrawnePrzetwarzania %}
+        {{ object.PodstawyPrawnePrzetwarzania }}
+      {% else %}
+        <p>-- BRAK DANYCH --</p> 
+      {% endif%}
+    </td></tr>
+    <tr><td><strong>Opis celu przetwarzania</strong></td><td>{{ object.czn_opis_celu }}</td></tr>
+    <tr><td><strong>Podstawa prawna dane wrazliwe</strong></td><td>
+      {% if object.czn_przepis_wrazliwe %}
+        {{ object.czn_przepis_wrazliwe }}
+      {% else %}
+        <p>-- BRAK DANYCH --</p> 
+      {% endif%}
+    </td></tr>
+    <tr><td><strong>Okres retencji</strong></td><td>{{ object.OkresRetencji }}</td></tr>
+    <tr><td><strong>Administrator</strong></td><td>
+      {% if object.Administratorzy.all %}
+        {% for administrator in object.Administratorzy.all %}
+          <p>{{ administrator }}</p> 
+        {% endfor %}
+      {% else %}
+        <p>-- BRAK DANYCH --</p> 
+      {% endif%}
+    </td></tr>
+    <tr><td><strong>Wspóadministratorzy</strong></td><td>
+      {% if object.Wspoladministratorzy.all %}
+        {% for wspoladministrator in object.Wspoladministratorzy.all %}
+          <p>{{ wspoladministrator }}</p> 
+        {% endfor %}
+      {% else %}
+      <p>-- BRAK DANYCH --</p> 
+      {% endif%}
+     </td></tr>
+    <tr><td><strong>Podmioty przetwarzające</strong></td><td>
+      {% if object.PodmiotyPrzetwarzajace.all %}
+        {% for podmiot in object.PodmiotyPrzetwarzajace.all %}
+        <p>{{ podmiot }}</p>
+        {% endfor %}
+      {% else %}
+        <p>-- BRAK DANYCH --</p> 
+      {% endif%}
+    </td></tr>
+    <tr><td><strong>Kategorie osób</strong></td><td>
+      {% if object.KategorieOsob.all %}
+        {% for ko in object.KategorieOsob.all %}
+          <p>{{ ko }}</p>
+        {% endfor %}
+      {% else %}
+        <p>-- BRAK DANYCH --</p> 
+      {% endif%}
+    </td></tr>
+    <tr><td><strong>Kategorie danych</strong></td><td>
+      {% if object.KategorieDanych.all %}
+        {% for kd in object.KategorieDanych.all %}
+        <p>{{ kd }}</p>
+        {% endfor %}
+      {% else %}
+        <p>-- BRAK DANYCH --</p> 
+      {% endif%}
+    </td></tr>
+    <tr><td><strong>Kategorie odbiorców</strong></td><td>
+      {% if object.KategorieOdbiorcow.all %}
+        {% for kb in object.KategorieOdbiorcow.all %}
+        <p>{{ kb }}</p>
+        {% endfor %}
+      {% else %}
+        <p>-- BRAK DANYCH --</p> 
+      {% endif%}
+    </td></tr>
+    <tr><td><strong>Operacje przetwarzania</strong></td><td>
+      {% if object.OperacjePrzetwarzania.all %}
+        {% for operacja in object.OperacjePrzetwarzania.all %}
+          <p>{{ operacja }}</p> 
+        {% endfor %}
+      {% else %}
+        <p>-- BRAK DANYCH --</p> 
+      {% endif%}
+    </td></tr>
+    <tr><td><strong>Sposoby przetwarzania</strong></td><td>
+      {% if object.SposobyPrzetwarzania.all %}
+        {% for sposob in object.SposobyPrzetwarzania.all %}
+          <p>{{ sposob }}</p> 
+        {% endfor %}
+      {% else %}
+        <p>-- BRAK DANYCH --</p> 
+      {% endif%}
+    </td></tr>
+    <tr><td><strong>Przesłanki wysokiego ryzyka</strong></td><td>
+      {% if object.pzr_czynnoscp %}   
+        <p>{{ ws }}</p>
+      {% else %}
+        <p>-- BRAK DANYCH --</p> 
+      {% endif%}
+    </td></tr>
+    <tr><td><strong>Utworzono</strong></td><td>{{ object.created }}</td></tr>
+    <tr><td><strong>Ostatnia modyfikacja</strong></td><td>{{ object.last_updated }}</td></tr>
+    <tr><td> </td><td> </td></tr>
+  </table>
+
+	<div class="form-group row">
+  <div class="col-3">
+    <a class="btn btn-primary" href="{{object.get_update_url}}">ZMIEŃ</a>
+  </div>
+  <div class="col-3">
+      <a class="btn btn-primary" href="{% url 'CzynnoscPrzetwarzaniaRODO_list' %}">Zatwierdź</a>
+  </div>
+</div>
+</div>
+
+{% endblock %}
