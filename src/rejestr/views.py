@@ -2,7 +2,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 #from django.contrib.auth.decorators import login_required, method_decorator
 from django.contrib import messages
 from django.contrib.auth import  authenticate, login
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import  User
 from django.contrib import auth
 from django.views import generic
@@ -14,6 +14,10 @@ from django_filters.views import FilterView
 from django_xhtml2pdf.views import PdfMixin
 from django.db.models.query import QuerySet
 from django.shortcuts import redirect, render
+from django.http import HttpResponse
+from reportlab.lib.pagesizes import A4
+from reportlab.pdfgen import canvas
+from .models import RODZAJ_CZYNNOSCI, PozycjaRejestru
 from . import models
 from . import forms
 from . import filters
@@ -21,6 +25,7 @@ from . import filters
 class OrganizacjaListView(generic.ListView):
     model = models.Organizacja
     form_class = forms.OrganizacjaForm
+    queryset = model.objects.order_by('pk')
     # właczenie paginacji tabeli na n=10 wierszy
     #jeśli wiersze są wyższe może być 6 lub mniej
     paginate_by = 10
@@ -257,7 +262,7 @@ class CzynnoscPrzetwarzaniaDODOFilterView(FilterView):
 
 class CzynnoscPrzetwarzaniaDODOListView(generic.ListView):
     model = models.CzynnoscPrzetwarzaniaDODO
-    #queryset = model.objects.filter(Rejestr=3).order_by('czn_pozycja_rej')
+    queryset = model.objects.filter(czn_rodzaj_czynn=RODZAJ_CZYNNOSCI.CZDODO).order_by('czn_nazwa')
     form_class = forms.CzynnoscPrzetwarzaniaDODOForm
     #filterset_class=filters.CzynnoscPrzetwarzaniaFilter
     # właczenie paginacji tabeli na n=10 wierszy
@@ -308,7 +313,7 @@ class KategoriaCzynnosciPrzetwarzaniaDODOFilterView(FilterView):
 
 class KategoriaCzynnosciPrzetwarzaniaDODOListView(generic.ListView):
     model = models.KategoriaCzynnosciPrzetwarzaniaDODO
-    #queryset = model.objects.filter(Rejestr=4).order_by('czn_pozycja_rej')
+    queryset = model.objects.filter(czn_rodzaj_czynn=RODZAJ_CZYNNOSCI.KCDODO).order_by('czn_nazwa')
     form_class = forms.KategoriaCzynnosciPrzetwarzaniaDODOForm
     #context_object_name = 'czynnosci'
     #filterset_class=filters.KategoriaCzynnosciPrzetwarzaniaFilter
@@ -356,6 +361,7 @@ class CzynnoscPrzetwarzaniaRODOFilterView(FilterView):
 
 class CzynnoscPrzetwarzaniaRODOListView(generic.ListView):
     model = models.CzynnoscPrzetwarzaniaRODO
+    queryset = model.objects.filter(czn_rodzaj_czynn=RODZAJ_CZYNNOSCI.CZRODO).order_by('czn_nazwa')
     #queryset = model.objects.filter(Rejestr = 1).order_by('czn_pozycja_rej')
     form_class = forms.CzynnoscPrzetwarzaniaRODOForm
     #context_object_name = 'czynnosci'
@@ -416,7 +422,7 @@ class KategoriaCzynnosciPrzetwarzaniaRODOFilterView(FilterView):
 
 class KategoriaCzynnosciPrzetwarzaniaRODOListView(generic.ListView):
     model = models.KategoriaCzynnosciPrzetwarzaniaRODO
-    #queryset = model.objects.filter(Rejestr=2).order_by('czn_pozycja_rej')
+    queryset = model.objects.filter(czn_rodzaj_czynn=RODZAJ_CZYNNOSCI.KCRODO).order_by('czn_nazwa')
     form_class = forms.CzynnoscPrzetwarzaniaRODOForm
     #template_name = 'templates/czynnoscprzetwarzaniaKatRODO_list.html'
     #context_object_name = 'czynnosci'
@@ -449,6 +455,7 @@ class KategoriaCzynnosciPrzetwarzaniaRODOCloneView(generic.View):
 class KomorkaListView(generic.ListView):
     model = models.Komorka
     form_class = forms.KomorkaForm
+    queryset = model.objects.order_by('pk')
     # właczenie paginacji tabeli na n=10 wierszy
     #jeśli wiersze są wyższe może być 6 lub mniej
     paginate_by = 10
@@ -460,7 +467,6 @@ class KomorkaCreateView(generic.CreateView):
 class KomorkaDetailView(generic.DetailView):
     model = models.Komorka
     form_class = forms.KomorkaForm
-
 
 class KomorkaUpdateView(generic.UpdateView):
     model = models.Komorka
@@ -933,4 +939,132 @@ class RyzykoUpdateView(generic.UpdateView):
 class RyzykoDeleteView(generic.DeleteView):
     model = models.Ryzyko
     success_url = reverse_lazy("Ryzyko_list")
+
+# Mixin do sprawdzania dostępu użytkownika do komórki
+class KomorkaAccessMixin(LoginRequiredMixin, UserPassesTestMixin):
+    def test_func(self):
+        user_profile = self.request.user.profile
+        komorka_prefix = self.kwargs.get('komorka')
+        if str(komorka_prefix).isalpha :
+            return True
+        
+        user_komorki_profilu = user_profile.pro_komorki
+        # Sprawdź, czy użytkownik ma dostęp do komórki
+        return (
+            user_profile.pro_komorka == komorka_prefix or
+            user_profile.pro_komorki.filter(pro_komorki__prefix=komorka_prefix).exists() or
+            self.request.user.is_superuser
+        )
+
+    def handle_no_permission(self):
+        from django.http import HttpResponseForbidden
+        return HttpResponseForbidden("Nie masz dostępu do tej komórki.")
+
+class PozycjaRejestruDetailView(generic.DetailView):
+    model = models.PozycjaRejestru
+    form_class = forms.PozycjaRejestruForm
+
+class PozycjaRejestruListView(generic.ListView):
+    model = models.PozycjaRejestru
+    form_class = forms.PozycjaRejestruForm
+    fields = '__all__'
+    
+    def get_queryset(self):
+        komorka = self.kwargs['komorka']
+        pozycje = models.PozycjaRejestru.objects.filter(pzr_prefix_komorki=komorka)
+        return pozycje
+
+# Widok tworzenia pozycji rejestru
+class PozycjaRejestruCreateView(generic.CreateView):
+    model = models.PozycjaRejestru
+    fields = ['pzr_pozycja_rej', 'pzr_data_zgloszenia', 'pzr_data_obowiazywania_od', 'pzr_data_obowiazywania_do', 'pzr_status_zatw', 'pzr_czynnoscp']
+    # template_name = 'pozycjarejestru_form.html'
+
+    def form_valid(self, form):
+        komorka_prefix = self.kwargs.get('komorka')
+        form.instance.pzr_prefix_komorki = komorka_prefix
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse_lazy('PozycjaRejestru_list', kwargs={'komorka': self.kwargs.get('komorka')})
+
+# Widok aktualizacji pozycji rejestru
+class PozycjaRejestruUpdateView(generic.UpdateView):
+    model = models.PozycjaRejestru
+    fields = ['pzr_pozycja_rej', 'pzr_data_zgloszenia', 'pzr_data_obowiazywania_od', 'pzr_data_obowiazywania_do', 'pzr_status_zatw', 'pzr_czynnoscp']
+    #template_name = 'pozycjarejestru_form.html'
+
+    def get_queryset(self):
+        komorka_prefix = self.kwargs.get('komorka')
+        return models.PozycjaRejestru.objects.filter(pzr_prefix_komorki=komorka_prefix)
+
+    def get_success_url(self):
+        return reverse_lazy('PozycjaRejestru_list', kwargs={'komorka': self.kwargs.get('komorka')})
+
+# Widok usuwania pozycji rejestru
+class PozycjaRejestruDeleteView(generic.DeleteView):
+    model = models.PozycjaRejestru
+    #template_name = 'pozycjarejestru_confirm_delete.html'
+
+    def get_queryset(self):
+        komorka_prefix = self.kwargs.get('komorka')
+        return models.PozycjaRejestru.objects.filter(pzr_prefix_komorki=komorka_prefix)
+
+    def get_success_url(self):
+        return reverse_lazy('PozycjaRejestru_list', kwargs={'komorka': self.kwargs.get('komorka')})
+
+class PozycjaRejestruCloneView(generic.View):
+    model = models.PozycjaRejestru
+
+    def post(self, request, pk):
+        # Pobierz obiekt do sklonowania
+        instance = get_object_or_404(models.PozycjaRejestru, pk=pk)
+
+        # Klonowanie obiektu
+        instance.clone(instance)
+    
+        # Przekierowanie z powrotem do listy obiektów lub innej strony
+        return redirect('PozycjaRejestru_list')
+    
+class PozycjaRejestruPdfView(generic.View):
+    def get(self, request, komorka, pk, *args, **kwargs):
+        # Pobierz pozycję rejestru
+        pozycja = get_object_or_404(PozycjaRejestru, pk=pk, pzr_prefix_komorki=komorka)
+
+        # Ustawienia odpowiedzi HTTP dla pliku PDF
+        response = HttpResponse(content_type='application/pdf')
+        response['Content-Disposition'] = f'attachment; filename="pozycja_rejestru_{pk}.pdf"'
+
+        # Utwórz obiekt PDF
+        buffer = canvas.Canvas(response, pagesize=A4)
+        width, height = A4
+
+        # Dodaj nagłówki i informacje
+        buffer.setFont("Helvetica-Bold", 16)
+        buffer.drawString(100, height - 50, f"Pozycja Rejestru - {pozycja.pzr_pozycja_rej}")
+        buffer.setFont("Helvetica", 12)
+        buffer.drawString(100, height - 100, f"Prefiks Komórki: {pozycja.pzr_prefix_komorki}")
+        buffer.drawString(100, height - 130, f"Data zgłoszenia: {pozycja.pzr_data_zgloszenia or 'Brak'}")
+        buffer.drawString(100, height - 160, f"Data obowiązywania od: {pozycja.pzr_data_obowiazywania_od or 'Brak'}")
+        buffer.drawString(100, height - 190, f"Data obowiązywania do: {pozycja.pzr_data_obowiazywania_do or 'Brak'}")
+        buffer.drawString(100, height - 220, f"Status zatwierdzenia: {pozycja.get_status_display()}")
+
+        # Dodaj inne szczegóły
+        czynnoscp = pozycja.pzr_czynnoscp
+        buffer.drawString(100, height - 250, f"Czynność przetwarzania: {czynnoscp or 'Brak'}")
+
+        # Zakończ generowanie PDF
+        buffer.showPage()
+        buffer.save()
+        return response
+    
+def main_menu_view(request):
+    # Pobierz profil użytkownika
+    profile = request.user.profile
+
+    # Pobierz prefiks komórki użytkownika
+    komorki = profile.pro_komorki.all()
+
+    return render(request, 'menu.html', {'komorki': komorki}) 
+
 

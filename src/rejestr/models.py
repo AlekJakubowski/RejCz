@@ -36,6 +36,12 @@ class ROLA_PRACOWNIKA(models.TextChoices):
     
     __empty__ = "-----------"
     
+class RODZAJ_CZYNNOSCI(models.TextChoices):
+    CZRODO = "CZRODO", "Czynność przetwarzania RODO"
+    KCRODO = "KCRODO", "Kategoria czynności przetwarzania RODO"
+    CZDODO = "CZDODO", "Czynność przetwarzania DODO"
+    KCDODO = "KCDODO", "Kategoria czynności przetwarzania DODO"
+
 
 class Organizacja(models.Model):
     
@@ -115,6 +121,58 @@ class PodmiotPrzetwarzajacy(models.Model):
     def get_update_url(self):
         return reverse("PodmiotPrzetwarzajacy_update", args=(self.pk,))
 
+class Komorka(models.Model):
+    # Fields
+    kom_active = models.BooleanField(default=True)
+    kom_symbol = models.CharField(max_length=20) # 2001-IWD
+    kom_nazwa = models.CharField(max_length=255)
+    Organizacja = models.ForeignKey(Organizacja, null=True, on_delete=models.SET_NULL)
+    kom_adres = models.CharField(max_length=255)
+    kom_tel = models.CharField(max_length=100)
+    kom_email = models.EmailField()
+    
+    RejestryKomorki = models.ManyToManyField( 
+        'rejestr.Rejestr',
+        editable=True,
+        related_name="Komorki_Rejestry",
+        through="RejestryKomorki",
+        through_fields=( 'rko_komorka', 'rko_rejestr')
+    )
+
+    created = models.DateTimeField(auto_now_add=True, editable=False)
+    last_updated = models.DateTimeField(auto_now=True, editable=False)
+
+    class Meta:
+        verbose_name = "Komórka"           # Nazwa w liczbie pojedynczej
+        verbose_name_plural = "Komórki"    # Nazwa w liczbie mnogiej
+
+    def clone(self, new_Kom):
+        kom = Komorka(
+        kom_active = new_Kom.kom_active,
+        kom_nazwa = "klon_" + new_Kom.kom_nazwa,
+		Organizacja = new_Kom.Organizacja,
+        kom_symbol = new_Kom.kom_symbol,
+        kom_adres = new_Kom.kom_adres,
+        kom_email = new_Kom.kom_email
+		#RejestryKomorki nie są klonowane
+        )
+        kom.save()
+
+    def __str__(self):
+        return str(f'{self.kom_symbol}')
+
+    def get_absolute_url(self):
+        return reverse("Komorka_detail", args=(self.pk,))
+
+    def get_update_url(self):
+        return reverse("Komorka_update", args=(self.pk,))
+
+    @staticmethod
+    def get_htmx_create_url():
+        return reverse("Komorka_htmx_create")
+
+    def get_htmx_delete_url(self):
+        return reverse("Komorka_htmx_delete", args=(self.pk,))
 
 class Rejestr(models.Model):
     # Fields
@@ -126,8 +184,7 @@ class Rejestr(models.Model):
                                 choices=ZAKRES_REJESTRACJI,
                                 default=ZAKRES_REJESTRACJI.RODO
                                 )
-    #własciciel rejestru
-    Organizacja = models.ForeignKey(Organizacja, null=True, on_delete=models.SET_NULL)
+
     created = models.DateTimeField(auto_now_add=True, editable=False)
     last_updated = models.DateTimeField(auto_now=True, editable=False)
 
@@ -146,12 +203,12 @@ class Rejestr(models.Model):
             rej_nazwa = "klon_" + new_RejP.rej_nazwa,
             rej_opis = new_RejP.rej_opis,
             rej_zakres = new_RejP.rej_zakres,
-            Organizacja = new_RejP.Organizacja
+            #Organizacja = new_RejP.Organizacja
         )
         RejP.save()
 
     def __str__(self):
-        return f'{self.rej_nazwa} ({self.rej_zakres}) --> ({self.Organizacja})'
+        return f'{self.rej_nazwa} ({self.rej_zakres})'
 
     def get_absolute_url(self):
         return reverse("Rejestr_detail", args=(self.pk,))
@@ -166,14 +223,22 @@ class Rejestr(models.Model):
     def get_htmx_delete_url(self):
         return reverse("Rejestr_htmx_delete", args=(self.pk,))
 
+class RejestryKomorki(models.Model):
+    """
+        Relacja M2M przypisująca jeden lub więcej z czterech rejestrów
+        do komórki. Komórka może prowadzić jeden lub więcej rejestrów. Max 4.
+    """
+    rko_komorka = models.ForeignKey(Komorka, null=True, on_delete=models.CASCADE)
+    rko_rejestr = models.ForeignKey(Rejestr, null=True, on_delete=models.CASCADE)
+    
+    class Meta:
+        verbose_name = "Rejestr komórki"           # Nazwa w liczbie pojedynczej
+        verbose_name_plural = "Rejestry komórek"    # Nazwa w liczbie mnogiej
+
 class OkresRetencji(models.Model):
-    """Model OkresRetencji - opisuje maksymalny orkes przechowywania danych
+    """
+    Opisuje maksymalny okres przechowywania danych. Okres retencji.
 
-    Args:
-        models (models.Model): OkresRetencji
-
-    Returns:
-        OkresRetencji: _opis_
     """
     # Fields
     okr_active = models.BooleanField(null=False, default=True)
@@ -422,71 +487,6 @@ class WysokieRyzyko(models.Model):
     def get_update_url(self):
         return reverse('WysokieRyzyko_update', args=(self.pk,))
 
-class Komorka(models.Model):
-
-    # Relationships
-    # CzynnoscPrzetwarzania = models.ManyToManyField(CzynnoscPrzetwarzania)
-
-    # Fields
-    kom_active = models.BooleanField(default=True)
-    kom_symbol = models.CharField(max_length=20) # 2001-IWD
-    kom_nazwa = models.CharField(max_length=255)
-    Organizacja = models.ForeignKey(Organizacja, null=True, on_delete=models.SET_NULL)
-    kom_adres = models.CharField(max_length=255)
-    kom_tel = models.CharField(max_length=100)
-    kom_email = models.EmailField()
-    
-    RejestryKomorki = models.ManyToManyField( 
-        'rejestr.Rejestr',
-        editable=True,
-        related_name="Komorki_Rejestry",
-        through="RejestryKomorki",
-        through_fields=( 'rko_komorka', 'rko_rejestr')
-    )
-
-    created = models.DateTimeField(auto_now_add=True, editable=False)
-    last_updated = models.DateTimeField(auto_now=True, editable=False)
-
-    class Meta:
-        verbose_name = "Komórka"           # Nazwa w liczbie pojedynczej
-        verbose_name_plural = "Komórki"    # Nazwa w liczbie mnogiej
-
-    def clone(self, new_Kom):
-        kom = Komorka(
-        kom_active = new_Kom.kom_active,
-        kom_nazwa = "klon_" + new_Kom.kom_nazwa,
-		Organizacja = new_Kom.Organizacja,
-        kom_symbol = new_Kom.kom_symbol,
-        kom_adres = new_Kom.kom_adres,
-        kom_email = new_Kom.kom_email
-		#RejestryKomorki nie są klonowane
-        )
-        kom.save()
-
-    def __str__(self):
-        return str(f'{self.kom_symbol} - {self.kom_nazwa}')
-
-    def get_absolute_url(self):
-        return reverse("Komorka_detail", args=(self.pk,))
-
-    def get_update_url(self):
-        return reverse("Komorka_update", args=(self.pk,))
-
-    @staticmethod
-    def get_htmx_create_url():
-        return reverse("Komorka_htmx_create")
-
-    def get_htmx_delete_url(self):
-        return reverse("Komorka_htmx_delete", args=(self.pk,))
-
-class RejestryKomorki(models.Model):
-    rko_komorka = models.ForeignKey(Komorka, null=True, on_delete=models.CASCADE)
-    
-    rko_rejestr = models.ForeignKey(Rejestr, null=True, on_delete=models.CASCADE)
-    
-    class Meta:
-        verbose_name = "Rejestr komórki"           # Nazwa w liczbie pojedynczej
-        verbose_name_plural = "Rejestry komórek"    # Nazwa w liczbie mnogiej
 
 class Profile(models.Model):
     pro_user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -524,11 +524,11 @@ class Profile(models.Model):
         return f'{self.pro_user.username} Profile'
 
     def get_absolute_url(self):
-        return reverse("Profile_detail", args=(self.pro_user.username,))
+        return reverse("ProfileView_detail", args=(self.pro_user.username,))
 
 
     def get_update_url(self):
-        return reverse("Profile_update", args=(self.pro_user.username,))
+        return reverse("ProfileView_update", args=(self.pro_user.username,))
 
     @staticmethod
     def get_htmx_create_url():
@@ -593,6 +593,12 @@ class DanaWrazliwa(models.Model):
 
 class CzynnoscPrzetwarzania(models.Model):
     # Fields
+    
+    czn_rodzaj_czynn = models.CharField(max_length=50, 
+                                null=True, 
+                                choices=RODZAJ_CZYNNOSCI,
+                                default=RODZAJ_CZYNNOSCI.CZRODO
+                                )
     czn_active = models.BooleanField(null=True, 
                                      default=True
                                      )
@@ -608,7 +614,7 @@ class CzynnoscPrzetwarzania(models.Model):
     
     czn_rodzaje_wrazliwe = models.ManyToManyField(DanaWrazliwa,
                                     editable=True,
-                                    related_name="DaneaWrazliwa",
+                                    related_name="DanaWrazliwa",
                                     through="DaneWrazliwe",
                                     through_fields=("rdw_czynnoscp", "rdw_dane_w")
                                     )
@@ -737,17 +743,17 @@ class CzynnoscPrzetwarzania(models.Model):
     #         self.czn_status_zatw = STATUS_ZATWIERDZENIA.OCZEKUJĄCA
     #     super.save(args, **kwargs)
 
-    def get_status_display(self):
-        if(self.czn_status_zatw== 'ZATWIERDZONA'):
-            return "Zatwierdzona"
-        if(self.czn_status_zatw== 'ANULOWANA'):
-            return "Anulowana"
-        if(self.czn_status_zatw== 'OCZEKUJĄCA'):
-            return "Oczekująca"
-        if(self.czn_status_zatw== 'ODRZUCONA'):
-            return "Odrzucona"
+    # def get_status_display(self):
+    #     if(self.czn_status_zatw== 'ZATWIERDZONA'):
+    #         return "Zatwierdzona"
+    #     if(self.czn_status_zatw== 'ANULOWANA'):
+    #         return "Anulowana"
+    #     if(self.czn_status_zatw== 'OCZEKUJĄCA'):
+    #         return "Oczekująca"
+    #     if(self.czn_status_zatw== 'ODRZUCONA'):
+    #         return "Odrzucona"
         
-        return "Nieznany status"
+    #     return "Nieznany status"
     
     # def save(self, *args, **kwargs):
     #     if self.pk is None:  # Only calculate numer if the object is new (not yet in the database)
@@ -768,24 +774,24 @@ class CzynnoscPrzetwarzania(models.Model):
     def clone(self):
         with transaction.atomic():
             # Pobierz rekord z zadanym pk
-            rs_max = CzynnoscPrzetwarzania.objects.select_for_update().filter(Rejestr=self.Rejestr).aggregate(max_numer=Max('czn_pozycja_rej'))
-            last_poz_rej = rs_max['max_numer']
-            next_poz_rej = last_poz_rej + 1
+            #rs_max = CzynnoscPrzetwarzania.objects.select_for_update().filter(Rejestr=self.Rejestr).aggregate(max_numer=Max('czn_pozycja_rej'))
+            #last_poz_rej = rs_max['max_numer']
+            #next_poz_rej = last_poz_rej + 1
             # Stwórz nowy obiekt z danymi sklonowanymi z bieżącego obiektu
             new_instance = CzynnoscPrzetwarzania(
-                Rejestr=self.Rejestr,
-                czn_pozycja_rej = next_poz_rej,
+                #Rejestr=self.Rejestr,
+                #czn_pozycja_rej = next_poz_rej,
                 czn_active = self.czn_active,
-                czn_status_zatw = "OCZEKUJĄCA",
+                #czn_status_zatw = "OCZEKUJĄCA",
                 czn_nazwa = "_klon_" + self.czn_nazwa,
                 czn_zrodlo_danych = self.czn_zrodlo_danych,
                 czn_przepis_wrazliwe = self.czn_przepis_wrazliwe,
                 czn_podstawa_prawna = self.czn_podstawa_prawna,
                 czn_opis_celu = self.czn_opis_celu,
-                czn_data_zgloszenia = self.czn_data_zgloszenia,
-                czn_data_wyrejestrowania = None,
-                czn_data_obowazywania_od = None,
-                czn_data_obowazywania_do = None,
+                #czn_data_zgloszenia = self.czn_data_zgloszenia,
+                #czn_data_wyrejestrowania = None,
+                #czn_data_obowazywania_od = None,
+                #czn_data_obowazywania_do = None,
                 OkresRetencji = self.OkresRetencji,
                 #KomorkiRealizujace = None, #self.KomorkiRealizujace,
                 created = None,
@@ -853,26 +859,6 @@ class CzynnoscPrzetwarzania(models.Model):
     def get_clone_url(self):
         return reverse("CzynnoscPrzetwarzania_clone", args=(self.pk,))
 
-class PozycjaRejestru(models.Model):
-    # Fields
-    pre_active = models.BooleanField(null=True, 
-                                     default=True
-                                     )
-    
-    pre_czynnoscp = models.ForeignKey(CzynnoscPrzetwarzania,
-                                      null=True,
-                                      related_name="pre_czynnosc_p",
-                                      on_delete=models.CASCADE)
-    
-    pre_pozycja_rej = models.IntegerField(null=True)
-    
-    pre_status_zatw = models.CharField(max_length=20, 
-                                       null=True, 
-                                       choices=STATUS_ZATWIERDZENIA
-                                       )
-    
-    pre_data_zgloszenia = models.DateField(null=True) 
-    pre_data_wyrejestrowania = models.DateField(null=True) 
 
 class DaneWrazliwe(models.Model):
     rdw_czynnoscp = models.ForeignKey(CzynnoscPrzetwarzania, 
@@ -1430,8 +1416,68 @@ class Ryzyko(models.Model):
 class iod(models.Model):
     pass
     
+class PozycjaRejestru(models.Model):
+    pzr_pozycja_rej = models.IntegerField(null=True)
     
+    pzr_prefix_komorki = models.CharField(
+                                max_length=30, 
+                                null=True)
     
+    pzr_data_zgloszenia = models.DateField(null=True) 
     
+    pzr_data_wyrejestrowania = models.DateField(null=True) 
     
+    pzr_data_obowiazywania_od = models.DateField(null=True) 
+    
+    pzr_data_obowiazywania_do = models.DateField(null=True) 
+    
+    Rejestr = models.ForeignKey(Rejestr,
+                                null=True, 
+                                on_delete=models.SET_NULL
+                                )
+       
+    pzr_status_zatw = models.CharField(max_length=20, 
+							null=True, 
+							choices=STATUS_ZATWIERDZENIA
+							)
+    
+    # pzr_czynnoscp = models.OneToOneField(CzynnoscPrzetwarzania,
+	# 					    null=True,
+	# 					    related_name="pzr_czynnosc_p",
+	# 					    on_delete=models.CASCADE)
+    
+    pzr_czynnoscp = models.OneToOneField(CzynnoscPrzetwarzania,
+						    null=True, 
+                            on_delete=models.SET_NULL)
+
+    created = models.DateTimeField(auto_now_add=True, editable=False)
+    last_updated = models.DateTimeField(auto_now=True, editable=False)
+
+    class Meta:
+        #abstract = True
+        verbose_name = "Pozycja rejestru"           # Nazwa w liczbie pojedynczej
+        verbose_name_plural = "Pozycje rejestru"    # Nazwa w liczbie mnogiej
+
+    def __str__(self):
+        return f'{self.pzr_pozycja_rej}'
+
+    def get_status_display(self):
+        if(self.czn_status_zatw== 'ZATWIERDZONA'):
+            return "Zatwierdzona"
+        if(self.czn_status_zatw== 'ANULOWANA'):
+            return "Anulowana"
+        if(self.czn_status_zatw== 'OCZEKUJĄCA'):
+            return "Oczekująca"
+        if(self.czn_status_zatw== 'ODRZUCONA'):
+            return "Odrzucona"
+        
+        return "Nieznany status"
+
+    def get_absolute_url(self):
+        return reverse("PozycjaRejestru_detail", args=(self.pzr_prefix_komorki, self.pk,))
+
+    def get_update_url(self):
+        return reverse("PozycjaRejestru_update", args=(self.pzr_prefix_komorki, self.pk,))
+
+
     
