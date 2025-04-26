@@ -3,27 +3,26 @@
 {% block navigation_bar %}
 {% if request.user %}
    <p>Current user: {{ request.user.username }}</p>
-   <p>Komórka: {{request.user.profile.pro_komorka}} / {{komorka}}</p>
 {% endif %}
 {% if request.user.is_authenticated %}
   {% comment %} <nav class="navbar navbar-expand-md navbar-dark bg-dark" aria-label="navbar"> {% endcomment %}
   <nav class="navbar navbar-expand-lg" style="background-color: #e3f2fd;" aria-label="navbar">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">RC</a>
+      <a class="navbar-brand" href="#">x</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
       <div class="collapse navbar-collapse" id="navbarsExample04">
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
-          {% comment %} <li class="nav-item">
+          <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Home</a>
-          </li> {% endcomment %}
+          </li>
           
           {% comment %} <li class="nav-item" dropdown>
-            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Czynności</a>
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Kierownik komórki</a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="/rejestr/CzynnoscPrzetwarzaniaRODO/">Czynności przetwarzania RODOk</a></li>
+              <li><a class="dropdown-item" href="/rejestr/CzynnoscPrzetwarzaniaRODO/">Czynności przetwarzania RODO</a></li>
               <li><a class="dropdown-item" href="/rejestr/KategoriaCzynnosciPrzetwarzaniaRODO/">Kategorie czynności przetwarzania RODO</a></li>
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="/rejestr/CzynnoscPrzetwarzaniaDODO/">Czynności przetwarzania DODO</a></li>
@@ -32,11 +31,11 @@
           </li> {% endcomment %}
 
           <li class="nav-item" dropdown>
-            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Rejestry komórki</a>
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Organizacja</a>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="{% url 'PozycjaRejestru_list' komorka=request.user.profile.pro_komorka %}">Rejestr czynności przetwarzania RODO</a></li>
+                <li><a class="dropdown-item" href="/rejestr/CzynnoscPrzetwarzaniaRODO/">Izba</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="/rejestr/CzynnoscPrzetwarzaniaRODO/">Rejestr kategoriii czynności przetwarzania RODO</a></li>
+                <li><a class="dropdown-item" href="/rejestr/CzynnoscPrzetwarzaniaRODO/">Urząd</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="/rejestr/CzynnoscPrzetwarzaniaRODO/">Komórka</a></li>
             </ul>  
@@ -73,7 +72,6 @@
               <li><a class="dropdown-item" href="/rejestr/PrzeslankaLegalnosci/">Przesłanki legalnosci</a></li>
               <li><a class="dropdown-item" href="/rejestr/SposobPrzetwarzania/">Sposoby przetwarzania danych</a></li>
               <li><a class="dropdown-item" href="/rejestr/KategoriaOsob/">Kategorie osób</a></li>
-              <li><a class="dropdown-item" href="/rejestr/DanaWrazliwa/">Dane wrażliwe</a></li>
               <li><a class="dropdown-item" href="/rejestr/KategoriaDanych/">Kategorie danych</a></li>
               <li><a class="dropdown-item" href="/rejestr/KategoriaOdbiorcow/">Kategorie odbiorców</a></li>
               <li><a class="dropdown-item" href="/rejestr/WysokieRyzyko/">Wysokie ryzyka</a></li>
@@ -85,9 +83,7 @@
           <li class="nav-item dropdown text_end">
             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Profil</a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href={% url 'login' %}>Zaloguj się ponownie</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href={% url 'ProfileView_update' user=request.user.username %}>Edytuj swój profil</a></li>
+              <li><a class="dropdown-item" href={% url 'login' %}>Zaloguj się</a></li>
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href={% url 'logout' %}>Wyloguj się</a></li>
             </ul>
@@ -96,27 +92,11 @@
       </div>
     </div>
   </nav>
-  
+
+
 {% else %}
   <p>Welcome, new user. Please log in.</p>
 {% endif %}
 
 {% endblock %}
 
-{% block lcontent %}
-  <div class="flex-shrink-0 p-3" style="width: 280px;">
-    <a href="#" class="d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
-      <svg class="bi pe-none me-2" width="30" height="24" aria-hidden="true"><use xlink:href="#"></use></svg>
-      <span class="fs-5 fw-semibold">Zasoby</span>
-    </a>
-
-    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-      <li><a href="/rejestr/CzynnoscPrzetwarzaniaRODO/" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Czynności RODO</a></li>
-      <li><a href="/rejestr/KategoriaCzynnosciPrzetwarzaniaRODO/" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Kategorie czynności RODO</a></li>
-      <li><a href="/rejestr/CzynnoscPrzetwarzaniaDODO/" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Czynności DODO</a></li>
-      <li><a href="/rejestr/KategoriaCzynnosciPrzetwarzaniaDODO/" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Kategorie czynności DODO</a></li>
-    </ul>
-
-  </div>
-
-{% endblock %}

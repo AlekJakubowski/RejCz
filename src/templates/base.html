@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 <html>
   <head>
     <meta charset="utf-8">
@@ -33,11 +34,18 @@
       {% endfor %}
     {% endif %}
     {% block allcontent %}
-        <div id="content" class="container-fluid">
-          <div class="container-lg" >
-            {% block content %}{% endblock %}
-          </div>
-        </div>
-    {% endblock %}
+      <div id="content" class="container-fluid">
+
+            <div class="row row-cols-auto">
+              <div class="col-md-2"> 
+                {% block lcontent %}{% endblock %}
+              </div>
+              <div class="col-md-9">
+                {% block content %}{% endblock %}
+              </div>
+            </div>
+    
+      </div>
+  {% endblock %}
   </body>
 </html>
