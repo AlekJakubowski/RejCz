@@ -5,12 +5,12 @@
 <h2>Szczegóły czynności przetwarzania</h2>
 <table class="table table-striped">
     <tr><td><strong>Id</strong></td><td>{{ object.pk }}</td></tr>
-    <tr><td><strong>Aktywna</strong></td><td>{{ object.czn_active }}</td></tr>
-    <tr><td><strong>Rejestr</strong></td><td>{{ object.Rejestr }}</td></tr>
-    <tr><td><strong>Pozycja rejestru</strong></td><td>{{ object.czn_pozycja_rej }}</td></tr>
+    {% comment %} <tr><td><strong>Aktywna</strong></td><td>{{ object.czn_active }}</td></tr> {% endcomment %}
+    <tr><td><strong>Rodzaj czynności</strong></td><td>{{ object.czn_rodzaj_czynn }}</td></tr>
+    {% comment %} <tr><td><strong>Pozycja rejestru</strong></td><td>{{ object.czn_pozycja_rej }}</td></tr> {% endcomment %}
     <tr><td><strong>Status zatwierdzenia</strong></td><td>{{ object.czn_status_zatw }}</td></tr>
     <tr><td><strong>Źrodło danych</strong></td><td>{{ object.czn_zrodlo_danych }}</td></tr>
-    <tr><td><strong>Data zgłoszenia</strong></td><td>
+    {% comment %} <tr><td><strong>Data zgłoszenia</strong></td><td>
       {% if object.czn_data_zgloszenia %}
         {{ object.czn_data_zgloszenia }}
       {% else %}
@@ -37,7 +37,7 @@
       {% else %}
         <p>-- BRAK DANYCH --</p> 
       {% endif%}
-    </td></tr>
+    </td></tr> {% endcomment %}
     <tr><td><strong>Nazwa czynności przetwarzania</strong></td><td>{{ object.czn_nazwa }}</td></tr>
     <tr><td><strong>Przesłanki legalności</strong></td><td>
       {% if object.PrzeslankiLegalnosci.all %}
@@ -73,7 +73,7 @@
         <p>-- BRAK DANYCH --</p> 
       {% endif%}
     </td></tr>
-    <tr><td><strong>Wspóadministratorzy</strong></td><td>
+    <tr><td><strong>Współadministratorzy</strong></td><td>
       {% if object.Wspoladministratorzy.all %}
         {% for wspoladministrator in object.Wspoladministratorzy.all %}
           <p>{{ wspoladministrator }}</p> 

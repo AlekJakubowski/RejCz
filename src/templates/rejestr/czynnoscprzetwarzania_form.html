@@ -17,13 +17,18 @@
         {{form.errors}}
         {# Renders form fields using django-bootstrapX #}
         <div class="container-fluid themed-container bg-body-secondary" > 
-            {% comment %} 
+            {% comment %} <div class="form-group row">
+                <div>
+                    {{ form.czn_active | as_crispy_field }}
+                </div>
+            </div>  {% endcomment %}
+   
             <div class="form-group row">
                 <div>
-                    {{ form.Rejestr | as_crispy_field }}
+                    {{ form.czn_rodzaj_czynn | as_crispy_field }}
                 </div>
             </div> 
-            {% endcomment %}
+         
             <div class="form-group row">
                 <div>
                     {{ form.czn_nazwa | as_crispy_field }}
