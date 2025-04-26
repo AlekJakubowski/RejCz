@@ -6,3 +6,5 @@ _init_
 .vs/
 Projekt/.env
 .vs/ProjectSettings.json
+*.png
+*.pdf
