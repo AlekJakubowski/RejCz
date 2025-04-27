@@ -48,12 +48,9 @@
         <p>-- BRAK DANYCH --</p> 
       {% endif%}
     </td></tr>
-    <tr><td><strong>Podstawa prawna przetwarzania</strong></td><td>
-      {% if object.PodstawyPrawnePrzetwarzania %}
-        {{ object.PodstawyPrawnePrzetwarzania }}
-      {% else %}
-        <p>-- BRAK DANYCH --</p> 
-      {% endif%}
+    <tr><td><strong>Podstawa prawna przetwarzania</strong></td>
+      <td> 
+      {{ object.czn_podstawa_prawna }}
     </td></tr>
     <tr><td><strong>Opis celu przetwarzania</strong></td><td>{{ object.czn_opis_celu }}</td></tr>
     <tr><td><strong>Podstawa prawna dane wrazliwe</strong></td><td>
@@ -138,9 +135,9 @@
     </td></tr>
     <tr><td><strong>Przesłanki wysokiego ryzyka</strong></td><td>
       {% if object.WysokieRyzyka.all %}
-      {% for ws in object.WysokieRyzyka.all %}
-      <p>{{ ws }}</p>
-      {% endfor %}
+        {% for ws in object.WysokieRyzyka.all %}
+          <p>{{ ws }}</p>
+        {% endfor %}
       {% else %}
         <p>-- BRAK DANYCH --</p> 
       {% endif%}

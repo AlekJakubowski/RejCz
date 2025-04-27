@@ -592,13 +592,12 @@ class DanaWrazliwa(models.Model):
         return reverse('DanaWrazliwa_update', args=(self.pk,))
 
 class CzynnoscPrzetwarzania(models.Model):
-    # Fields
-    
     czn_rodzaj_czynn = models.CharField(max_length=50, 
                                 null=True, 
                                 choices=RODZAJ_CZYNNOSCI,
                                 default=RODZAJ_CZYNNOSCI.CZRODO
                                 )
+    
     czn_active = models.BooleanField(null=True, 
                                      default=True
                                      )
@@ -622,16 +621,6 @@ class CzynnoscPrzetwarzania(models.Model):
     czn_przepis_wrazliwe = models.CharField(max_length=200)
     czn_podstawa_prawna = models.CharField(max_length=300)
     czn_opis_celu = models.CharField(max_length=200)
-    
-    #czn_pozycja_rej = models.IntegerField(null=True)
-    #czn_data_zgloszenia = models.DateField(null=True) 
-    #czn_data_wyrejestrowania = models.DateField(null=True) 
-    #czn_data_obowazywania_od = models.DateField(null=True) 
-    #czn_data_obowazywania_do = models.DateField(null=True) 
-    #Rejestr = models.ForeignKey(Rejestr, 
-    #                             null=True, 
-    #                             on_delete=models.SET_NULL
-    #                             )
 
     Administratorzy = models.ManyToManyField(
         Organizacja,
@@ -709,13 +698,6 @@ class CzynnoscPrzetwarzania(models.Model):
         through_fields=("ppl_czynnoscp", "ppl_przeslankap")
         )
 
-    # PodstawyPrawnePrzetwarzania = models.ManyToManyField(
-    #     PodstawaPrawnaPrzetwarzania,
-    #     editable=True,
-    #     related_name="CzynnoscPrzetwarzania_PodstawaPrawnaPrzetwarzania",
-    #     through="PodstawyPrawnePrzetwarzania",
-    #     through_fields=("ppy_czynnosc", "ppy_podst")
-    #     )
 
     OperacjePrzetwarzania = models.ManyToManyField(
         OperacjaPrzetwarzania,
@@ -724,14 +706,6 @@ class CzynnoscPrzetwarzania(models.Model):
         through="OperacjePrzetwarzania",
         through_fields=("opp_czynnoscp", "opp_operacjap")
         )
-    
-    # KomorkiRealizujace = models.ManyToManyField(
-    #     Komorka,
-    #     editable=True,
-    #     related_name="CzynnoscPrzetwarzania_Komorki",
-    #     through="CzynnosciPrzetwarzania",
-    #     through_fields=('czp_czynnoscp', 'czp_komorka')
-    #     )
 
     #Zabezpieczenie = models.ForeignKey(Zabezpieczenie, on_delete=models.CASCADE)#("content_type", "object_id")
     
